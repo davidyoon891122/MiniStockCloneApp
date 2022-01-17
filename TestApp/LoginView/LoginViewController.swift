@@ -1,5 +1,5 @@
 //
-//  MainViewController.swift
+//  LoginViewController.swift
 //  TestApp
 //
 //  Created by iMac on 2022/01/17.
@@ -7,7 +7,16 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class LoginViewController: UIViewController {
+    
+    
+    let passwordView = PasswordView()
+    var isOpend = MenuStatus.close
+    
+    enum MenuStatus {
+        case open
+        case close
+    }
     
     private lazy var labelStackView: UIStackView = {
         let stackView = UIStackView()
@@ -53,6 +62,7 @@ class MainViewController: UIViewController {
         button.layer.cornerRadius = 10
         button.layer.borderColor = UIColor.separator.cgColor
         button.layer.borderWidth = 1
+        button.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -61,11 +71,21 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         addSubviews()
         setLayoutConstraint()
+        
+        view.addSubview(passwordView)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(loginButtonTapped))
+        view.addGestureRecognizer(tapGesture)
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
     }
 }
 
 
-extension MainViewController {
+extension LoginViewController {
     func addSubviews() {
         [labelStackView, loginButton]
             .forEach{
@@ -86,6 +106,55 @@ extension MainViewController {
         loginButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -80).isActive = true
         loginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
         loginButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
+    }
+    
+    
+    @objc func loginButtonTapped() {
+        
+//        let window = UIApplication.shared.connectedScenes
+//            .filter{
+//                $0.activationState == .foregroundActive
+//            }.map {
+//                $0 as? UIWindowScene
+//            }.compactMap{
+//                $0
+//            }.first?.windows
+//            .filter{
+//                $0.isKeyWindow
+//            }.first
+        switch isOpend {
+        case .open:
+            print("open")
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+
+                self.passwordView.frame = CGRect(x: 0, y: self.view.frame.height, width: self.view.frame.width, height: 0)
+
+            }, completion: {[weak self] _ in
+                           guard let self = self else { return }
+                           self.isOpend = .close
+            }
+            )
+//
+        case .close:
+            print("closed")
+//            window?.alpha = 0.8
+//            window?.addSubview(passwordView)
+            let y = view.frame.height - 500
+            print(y)
+            passwordView.frame = CGRect(x: 0, y: view.frame.height, width: view.frame.width, height: 0)
+            passwordView.layer.cornerRadius = 10
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: { [weak self] in
+                guard let self = self else { return }
+                
+                self.passwordView.frame = CGRect(x: 0, y: y, width: self.view.frame.width, height: 500)
+            }, completion: { [weak self] _ in
+                guard let self = self else { return }
+                self.isOpend = .open
+            
+            })
+        }
+        
         
     }
 }
