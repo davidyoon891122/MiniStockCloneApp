@@ -8,15 +8,9 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-    
-    
+    let blackView = UIView()
     let passwordView = PasswordView()
-    var isOpend = MenuStatus.close
-    
-    enum MenuStatus {
-        case open
-        case close
-    }
+    let testView = TestView()
     
     private lazy var labelStackView: UIStackView = {
         let stackView = UIStackView()
@@ -71,8 +65,6 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         addSubviews()
         setLayoutConstraint()
-        
-        view.addSubview(passwordView)
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(loginButtonTapped))
         view.addGestureRecognizer(tapGesture)
     }
@@ -111,50 +103,42 @@ extension LoginViewController {
     
     
     @objc func loginButtonTapped() {
+        guard let window = UIApplication.shared.windows.first(where: {$0.isKeyWindow}) else { return }
         
-//        let window = UIApplication.shared.connectedScenes
-//            .filter{
-//                $0.activationState == .foregroundActive
-//            }.map {
-//                $0 as? UIWindowScene
-//            }.compactMap{
-//                $0
-//            }.first?.windows
-//            .filter{
-//                $0.isKeyWindow
-//            }.first
-        switch isOpend {
-        case .open:
-            print("open")
-            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-
-                self.passwordView.frame = CGRect(x: 0, y: self.view.frame.height, width: self.view.frame.width, height: 0)
-
-            }, completion: {[weak self] _ in
-                           guard let self = self else { return }
-                           self.isOpend = .close
-            }
-            )
-//
-        case .close:
-            print("closed")
-//            window?.alpha = 0.8
-//            window?.addSubview(passwordView)
-            let y = view.frame.height - 500
-            print(y)
-            passwordView.frame = CGRect(x: 0, y: view.frame.height, width: view.frame.width, height: 0)
-            passwordView.layer.cornerRadius = 10
-            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: { [weak self] in
-                guard let self = self else { return }
-                
-                self.passwordView.frame = CGRect(x: 0, y: y, width: self.view.frame.width, height: 500)
-            }, completion: { [weak self] _ in
-                guard let self = self else { return }
-                self.isOpend = .open
-            
-            })
-        }
+        blackView.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        blackView.frame = window.frame
+        blackView.alpha = 0
+        blackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapBlackView)))
         
         
+        window.addSubview(blackView)
+        window.addSubview(passwordView)
+        
+        
+        
+        let height: CGFloat  = 600
+        let y = window.frame.height - height
+        
+        passwordView.frame = CGRect(x: 0, y: window.frame.height, width: window.frame.width, height: height)
+        
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            self.blackView.alpha = 1
+            self.passwordView.frame = CGRect(x: 0, y: y, width: window.frame.width, height: height)
+        }, completion: nil)
     }
+    
+    
+    @objc func tapBlackView() {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            self.blackView.alpha = 0
+            
+            guard let window = UIApplication.shared.windows.first(where: {$0.isKeyWindow}) else {
+                return
+            }
+            
+            self.passwordView.frame = CGRect(x: 0, y: window.frame.height, width: self.passwordView.frame.width, height: self.passwordView.frame.height)
+            
+        }, completion: nil)
+    }
+    
 }
