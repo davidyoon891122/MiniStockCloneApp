@@ -10,7 +10,6 @@ import UIKit
 class LoginViewController: UIViewController {
     let blackView = UIView()
     let passwordView = PasswordView()
-    let testView = TestView()
     
     private lazy var labelStackView: UIStackView = {
         let stackView = UIStackView()
@@ -51,7 +50,7 @@ class LoginViewController: UIViewController {
         label.font = .systemFont(ofSize: 25, weight: .light)
         label.text = "환영합니다"
         label.textAlignment = .center
-        label.textColor = .black
+        label.textColor = .systemGreen
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -97,8 +96,6 @@ extension LoginViewController {
         labelStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 120).isActive = true
         labelStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         labelStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        
-        
         
         loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive =  true
         loginButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -80).isActive = true
