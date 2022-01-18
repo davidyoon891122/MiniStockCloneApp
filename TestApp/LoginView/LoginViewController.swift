@@ -65,14 +65,12 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         addSubviews()
         setLayoutConstraint()
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(loginButtonTapped))
-        view.addGestureRecognizer(tapGesture)
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        loginButtonTapped()
     }
 }
 

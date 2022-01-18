@@ -100,10 +100,13 @@ class PasswordView:UIView {
     private lazy var numberCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
+        layout.minimumLineSpacing = 0
+        layout.minimumInteritemSpacing = 0
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
     
@@ -168,10 +171,10 @@ private extension PasswordView {
         labelStackView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         
         
-//        numberCollectionView.heightAnchor.constraint(equalToConstant: 320).isActive = true
-//        numberCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-//        numberCollectionView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-//        numberCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        numberCollectionView.heightAnchor.constraint(equalToConstant: 320).isActive = true
+        numberCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        numberCollectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
+        numberCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         
     }
 }
