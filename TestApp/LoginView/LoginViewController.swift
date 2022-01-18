@@ -72,12 +72,20 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         addSubviews()
         setLayoutConstraint()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(handleAppDidBecomeActiveNotification(notification:)), name: UIApplication.didBecomeActiveNotification, object: nil)
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         loginButtonTapped()
+        print("viewWillAppear")
+    }
+    
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 }
 
@@ -144,9 +152,8 @@ extension LoginViewController {
         }, completion: nil)
     }
     
-    
-    
-    func test() {
-        
+    @objc func handleAppDidBecomeActiveNotification(notification: Notification) {
+        print("Become Active")
+        loginButtonTapped()
     }
 }
