@@ -9,8 +9,7 @@ import UIKit
 
 class LoginViewController: UIViewController {
     let blackView = UIView()
-    let passwordView = PasswordView()
-    
+    var passwordView = PasswordView()
     private lazy var labelStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -115,7 +114,8 @@ extension LoginViewController {
     
     @objc func loginButtonTapped() {
         guard let window = UIApplication.shared.windows.first(where: {$0.isKeyWindow}) else { return }
-        
+        passwordView.keypadNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
+        passwordView.numberCollectionView.reloadData()
         blackView.backgroundColor = UIColor(white: 0, alpha: 0.5)
         blackView.frame = window.frame
         blackView.alpha = 0
@@ -130,7 +130,7 @@ extension LoginViewController {
         let height: CGFloat  = 600
         let y = window.frame.height - height
         
-        passwordView.frame = CGRect(x: 0, y: window.frame.height, width: window.frame.width, height: height)
+        self.passwordView.frame = CGRect(x: 0, y: window.frame.height, width: window.frame.width, height: height)
         
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.blackView.alpha = 1
@@ -143,7 +143,8 @@ extension LoginViewController {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.blackView.alpha = 0
             
-            guard let window = UIApplication.shared.windows.first(where: {$0.isKeyWindow}) else {
+            guard let window = UIApplication.shared.windows.first(where: {$0.isKeyWindow})
+            else {
                 return
             }
             

@@ -10,6 +10,7 @@ import UIKit
 class PasswordView:UIView {
     
     private let cellId = "cellId"
+    var keypadNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
     
     private lazy var topDragBar: UIView = {
         let view = UIView()
@@ -97,7 +98,7 @@ class PasswordView:UIView {
         return stackView
     }()
     
-    private lazy var numberCollectionView: UICollectionView = {
+    lazy var numberCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = 0
@@ -118,11 +119,16 @@ class PasswordView:UIView {
         layer.masksToBounds = true
         addSubviews()
         setLayoutConstraint()
+        print("PasswordView init")
     }
     
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    deinit {
+        print("PasswordView Deinit")
     }
     
     
@@ -135,6 +141,19 @@ extension PasswordView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! PasswordNumberCollectionViewCell
+        
+        let randomNumber = keypadNumbers.randomElement()
+        
+        if indexPath.row != 9 && indexPath.row != 11
+        {
+            keypadNumbers.removeAll(where: {$0 == randomNumber})
+            cell.numberLabel.text = "\(randomNumber ?? 0)"
+        } else if indexPath.row == 9 {
+            cell.numberLabel.text = ""
+        } else if indexPath.row == 11 {
+            cell.numberLabel.text = "◀︎"
+        }
+        
         return cell
     }
     

@@ -26,6 +26,23 @@ class TestAppTests: XCTestCase {
         // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
     }
 
+    func testRandom() {
+        var numbers = [1,2,3,4,5,6,7,8,9,0]
+        
+        
+        for _ in 0..<5 {
+            guard let randomNumber = numbers.randomElement() else {
+                return
+            }
+            
+            numbers.removeAll(where: {$0 == randomNumber})
+            
+            print("randomNumber: \(randomNumber), result array: \(numbers)")
+        }
+        
+    }
+    
+    
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
         self.measure {
