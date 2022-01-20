@@ -13,7 +13,7 @@ class PasswordNumberCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.text = "1"
         label.textAlignment = .center
-        label.font = .systemFont(ofSize: 40, weight: .heavy)
+        label.font = .systemFont(ofSize: 30, weight: .medium)
         label.textColor = .label
         label.translatesAutoresizingMaskIntoConstraints = false
         label.layer.borderWidth = 1
