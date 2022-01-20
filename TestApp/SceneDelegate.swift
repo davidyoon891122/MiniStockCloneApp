@@ -14,16 +14,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
+        let testSwitch = true
+        
+        var rootViewController: UIViewController
+        
         window = UIWindow(windowScene: windowScene)
         window?.backgroundColor = .systemBackground
-        let rootViewController = LoginViewController()
+        
+        if testSwitch {
+            rootViewController = HomeTabBarController()
+        } else {
+            rootViewController = LoginViewController()
+        }
+        
         window?.rootViewController = rootViewController
         
         UINavigationBar.appearance().prefersLargeTitles = false
-//        let appearance = UINavigationBarAppearance()
-//        UINavigationBar.appearance().standardAppearance = appearance
-//        UINavigationBar.appearance().scrollEdgeAppearance = appearance
-        
         window?.makeKeyAndVisible()
         
         

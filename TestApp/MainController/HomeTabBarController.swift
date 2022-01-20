@@ -47,6 +47,8 @@ class HomeTabBarController: UITabBarController {
         self.view.backgroundColor = .systemBackground
         
         self.viewControllers = [homeViewController, searchViewController, themeViewController, assetViewController, settingsViewController]
+        
+        self.tabBar.backgroundColor = .systemBackground
     }
 }
 

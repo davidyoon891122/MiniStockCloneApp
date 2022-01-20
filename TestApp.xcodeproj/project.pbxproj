@@ -20,6 +20,7 @@
 		AD7E0D9E279637DA00230920 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7E0D9D279637DA00230920 /* TestView.swift */; };
 		AD7E0DE32796791B00230920 /* PasswordNumberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7E0DE22796791B00230920 /* PasswordNumberCollectionViewCell.swift */; };
 		AD84C57F2799337B00395772 /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD84C57E2799337B00395772 /* HomeTabBarController.swift */; };
+		AD84C5832799459E00395772 /* InvestmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD84C5822799459E00395772 /* InvestmentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		AD7E0D9D279637DA00230920 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		AD7E0DE22796791B00230920 /* PasswordNumberCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordNumberCollectionViewCell.swift; sourceTree = "<group>"; };
 		AD84C57E2799337B00395772 /* HomeTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabBarController.swift; sourceTree = "<group>"; };
+		AD84C5822799459E00395772 /* InvestmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestmentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,15 +109,14 @@
 		AD27D1A52791652D009C8F91 /* TestApp */ = {
 			isa = PBXGroup;
 			children = (
+				AD84C5802799456400395772 /* MainController */,
 				AD34BB452794E8C2001CD610 /* LoginView */,
 				AD27D1A62791652D009C8F91 /* AppDelegate.swift */,
 				AD27D1A82791652D009C8F91 /* SceneDelegate.swift */,
 				AD27D1AF2791652F009C8F91 /* Assets.xcassets */,
 				AD27D1B12791652F009C8F91 /* LaunchScreen.storyboard */,
 				AD27D1B42791652F009C8F91 /* Info.plist */,
-				AD34BB412794E045001CD610 /* HomeViewController.swift */,
 				AD7E0D9D279637DA00230920 /* TestView.swift */,
-				AD84C57E2799337B00395772 /* HomeTabBarController.swift */,
 			);
 			path = TestApp;
 			sourceTree = "<group>";
@@ -145,6 +146,24 @@
 				AD7E0DE22796791B00230920 /* PasswordNumberCollectionViewCell.swift */,
 			);
 			path = LoginView;
+			sourceTree = "<group>";
+		};
+		AD84C5802799456400395772 /* MainController */ = {
+			isa = PBXGroup;
+			children = (
+				AD84C5812799458200395772 /* Home */,
+				AD84C57E2799337B00395772 /* HomeTabBarController.swift */,
+			);
+			path = MainController;
+			sourceTree = "<group>";
+		};
+		AD84C5812799458200395772 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				AD34BB412794E045001CD610 /* HomeViewController.swift */,
+				AD84C5822799459E00395772 /* InvestmentView.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -281,6 +300,7 @@
 				AD7E0DE32796791B00230920 /* PasswordNumberCollectionViewCell.swift in Sources */,
 				AD34BB472794E95D001CD610 /* PasswordView.swift in Sources */,
 				AD27D1A72791652D009C8F91 /* AppDelegate.swift in Sources */,
+				AD84C5832799459E00395772 /* InvestmentView.swift in Sources */,
 				AD27D1A92791652D009C8F91 /* SceneDelegate.swift in Sources */,
 				AD84C57F2799337B00395772 /* HomeTabBarController.swift in Sources */,
 				AD34BB422794E045001CD610 /* HomeViewController.swift in Sources */,
