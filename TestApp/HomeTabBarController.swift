@@ -49,3 +49,4 @@ class HomeTabBarController: UITabBarController {
         self.viewControllers = [homeViewController, searchViewController, themeViewController, assetViewController, settingsViewController]
     }
 }
+

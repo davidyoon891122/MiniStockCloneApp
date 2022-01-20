@@ -17,8 +17,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         window?.backgroundColor = .systemBackground
         let rootViewController = LoginViewController()
-        window?.rootViewController = UINavigationController(rootViewController: rootViewController)
+        window?.rootViewController = rootViewController
+        
+        UINavigationBar.appearance().prefersLargeTitles = false
+//        let appearance = UINavigationBarAppearance()
+//        UINavigationBar.appearance().standardAppearance = appearance
+//        UINavigationBar.appearance().scrollEdgeAppearance = appearance
+        
         window?.makeKeyAndVisible()
+        
         
         
     }

@@ -19,14 +19,29 @@ class HomeViewController:UIViewController {
 
 private extension HomeViewController {
     func configureNavigation() {
-        navigationItem.title = "Home"
-        navigationController?.navigationBar.prefersLargeTitles = true
+        let shareNavigationBarButton = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.up"), style: .plain, target: self, action: #selector(tapShareButton))
+        
+        let bagNavigationBarButton = UIBarButtonItem(image: UIImage(systemName: "bag"), style: .plain, target: self, action: #selector(tapBagButton))
+        
+        navigationItem.rightBarButtonItems = [shareNavigationBarButton, bagNavigationBarButton]
     }
     func addSubviews() {
         
     }
     
+    
     func setLayoutConstraint() {
         
     }
+    
+    @objc func tapShareButton() {
+        print("Share Button tapped...")
+    }
+    
+    @objc func tapBagButton() {
+        print("Bag Button tapped...")
+    }
 }
+
+
+
