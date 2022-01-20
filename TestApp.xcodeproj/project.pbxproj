@@ -19,6 +19,7 @@
 		AD34BB472794E95D001CD610 /* PasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD34BB462794E95D001CD610 /* PasswordView.swift */; };
 		AD7E0D9E279637DA00230920 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7E0D9D279637DA00230920 /* TestView.swift */; };
 		AD7E0DE32796791B00230920 /* PasswordNumberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7E0DE22796791B00230920 /* PasswordNumberCollectionViewCell.swift */; };
+		AD84C57F2799337B00395772 /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD84C57E2799337B00395772 /* HomeTabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		AD34BB462794E95D001CD610 /* PasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordView.swift; sourceTree = "<group>"; };
 		AD7E0D9D279637DA00230920 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		AD7E0DE22796791B00230920 /* PasswordNumberCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordNumberCollectionViewCell.swift; sourceTree = "<group>"; };
+		AD84C57E2799337B00395772 /* HomeTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 				AD27D1B42791652F009C8F91 /* Info.plist */,
 				AD34BB412794E045001CD610 /* HomeViewController.swift */,
 				AD7E0D9D279637DA00230920 /* TestView.swift */,
+				AD84C57E2799337B00395772 /* HomeTabBarController.swift */,
 			);
 			path = TestApp;
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 				AD34BB472794E95D001CD610 /* PasswordView.swift in Sources */,
 				AD27D1A72791652D009C8F91 /* AppDelegate.swift in Sources */,
 				AD27D1A92791652D009C8F91 /* SceneDelegate.swift in Sources */,
+				AD84C57F2799337B00395772 /* HomeTabBarController.swift in Sources */,
 				AD34BB422794E045001CD610 /* HomeViewController.swift in Sources */,
 				AD34BB442794E337001CD610 /* LoginViewController.swift in Sources */,
 			);

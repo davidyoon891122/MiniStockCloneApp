@@ -12,6 +12,8 @@ class PasswordView:UIView {
     private let cellId = "cellId"
     var keypadNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
     
+    var userPassword = ""
+    
     private lazy var topDragBar: UIView = {
         let view = UIView()
         view.backgroundColor = .lightGray
@@ -157,6 +159,29 @@ extension PasswordView: UICollectionViewDataSource {
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as! PasswordNumberCollectionViewCell
+        
+        guard let text = cell.numberLabel.text else { return }
+        print(text)
+        
+        
+        if text == "◀︎" && userPassword.count > 0{
+            userPassword.remove(at: userPassword.index(before: userPassword.endIndex))
+        } else if text == "" || userPassword.count < 0 {
+            //
+        } else if Int(text) != nil {
+            userPassword += text
+        }
+        print(userPassword)
+        
+        if userPassword.count == 6 {
+            self.removeFromSuperview()
+            let homeTabBarController = HomeTabBarController()
+            guard let window = UIApplication.shared.windows.first(where: {$0.isKeyWindow}) else { return }
+            window.rootViewController = homeTabBarController
+        }
+    }
     
 }
 
