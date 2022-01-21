@@ -37,13 +37,10 @@ class TestView: UIView {
     }
 }
 
-
 private extension TestView {
     func addSubviews() {
         [titleLabel, descriptionLabel]
-            .forEach{
-                addSubview($0)
-            }
+            .forEach { addSubview($0) }
     }
     
     func setLayoutConstraint() {

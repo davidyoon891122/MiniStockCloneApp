@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeViewController:UIViewController {
+class HomeViewController: UIViewController {
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -38,16 +38,13 @@ class HomeViewController:UIViewController {
         thirdView.backgroundColor = .yellow
         
         [firstView, secondView, thirdView]
-            .forEach{
+            .forEach {
                 stackView.addArrangedSubview($0)
             }
-        
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,7 +56,6 @@ class HomeViewController:UIViewController {
     }
 }
 
-
 private extension HomeViewController {
     func configureNavigation() {
         let shareNavigationBarButton = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.up"), style: .plain, target: self, action: #selector(tapShareButton))
@@ -67,6 +63,8 @@ private extension HomeViewController {
         let bagNavigationBarButton = UIBarButtonItem(image: UIImage(systemName: "bag"), style: .plain, target: self, action: #selector(tapBagButton))
         
         navigationItem.rightBarButtonItems = [shareNavigationBarButton, bagNavigationBarButton]
+        
+        navigationController?.hidesBarsOnSwipe = true
     }
     
     func addSubviews() {
@@ -74,7 +72,6 @@ private extension HomeViewController {
         scrollView.addSubview(contentView)
         contentView.addSubview(stackView)
     }
-    
     
     func setLayoutConstraint() {
         scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
@@ -92,9 +89,6 @@ private extension HomeViewController {
         stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
         stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
         stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
-        
-        
-        
     }
     
     @objc func tapShareButton() {
@@ -105,6 +99,3 @@ private extension HomeViewController {
         print("Bag Button tapped...")
     }
 }
-
-
-

@@ -14,16 +14,13 @@ class InvestmentView: UIView {
         stackView.axis = .vertical
         stackView.spacing = 5
         [titleLabel, valueLabel, horizontalStackView]
-            .forEach{
+            .forEach {
                 stackView.addArrangedSubview($0)
             }
-        
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
-    
-    
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -57,25 +54,23 @@ class InvestmentView: UIView {
         stackView.distribution = .equalSpacing
 
         [redHStackView, baseDateLabel]
-            .forEach{
+            .forEach {
                 stackView.addArrangedSubview($0)
             }
         
         return stackView
     }()
-    
     
     private lazy var redHStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         
         [upDownLabel, changedValueLabel, percentageLabel]
-            .forEach{
+            .forEach {
                 stackView.addArrangedSubview($0)
             }
         return stackView
     }()
-    
     
     private lazy var upDownLabel: UILabel = {
         let label = UILabel()
@@ -110,24 +105,17 @@ class InvestmentView: UIView {
         return label
     }()
     
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubviews()
         setLayoutConstraint()
         backgroundColor = .systemBackground
-        
-        
-        
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
 }
-
 
 private extension InvestmentView {
     func addSubviews() {

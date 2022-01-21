@@ -18,18 +18,17 @@ class LoginViewController: UIViewController {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
         [titleLabel, welcomeLabel]
-            .forEach{
+            .forEach {
                 stackView.addArrangedSubview($0)
             }
         
         return stackView
     }()
     
-    
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 40, weight: .heavy)
-        let miniStringAttribute = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 40, weight: .heavy), NSAttributedString.Key.foregroundColor: UIColor.label]
+        let miniStringAttribute = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 40, weight: .heavy), NSAttributedString.Key.foregroundColor: UIColor.label]
         let stockStringAttribute = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 40, weight: .light), NSAttributedString.Key.foregroundColor: UIColor.label]
         
         let miniString = NSMutableAttributedString(string: "mini", attributes: miniStringAttribute)
@@ -54,7 +53,7 @@ class LoginViewController: UIViewController {
         return label
     }()
     
-    private lazy var loginButton:UIButton = {
+    private lazy var loginButton: UIButton = {
         let button = UIButton()
         button.setTitle("간편비밀번호 로그인", for: .normal)
         button.setTitleColor(.label, for: .normal)
@@ -75,27 +74,23 @@ class LoginViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(handleAppDidBecomeActiveNotification(notification:)), name: UIApplication.didBecomeActiveNotification, object: nil)
     }
     
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         loginButtonTapped()
         print("viewWillAppear")
     }
     
-    
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
 }
 
-
 extension LoginViewController {
     func addSubviews() {
         [labelStackView, loginButton]
-            .forEach{
+            .forEach {
                 view.addSubview($0)
             }
-        
         
     }
     
@@ -111,7 +106,6 @@ extension LoginViewController {
         
     }
     
-    
     @objc func loginButtonTapped() {
         guard let window = UIApplication.shared.windows.first(where: {$0.isKeyWindow}) else { return }
         passwordView.keypadNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
@@ -121,23 +115,19 @@ extension LoginViewController {
         blackView.alpha = 0
         blackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapBlackView)))
         
-        
         window.addSubview(blackView)
         window.addSubview(passwordView)
         
-        
-        
         let height: CGFloat  = 600
-        let y = window.frame.height - height
+        let passwordViewY = window.frame.height - height
         
         self.passwordView.frame = CGRect(x: 0, y: window.frame.height, width: window.frame.width, height: height)
         
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.blackView.alpha = 1
-            self.passwordView.frame = CGRect(x: 0, y: y, width: window.frame.width, height: height)
+            self.passwordView.frame = CGRect(x: 0, y: passwordViewY, width: window.frame.width, height: height)
         }, completion: nil)
     }
-    
     
     @objc func tapBlackView() {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {

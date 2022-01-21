@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PasswordView:UIView {
+class PasswordView: UIView {
     
     private let cellId = "cellId"
     var keypadNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
@@ -28,7 +28,7 @@ class PasswordView:UIView {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
         [titleLabel, descriptionLabel]
-            .forEach{
+            .forEach {
                 stackView.addArrangedSubview($0)
             }
         
@@ -55,8 +55,6 @@ class PasswordView:UIView {
         return label
     }()
 
-    
-    
     private lazy var numberButtonStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -113,7 +111,6 @@ class PasswordView:UIView {
         return collectionView
     }()
     
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .systemBackground
@@ -124,7 +121,6 @@ class PasswordView:UIView {
         print("PasswordView init")
     }
     
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -132,7 +128,6 @@ class PasswordView:UIView {
     deinit {
         print("PasswordView Deinit")
     }
-    
     
 }
 
@@ -142,31 +137,29 @@ extension PasswordView: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! PasswordNumberCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as? PasswordNumberCollectionViewCell
         
         let randomNumber = keypadNumbers.randomElement()
         
-        if indexPath.row != 9 && indexPath.row != 11
-        {
+        if indexPath.row != 9 && indexPath.row != 11 {
             keypadNumbers.removeAll(where: {$0 == randomNumber})
-            cell.numberLabel.text = "\(randomNumber ?? 0)"
+            cell?.numberLabel.text = "\(randomNumber ?? 0)"
         } else if indexPath.row == 9 {
-            cell.numberLabel.text = ""
+            cell?.numberLabel.text = ""
         } else if indexPath.row == 11 {
-            cell.numberLabel.text = "◀︎"
+            cell?.numberLabel.text = "◀︎"
         }
         
-        return cell
+        return cell ?? UICollectionViewCell()
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath) as! PasswordNumberCollectionViewCell
+        let cell = collectionView.cellForItem(at: indexPath) as? PasswordNumberCollectionViewCell
         
-        guard let text = cell.numberLabel.text else { return }
+        guard let text = cell?.numberLabel.text else { return }
         print(text)
         
-        
-        if text == "◀︎" && userPassword.count > 0{
+        if text == "◀︎" && userPassword.count > 0 {
             userPassword.remove(at: userPassword.index(before: userPassword.endIndex))
         } else if text == "" || userPassword.count < 0 {
             //
@@ -191,17 +184,14 @@ extension PasswordView: UICollectionViewDelegateFlowLayout {
     }
 }
 
-
-
 private extension PasswordView {
     func addSubviews() {
         [topDragBar, labelStackView, numberCollectionView]
-            .forEach{
+            .forEach {
                 addSubview($0)
             }
         
     }
-    
     
     func setLayoutConstraint() {
         topDragBar.topAnchor.constraint(equalTo: topAnchor, constant: 5).isActive = true
@@ -212,7 +202,6 @@ private extension PasswordView {
         labelStackView.topAnchor.constraint(equalTo: topDragBar.bottomAnchor, constant: 50).isActive = true
         labelStackView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         labelStackView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        
         
         numberCollectionView.heightAnchor.constraint(equalToConstant: 320).isActive = true
         numberCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true

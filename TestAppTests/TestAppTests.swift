@@ -27,8 +27,7 @@ class TestAppTests: XCTestCase {
     }
 
     func testRandom() {
-        var numbers = [1,2,3,4,5,6,7,8,9,0]
-        
+        var numbers = (0..<10).map { $0 }
         
         for _ in 0..<5 {
             guard let randomNumber = numbers.randomElement() else {
@@ -39,12 +38,6 @@ class TestAppTests: XCTestCase {
             
             print("randomNumber: \(randomNumber), result array: \(numbers)")
         }
-        
-    }
-    
-    
-    func testConvertInt() {
-        print(Int("test"))
         
     }
     
