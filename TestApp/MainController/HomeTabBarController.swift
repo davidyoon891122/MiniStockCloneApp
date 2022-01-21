@@ -10,27 +10,57 @@ import UIKit
 class HomeTabBarController: UITabBarController {
     let homeViewController: UIViewController = {
         let homeViewController = HomeViewController()
-        homeViewController.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house"), tag: 0)
+        homeViewController.tabBarItem = UITabBarItem(
+            title: TabBarMenu.home.title,
+            image: TabBarMenu.home.image,
+            tag: 0
+        
+        )
         return UINavigationController(rootViewController: homeViewController)
     }()
+    
     let searchViewController: UIViewController = {
         let searchViewController = UIViewController()
-        searchViewController.tabBarItem = UITabBarItem(title: "Search", image: UIImage(systemName: "magnifyingglass"), tag: 1)
+        searchViewController.tabBarItem = UITabBarItem(
+            title: TabBarMenu.search.title,
+            image: TabBarMenu.search.image,
+            tag: 1
+        )
+        
         return searchViewController
     }()
+    
     let themeViewController: UIViewController = {
         let themeViewController = UIViewController()
-        themeViewController.tabBarItem = UITabBarItem(title: "Theme", image: UIImage(systemName: "chart.xyaxis.line"), tag: 2)
+        themeViewController.tabBarItem = UITabBarItem(
+            title: TabBarMenu.theme.title,
+            image: TabBarMenu.theme.image,
+            tag: 2
+        
+        )
+        
         return themeViewController
     }()
+    
     let assetViewController: UIViewController = {
         let assetViewController = UIViewController()
-        assetViewController.tabBarItem = UITabBarItem(title: "Asset", image: UIImage(systemName: "bitcoinsign.square.fill"), tag: 3)
+        assetViewController.tabBarItem = UITabBarItem(
+            title: TabBarMenu.asset.title,
+            image: TabBarMenu.asset.image,
+            tag: 3
+        )
+        
         return assetViewController
     }()
+    
     let settingsViewController: UIViewController = {
         let settingsViewController = UIViewController()
-        settingsViewController.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(systemName: "gearshape"), tag: 4)
+        settingsViewController.tabBarItem = UITabBarItem(
+            title: TabBarMenu.settings.title,
+            image: TabBarMenu.settings.image,
+            tag: 4
+        )
+        
         return settingsViewController
     }()
     
