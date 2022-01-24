@@ -29,9 +29,8 @@ class HomeViewController: UIViewController {
         
         let firstView = InvestmentView()
         
-        let secondView = UIView()
-        secondView.heightAnchor.constraint(equalToConstant: 500).isActive = true
-        secondView.backgroundColor = .orange
+        let secondView = MyStockView()
+        
         let thirdView = UIView()
         thirdView.heightAnchor.constraint(equalToConstant: 500).isActive = true
         
@@ -65,6 +64,7 @@ private extension HomeViewController {
         navigationItem.rightBarButtonItems = [shareNavigationBarButton, bagNavigationBarButton]
         
         navigationController?.hidesBarsOnSwipe = true
+        
     }
     
     func addSubviews() {
