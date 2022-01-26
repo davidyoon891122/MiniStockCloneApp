@@ -24,6 +24,9 @@
 		AD34BB422794E045001CD610 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD34BB412794E045001CD610 /* HomeViewController.swift */; };
 		AD34BB442794E337001CD610 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD34BB432794E337001CD610 /* LoginViewController.swift */; };
 		AD34BB472794E95D001CD610 /* PasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD34BB462794E95D001CD610 /* PasswordView.swift */; };
+		AD6A684027A0EC4B000D022C /* NoticeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6A683F27A0EC4B000D022C /* NoticeTableViewCell.swift */; };
+		AD6A684227A0F02F000D022C /* SeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6A684127A0F02F000D022C /* SeparatorView.swift */; };
+		AD6A684427A104AB000D022C /* SwitchMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6A684327A104AB000D022C /* SwitchMenu.swift */; };
 		AD7E0D9E279637DA00230920 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7E0D9D279637DA00230920 /* TestView.swift */; };
 		AD7E0DE32796791B00230920 /* PasswordNumberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7E0DE22796791B00230920 /* PasswordNumberCollectionViewCell.swift */; };
 		AD84C57F2799337B00395772 /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD84C57E2799337B00395772 /* HomeTabBarController.swift */; };
@@ -72,6 +75,9 @@
 		AD34BB412794E045001CD610 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		AD34BB432794E337001CD610 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		AD34BB462794E95D001CD610 /* PasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordView.swift; sourceTree = "<group>"; };
+		AD6A683F27A0EC4B000D022C /* NoticeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeTableViewCell.swift; sourceTree = "<group>"; };
+		AD6A684127A0F02F000D022C /* SeparatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorView.swift; sourceTree = "<group>"; };
+		AD6A684327A104AB000D022C /* SwitchMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchMenu.swift; sourceTree = "<group>"; };
 		AD7E0D9D279637DA00230920 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		AD7E0DE22796791B00230920 /* PasswordNumberCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordNumberCollectionViewCell.swift; sourceTree = "<group>"; };
 		AD84C57E2799337B00395772 /* HomeTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabBarController.swift; sourceTree = "<group>"; };
@@ -138,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				AD84C5822799459E00395772 /* InvestmentView.swift */,
+				AD6A683F27A0EC4B000D022C /* NoticeTableViewCell.swift */,
 			);
 			path = Investment;
 			sourceTree = "<group>";
@@ -187,6 +194,8 @@
 				AD27D1B12791652F009C8F91 /* LaunchScreen.storyboard */,
 				AD27D1B42791652F009C8F91 /* Info.plist */,
 				AD7E0D9D279637DA00230920 /* TestView.swift */,
+				AD6A684127A0F02F000D022C /* SeparatorView.swift */,
+				AD6A684327A104AB000D022C /* SwitchMenu.swift */,
 			);
 			path = TestApp;
 			sourceTree = "<group>";
@@ -467,9 +476,12 @@
 				AD27D1A92791652D009C8F91 /* SceneDelegate.swift in Sources */,
 				ADA8B440279E470B003D5C98 /* MyStockViewTableCell.swift in Sources */,
 				AD0E7A95279A8C1600F1A9A0 /* TabBarMenu.swift in Sources */,
+				AD6A684027A0EC4B000D022C /* NoticeTableViewCell.swift in Sources */,
 				AD84C57F2799337B00395772 /* HomeTabBarController.swift in Sources */,
 				AD0E7A99279A93AC00F1A9A0 /* MyStockView.swift in Sources */,
+				AD6A684227A0F02F000D022C /* SeparatorView.swift in Sources */,
 				AD34BB422794E045001CD610 /* HomeViewController.swift in Sources */,
+				AD6A684427A104AB000D022C /* SwitchMenu.swift in Sources */,
 				AD34BB442794E337001CD610 /* LoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

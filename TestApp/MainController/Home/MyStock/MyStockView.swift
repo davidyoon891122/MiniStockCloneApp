@@ -10,7 +10,8 @@ import UIKit
 class MyStockView: UIView {
     
     private let tableViewCellId = "tableViewCellId"
-    private var cellCount: Int = 2
+    private var cellCount: Int = 1
+    
     private lazy var titleHStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
@@ -68,6 +69,7 @@ class MyStockView: UIView {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.rowHeight = UITableView.automaticDimension
+        tableView.separatorStyle = .none
         tableView.estimatedRowHeight = 88.0
         return tableView
     }()
@@ -91,20 +93,22 @@ extension MyStockView: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return cellCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: tableViewCellId, for: indexPath) as? MyStockViewTableCell
         guard let cell = cell else { return UITableViewCell() }
-        
+        print("cell height checker : \(cell.frame.height)")
         return cell
     }
     
 }
 
 extension MyStockView: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
 }
 
 private extension MyStockView {
@@ -123,7 +127,7 @@ private extension MyStockView {
         stockTableView.topAnchor.constraint(equalTo: myStockVStackView.bottomAnchor, constant: 5).isActive = true
         stockTableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
         stockTableView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20).isActive = true
-        stockTableView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        stockTableView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20).isActive = true
         stockTableView.heightAnchor.constraint(equalToConstant: CGFloat(cellCount * 50)).isActive = true
     }
 }

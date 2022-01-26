@@ -123,7 +123,8 @@ private extension MyStockViewTableCell {
         firstHStackView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         firstHStackView.leadingAnchor.constraint(equalTo: stockImageView.trailingAnchor, constant: 5).isActive = true
         firstHStackView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-     
+        firstHStackView.bottomAnchor.constraint(equalTo: secondHStackView.topAnchor).isActive = true
+        
         secondHStackView.topAnchor.constraint(equalTo: firstHStackView.bottomAnchor).isActive = true
         secondHStackView.leadingAnchor.constraint(equalTo: stockImageView.trailingAnchor, constant: 5).isActive = true
         secondHStackView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
