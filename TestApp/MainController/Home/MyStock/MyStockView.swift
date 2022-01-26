@@ -12,6 +12,8 @@ class MyStockView: UIView {
     private let tableViewCellId = "tableViewCellId"
     private var cellCount: Int = 1
     
+    private let dividendView = DividendView()
+    
     private lazy var titleHStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
@@ -99,7 +101,6 @@ extension MyStockView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: tableViewCellId, for: indexPath) as? MyStockViewTableCell
         guard let cell = cell else { return UITableViewCell() }
-        print("cell height checker : \(cell.frame.height)")
         return cell
     }
     
@@ -113,7 +114,7 @@ extension MyStockView: UITableViewDelegate {
 
 private extension MyStockView {
     func addSubviews() {
-        [myStockVStackView, stockTableView]
+        [myStockVStackView, stockTableView, dividendView]
             .forEach {
                 addSubview($0)
             }
@@ -127,7 +128,14 @@ private extension MyStockView {
         stockTableView.topAnchor.constraint(equalTo: myStockVStackView.bottomAnchor, constant: 5).isActive = true
         stockTableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
         stockTableView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20).isActive = true
-        stockTableView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20).isActive = true
         stockTableView.heightAnchor.constraint(equalToConstant: CGFloat(cellCount * 50)).isActive = true
+        
+        dividendView.translatesAutoresizingMaskIntoConstraints = false
+        dividendView.topAnchor.constraint(equalTo: stockTableView.bottomAnchor, constant: 20).isActive = true
+        dividendView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        dividendView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        dividendView.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        dividendView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        
     }
 }

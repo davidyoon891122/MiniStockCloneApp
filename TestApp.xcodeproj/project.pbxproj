@@ -27,6 +27,7 @@
 		AD6A684027A0EC4B000D022C /* NoticeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6A683F27A0EC4B000D022C /* NoticeTableViewCell.swift */; };
 		AD6A684227A0F02F000D022C /* SeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6A684127A0F02F000D022C /* SeparatorView.swift */; };
 		AD6A684427A104AB000D022C /* SwitchMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6A684327A104AB000D022C /* SwitchMenu.swift */; };
+		AD6A684727A110D8000D022C /* DividendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6A684627A110D8000D022C /* DividendView.swift */; };
 		AD7E0D9E279637DA00230920 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7E0D9D279637DA00230920 /* TestView.swift */; };
 		AD7E0DE32796791B00230920 /* PasswordNumberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7E0DE22796791B00230920 /* PasswordNumberCollectionViewCell.swift */; };
 		AD84C57F2799337B00395772 /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD84C57E2799337B00395772 /* HomeTabBarController.swift */; };
@@ -78,6 +79,7 @@
 		AD6A683F27A0EC4B000D022C /* NoticeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeTableViewCell.swift; sourceTree = "<group>"; };
 		AD6A684127A0F02F000D022C /* SeparatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorView.swift; sourceTree = "<group>"; };
 		AD6A684327A104AB000D022C /* SwitchMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchMenu.swift; sourceTree = "<group>"; };
+		AD6A684627A110D8000D022C /* DividendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividendView.swift; sourceTree = "<group>"; };
 		AD7E0D9D279637DA00230920 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		AD7E0DE22796791B00230920 /* PasswordNumberCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordNumberCollectionViewCell.swift; sourceTree = "<group>"; };
 		AD84C57E2799337B00395772 /* HomeTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabBarController.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 		AD0E7A97279A939900F1A9A0 /* MyStock */ = {
 			isa = PBXGroup;
 			children = (
+				AD6A684527A110AE000D022C /* Dividend */,
 				AD0E7A98279A93AC00F1A9A0 /* MyStockView.swift */,
 				AD0E7A9A279A94FB00F1A9A0 /* MyStockSortingMenu.swift */,
 				ADA8B43F279E470B003D5C98 /* MyStockViewTableCell.swift */,
@@ -225,6 +228,14 @@
 				AD7E0DE22796791B00230920 /* PasswordNumberCollectionViewCell.swift */,
 			);
 			path = LoginView;
+			sourceTree = "<group>";
+		};
+		AD6A684527A110AE000D022C /* Dividend */ = {
+			isa = PBXGroup;
+			children = (
+				AD6A684627A110D8000D022C /* DividendView.swift */,
+			);
+			path = Dividend;
 			sourceTree = "<group>";
 		};
 		AD84C5802799456400395772 /* MainController */ = {
@@ -472,6 +483,7 @@
 				AD7E0DE32796791B00230920 /* PasswordNumberCollectionViewCell.swift in Sources */,
 				AD34BB472794E95D001CD610 /* PasswordView.swift in Sources */,
 				AD27D1A72791652D009C8F91 /* AppDelegate.swift in Sources */,
+				AD6A684727A110D8000D022C /* DividendView.swift in Sources */,
 				AD84C5832799459E00395772 /* InvestmentView.swift in Sources */,
 				AD27D1A92791652D009C8F91 /* SceneDelegate.swift in Sources */,
 				ADA8B440279E470B003D5C98 /* MyStockViewTableCell.swift in Sources */,
