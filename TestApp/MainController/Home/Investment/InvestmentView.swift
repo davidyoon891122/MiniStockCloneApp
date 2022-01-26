@@ -142,7 +142,9 @@ extension InvestmentView: UITableViewDataSource {
 }
 
 extension InvestmentView: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
 }
 
 private extension InvestmentView {

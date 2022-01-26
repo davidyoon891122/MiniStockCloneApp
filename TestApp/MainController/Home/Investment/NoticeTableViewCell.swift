@@ -58,7 +58,7 @@ private extension NoticeTableViewCell {
     }
     
     func setLayoutConstraint() {
-        noticeHStack.topAnchor.constraint(equalTo: topAnchor, constant: 3).isActive = true
+        noticeHStack.topAnchor.constraint(equalTo: topAnchor).isActive = true
         noticeHStack.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         noticeHStack.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         noticeHStack.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true

@@ -43,6 +43,7 @@ class MyStockView: UIView {
     private lazy var dividendButton: UIButton = {
         let button = UIButton()
         button.setTitle("1개의 주식에서 배당이 나올 예정이에요 ⌵", for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 14, weight: .light)
         button.setTitleColor(.label, for: .normal)
         button.backgroundColor = .lightGray
         button.layer.cornerRadius = 10

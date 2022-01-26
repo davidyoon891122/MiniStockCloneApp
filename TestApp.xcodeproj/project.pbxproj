@@ -28,6 +28,7 @@
 		AD6A684227A0F02F000D022C /* SeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6A684127A0F02F000D022C /* SeparatorView.swift */; };
 		AD6A684427A104AB000D022C /* SwitchMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6A684327A104AB000D022C /* SwitchMenu.swift */; };
 		AD6A684727A110D8000D022C /* DividendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6A684627A110D8000D022C /* DividendView.swift */; };
+		AD6A684927A129B4000D022C /* DividendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6A684827A129B4000D022C /* DividendCollectionViewCell.swift */; };
 		AD7E0D9E279637DA00230920 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7E0D9D279637DA00230920 /* TestView.swift */; };
 		AD7E0DE32796791B00230920 /* PasswordNumberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7E0DE22796791B00230920 /* PasswordNumberCollectionViewCell.swift */; };
 		AD84C57F2799337B00395772 /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD84C57E2799337B00395772 /* HomeTabBarController.swift */; };
@@ -80,6 +81,7 @@
 		AD6A684127A0F02F000D022C /* SeparatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorView.swift; sourceTree = "<group>"; };
 		AD6A684327A104AB000D022C /* SwitchMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchMenu.swift; sourceTree = "<group>"; };
 		AD6A684627A110D8000D022C /* DividendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividendView.swift; sourceTree = "<group>"; };
+		AD6A684827A129B4000D022C /* DividendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividendCollectionViewCell.swift; sourceTree = "<group>"; };
 		AD7E0D9D279637DA00230920 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		AD7E0DE22796791B00230920 /* PasswordNumberCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordNumberCollectionViewCell.swift; sourceTree = "<group>"; };
 		AD84C57E2799337B00395772 /* HomeTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabBarController.swift; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				AD6A684627A110D8000D022C /* DividendView.swift */,
+				AD6A684827A129B4000D022C /* DividendCollectionViewCell.swift */,
 			);
 			path = Dividend;
 			sourceTree = "<group>";
@@ -494,6 +497,7 @@
 				AD6A684227A0F02F000D022C /* SeparatorView.swift in Sources */,
 				AD34BB422794E045001CD610 /* HomeViewController.swift in Sources */,
 				AD6A684427A104AB000D022C /* SwitchMenu.swift in Sources */,
+				AD6A684927A129B4000D022C /* DividendCollectionViewCell.swift in Sources */,
 				AD34BB442794E337001CD610 /* LoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
