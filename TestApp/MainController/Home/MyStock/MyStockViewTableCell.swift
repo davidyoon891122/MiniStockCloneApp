@@ -12,9 +12,8 @@ class MyStockViewTableCell: UITableViewCell {
     private lazy var stockImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.backgroundColor = .gray
         imageView.layer.cornerRadius = 20
-        
+        imageView.image = UIImage(named: "AT&T")
         imageView.layer.masksToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -72,7 +71,7 @@ class MyStockViewTableCell: UITableViewCell {
     private lazy var stockQuantityLabel: UILabel = {
         let label = UILabel()
         label.text = "0.075269주"
-        label.font = .systemFont(ofSize: 18, weight: .medium)
+        label.font = .systemFont(ofSize: 15, weight: .medium)
         label.textColor = .label
         return label
     }()
@@ -80,16 +79,16 @@ class MyStockViewTableCell: UITableViewCell {
     private lazy var profitLabel: UILabel = {
         let label = UILabel()
         label.text = "396원"
-        label.font = .systemFont(ofSize: 18, weight: .medium)
-        label.textColor = .label
+        label.font = .systemFont(ofSize: 15, weight: .medium)
+        label.textColor = .red
         return label
     }()
     
     private lazy var percentageLabel: UILabel = {
         let label = UILabel()
         label.text = "+19.85%"
-        label.font = .systemFont(ofSize: 18, weight: .medium)
-        label.textColor = .label
+        label.font = .systemFont(ofSize: 15, weight: .medium)
+        label.textColor = .red
         return label
     }()
     
