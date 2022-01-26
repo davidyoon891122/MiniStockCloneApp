@@ -134,7 +134,6 @@ private extension MyStockView {
         dividendView.topAnchor.constraint(equalTo: stockTableView.bottomAnchor, constant: 20).isActive = true
         dividendView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         dividendView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        dividendView.heightAnchor.constraint(equalToConstant: 200).isActive = true
         dividendView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         
     }

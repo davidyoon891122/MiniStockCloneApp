@@ -100,7 +100,9 @@ extension DividendView: UICollectionViewDataSource {
 }
 
 extension DividendView: UICollectionViewDelegateFlowLayout {
-    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.width / 3 + 20, height: 150.0)
+    }
 }
 
 private extension DividendView {
@@ -119,6 +121,7 @@ private extension DividendView {
         stockCollectionView.topAnchor.constraint(equalTo: labelVStack.bottomAnchor, constant: 10).isActive = true
         stockCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
         stockCollectionView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20).isActive = true
-        stockCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20).isActive = true
+        stockCollectionView.heightAnchor.constraint(equalToConstant: 150).isActive = true
+        stockCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
     }
 }
