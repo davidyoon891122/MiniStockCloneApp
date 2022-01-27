@@ -35,6 +35,7 @@
 		AD84C5832799459E00395772 /* InvestmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD84C5822799459E00395772 /* InvestmentView.swift */; };
 		AD85592F27A225EB005BBA23 /* HomeViewMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD85592E27A225EB005BBA23 /* HomeViewMenu.swift */; };
 		AD85593127A2315D005BBA23 /* DetailNoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD85593027A2315D005BBA23 /* DetailNoticeViewController.swift */; };
+		AD85593327A27A30005BBA23 /* MenuColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD85593227A27A30005BBA23 /* MenuColor.swift */; };
 		ADA8B440279E470B003D5C98 /* MyStockViewTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA8B43F279E470B003D5C98 /* MyStockViewTableCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -90,6 +91,7 @@
 		AD84C5822799459E00395772 /* InvestmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestmentView.swift; sourceTree = "<group>"; };
 		AD85592E27A225EB005BBA23 /* HomeViewMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewMenu.swift; sourceTree = "<group>"; };
 		AD85593027A2315D005BBA23 /* DetailNoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailNoticeViewController.swift; sourceTree = "<group>"; };
+		AD85593227A27A30005BBA23 /* MenuColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuColor.swift; sourceTree = "<group>"; };
 		ADA8B43F279E470B003D5C98 /* MyStockViewTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStockViewTableCell.swift; sourceTree = "<group>"; };
 		B76E8DF48A8D312DF6179951 /* Pods-TestAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestAppTests.release.xcconfig"; path = "Target Support Files/Pods-TestAppTests/Pods-TestAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		B9377D3CC628442F71555A7E /* Pods_TestApp_TestAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestApp_TestAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -205,6 +207,7 @@
 				AD7E0D9D279637DA00230920 /* TestView.swift */,
 				AD6A684127A0F02F000D022C /* SeparatorView.swift */,
 				AD6A684327A104AB000D022C /* SwitchMenu.swift */,
+				AD85593227A27A30005BBA23 /* MenuColor.swift */,
 			);
 			path = TestApp;
 			sourceTree = "<group>";
@@ -504,6 +507,7 @@
 				AD84C57F2799337B00395772 /* HomeTabBarController.swift in Sources */,
 				AD0E7A99279A93AC00F1A9A0 /* MyStockView.swift in Sources */,
 				AD6A684227A0F02F000D022C /* SeparatorView.swift in Sources */,
+				AD85593327A27A30005BBA23 /* MenuColor.swift in Sources */,
 				AD34BB422794E045001CD610 /* HomeViewController.swift in Sources */,
 				AD6A684427A104AB000D022C /* SwitchMenu.swift in Sources */,
 				AD6A684927A129B4000D022C /* DividendCollectionViewCell.swift in Sources */,

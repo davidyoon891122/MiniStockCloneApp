@@ -27,7 +27,7 @@ class NoticeTableViewCell: UITableViewCell {
         label.text = "공지"
         label.textAlignment = .center
         label.font = .systemFont(ofSize: 15, weight: .medium)
-        label.textColor = .systemGreen
+        label.textColor = MenuColor.shared.mintColor
         return label
     }()
     

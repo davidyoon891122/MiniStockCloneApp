@@ -26,7 +26,7 @@ class HomeViewController: UIViewController {
         stackView.axis = .vertical
         stackView.distribution = .equalSpacing
         stackView.spacing = 8
-        stackView.backgroundColor = .lightGray
+        stackView.backgroundColor = MenuColor.shared.lightGrayColor
         
         let investmentView = InvestmentView()
         investmentView.delegate = self

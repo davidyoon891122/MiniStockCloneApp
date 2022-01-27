@@ -93,7 +93,7 @@ class PasswordView: UIView {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
-        stackView.backgroundColor = .green
+        stackView.backgroundColor = MenuColor.shared.mintColor
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()

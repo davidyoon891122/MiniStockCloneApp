@@ -70,7 +70,7 @@ class DividendView: UIView {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.backgroundColor = .green
+        collectionView.backgroundColor = MenuColor.shared.mintColor
         collectionView.register(DividendCollectionViewCell.self, forCellWithReuseIdentifier: collectionViewCellId)
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -80,7 +80,7 @@ class DividendView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .green
+        backgroundColor = MenuColor.shared.mintColor
         addSubviews()
         setLayoutConstraint()
     }

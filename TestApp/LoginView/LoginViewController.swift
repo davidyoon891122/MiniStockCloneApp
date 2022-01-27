@@ -48,7 +48,7 @@ class LoginViewController: UIViewController {
         label.font = .systemFont(ofSize: 25, weight: .light)
         label.text = "환영합니다"
         label.textAlignment = .center
-        label.textColor = .systemGreen
+        label.textColor = MenuColor.shared.mintColor
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
