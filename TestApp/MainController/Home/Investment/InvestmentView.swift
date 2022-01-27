@@ -7,10 +7,17 @@
 
 import UIKit
 
+protocol InvestmentViewProtocol: NSObject {
+    func tapNoticeTableViewCell()
+}
+
 class InvestmentView: UIView {
     private let noticeCellId = "noticeCellId"
 
     private let separatorView = SeparatorView()
+    
+    weak var delegate: InvestmentViewProtocol?
+    
     private lazy var verticalStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -144,6 +151,11 @@ extension InvestmentView: UITableViewDataSource {
 extension InvestmentView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("NoticeTableViewCell tapped..")
+        delegate?.tapNoticeTableViewCell()
     }
 }
 

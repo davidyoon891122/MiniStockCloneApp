@@ -28,16 +28,17 @@ class HomeViewController: UIViewController {
         stackView.spacing = 8
         stackView.backgroundColor = .lightGray
         
-        let firstView = InvestmentView()
+        let investmentView = InvestmentView()
+        investmentView.delegate = self
         
-        let secondView = MyStockView()
+        let myStockView = MyStockView()
         
         let thirdView = UIView()
         thirdView.heightAnchor.constraint(equalToConstant: 500).isActive = true
         
         thirdView.backgroundColor = .yellow
         
-        [firstView, secondView, thirdView]
+        [investmentView, myStockView, thirdView]
             .forEach {
                 stackView.addArrangedSubview($0)
             }
@@ -53,6 +54,13 @@ class HomeViewController: UIViewController {
         addSubviews()
         setLayoutConstraint()
         
+    }
+}
+
+extension HomeViewController: InvestmentViewProtocol {
+    func tapNoticeTableViewCell() {
+        let detailNoticeViewController = DetailNoticeViewController()
+        navigationController?.pushViewController(detailNoticeViewController, animated: true)
     }
 }
 
