@@ -29,7 +29,7 @@ class DividendCollectionViewCell: UICollectionViewCell {
     private lazy var dividendPercentageLabel: UILabel = {
         let label = UILabel()
         label.text = "연 0.50%"
-        label.font = .systemFont(ofSize: 17, weight: .light)
+        label.font = .systemFont(ofSize: 17, weight: .medium)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -88,12 +88,10 @@ private extension DividendCollectionViewCell {
         dividendPercentageLabel.topAnchor.constraint(equalTo: stockNameLabel.bottomAnchor, constant: 10).isActive = true
         dividendPercentageLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10).isActive = true
         
-        priceLabel.topAnchor.constraint(equalTo: dividendPercentageLabel.bottomAnchor, constant: 5).isActive = true
+        priceLabel.topAnchor.constraint(equalTo: dividendPercentageLabel.bottomAnchor, constant: 3).isActive = true
         priceLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10).isActive = true
         
-        dateLabel.topAnchor.constraint(equalTo: priceLabel.bottomAnchor, constant: 10).isActive = true
+        dateLabel.topAnchor.constraint(equalTo: priceLabel.bottomAnchor, constant: 13).isActive = true
         dateLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10).isActive = true
-        //dateLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 10).isActive =  true
-        
     }
 }
