@@ -70,7 +70,9 @@ class DividendView: UIView {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: collectionViewCellId)
+        collectionView.backgroundColor = .green
+        collectionView.register(DividendCollectionViewCell.self, forCellWithReuseIdentifier: collectionViewCellId)
+        collectionView.contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
@@ -93,15 +95,14 @@ extension DividendView: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: collectionViewCellId, for: indexPath)
-        cell.backgroundColor = .red
-        return cell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: collectionViewCellId, for: indexPath) as? DividendCollectionViewCell
+        return cell ?? UICollectionViewCell()
     }
 }
 
 extension DividendView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width / 3 + 20, height: 150.0)
+        return CGSize(width: collectionView.frame.width / 3 - 20, height: 150.0)
     }
 }
 
@@ -119,7 +120,7 @@ private extension DividendView {
         labelVStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20).isActive = true
         
         stockCollectionView.topAnchor.constraint(equalTo: labelVStack.bottomAnchor, constant: 10).isActive = true
-        stockCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
+        stockCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         stockCollectionView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20).isActive = true
         stockCollectionView.heightAnchor.constraint(equalToConstant: 150).isActive = true
         stockCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true

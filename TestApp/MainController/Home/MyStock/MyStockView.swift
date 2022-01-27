@@ -34,7 +34,6 @@ class MyStockView: UIView {
         return label
     }()
     
-    
     private lazy var sortingButtonHStack: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
