@@ -96,7 +96,8 @@ class MyStockViewTableCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         addSubviews()
         setLayoutConstraint()
-        
+        selectionStyle = .none
+
     }
     
     required init?(coder: NSCoder) {

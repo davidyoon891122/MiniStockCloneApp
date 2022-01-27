@@ -74,6 +74,7 @@ class DividendView: UIView {
         collectionView.register(DividendCollectionViewCell.self, forCellWithReuseIdentifier: collectionViewCellId)
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.showsHorizontalScrollIndicator = false
         return collectionView
     }()
     

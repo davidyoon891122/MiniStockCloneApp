@@ -135,7 +135,7 @@ private extension MyStockView {
         myStockVStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
         myStockVStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20).isActive = true
         
-        stockTableView.topAnchor.constraint(equalTo: myStockVStackView.bottomAnchor, constant: 5).isActive = true
+        stockTableView.topAnchor.constraint(equalTo: myStockVStackView.bottomAnchor, constant: 15).isActive = true
         stockTableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
         stockTableView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20).isActive = true
         stockTableView.heightAnchor.constraint(equalToConstant: CGFloat(cellCount * 50)).isActive = true
