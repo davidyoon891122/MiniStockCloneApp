@@ -33,12 +33,12 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
         
         let myStockView = MyStockView()
         
-        let thirdView = UIView()
-        thirdView.heightAnchor.constraint(equalToConstant: 500).isActive = true
+        let stackListView = StackListView()
+        stackListView.heightAnchor.constraint(equalToConstant: 500).isActive = true
         
-        thirdView.backgroundColor = .yellow
+        stackListView.backgroundColor = .yellow
         
-        [investmentView, myStockView, thirdView]
+        [investmentView, myStockView, stackListView]
             .forEach {
                 stackView.addArrangedSubview($0)
             }
