@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -30,6 +30,7 @@ class HomeViewController: UIViewController {
         
         let investmentView = InvestmentView()
         investmentView.delegate = self
+        
         let myStockView = MyStockView()
         
         let thirdView = UIView()
@@ -57,6 +58,11 @@ class HomeViewController: UIViewController {
 }
 
 extension HomeViewController: InvestmentViewProtocol {
+    func tapInvestmentBoardView() {
+        print("Investment View tapped...")
+        tabBarController?.selectedIndex = 3
+    }
+    
     func tapNoticeTableViewCell() {
         let detailNoticeViewController = DetailNoticeViewController()
         navigationController?.pushViewController(detailNoticeViewController, animated: true)
@@ -109,5 +115,6 @@ private extension HomeViewController {
     
     @objc func tapInvestmentView() {
         print("Investment View tapped...")
+        tabBarController?.selectedIndex = 3
     }
 }

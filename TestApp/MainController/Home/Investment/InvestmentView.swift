@@ -9,9 +9,10 @@ import UIKit
 
 protocol InvestmentViewProtocol: NSObject {
     func tapNoticeTableViewCell()
+    func tapInvestmentBoardView()
 }
 
-class InvestmentView: UIView {
+class InvestmentView: UIView, UIGestureRecognizerDelegate {
     private let noticeCellId = "noticeCellId"
 
     private let separatorView = SeparatorView()
@@ -22,6 +23,11 @@ class InvestmentView: UIView {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 5
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapVStackView))
+        tapGestureRecognizer.delegate = self
+        stackView.addGestureRecognizer(tapGestureRecognizer)
+        
         [titleLabel, valueLabel, horizontalStackView]
             .forEach {
                 stackView.addArrangedSubview($0)
@@ -188,4 +194,7 @@ private extension InvestmentView {
         noticeTableView.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
     
+    @objc func tapVStackView() {
+        delegate?.tapInvestmentBoardView()
+    }
 }
