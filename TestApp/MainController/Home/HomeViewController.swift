@@ -30,7 +30,6 @@ class HomeViewController: UIViewController {
         
         let investmentView = InvestmentView()
         investmentView.delegate = self
-        
         let myStockView = MyStockView()
         
         let thirdView = UIView()
@@ -67,10 +66,10 @@ extension HomeViewController: InvestmentViewProtocol {
 private extension HomeViewController {
     func configureNavigation() {
         let shareNavigationBarButton = UIBarButtonItem(image: HomeViewNavigationMenu.share.imageName, style: .plain, target: self, action: #selector(tapShareButton))
-        
+        shareNavigationBarButton.tintColor = .label
         let bagNavigationBarButton = UIBarButtonItem(image: HomeViewNavigationMenu.bag.imageName, style: .plain, target: self, action: #selector(tapBagButton))
-        
-        navigationItem.rightBarButtonItems = [shareNavigationBarButton, bagNavigationBarButton]
+        bagNavigationBarButton.tintColor = .label
+        navigationItem.rightBarButtonItems =  [bagNavigationBarButton, shareNavigationBarButton]
         
         navigationController?.hidesBarsOnSwipe = true
         
@@ -106,5 +105,9 @@ private extension HomeViewController {
     
     @objc func tapBagButton() {
         print("Bag Button tapped...")
+    }
+    
+    @objc func tapInvestmentView() {
+        print("Investment View tapped...")
     }
 }

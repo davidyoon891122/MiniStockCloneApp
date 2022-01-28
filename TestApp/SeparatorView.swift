@@ -11,7 +11,7 @@ class SeparatorView: UIView {
     
     private lazy var separator: UIView = {
         let view = UIView()
-        view.backgroundColor = .separator
+        view.backgroundColor = .secondarySystemBackground
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()

@@ -16,6 +16,6 @@ struct MenuColor {
     }
     
     var lightGrayColor: UIColor {
-        return UIColor(red: 246/255, green: 246/255, blue: 246/255, alpha: 1)
+        return UIColor.secondarySystemBackground
     }
 }
