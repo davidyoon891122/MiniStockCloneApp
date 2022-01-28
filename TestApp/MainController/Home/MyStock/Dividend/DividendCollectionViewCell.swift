@@ -21,6 +21,7 @@ class DividendCollectionViewCell: UICollectionViewCell {
     private lazy var stockNameLabel: UILabel = {
         let label = UILabel()
         label.text = "에이티앤티"
+        label.textColor = .label
         label.font = .systemFont(ofSize: 15, weight: .light)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -29,6 +30,7 @@ class DividendCollectionViewCell: UICollectionViewCell {
     private lazy var dividendPercentageLabel: UILabel = {
         let label = UILabel()
         label.text = "연 0.50%"
+        label.textColor = .label
         label.font = .systemFont(ofSize: 17, weight: .medium)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -56,7 +58,7 @@ class DividendCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         addSubviews()
         setLayoutConstraint()
-        backgroundColor = .white
+        backgroundColor = .systemBackground
         layer.cornerRadius = 10
         layer.masksToBounds = true
         
