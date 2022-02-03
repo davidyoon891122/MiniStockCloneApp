@@ -8,14 +8,20 @@
 import UIKit
 
 class MenuCollectionViewCell: UICollectionViewCell {
-    
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 15, weight: .semibold)
-        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .systemFont(ofSize: 16, weight: .semibold)
         label.sizeToFit()
         label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
+    }()
+    
+    private lazy var menuBar: UIView = {
+        let view = UIView()
+        view.backgroundColor = MenuColor.shared.mintColor
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
     
     override init(frame: CGRect) {
@@ -30,6 +36,21 @@ class MenuCollectionViewCell: UICollectionViewCell {
     
     func setup(title: String) {
         self.titleLabel.text = title
+    }
+    
+    func selectedAction() {
+        titleLabel.textColor = MenuColor.shared.mintColor
+        addSubview(menuBar)
+        
+        menuBar.topAnchor.constraint(equalTo: titleLabel.bottomAnchor).isActive = true
+        menuBar.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        menuBar.heightAnchor.constraint(equalToConstant: 5).isActive = true
+        menuBar.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+    }
+    
+    func deselectAction() {
+        menuBar.removeFromSuperview()
+        titleLabel.textColor = .label
     }
     
 }
