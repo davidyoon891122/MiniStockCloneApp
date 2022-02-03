@@ -12,7 +12,7 @@ protocol InvestmentViewProtocol: NSObject {
     func tapInvestmentBoardView()
 }
 
-class InvestmentView: UIView, UIGestureRecognizerDelegate {
+class InvestmentView: UIView {
     private let noticeCellId = "noticeCellId"
 
     private let separatorView = SeparatorView()
@@ -25,7 +25,6 @@ class InvestmentView: UIView, UIGestureRecognizerDelegate {
         stackView.spacing = 5
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapVStackView))
-        tapGestureRecognizer.delegate = self
         stackView.addGestureRecognizer(tapGestureRecognizer)
         
         [titleLabel, valueLabel, horizontalStackView]
