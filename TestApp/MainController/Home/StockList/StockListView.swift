@@ -8,7 +8,6 @@
 import UIKit
 
 class StackListView: UIView {
-    private let menuCellId = "menuCellId"
     private let menus: [String] = [
         "상승",
         "하락",
@@ -18,20 +17,7 @@ class StackListView: UIView {
         "시가총액"
     ]
     
-    private lazy var menuCollectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        layout.minimumInteritemSpacing = 30
-        
-        let collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
-        collectionView.register(MenuCollectionViewCell.self, forCellWithReuseIdentifier: menuCellId)
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
-        collectionView.showsHorizontalScrollIndicator = false
-        return collectionView
-    }()
+    private lazy var menuCollectionView = StockListMenuCollectionView(menus: self.menus)
     
     private lazy var menuUnderBarView: UIView = {
         let view = UIView()
@@ -76,6 +62,20 @@ class StackListView: UIView {
         return button
     }()
     
+    private lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 0
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.register(StockListMainCollectionViewCell.self, forCellWithReuseIdentifier: StockListMainCollectionViewCell.identifier)
+        collectionView.isPagingEnabled = true
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        return collectionView
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubviews()
@@ -95,14 +95,8 @@ extension StackListView: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: menuCellId, for: indexPath) as? MenuCollectionViewCell
-        cell?.setup(title: menus[indexPath.row])
-        
-        if indexPath.row == 0 {
-            cell?.selectedAction()
-            collectionView.selectItem(at: indexPath, animated: true, scrollPosition: [])
-        }
-        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StockListMainCollectionViewCell.identifier, for: indexPath) as? StockListMainCollectionViewCell
+        cell?.setup(menus: menus)
         return cell ?? UICollectionViewCell()
     }
     
@@ -110,31 +104,17 @@ extension StackListView: UICollectionViewDataSource {
 
 extension StackListView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let label = UILabel()
-        label.text = menus[indexPath.row]
-        label.font = .systemFont(ofSize: 16, weight: .semibold)
-        label.sizeToFit()
-        return CGSize(width: label.frame.width, height: 35)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selectedCell = collectionView.cellForItem(at: indexPath) as? MenuCollectionViewCell
-        selectedCell?.selectedAction()
-
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        let selectedCell = collectionView.cellForItem(at: indexPath) as? MenuCollectionViewCell
-        selectedCell?.deselectAction()
+        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
     }
 }
 
 private extension StackListView {
     func addSubviews() {
-        [menuCollectionView, separatorView, sortingButtonHStackView]
+        [menuCollectionView, separatorView, sortingButtonHStackView, collectionView]
             .forEach {
                 addSubview($0)
             }
+        menuCollectionView.translatesAutoresizingMaskIntoConstraints = false
     }
     
     func setLayoutConstraint() {
@@ -158,5 +138,11 @@ private extension StackListView {
         
         etfButton.trailingAnchor.constraint(equalTo: sortingButtonHStackView.trailingAnchor, constant: -20).isActive = true
         etfButton.centerYAnchor.constraint(equalTo: sortingButtonHStackView.centerYAnchor).isActive = true
+        
+        collectionView.topAnchor.constraint(equalTo: sortingButtonHStackView.bottomAnchor).isActive = true
+        collectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
+        collectionView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        collectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20).isActive = true
+        collectionView.heightAnchor.constraint(equalToConstant: 700 + 32).isActive = true
     }
 }

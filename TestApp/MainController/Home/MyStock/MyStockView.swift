@@ -16,6 +16,8 @@ class MyStockView: UIView {
     
     private lazy var titleHStackView: UIStackView = {
         let stackView = UIStackView()
+        stackView.distribution = .fillEqually
+        
         stackView.axis = .horizontal
         
         [titleLabel, sortingButtonHStack]
@@ -37,7 +39,7 @@ class MyStockView: UIView {
     private lazy var sortingButtonHStack: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
-        stackView.alignment = .trailing
+        stackView.alignment = .center
         stackView.addArrangedSubview(sortingButton)
         return stackView
     }()

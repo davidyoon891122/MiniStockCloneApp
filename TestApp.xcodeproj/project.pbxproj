@@ -29,8 +29,11 @@
 		AD6A684427A104AB000D022C /* SwitchMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6A684327A104AB000D022C /* SwitchMenu.swift */; };
 		AD6A684727A110D8000D022C /* DividendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6A684627A110D8000D022C /* DividendView.swift */; };
 		AD6A684927A129B4000D022C /* DividendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6A684827A129B4000D022C /* DividendCollectionViewCell.swift */; };
+		AD6BC75827ACD40C00C2B87D /* StockListMenuCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6BC75727ACD40C00C2B87D /* StockListMenuCollectionView.swift */; };
 		AD7E0D9E279637DA00230920 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7E0D9D279637DA00230920 /* TestView.swift */; };
 		AD7E0DE32796791B00230920 /* PasswordNumberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7E0DE22796791B00230920 /* PasswordNumberCollectionViewCell.swift */; };
+		AD7E657327B9CED100408BE6 /* StockListMainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7E657227B9CED100408BE6 /* StockListMainCollectionViewCell.swift */; };
+		AD7E657927BA1B8100408BE6 /* StockListDetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7E657827BA1B8100408BE6 /* StockListDetailViewCell.swift */; };
 		AD84C57F2799337B00395772 /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD84C57E2799337B00395772 /* HomeTabBarController.swift */; };
 		AD84C5832799459E00395772 /* InvestmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD84C5822799459E00395772 /* InvestmentView.swift */; };
 		AD85592F27A225EB005BBA23 /* HomeViewMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD85592E27A225EB005BBA23 /* HomeViewMenu.swift */; };
@@ -87,8 +90,11 @@
 		AD6A684327A104AB000D022C /* SwitchMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchMenu.swift; sourceTree = "<group>"; };
 		AD6A684627A110D8000D022C /* DividendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividendView.swift; sourceTree = "<group>"; };
 		AD6A684827A129B4000D022C /* DividendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividendCollectionViewCell.swift; sourceTree = "<group>"; };
+		AD6BC75727ACD40C00C2B87D /* StockListMenuCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListMenuCollectionView.swift; sourceTree = "<group>"; };
 		AD7E0D9D279637DA00230920 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		AD7E0DE22796791B00230920 /* PasswordNumberCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordNumberCollectionViewCell.swift; sourceTree = "<group>"; };
+		AD7E657227B9CED100408BE6 /* StockListMainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListMainCollectionViewCell.swift; sourceTree = "<group>"; };
+		AD7E657827BA1B8100408BE6 /* StockListDetailViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListDetailViewCell.swift; sourceTree = "<group>"; };
 		AD84C57E2799337B00395772 /* HomeTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabBarController.swift; sourceTree = "<group>"; };
 		AD84C5822799459E00395772 /* InvestmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestmentView.swift; sourceTree = "<group>"; };
 		AD85592E27A225EB005BBA23 /* HomeViewMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewMenu.swift; sourceTree = "<group>"; };
@@ -303,6 +309,9 @@
 			children = (
 				AD991DC627A3AE7000AA897B /* StockListView.swift */,
 				AD991DC827A3CC8000AA897B /* MenuCollectionViewCell.swift */,
+				AD6BC75727ACD40C00C2B87D /* StockListMenuCollectionView.swift */,
+				AD7E657227B9CED100408BE6 /* StockListMainCollectionViewCell.swift */,
+				AD7E657827BA1B8100408BE6 /* StockListDetailViewCell.swift */,
 			);
 			path = StockList;
 			sourceTree = "<group>";
@@ -543,14 +552,17 @@
 				ADA8B440279E470B003D5C98 /* MyStockViewTableCell.swift in Sources */,
 				AD0E7A95279A8C1600F1A9A0 /* TabBarMenu.swift in Sources */,
 				AD6A684027A0EC4B000D022C /* NoticeTableViewCell.swift in Sources */,
+				AD7E657927BA1B8100408BE6 /* StockListDetailViewCell.swift in Sources */,
 				AD991DC727A3AE7000AA897B /* StockListView.swift in Sources */,
 				AD84C57F2799337B00395772 /* HomeTabBarController.swift in Sources */,
+				AD6BC75827ACD40C00C2B87D /* StockListMenuCollectionView.swift in Sources */,
 				AD0E7A99279A93AC00F1A9A0 /* MyStockView.swift in Sources */,
 				AD6A684227A0F02F000D022C /* SeparatorView.swift in Sources */,
 				AD85593327A27A30005BBA23 /* MenuColor.swift in Sources */,
 				AD34BB422794E045001CD610 /* HomeViewController.swift in Sources */,
 				AD6A684427A104AB000D022C /* SwitchMenu.swift in Sources */,
 				AD6A684927A129B4000D022C /* DividendCollectionViewCell.swift in Sources */,
+				AD7E657327B9CED100408BE6 /* StockListMainCollectionViewCell.swift in Sources */,
 				AD34BB442794E337001CD610 /* LoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

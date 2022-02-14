@@ -34,9 +34,6 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
         let myStockView = MyStockView()
         
         let stackListView = StackListView()
-        stackListView.heightAnchor.constraint(equalToConstant: 500).isActive = true
-        
-        stackListView.backgroundColor = .yellow
         
         [investmentView, myStockView, stackListView]
             .forEach {

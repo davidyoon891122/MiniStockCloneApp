@@ -8,6 +8,7 @@
 import UIKit
 
 class MenuCollectionViewCell: UICollectionViewCell {
+    static let identifier: String = "MenuCollectionViewCell"
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 16, weight: .semibold)
