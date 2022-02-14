@@ -11,6 +11,7 @@ class StockListMainCollectionViewCell: UICollectionViewCell {
     static let identifier: String = "StockListMainCollectionViewCell"
     private var menus: [String]?
     private let colors: [UIColor] = [.red, .orange, .yellow, .green, .blue, .purple, .black, .white, .systemPink, .gray]
+    
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -21,6 +22,7 @@ class StockListMainCollectionViewCell: UICollectionViewCell {
         collectionView.dataSource = self
         collectionView.register(StockListDetailViewCell.self, forCellWithReuseIdentifier: StockListDetailViewCell.identifier)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
+        
         return collectionView
     }()
     
@@ -47,7 +49,6 @@ class StockListMainCollectionViewCell: UICollectionViewCell {
         self.menus = menus
         addSubviews()
         setLayoutConstraints()
-        print(collectionView.frame.height)
     }
 }
 
@@ -68,7 +69,7 @@ extension StockListMainCollectionViewCell: UICollectionViewDataSource {
 
 extension StockListMainCollectionViewCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: (732 - 50 - 32) / 10)
+        return CGSize(width: collectionView.frame.width - 40, height: (732 - 50 - 32) / 10)
     }
 }
 

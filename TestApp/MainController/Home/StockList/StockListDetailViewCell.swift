@@ -100,6 +100,12 @@ class StockListDetailViewCell: UICollectionViewCell {
         return stackView
     }()
     
+    private lazy var separatorView: SeparatorView = {
+        let separator = SeparatorView()
+        separator.translatesAutoresizingMaskIntoConstraints = false
+        return separator
+    }()
+    
     func setup() {
         addSubviews()
         setLayoutConstraints()
@@ -108,7 +114,7 @@ class StockListDetailViewCell: UICollectionViewCell {
 
 private extension StockListDetailViewCell {
     func addSubviews() {
-        [stockImageView, detailVStackView]
+        [stockImageView, detailVStackView, separatorView]
             .forEach {
                 contentView.addSubview($0)
             }
@@ -123,5 +129,10 @@ private extension StockListDetailViewCell {
         detailVStackView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         detailVStackView.leadingAnchor.constraint(equalTo: stockImageView.trailingAnchor).isActive = true
         detailVStackView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        
+        separatorView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        separatorView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        separatorView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        separatorView.heightAnchor.constraint(equalToConstant: 1).isActive = true
     }
 }

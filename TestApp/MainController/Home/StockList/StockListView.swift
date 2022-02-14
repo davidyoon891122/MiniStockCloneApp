@@ -140,9 +140,9 @@ private extension StackListView {
         etfButton.centerYAnchor.constraint(equalTo: sortingButtonHStackView.centerYAnchor).isActive = true
         
         collectionView.topAnchor.constraint(equalTo: sortingButtonHStackView.bottomAnchor).isActive = true
-        collectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
+        collectionView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        collectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20).isActive = true
+        collectionView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         collectionView.heightAnchor.constraint(equalToConstant: 700 + 32).isActive = true
     }
 }
