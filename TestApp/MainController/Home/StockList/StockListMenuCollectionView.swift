@@ -29,6 +29,12 @@ class StockListMenuCollectionView: UICollectionView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func moveMenuWithStockListMainCollectionView(indexPath: IndexPath) {
+        print(indexPath)
+        selectItem(at: indexPath, animated: true, scrollPosition: .right)
+        
+    }
+    
 }
 
 extension StockListMenuCollectionView: UICollectionViewDataSource {
@@ -60,16 +66,7 @@ extension StockListMenuCollectionView: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selectedCell = collectionView.cellForItem(at: indexPath) as? MenuCollectionViewCell
-        selectedCell?.selectedAction()
-        
         menuDelegate?.selectMenu(indexPath: indexPath)
-
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        let selectedCell = collectionView.cellForItem(at: indexPath) as? MenuCollectionViewCell
-        selectedCell?.deselectAction()
     }
 }
 

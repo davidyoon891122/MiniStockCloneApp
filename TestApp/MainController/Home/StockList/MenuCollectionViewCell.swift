@@ -25,6 +25,13 @@ class MenuCollectionViewCell: UICollectionViewCell {
         return view
     }()
     
+    override var isSelected: Bool {
+        didSet {
+            titleLabel.textColor = isSelected ? MenuColor.shared.mintColor : .label
+            isSelected ? selectedAction() : deselectAction()
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubviews()
@@ -40,9 +47,7 @@ class MenuCollectionViewCell: UICollectionViewCell {
     }
     
     func selectedAction() {
-        titleLabel.textColor = MenuColor.shared.mintColor
         addSubview(menuBar)
-        
         menuBar.topAnchor.constraint(equalTo: titleLabel.bottomAnchor).isActive = true
         menuBar.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         menuBar.heightAnchor.constraint(equalToConstant: 2).isActive = true

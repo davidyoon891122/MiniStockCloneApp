@@ -127,7 +127,7 @@ private extension StockListDetailViewCell {
         stockImageView.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
         detailVStackView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        detailVStackView.leadingAnchor.constraint(equalTo: stockImageView.trailingAnchor).isActive = true
+        detailVStackView.leadingAnchor.constraint(equalTo: stockImageView.trailingAnchor, constant: 5).isActive = true
         detailVStackView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         
         separatorView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true

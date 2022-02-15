@@ -42,6 +42,7 @@ class StackListView: UIView {
         collectionView.delegate = self
         collectionView.register(StockListMainCollectionViewCell.self, forCellWithReuseIdentifier: StockListMainCollectionViewCell.identifier)
         collectionView.isPagingEnabled = true
+        collectionView.showsHorizontalScrollIndicator = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
@@ -86,7 +87,9 @@ extension StackListView: UICollectionViewDelegateFlowLayout {
     }
 
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        print(collectionView.contentOffset.x)
+        let index = collectionView.contentOffset.x / frame.width
+        let indexPath = IndexPath(item: Int(index), section: 0)
+        menuCollectionView.moveMenuWithStockListMainCollectionView(indexPath: indexPath)
     }
 }
 
