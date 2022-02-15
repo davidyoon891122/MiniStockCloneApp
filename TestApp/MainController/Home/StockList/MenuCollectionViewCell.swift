@@ -45,7 +45,7 @@ class MenuCollectionViewCell: UICollectionViewCell {
         
         menuBar.topAnchor.constraint(equalTo: titleLabel.bottomAnchor).isActive = true
         menuBar.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        menuBar.heightAnchor.constraint(equalToConstant: 5).isActive = true
+        menuBar.heightAnchor.constraint(equalToConstant: 2).isActive = true
         menuBar.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
     }
     

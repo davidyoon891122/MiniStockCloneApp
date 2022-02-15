@@ -7,8 +7,13 @@
 
 import UIKit
 
+protocol StockListViewProtocol: AnyObject {
+    func selectMenu(indexPath: IndexPath)
+}
+
 class StockListMenuCollectionView: UICollectionView {
     private var menus: [String] = []
+    weak var menuDelegate: StockListViewProtocol?
     
     init(menus: [String]) {
         self.menus = menus
@@ -57,6 +62,8 @@ extension StockListMenuCollectionView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selectedCell = collectionView.cellForItem(at: indexPath) as? MenuCollectionViewCell
         selectedCell?.selectedAction()
+        
+        menuDelegate?.selectMenu(indexPath: indexPath)
 
     }
     

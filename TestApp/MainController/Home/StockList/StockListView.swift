@@ -51,12 +51,20 @@ class StackListView: UIView {
         addSubviews()
         setLayoutConstraint()
         backgroundColor = .systemBackground
+        menuCollectionView.menuDelegate = self
         
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
+
+extension StackListView: StockListViewProtocol {
+    func selectMenu(indexPath: IndexPath) {
+        collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .right)
+    }
+    
 }
 
 extension StackListView: UICollectionViewDataSource {
@@ -75,6 +83,10 @@ extension StackListView: UICollectionViewDataSource {
 extension StackListView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
+    }
+
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        print(collectionView.contentOffset.x)
     }
 }
 
