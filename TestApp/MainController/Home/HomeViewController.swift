@@ -35,16 +35,11 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
         
         let stackListView = StackListView()
         
-        let profitShareImageView: UIImageView = {
-            let imageView = UIImageView()
-            imageView.contentMode = .scaleToFill
-            imageView.image = UIImage(named: "event")
-            return imageView
-        }()
+        let profitShareView = ProfitShareView()
         
-        profitShareImageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        profitShareView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         
-        [investmentView, myStockView, stackListView, profitShareImageView]
+        [investmentView, myStockView, stackListView, profitShareView]
             .forEach {
                 stackView.addArrangedSubview($0)
             }
@@ -59,7 +54,6 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
         configureNavigation()
         addSubviews()
         setLayoutConstraint()
-        
     }
 }
 
