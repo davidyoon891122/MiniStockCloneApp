@@ -39,7 +39,8 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
         
         let currencyView = CurrencyView()
         
-        [investmentView, myStockView, stackListView, profitShareView, currencyView]
+        let legalBoardView = LegalBoardView()
+        [investmentView, myStockView, stackListView, profitShareView, currencyView, legalBoardView]
             .forEach {
                 stackView.addArrangedSubview($0)
             }

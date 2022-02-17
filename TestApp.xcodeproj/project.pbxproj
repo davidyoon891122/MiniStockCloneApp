@@ -36,6 +36,7 @@
 		AD7E657927BA1B8100408BE6 /* StockListDetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7E657827BA1B8100408BE6 /* StockListDetailViewCell.swift */; };
 		AD843DCC27BDC0DC006F974A /* ProfitShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD843DCB27BDC0DC006F974A /* ProfitShareView.swift */; };
 		AD843DCF27BDC2C8006F974A /* CurrencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD843DCE27BDC2C8006F974A /* CurrencyView.swift */; };
+		AD843DD227BDD466006F974A /* LegalBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD843DD127BDD466006F974A /* LegalBoardView.swift */; };
 		AD84C57F2799337B00395772 /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD84C57E2799337B00395772 /* HomeTabBarController.swift */; };
 		AD84C5832799459E00395772 /* InvestmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD84C5822799459E00395772 /* InvestmentView.swift */; };
 		AD85592F27A225EB005BBA23 /* HomeViewMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD85592E27A225EB005BBA23 /* HomeViewMenu.swift */; };
@@ -99,6 +100,7 @@
 		AD7E657827BA1B8100408BE6 /* StockListDetailViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListDetailViewCell.swift; sourceTree = "<group>"; };
 		AD843DCB27BDC0DC006F974A /* ProfitShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfitShareView.swift; sourceTree = "<group>"; };
 		AD843DCE27BDC2C8006F974A /* CurrencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyView.swift; sourceTree = "<group>"; };
+		AD843DD127BDD466006F974A /* LegalBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalBoardView.swift; sourceTree = "<group>"; };
 		AD84C57E2799337B00395772 /* HomeTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabBarController.swift; sourceTree = "<group>"; };
 		AD84C5822799459E00395772 /* InvestmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestmentView.swift; sourceTree = "<group>"; };
 		AD85592E27A225EB005BBA23 /* HomeViewMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewMenu.swift; sourceTree = "<group>"; };
@@ -294,6 +296,7 @@
 				AD991DC527A3ADDC00AA897B /* StockList */,
 				AD843DCD27BDC0E2006F974A /* ProfitShare */,
 				AD843DD027BDC2CE006F974A /* Currency */,
+				AD843DD127BDD466006F974A /* LegalBoardView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -581,6 +584,7 @@
 				AD6BC75827ACD40C00C2B87D /* StockListMenuCollectionView.swift in Sources */,
 				AD0E7A99279A93AC00F1A9A0 /* MyStockView.swift in Sources */,
 				AD6A684227A0F02F000D022C /* SeparatorView.swift in Sources */,
+				AD843DD227BDD466006F974A /* LegalBoardView.swift in Sources */,
 				AD85593327A27A30005BBA23 /* MenuColor.swift in Sources */,
 				AD34BB422794E045001CD610 /* HomeViewController.swift in Sources */,
 				AD6A684427A104AB000D022C /* SwitchMenu.swift in Sources */,
