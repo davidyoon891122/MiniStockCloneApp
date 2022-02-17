@@ -39,8 +39,6 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
         
         let currencyView = CurrencyView()
         
-        profitShareView.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        
         [investmentView, myStockView, stackListView, profitShareView, currencyView]
             .forEach {
                 stackView.addArrangedSubview($0)
