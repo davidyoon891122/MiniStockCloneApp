@@ -7,12 +7,26 @@
 
 import UIKit
 
+protocol InvestmentViewProtocol: NSObject {
+    func tapNoticeTableViewCell()
+    func tapInvestmentBoardView()
+}
+
 class InvestmentView: UIView {
+    private let noticeCellId = "noticeCellId"
+
+    private let separatorView = SeparatorView()
+    
+    weak var delegate: InvestmentViewProtocol?
     
     private lazy var verticalStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 5
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapVStackView))
+        stackView.addGestureRecognizer(tapGestureRecognizer)
+        
         [titleLabel, valueLabel, horizontalStackView]
             .forEach {
                 stackView.addArrangedSubview($0)
@@ -105,6 +119,16 @@ class InvestmentView: UIView {
         return label
     }()
     
+    private lazy var noticeTableView: UITableView = {
+        let tableView = UITableView()
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(NoticeTableViewCell.self, forCellReuseIdentifier: noticeCellId)
+        tableView.separatorStyle = .none
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        return tableView
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubviews()
@@ -117,17 +141,59 @@ class InvestmentView: UIView {
     }
 }
 
+extension InvestmentView: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: noticeCellId, for: indexPath) as? NoticeTableViewCell
+        return cell ?? UITableViewCell()
+    }
+    
+}
+
+extension InvestmentView: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("NoticeTableViewCell tapped..")
+        delegate?.tapNoticeTableViewCell()
+    }
+}
+
 private extension InvestmentView {
     func addSubviews() {
-        addSubview(verticalStackView)
+        [verticalStackView, separatorView, noticeTableView]
+            .forEach {
+                addSubview($0)
+            }
         
     }
     
     func setLayoutConstraint() {
         verticalStackView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         verticalStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
-        verticalStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20).isActive = true
         verticalStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20).isActive = true
+        
+        separatorView.translatesAutoresizingMaskIntoConstraints = false
+        
+        separatorView.topAnchor.constraint(equalTo: verticalStackView.bottomAnchor, constant: 35).isActive = true
+        separatorView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        separatorView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        separatorView.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
+        
+        noticeTableView.topAnchor.constraint(equalTo: separatorView.bottomAnchor
+        ).isActive = true
+        noticeTableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
+        noticeTableView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        noticeTableView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20).isActive = true
+        noticeTableView.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
     
+    @objc func tapVStackView() {
+        delegate?.tapInvestmentBoardView()
+    }
 }

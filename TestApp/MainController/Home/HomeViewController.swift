@@ -7,10 +7,11 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.showsVerticalScrollIndicator = false
         return scrollView
     }()
     
@@ -25,19 +26,20 @@ class HomeViewController: UIViewController {
         stackView.axis = .vertical
         stackView.distribution = .equalSpacing
         stackView.spacing = 8
-        stackView.backgroundColor = .lightGray
+        stackView.backgroundColor = MenuColor.shared.lightGrayColor
         
-        let firstView = InvestmentView()
+        let investmentView = InvestmentView()
+        investmentView.delegate = self
         
-        let secondView = UIView()
-        secondView.heightAnchor.constraint(equalToConstant: 500).isActive = true
-        secondView.backgroundColor = .orange
-        let thirdView = UIView()
-        thirdView.heightAnchor.constraint(equalToConstant: 500).isActive = true
+        let myStockView = MyStockView()
         
-        thirdView.backgroundColor = .yellow
+        let stackListView = StackListView()
         
-        [firstView, secondView, thirdView]
+        let profitShareView = ProfitShareView()
+        
+        let currencyView = CurrencyView()
+        
+        [investmentView, myStockView, stackListView, profitShareView, currencyView]
             .forEach {
                 stackView.addArrangedSubview($0)
             }
@@ -52,19 +54,31 @@ class HomeViewController: UIViewController {
         configureNavigation()
         addSubviews()
         setLayoutConstraint()
-        
+    }
+}
+
+extension HomeViewController: InvestmentViewProtocol {
+    func tapInvestmentBoardView() {
+        print("Investment View tapped...")
+        tabBarController?.selectedIndex = 3
+    }
+    
+    func tapNoticeTableViewCell() {
+        let detailNoticeViewController = DetailNoticeViewController()
+        navigationController?.pushViewController(detailNoticeViewController, animated: true)
     }
 }
 
 private extension HomeViewController {
     func configureNavigation() {
-        let shareNavigationBarButton = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.up"), style: .plain, target: self, action: #selector(tapShareButton))
-        
-        let bagNavigationBarButton = UIBarButtonItem(image: UIImage(systemName: "bag"), style: .plain, target: self, action: #selector(tapBagButton))
-        
-        navigationItem.rightBarButtonItems = [shareNavigationBarButton, bagNavigationBarButton]
+        let shareNavigationBarButton = UIBarButtonItem(image: HomeViewNavigationMenu.share.imageName, style: .plain, target: self, action: #selector(tapShareButton))
+        shareNavigationBarButton.tintColor = .label
+        let bagNavigationBarButton = UIBarButtonItem(image: HomeViewNavigationMenu.bag.imageName, style: .plain, target: self, action: #selector(tapBagButton))
+        bagNavigationBarButton.tintColor = .label
+        navigationItem.rightBarButtonItems =  [bagNavigationBarButton, shareNavigationBarButton]
         
         navigationController?.hidesBarsOnSwipe = true
+        
     }
     
     func addSubviews() {
@@ -74,7 +88,7 @@ private extension HomeViewController {
     }
     
     func setLayoutConstraint() {
-        scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        scrollView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
@@ -97,5 +111,10 @@ private extension HomeViewController {
     
     @objc func tapBagButton() {
         print("Bag Button tapped...")
+    }
+    
+    @objc func tapInvestmentView() {
+        print("Investment View tapped...")
+        tabBarController?.selectedIndex = 3
     }
 }

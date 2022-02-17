@@ -10,17 +10,18 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    let switchMenu = SwitchMenu.test
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        let testSwitch = true
         var rootViewController: UIViewController
         window = UIWindow(windowScene: windowScene)
         window?.backgroundColor = .systemBackground
-        if testSwitch {
-            rootViewController = HomeTabBarController()
-        } else {
+        switch switchMenu {
+        case .real:
             rootViewController = LoginViewController()
+        case .test:
+            rootViewController = HomeTabBarController()
         }
         window?.rootViewController = rootViewController
         

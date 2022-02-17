@@ -12,6 +12,8 @@
 		8B2DAA1259F17DD09368FD45 /* Pods_TestAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEC21C243121AFB4C28B47E2 /* Pods_TestAppTests.framework */; };
 		AD0E7A91279A5D0500F1A9A0 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = AD0E7A90279A5D0500F1A9A0 /* .swiftlint.yml */; };
 		AD0E7A95279A8C1600F1A9A0 /* TabBarMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0E7A94279A8C1600F1A9A0 /* TabBarMenu.swift */; };
+		AD0E7A99279A93AC00F1A9A0 /* MyStockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0E7A98279A93AC00F1A9A0 /* MyStockView.swift */; };
+		AD0E7A9B279A94FB00F1A9A0 /* MyStockSortingMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0E7A9A279A94FB00F1A9A0 /* MyStockSortingMenu.swift */; };
 		AD27D1A72791652D009C8F91 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD27D1A62791652D009C8F91 /* AppDelegate.swift */; };
 		AD27D1A92791652D009C8F91 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD27D1A82791652D009C8F91 /* SceneDelegate.swift */; };
 		AD27D1B02791652F009C8F91 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD27D1AF2791652F009C8F91 /* Assets.xcassets */; };
@@ -22,10 +24,26 @@
 		AD34BB422794E045001CD610 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD34BB412794E045001CD610 /* HomeViewController.swift */; };
 		AD34BB442794E337001CD610 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD34BB432794E337001CD610 /* LoginViewController.swift */; };
 		AD34BB472794E95D001CD610 /* PasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD34BB462794E95D001CD610 /* PasswordView.swift */; };
+		AD6A684027A0EC4B000D022C /* NoticeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6A683F27A0EC4B000D022C /* NoticeTableViewCell.swift */; };
+		AD6A684227A0F02F000D022C /* SeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6A684127A0F02F000D022C /* SeparatorView.swift */; };
+		AD6A684427A104AB000D022C /* SwitchMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6A684327A104AB000D022C /* SwitchMenu.swift */; };
+		AD6A684727A110D8000D022C /* DividendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6A684627A110D8000D022C /* DividendView.swift */; };
+		AD6A684927A129B4000D022C /* DividendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6A684827A129B4000D022C /* DividendCollectionViewCell.swift */; };
+		AD6BC75827ACD40C00C2B87D /* StockListMenuCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6BC75727ACD40C00C2B87D /* StockListMenuCollectionView.swift */; };
 		AD7E0D9E279637DA00230920 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7E0D9D279637DA00230920 /* TestView.swift */; };
 		AD7E0DE32796791B00230920 /* PasswordNumberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7E0DE22796791B00230920 /* PasswordNumberCollectionViewCell.swift */; };
+		AD7E657327B9CED100408BE6 /* StockListMainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7E657227B9CED100408BE6 /* StockListMainCollectionViewCell.swift */; };
+		AD7E657927BA1B8100408BE6 /* StockListDetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7E657827BA1B8100408BE6 /* StockListDetailViewCell.swift */; };
+		AD843DCC27BDC0DC006F974A /* ProfitShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD843DCB27BDC0DC006F974A /* ProfitShareView.swift */; };
+		AD843DCF27BDC2C8006F974A /* CurrencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD843DCE27BDC2C8006F974A /* CurrencyView.swift */; };
 		AD84C57F2799337B00395772 /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD84C57E2799337B00395772 /* HomeTabBarController.swift */; };
 		AD84C5832799459E00395772 /* InvestmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD84C5822799459E00395772 /* InvestmentView.swift */; };
+		AD85592F27A225EB005BBA23 /* HomeViewMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD85592E27A225EB005BBA23 /* HomeViewMenu.swift */; };
+		AD85593127A2315D005BBA23 /* DetailNoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD85593027A2315D005BBA23 /* DetailNoticeViewController.swift */; };
+		AD85593327A27A30005BBA23 /* MenuColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD85593227A27A30005BBA23 /* MenuColor.swift */; };
+		AD991DC727A3AE7000AA897B /* StockListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD991DC627A3AE7000AA897B /* StockListView.swift */; };
+		AD991DC927A3CC8000AA897B /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD991DC827A3CC8000AA897B /* MenuCollectionViewCell.swift */; };
+		ADA8B440279E470B003D5C98 /* MyStockViewTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA8B43F279E470B003D5C98 /* MyStockViewTableCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +71,8 @@
 		89BBA77FEDE0E1BF00CAC399 /* Pods_TestApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD0E7A90279A5D0500F1A9A0 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		AD0E7A94279A8C1600F1A9A0 /* TabBarMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarMenu.swift; sourceTree = "<group>"; };
+		AD0E7A98279A93AC00F1A9A0 /* MyStockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStockView.swift; sourceTree = "<group>"; };
+		AD0E7A9A279A94FB00F1A9A0 /* MyStockSortingMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStockSortingMenu.swift; sourceTree = "<group>"; };
 		AD27D1A32791652D009C8F91 /* TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD27D1A62791652D009C8F91 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AD27D1A82791652D009C8F91 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -67,10 +87,26 @@
 		AD34BB412794E045001CD610 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		AD34BB432794E337001CD610 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		AD34BB462794E95D001CD610 /* PasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordView.swift; sourceTree = "<group>"; };
+		AD6A683F27A0EC4B000D022C /* NoticeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeTableViewCell.swift; sourceTree = "<group>"; };
+		AD6A684127A0F02F000D022C /* SeparatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorView.swift; sourceTree = "<group>"; };
+		AD6A684327A104AB000D022C /* SwitchMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchMenu.swift; sourceTree = "<group>"; };
+		AD6A684627A110D8000D022C /* DividendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividendView.swift; sourceTree = "<group>"; };
+		AD6A684827A129B4000D022C /* DividendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividendCollectionViewCell.swift; sourceTree = "<group>"; };
+		AD6BC75727ACD40C00C2B87D /* StockListMenuCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListMenuCollectionView.swift; sourceTree = "<group>"; };
 		AD7E0D9D279637DA00230920 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		AD7E0DE22796791B00230920 /* PasswordNumberCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordNumberCollectionViewCell.swift; sourceTree = "<group>"; };
+		AD7E657227B9CED100408BE6 /* StockListMainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListMainCollectionViewCell.swift; sourceTree = "<group>"; };
+		AD7E657827BA1B8100408BE6 /* StockListDetailViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListDetailViewCell.swift; sourceTree = "<group>"; };
+		AD843DCB27BDC0DC006F974A /* ProfitShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfitShareView.swift; sourceTree = "<group>"; };
+		AD843DCE27BDC2C8006F974A /* CurrencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyView.swift; sourceTree = "<group>"; };
 		AD84C57E2799337B00395772 /* HomeTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabBarController.swift; sourceTree = "<group>"; };
 		AD84C5822799459E00395772 /* InvestmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestmentView.swift; sourceTree = "<group>"; };
+		AD85592E27A225EB005BBA23 /* HomeViewMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewMenu.swift; sourceTree = "<group>"; };
+		AD85593027A2315D005BBA23 /* DetailNoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailNoticeViewController.swift; sourceTree = "<group>"; };
+		AD85593227A27A30005BBA23 /* MenuColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuColor.swift; sourceTree = "<group>"; };
+		AD991DC627A3AE7000AA897B /* StockListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListView.swift; sourceTree = "<group>"; };
+		AD991DC827A3CC8000AA897B /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
+		ADA8B43F279E470B003D5C98 /* MyStockViewTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStockViewTableCell.swift; sourceTree = "<group>"; };
 		B76E8DF48A8D312DF6179951 /* Pods-TestAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestAppTests.release.xcconfig"; path = "Target Support Files/Pods-TestAppTests/Pods-TestAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		B9377D3CC628442F71555A7E /* Pods_TestApp_TestAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestApp_TestAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCEC7128F2A6023A994AEE25 /* Pods-TestApp-TestAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestApp-TestAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-TestApp-TestAppUITests/Pods-TestApp-TestAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -128,6 +164,27 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		AD0E7A96279A938800F1A9A0 /* Investment */ = {
+			isa = PBXGroup;
+			children = (
+				AD84C5822799459E00395772 /* InvestmentView.swift */,
+				AD6A683F27A0EC4B000D022C /* NoticeTableViewCell.swift */,
+				AD85593027A2315D005BBA23 /* DetailNoticeViewController.swift */,
+			);
+			path = Investment;
+			sourceTree = "<group>";
+		};
+		AD0E7A97279A939900F1A9A0 /* MyStock */ = {
+			isa = PBXGroup;
+			children = (
+				AD6A684527A110AE000D022C /* Dividend */,
+				AD0E7A98279A93AC00F1A9A0 /* MyStockView.swift */,
+				AD0E7A9A279A94FB00F1A9A0 /* MyStockSortingMenu.swift */,
+				ADA8B43F279E470B003D5C98 /* MyStockViewTableCell.swift */,
+			);
+			path = MyStock;
+			sourceTree = "<group>";
+		};
 		AD27D19A2791652D009C8F91 = {
 			isa = PBXGroup;
 			children = (
@@ -154,15 +211,14 @@
 		AD27D1A52791652D009C8F91 /* TestApp */ = {
 			isa = PBXGroup;
 			children = (
-				AD0E7A94279A8C1600F1A9A0 /* TabBarMenu.swift */,
+				AD991DC427A3AD2E00AA897B /* Delegates */,
+				AD991DC327A3AD1D00AA897B /* Subviews */,
+				AD991DC227A3ACFE00AA897B /* MenuOptions */,
 				AD84C5802799456400395772 /* MainController */,
 				AD34BB452794E8C2001CD610 /* LoginView */,
-				AD27D1A62791652D009C8F91 /* AppDelegate.swift */,
-				AD27D1A82791652D009C8F91 /* SceneDelegate.swift */,
 				AD27D1AF2791652F009C8F91 /* Assets.xcassets */,
 				AD27D1B12791652F009C8F91 /* LaunchScreen.storyboard */,
 				AD27D1B42791652F009C8F91 /* Info.plist */,
-				AD7E0D9D279637DA00230920 /* TestView.swift */,
 			);
 			path = TestApp;
 			sourceTree = "<group>";
@@ -194,11 +250,36 @@
 			path = LoginView;
 			sourceTree = "<group>";
 		};
+		AD6A684527A110AE000D022C /* Dividend */ = {
+			isa = PBXGroup;
+			children = (
+				AD6A684627A110D8000D022C /* DividendView.swift */,
+				AD6A684827A129B4000D022C /* DividendCollectionViewCell.swift */,
+			);
+			path = Dividend;
+			sourceTree = "<group>";
+		};
+		AD843DCD27BDC0E2006F974A /* ProfitShare */ = {
+			isa = PBXGroup;
+			children = (
+				AD843DCB27BDC0DC006F974A /* ProfitShareView.swift */,
+			);
+			path = ProfitShare;
+			sourceTree = "<group>";
+		};
+		AD843DD027BDC2CE006F974A /* Currency */ = {
+			isa = PBXGroup;
+			children = (
+				AD843DCE27BDC2C8006F974A /* CurrencyView.swift */,
+			);
+			path = Currency;
+			sourceTree = "<group>";
+		};
 		AD84C5802799456400395772 /* MainController */ = {
 			isa = PBXGroup;
 			children = (
-				AD84C5812799458200395772 /* Home */,
 				AD84C57E2799337B00395772 /* HomeTabBarController.swift */,
+				AD84C5812799458200395772 /* Home */,
 			);
 			path = MainController;
 			sourceTree = "<group>";
@@ -207,9 +288,54 @@
 			isa = PBXGroup;
 			children = (
 				AD34BB412794E045001CD610 /* HomeViewController.swift */,
-				AD84C5822799459E00395772 /* InvestmentView.swift */,
+				AD85592E27A225EB005BBA23 /* HomeViewMenu.swift */,
+				AD0E7A96279A938800F1A9A0 /* Investment */,
+				AD0E7A97279A939900F1A9A0 /* MyStock */,
+				AD991DC527A3ADDC00AA897B /* StockList */,
+				AD843DCD27BDC0E2006F974A /* ProfitShare */,
+				AD843DD027BDC2CE006F974A /* Currency */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		AD991DC227A3ACFE00AA897B /* MenuOptions */ = {
+			isa = PBXGroup;
+			children = (
+				AD0E7A94279A8C1600F1A9A0 /* TabBarMenu.swift */,
+				AD6A684327A104AB000D022C /* SwitchMenu.swift */,
+				AD85593227A27A30005BBA23 /* MenuColor.swift */,
+			);
+			path = MenuOptions;
+			sourceTree = "<group>";
+		};
+		AD991DC327A3AD1D00AA897B /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				AD7E0D9D279637DA00230920 /* TestView.swift */,
+				AD6A684127A0F02F000D022C /* SeparatorView.swift */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
+		AD991DC427A3AD2E00AA897B /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				AD27D1A62791652D009C8F91 /* AppDelegate.swift */,
+				AD27D1A82791652D009C8F91 /* SceneDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		AD991DC527A3ADDC00AA897B /* StockList */ = {
+			isa = PBXGroup;
+			children = (
+				AD991DC627A3AE7000AA897B /* StockListView.swift */,
+				AD991DC827A3CC8000AA897B /* MenuCollectionViewCell.swift */,
+				AD6BC75727ACD40C00C2B87D /* StockListMenuCollectionView.swift */,
+				AD7E657227B9CED100408BE6 /* StockListMainCollectionViewCell.swift */,
+				AD7E657827BA1B8100408BE6 /* StockListDetailViewCell.swift */,
+			);
+			path = StockList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -284,6 +410,7 @@
 				TargetAttributes = {
 					AD27D1A22791652D009C8F91 = {
 						CreatedOnToolsVersion = 13.2.1;
+						LastSwiftMigration = 1320;
 					};
 					AD27D1B82791652F009C8F91 = {
 						CreatedOnToolsVersion = 13.2.1;
@@ -433,15 +560,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD0E7A9B279A94FB00F1A9A0 /* MyStockSortingMenu.swift in Sources */,
 				AD7E0D9E279637DA00230920 /* TestView.swift in Sources */,
+				AD85593127A2315D005BBA23 /* DetailNoticeViewController.swift in Sources */,
 				AD7E0DE32796791B00230920 /* PasswordNumberCollectionViewCell.swift in Sources */,
+				AD85592F27A225EB005BBA23 /* HomeViewMenu.swift in Sources */,
 				AD34BB472794E95D001CD610 /* PasswordView.swift in Sources */,
 				AD27D1A72791652D009C8F91 /* AppDelegate.swift in Sources */,
+				AD991DC927A3CC8000AA897B /* MenuCollectionViewCell.swift in Sources */,
+				AD6A684727A110D8000D022C /* DividendView.swift in Sources */,
 				AD84C5832799459E00395772 /* InvestmentView.swift in Sources */,
 				AD27D1A92791652D009C8F91 /* SceneDelegate.swift in Sources */,
+				AD843DCF27BDC2C8006F974A /* CurrencyView.swift in Sources */,
+				ADA8B440279E470B003D5C98 /* MyStockViewTableCell.swift in Sources */,
 				AD0E7A95279A8C1600F1A9A0 /* TabBarMenu.swift in Sources */,
+				AD6A684027A0EC4B000D022C /* NoticeTableViewCell.swift in Sources */,
+				AD7E657927BA1B8100408BE6 /* StockListDetailViewCell.swift in Sources */,
+				AD991DC727A3AE7000AA897B /* StockListView.swift in Sources */,
 				AD84C57F2799337B00395772 /* HomeTabBarController.swift in Sources */,
+				AD6BC75827ACD40C00C2B87D /* StockListMenuCollectionView.swift in Sources */,
+				AD0E7A99279A93AC00F1A9A0 /* MyStockView.swift in Sources */,
+				AD6A684227A0F02F000D022C /* SeparatorView.swift in Sources */,
+				AD85593327A27A30005BBA23 /* MenuColor.swift in Sources */,
 				AD34BB422794E045001CD610 /* HomeViewController.swift in Sources */,
+				AD6A684427A104AB000D022C /* SwitchMenu.swift in Sources */,
+				AD6A684927A129B4000D022C /* DividendCollectionViewCell.swift in Sources */,
+				AD7E657327B9CED100408BE6 /* StockListMainCollectionViewCell.swift in Sources */,
+				AD843DCC27BDC0DC006F974A /* ProfitShareView.swift in Sources */,
 				AD34BB442794E337001CD610 /* LoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -541,7 +686,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -596,7 +741,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -612,15 +757,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = HDFLLXK789;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TestApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -641,15 +788,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = HDFLLXK789;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TestApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

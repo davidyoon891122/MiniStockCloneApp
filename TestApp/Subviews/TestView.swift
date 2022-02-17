@@ -21,7 +21,7 @@ class TestView: UIView {
         let label = UILabel()
         label.text = "Description"
         label.font = .systemFont(ofSize: 30, weight: .heavy)
-        label.textColor = .systemGreen
+        label.textColor = MenuColor.shared.mintColor
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
