@@ -116,13 +116,14 @@ private extension DividendView {
     }
     
     func setLayoutConstraint() {
-        labelVStack.topAnchor.constraint(equalTo: topAnchor, constant: 20).isActive = true
-        labelVStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
-        labelVStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20).isActive = true
+        let inset: CGFloat = 16.0
+        labelVStack.topAnchor.constraint(equalTo: topAnchor, constant: inset).isActive = true
+        labelVStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: inset).isActive = true
+        labelVStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -inset).isActive = true
         
         stockCollectionView.topAnchor.constraint(equalTo: labelVStack.bottomAnchor, constant: 10).isActive = true
         stockCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        stockCollectionView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20).isActive = true
+        stockCollectionView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -inset).isActive = true
         stockCollectionView.heightAnchor.constraint(equalToConstant: 150).isActive = true
         stockCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
     }

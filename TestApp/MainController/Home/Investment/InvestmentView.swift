@@ -174,9 +174,10 @@ private extension InvestmentView {
     }
     
     func setLayoutConstraint() {
+        let inset: CGFloat = 16.0
         verticalStackView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        verticalStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
-        verticalStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20).isActive = true
+        verticalStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: inset).isActive = true
+        verticalStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -inset).isActive = true
         
         separatorView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -187,9 +188,9 @@ private extension InvestmentView {
         
         noticeTableView.topAnchor.constraint(equalTo: separatorView.bottomAnchor
         ).isActive = true
-        noticeTableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
+        noticeTableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: inset).isActive = true
         noticeTableView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        noticeTableView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20).isActive = true
+        noticeTableView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -inset).isActive = true
         noticeTableView.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
     

@@ -40,6 +40,8 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
         let currencyView = CurrencyView()
         
         let legalBoardView = LegalBoardView()
+        legalBoardView.delegate = self
+        
         [investmentView, myStockView, stackListView, profitShareView, currencyView, legalBoardView]
             .forEach {
                 stackView.addArrangedSubview($0)
@@ -55,6 +57,14 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
         configureNavigation()
         addSubviews()
         setLayoutConstraint()
+    }
+}
+
+extension HomeViewController: HomeViewProtocol {
+    func upScrollAction() {
+        UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: { [weak self] in
+            self?.scrollView.contentOffset.y = -100
+        }, completion: nil)
     }
 }
 

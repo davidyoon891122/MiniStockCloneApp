@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol HomeViewProtocol: NSObject {
+    func upScrollAction()
+}
+
 class LegalBoardView: UIView {
+    weak var delegate: HomeViewProtocol?
+    
     private lazy var mainLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -24,6 +30,7 @@ class LegalBoardView: UIView {
         button.backgroundColor = .white
         button.tintColor = .gray
         button.layer.cornerRadius = 20
+        button.addTarget(self, action: #selector(tapUpScrollButton), for: .touchUpInside)
         return button
     }()
     
@@ -67,5 +74,9 @@ private extension LegalBoardView {
         생될 수 있으며, 미니스탁(한국투자증권)은 투자결과에
         대한 법적인 책임을 지지 않습니다.
         """
+    }
+    
+    @objc func tapUpScrollButton() {
+        delegate?.upScrollAction()
     }
 }

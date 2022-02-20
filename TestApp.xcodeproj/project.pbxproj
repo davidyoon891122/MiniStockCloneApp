@@ -277,6 +277,14 @@
 			path = Currency;
 			sourceTree = "<group>";
 		};
+		AD843DD327BDDE2F006F974A /* Legal */ = {
+			isa = PBXGroup;
+			children = (
+				AD843DD127BDD466006F974A /* LegalBoardView.swift */,
+			);
+			path = Legal;
+			sourceTree = "<group>";
+		};
 		AD84C5802799456400395772 /* MainController */ = {
 			isa = PBXGroup;
 			children = (
@@ -296,7 +304,7 @@
 				AD991DC527A3ADDC00AA897B /* StockList */,
 				AD843DCD27BDC0E2006F974A /* ProfitShare */,
 				AD843DD027BDC2CE006F974A /* Currency */,
-				AD843DD127BDD466006F974A /* LegalBoardView.swift */,
+				AD843DD327BDDE2F006F974A /* Legal */,
 			);
 			path = Home;
 			sourceTree = "<group>";
