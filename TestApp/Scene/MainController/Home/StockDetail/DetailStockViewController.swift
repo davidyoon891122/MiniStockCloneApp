@@ -18,5 +18,6 @@ class DetailStockViewController: UIViewController {
 private extension DetailStockViewController {
     func configureNavigation() {
         navigationItem.title = "StockName"
+        navigationController?.isNavigationBarHidden = false
     }
 }

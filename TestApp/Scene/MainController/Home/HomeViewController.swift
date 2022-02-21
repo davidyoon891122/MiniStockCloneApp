@@ -27,7 +27,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
 
     private let myStockView = MyStockView()
     
-    private let stackListView = StackListView()
+    private let stockListView = StackListView()
     
     private let profitShareView = ProfitShareView()
     
@@ -47,7 +47,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
         myStockView.setDividendDelegate(viewController: self)
         legalBoardView.delegate = self
         
-        [investmentView, myStockView, stackListView, profitShareView, currencyView, legalBoardView]
+        [investmentView, myStockView, stockListView, profitShareView, currencyView, legalBoardView]
             .forEach {
                 stackView.addArrangedSubview($0)
             }
@@ -69,6 +69,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
             
             self?.myStockView.setupData(myStocks: myStocks)
         }
+        navigationController?.hidesBarsOnSwipe = true
     }
     
 }

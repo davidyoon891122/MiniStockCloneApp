@@ -12,6 +12,7 @@ class StockListMainCollectionViewCell: UICollectionViewCell {
     private var menus: [String]?
     private let colors: [UIColor] = [.red, .orange, .yellow, .green, .blue, .purple, .black, .white, .systemPink, .gray]
     private let detailCellHeight: CGFloat = 65.0
+    weak var delegate: HomeViewProtocol?
     private lazy var sortingButtonHStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
@@ -100,6 +101,11 @@ extension StockListMainCollectionViewCell: UICollectionViewDataSource {
 extension StockListMainCollectionViewCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width - 40, height: detailCellHeight)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("stockList cell selected")
+        delegate?.moveToDetailStockView()
     }
 }
 
