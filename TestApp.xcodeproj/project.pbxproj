@@ -42,6 +42,9 @@
 		AD85592F27A225EB005BBA23 /* HomeViewMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD85592E27A225EB005BBA23 /* HomeViewMenu.swift */; };
 		AD85593127A2315D005BBA23 /* DetailNoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD85593027A2315D005BBA23 /* DetailNoticeViewController.swift */; };
 		AD85593327A27A30005BBA23 /* MenuColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD85593227A27A30005BBA23 /* MenuColor.swift */; };
+		AD8B45E327C2FEA600005725 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = AD8B45E227C2FEA600005725 /* Alamofire */; };
+		AD8B45E527C2FEC700005725 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8B45E427C2FEC700005725 /* NetworkManager.swift */; };
+		AD8B45E727C2FF9E00005725 /* MyStock.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8B45E627C2FF9E00005725 /* MyStock.swift */; };
 		AD991DC727A3AE7000AA897B /* StockListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD991DC627A3AE7000AA897B /* StockListView.swift */; };
 		AD991DC927A3CC8000AA897B /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD991DC827A3CC8000AA897B /* MenuCollectionViewCell.swift */; };
 		ADA8B440279E470B003D5C98 /* MyStockViewTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA8B43F279E470B003D5C98 /* MyStockViewTableCell.swift */; };
@@ -106,6 +109,8 @@
 		AD85592E27A225EB005BBA23 /* HomeViewMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewMenu.swift; sourceTree = "<group>"; };
 		AD85593027A2315D005BBA23 /* DetailNoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailNoticeViewController.swift; sourceTree = "<group>"; };
 		AD85593227A27A30005BBA23 /* MenuColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuColor.swift; sourceTree = "<group>"; };
+		AD8B45E427C2FEC700005725 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		AD8B45E627C2FF9E00005725 /* MyStock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStock.swift; sourceTree = "<group>"; };
 		AD991DC627A3AE7000AA897B /* StockListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListView.swift; sourceTree = "<group>"; };
 		AD991DC827A3CC8000AA897B /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		ADA8B43F279E470B003D5C98 /* MyStockViewTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStockViewTableCell.swift; sourceTree = "<group>"; };
@@ -121,6 +126,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				78A6FD516075F747E384C84D /* Pods_TestApp.framework in Frameworks */,
+				AD8B45E327C2FEA600005725 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,13 +220,13 @@
 			isa = PBXGroup;
 			children = (
 				AD991DC427A3AD2E00AA897B /* Delegates */,
-				AD991DC327A3AD1D00AA897B /* Subviews */,
+				AD8B45EA27C3006300005725 /* Scene */,
 				AD991DC227A3ACFE00AA897B /* MenuOptions */,
-				AD84C5802799456400395772 /* MainController */,
-				AD34BB452794E8C2001CD610 /* LoginView */,
 				AD27D1AF2791652F009C8F91 /* Assets.xcassets */,
 				AD27D1B12791652F009C8F91 /* LaunchScreen.storyboard */,
 				AD27D1B42791652F009C8F91 /* Info.plist */,
+				AD8B45E827C3004400005725 /* Network */,
+				AD8B45E927C3004B00005725 /* Model */,
 			);
 			path = TestApp;
 			sourceTree = "<group>";
@@ -309,6 +315,32 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
+		AD8B45E827C3004400005725 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				AD8B45E427C2FEC700005725 /* NetworkManager.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		AD8B45E927C3004B00005725 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AD8B45E627C2FF9E00005725 /* MyStock.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AD8B45EA27C3006300005725 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				AD991DC327A3AD1D00AA897B /* Subviews */,
+				AD84C5802799456400395772 /* MainController */,
+				AD34BB452794E8C2001CD610 /* LoginView */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
 		AD991DC227A3ACFE00AA897B /* MenuOptions */ = {
 			isa = PBXGroup;
 			children = (
@@ -367,6 +399,9 @@
 			dependencies = (
 			);
 			name = TestApp;
+			packageProductDependencies = (
+				AD8B45E227C2FEA600005725 /* Alamofire */,
+			);
 			productName = TestApp;
 			productReference = AD27D1A32791652D009C8F91 /* TestApp.app */;
 			productType = "com.apple.product-type.application";
@@ -442,6 +477,9 @@
 				Base,
 			);
 			mainGroup = AD27D19A2791652D009C8F91;
+			packageReferences = (
+				AD8B45E127C2FEA600005725 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = AD27D1A42791652D009C8F91 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -583,6 +621,7 @@
 				AD84C5832799459E00395772 /* InvestmentView.swift in Sources */,
 				AD27D1A92791652D009C8F91 /* SceneDelegate.swift in Sources */,
 				AD843DCF27BDC2C8006F974A /* CurrencyView.swift in Sources */,
+				AD8B45E527C2FEC700005725 /* NetworkManager.swift in Sources */,
 				ADA8B440279E470B003D5C98 /* MyStockViewTableCell.swift in Sources */,
 				AD0E7A95279A8C1600F1A9A0 /* TabBarMenu.swift in Sources */,
 				AD6A684027A0EC4B000D022C /* NoticeTableViewCell.swift in Sources */,
@@ -597,6 +636,7 @@
 				AD34BB422794E045001CD610 /* HomeViewController.swift in Sources */,
 				AD6A684427A104AB000D022C /* SwitchMenu.swift in Sources */,
 				AD6A684927A129B4000D022C /* DividendCollectionViewCell.swift in Sources */,
+				AD8B45E727C2FF9E00005725 /* MyStock.swift in Sources */,
 				AD7E657327B9CED100408BE6 /* StockListMainCollectionViewCell.swift in Sources */,
 				AD843DCC27BDC0DC006F974A /* ProfitShareView.swift in Sources */,
 				AD34BB442794E337001CD610 /* LoginViewController.swift in Sources */,
@@ -945,6 +985,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AD8B45E127C2FEA600005725 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AD8B45E227C2FEA600005725 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AD8B45E127C2FEA600005725 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AD27D19B2791652D009C8F91 /* Project object */;
 }

@@ -8,6 +8,8 @@
 import UIKit
 
 class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
+    private let networkManager = NetworkManager()
+    
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -21,6 +23,18 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
         return view
     }()
     
+    private let investmentView = InvestmentView()
+
+    private let myStockView = MyStockView()
+    
+    private let stackListView = StackListView()
+    
+    private let profitShareView = ProfitShareView()
+    
+    private let currencyView = CurrencyView()
+    
+    private let legalBoardView = LegalBoardView()
+    
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -28,18 +42,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
         stackView.spacing = 8
         stackView.backgroundColor = MenuColor.shared.lightGrayColor
         
-        let investmentView = InvestmentView()
         investmentView.delegate = self
-        
-        let myStockView = MyStockView()
-        
-        let stackListView = StackListView()
-        
-        let profitShareView = ProfitShareView()
-        
-        let currencyView = CurrencyView()
-        
-        let legalBoardView = LegalBoardView()
         legalBoardView.delegate = self
         
         [investmentView, myStockView, stackListView, profitShareView, currencyView, legalBoardView]
@@ -58,6 +61,14 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
         addSubviews()
         setLayoutConstraint()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        networkManager.requestMyStock { [weak self] myStocks in
+            
+            self?.myStockView.setupData(myStocks: myStocks)
+        }
+    }
+    
 }
 
 extension HomeViewController: HomeViewProtocol {

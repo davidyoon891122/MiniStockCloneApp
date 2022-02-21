@@ -44,7 +44,8 @@ class MyStockViewTableCell: UITableViewCell {
         let label = UILabel()
         label.text = "2,390원"
         label.textColor = .label
-        label.font = .systemFont(ofSize: 20, weight: .bold)
+        label.textAlignment = .right
+        label.font = .systemFont(ofSize: 18, weight: .bold)
         return label
     }()
     
@@ -92,6 +93,19 @@ class MyStockViewTableCell: UITableViewCell {
         return label
     }()
     
+    private lazy var stockVStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        
+        [firstHStackView, secondHStackView]
+            .forEach {
+                stackView.addArrangedSubview($0)
+            }
+        
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         addSubviews()
@@ -104,11 +118,21 @@ class MyStockViewTableCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func setup(myStock: MyStock) {
+        
+        
+        stockNameLabel.text = "\(myStock.stockName)"
+        stockPriceLabel.text = "\(myStock.currentPrice)원"
+        stockQuantityLabel.text = "\(myStock.stockQuantity)주"
+        profitLabel.text = "\(myStock.valueChange)원"
+        percentageLabel.text = String(format: "%.2f", myStock.percentChange) + "%"
+    }
+    
 }
 
 private extension MyStockViewTableCell {
     func addSubviews() {
-        [stockImageView, firstHStackView, secondHStackView]
+        [stockImageView, stockVStackView]
             .forEach {
                 contentView.addSubview($0)
             }
@@ -120,14 +144,8 @@ private extension MyStockViewTableCell {
         stockImageView.widthAnchor.constraint(equalToConstant: 40).isActive = true
         stockImageView.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
-        firstHStackView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        firstHStackView.leadingAnchor.constraint(equalTo: stockImageView.trailingAnchor, constant: 5).isActive = true
-        firstHStackView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        firstHStackView.bottomAnchor.constraint(equalTo: secondHStackView.topAnchor).isActive = true
-        
-        secondHStackView.topAnchor.constraint(equalTo: firstHStackView.bottomAnchor).isActive = true
-        secondHStackView.leadingAnchor.constraint(equalTo: stockImageView.trailingAnchor, constant: 5).isActive = true
-        secondHStackView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        secondHStackView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        stockVStackView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        stockVStackView.leadingAnchor.constraint(equalTo: stockImageView.trailingAnchor, constant: 5).isActive = true
+        stockVStackView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
     }
 }
