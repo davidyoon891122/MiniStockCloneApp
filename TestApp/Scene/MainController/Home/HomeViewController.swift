@@ -46,6 +46,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
         myStockView.delegate = self
         myStockView.setDividendDelegate(viewController: self)
         legalBoardView.delegate = self
+        stockListView.delegate = self
         
         [investmentView, myStockView, stockListView, profitShareView, currencyView, legalBoardView]
             .forEach {
@@ -89,7 +90,6 @@ extension HomeViewController: HomeViewProtocol {
 
 extension HomeViewController: InvestmentViewProtocol {
     func tapInvestmentBoardView() {
-        print("Investment View tapped...")
         tabBarController?.selectedIndex = 3
     }
     

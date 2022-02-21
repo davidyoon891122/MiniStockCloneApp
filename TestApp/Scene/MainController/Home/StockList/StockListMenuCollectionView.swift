@@ -45,7 +45,6 @@ extension StockListMenuCollectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MenuCollectionViewCell.identifier, for: indexPath) as? MenuCollectionViewCell
         cell?.setup(title: menus[indexPath.row])
-        
         if indexPath.row == 0 {
             cell?.selectedAction()
             collectionView.selectItem(at: indexPath, animated: true, scrollPosition: [])

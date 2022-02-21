@@ -104,7 +104,6 @@ extension StockListMainCollectionViewCell: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("stockList cell selected")
         delegate?.moveToDetailStockView()
     }
 }

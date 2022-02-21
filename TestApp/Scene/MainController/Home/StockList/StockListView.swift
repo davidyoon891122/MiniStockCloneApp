@@ -18,7 +18,7 @@ class StackListView: UIView {
     ]
     
     private lazy var menuCollectionView = StockListMenuCollectionView(menus: self.menus)
-    
+    weak var delegate: HomeViewProtocol?
     private lazy var menuUnderBarView: UIView = {
         let view = UIView()
         view.backgroundColor = MenuColor.shared.mintColor
@@ -59,6 +59,7 @@ class StackListView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
 }
 
 extension StackListView: StockListViewProtocol {
@@ -76,6 +77,8 @@ extension StackListView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StockListMainCollectionViewCell.identifier, for: indexPath) as? StockListMainCollectionViewCell
         cell?.setup(menus: menus)
+        
+        cell?.delegate = delegate
         return cell ?? UICollectionViewCell()
     }
     

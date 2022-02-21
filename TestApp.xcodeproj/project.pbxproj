@@ -47,6 +47,7 @@
 		AD8B45E727C2FF9E00005725 /* MyStock.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8B45E627C2FF9E00005725 /* MyStock.swift */; };
 		AD8B45EC27C3209400005725 /* HomeViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8B45EB27C3209400005725 /* HomeViewProtocol.swift */; };
 		AD8B45EE27C3217300005725 /* DetailStockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8B45ED27C3217300005725 /* DetailStockViewController.swift */; };
+		AD8B45F227C343E300005725 /* ProfitShareDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8B45F127C343E300005725 /* ProfitShareDetailViewController.swift */; };
 		AD991DC727A3AE7000AA897B /* StockListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD991DC627A3AE7000AA897B /* StockListView.swift */; };
 		AD991DC927A3CC8000AA897B /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD991DC827A3CC8000AA897B /* MenuCollectionViewCell.swift */; };
 		ADA8B440279E470B003D5C98 /* MyStockViewTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA8B43F279E470B003D5C98 /* MyStockViewTableCell.swift */; };
@@ -115,6 +116,7 @@
 		AD8B45E627C2FF9E00005725 /* MyStock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStock.swift; sourceTree = "<group>"; };
 		AD8B45EB27C3209400005725 /* HomeViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewProtocol.swift; sourceTree = "<group>"; };
 		AD8B45ED27C3217300005725 /* DetailStockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailStockViewController.swift; sourceTree = "<group>"; };
+		AD8B45F127C343E300005725 /* ProfitShareDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfitShareDetailViewController.swift; sourceTree = "<group>"; };
 		AD991DC627A3AE7000AA897B /* StockListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListView.swift; sourceTree = "<group>"; };
 		AD991DC827A3CC8000AA897B /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		ADA8B43F279E470B003D5C98 /* MyStockViewTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStockViewTableCell.swift; sourceTree = "<group>"; };
@@ -317,6 +319,7 @@
 				AD843DD327BDDE2F006F974A /* Legal */,
 				AD8B45F027C3229200005725 /* Protocols */,
 				AD8B45EF27C3228000005725 /* StockDetail */,
+				AD8B45F127C343E300005725 /* ProfitShareDetailViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -650,6 +653,7 @@
 				AD6A684027A0EC4B000D022C /* NoticeTableViewCell.swift in Sources */,
 				AD7E657927BA1B8100408BE6 /* StockListDetailViewCell.swift in Sources */,
 				AD991DC727A3AE7000AA897B /* StockListView.swift in Sources */,
+				AD8B45F227C343E300005725 /* ProfitShareDetailViewController.swift in Sources */,
 				AD84C57F2799337B00395772 /* HomeTabBarController.swift in Sources */,
 				AD6BC75827ACD40C00C2B87D /* StockListMenuCollectionView.swift in Sources */,
 				AD0E7A99279A93AC00F1A9A0 /* MyStockView.swift in Sources */,
