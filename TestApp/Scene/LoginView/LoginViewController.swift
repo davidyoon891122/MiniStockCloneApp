@@ -38,7 +38,7 @@ class LoginViewController: UIViewController {
         
         label.attributedText = miniString
         label.textAlignment = .center
-        label.textColor = .black
+        label.textColor = .label
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -110,7 +110,7 @@ extension LoginViewController {
         guard let window = UIApplication.shared.windows.first(where: {$0.isKeyWindow}) else { return }
         passwordView.keypadNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
         passwordView.numberCollectionView.reloadData()
-        blackView.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        blackView.backgroundColor = UIColor(white: 0.2, alpha: 0.8)
         blackView.frame = window.frame
         blackView.alpha = 0
         blackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapBlackView)))

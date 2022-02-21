@@ -9,5 +9,6 @@ import Foundation
 
 protocol HomeViewProtocol: NSObject {
     func upScrollAction()
-    func moveToDetailStockView() 
+    func moveToDetailStockView()
+    func moveToProfitShareDetailView()
 }

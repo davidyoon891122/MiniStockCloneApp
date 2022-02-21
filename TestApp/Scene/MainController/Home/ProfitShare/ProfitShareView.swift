@@ -8,6 +8,7 @@
 import UIKit
 
 class ProfitShareView: UIView {
+    weak var delegate: HomeViewProtocol?
     private lazy var labelVStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -49,6 +50,7 @@ class ProfitShareView: UIView {
         addSubviews()
         setLayoutConstraints()
         backgroundColor = .systemBackground
+        setTapGesture()
     }
     
     required init?(coder: NSCoder) {
@@ -75,5 +77,15 @@ private extension ProfitShareView {
         imageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
         imageView.heightAnchor.constraint(equalToConstant: 75).isActive = true
         imageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -32).isActive = true
+    }
+    
+    func setTapGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapProfitShareView))
+        addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func tapProfitShareView() {
+        print("profitShareView is tapped")
+        delegate?.moveToProfitShareDetailView()
     }
 }

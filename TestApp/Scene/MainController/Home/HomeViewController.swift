@@ -42,11 +42,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
         stackView.spacing = 8
         stackView.backgroundColor = MenuColor.shared.lightGrayColor
         
-        investmentView.delegate = self
-        myStockView.delegate = self
-        myStockView.setDividendDelegate(viewController: self)
-        legalBoardView.delegate = self
-        stockListView.delegate = self
+        setDelegate()
         
         [investmentView, myStockView, stockListView, profitShareView, currencyView, legalBoardView]
             .forEach {
@@ -76,6 +72,11 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
 }
 
 extension HomeViewController: HomeViewProtocol {
+    func moveToProfitShareDetailView() {
+        let profitShareDetailVC = ProfitShareDetailViewController()
+        navigationController?.pushViewController(profitShareDetailVC, animated: true)
+    }
+    
     func moveToDetailStockView() {
         let detailStockVC = DetailStockViewController()
         navigationController?.pushViewController(detailStockVC, animated: true)
@@ -146,5 +147,14 @@ private extension HomeViewController {
     @objc func tapInvestmentView() {
         print("Investment View tapped...")
         tabBarController?.selectedIndex = 3
+    }
+    
+    func setDelegate() {
+        investmentView.delegate = self
+        myStockView.delegate = self
+        myStockView.setDividendDelegate(viewController: self)
+        legalBoardView.delegate = self
+        stockListView.delegate = self
+        profitShareView.delegate = self
     }
 }
