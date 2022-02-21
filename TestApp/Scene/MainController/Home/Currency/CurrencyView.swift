@@ -95,6 +95,7 @@ class CurrencyView: UIView {
         backgroundColor = .systemBackground
         addSubviews()
         setLayoutConstraints()
+        setTapGesture()
     }
     
     required init?(coder: NSCoder) {
@@ -114,5 +115,15 @@ private extension CurrencyView {
         currencyHStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: inset).isActive = true
         currencyHStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -inset).isActive = true
         currencyHStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -inset).isActive = true
+    }
+    
+    func setTapGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapCurrencyView))
+        addGestureRecognizer(tapGesture)
+        
+    }
+    
+    @objc func didTapCurrencyView() {
+        print("currencyView is tapped...")
     }
 }
