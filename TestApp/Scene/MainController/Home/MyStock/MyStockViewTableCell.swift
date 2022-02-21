@@ -119,12 +119,10 @@ class MyStockViewTableCell: UITableViewCell {
     }
     
     func setup(myStock: MyStock) {
-        
-        
         stockNameLabel.text = "\(myStock.stockName)"
-        stockPriceLabel.text = "\(myStock.currentPrice)원"
+        stockPriceLabel.text = "\(commaInString(price: myStock.currentPrice))원"
         stockQuantityLabel.text = "\(myStock.stockQuantity)주"
-        profitLabel.text = "\(myStock.valueChange)원"
+        profitLabel.text = "\(commaInString(price: myStock.valueChange))원"
         percentageLabel.text = String(format: "%.2f", myStock.percentChange) + "%"
     }
     
@@ -147,5 +145,13 @@ private extension MyStockViewTableCell {
         stockVStackView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         stockVStackView.leadingAnchor.constraint(equalTo: stockImageView.trailingAnchor, constant: 5).isActive = true
         stockVStackView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+    }
+    
+    func commaInString(price: Int) -> String {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.groupingSeparator = ","
+        numberFormatter.groupingSize = 3
+        numberFormatter.usesGroupingSeparator = true
+        return numberFormatter.string(from: price as NSNumber)!
     }
 }
