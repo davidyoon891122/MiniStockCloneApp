@@ -8,6 +8,8 @@
 import UIKit
 
 class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
+    private let networkManager = NetworkManager()
+    
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -21,6 +23,18 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
         return view
     }()
     
+    private let investmentView = InvestmentView()
+
+    private let myStockView = MyStockView()
+    
+    private let stackListView = StackListView()
+    
+    private let profitShareView = ProfitShareView()
+    
+    private let currencyView = CurrencyView()
+    
+    private let legalBoardView = LegalBoardView()
+    
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -28,18 +42,10 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
         stackView.spacing = 8
         stackView.backgroundColor = MenuColor.shared.lightGrayColor
         
-        let investmentView = InvestmentView()
         investmentView.delegate = self
+        legalBoardView.delegate = self
         
-        let myStockView = MyStockView()
-        
-        let stackListView = StackListView()
-        
-        let profitShareView = ProfitShareView()
-        
-        let currencyView = CurrencyView()
-        
-        [investmentView, myStockView, stackListView, profitShareView, currencyView]
+        [investmentView, myStockView, stackListView, profitShareView, currencyView, legalBoardView]
             .forEach {
                 stackView.addArrangedSubview($0)
             }
@@ -54,6 +60,22 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
         configureNavigation()
         addSubviews()
         setLayoutConstraint()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        networkManager.requestMyStock { [weak self] myStocks in
+            
+            self?.myStockView.setupData(myStocks: myStocks)
+        }
+    }
+    
+}
+
+extension HomeViewController: HomeViewProtocol {
+    func upScrollAction() {
+        UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: { [weak self] in
+            self?.scrollView.contentOffset.y = -100
+        }, completion: nil)
     }
 }
 

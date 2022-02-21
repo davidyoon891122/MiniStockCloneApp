@@ -11,15 +11,20 @@ class MyStockView: UIView {
     
     private let tableViewCellId = "tableViewCellId"
     private var cellCount: Int = 1
-    
     private let dividendView = DividendView()
+    
+    private var myStocks: [MyStock] = []
+    
+    private var tableViewHeightConstraint: NSLayoutConstraint?
+    
+    private let cellHeight: CGFloat = 60.0
     
     private lazy var titleHStackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.distribution = .fillEqually
+        stackView.distribution = .fillProportionally
         
         stackView.axis = .horizontal
-        
+        sortingButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
         [titleLabel, sortingButtonHStack]
             .forEach {
                 stackView.addArrangedSubview($0)
@@ -39,7 +44,6 @@ class MyStockView: UIView {
     private lazy var sortingButtonHStack: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
-        stackView.alignment = .center
         stackView.addArrangedSubview(sortingButton)
         return stackView
     }()
@@ -48,6 +52,7 @@ class MyStockView: UIView {
         let button = UIButton()
         button.setTitle(MyStockSortingMenu.orderganada.text, for: .normal)
         button.setTitleColor(.gray, for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 15, weight: .medium)
         return button
     }()
     
@@ -83,7 +88,6 @@ class MyStockView: UIView {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.separatorStyle = .none
         tableView.estimatedRowHeight = 88.0
         return tableView
     }()
@@ -98,6 +102,15 @@ class MyStockView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func setupData(myStocks: [MyStock]) {
+        self.myStocks = myStocks
+        self.cellCount = myStocks.count
+        tableViewHeightConstraint?.isActive = false
+        tableViewHeightConstraint = stockTableView.heightAnchor.constraint(equalToConstant: CGFloat(cellCount) * cellHeight)
+        tableViewHeightConstraint?.isActive = true
+        stockTableView.reloadData()
+    }
 }
 
 extension MyStockView: UITableViewDataSource {
@@ -107,20 +120,23 @@ extension MyStockView: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cellCount
+        return self.myStocks.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: tableViewCellId, for: indexPath) as? MyStockViewTableCell
-        guard let cell = cell else { return UITableViewCell() }
-        return cell
+        let stock = self.myStocks[indexPath.row]
+        print(stock)
+        cell?.setup(myStock: stock)
+        
+        return cell ?? UITableViewCell()
     }
     
 }
 
 extension MyStockView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+        return cellHeight
     }
 }
 
@@ -133,17 +149,19 @@ private extension MyStockView {
     }
     
     func setLayoutConstraint() {
-        myStockVStackView.topAnchor.constraint(equalTo: topAnchor, constant: 15).isActive = true
-        myStockVStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
-        myStockVStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20).isActive = true
+        let inset: CGFloat = 16.0
+        myStockVStackView.topAnchor.constraint(equalTo: topAnchor, constant: inset).isActive = true
+        myStockVStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: inset).isActive = true
+        myStockVStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -inset).isActive = true
         
-        stockTableView.topAnchor.constraint(equalTo: myStockVStackView.bottomAnchor, constant: 15).isActive = true
-        stockTableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
-        stockTableView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20).isActive = true
-        stockTableView.heightAnchor.constraint(equalToConstant: CGFloat(cellCount * 50)).isActive = true
+        stockTableView.topAnchor.constraint(equalTo: myStockVStackView.bottomAnchor, constant: inset).isActive = true
+        stockTableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: inset).isActive = true
+        stockTableView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -inset).isActive = true
+        tableViewHeightConstraint = stockTableView.heightAnchor.constraint(equalToConstant: CGFloat(cellCount) * cellHeight)
+        tableViewHeightConstraint?.isActive = true
         
         dividendView.translatesAutoresizingMaskIntoConstraints = false
-        dividendView.topAnchor.constraint(equalTo: stockTableView.bottomAnchor, constant: 20).isActive = true
+        dividendView.topAnchor.constraint(equalTo: stockTableView.bottomAnchor, constant: inset).isActive = true
         dividendView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         dividendView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         dividendView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
