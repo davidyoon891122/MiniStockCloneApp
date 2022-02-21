@@ -10,7 +10,7 @@ import UIKit
 class DividendView: UIView {
     
     private let collectionViewCellId = "cellId"
-    
+    weak var delegate: HomeViewProtocol?
     private lazy var labelVStack: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -104,6 +104,10 @@ extension DividendView: UICollectionViewDataSource {
 extension DividendView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width / 3 - 20, height: 150.0)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate?.moveToDetailStockView()
     }
 }
 

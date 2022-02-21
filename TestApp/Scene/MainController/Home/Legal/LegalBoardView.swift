@@ -7,10 +7,6 @@
 
 import UIKit
 
-protocol HomeViewProtocol: NSObject {
-    func upScrollAction()
-}
-
 class LegalBoardView: UIView {
     weak var delegate: HomeViewProtocol?
     

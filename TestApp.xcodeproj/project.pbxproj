@@ -45,6 +45,8 @@
 		AD8B45E327C2FEA600005725 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = AD8B45E227C2FEA600005725 /* Alamofire */; };
 		AD8B45E527C2FEC700005725 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8B45E427C2FEC700005725 /* NetworkManager.swift */; };
 		AD8B45E727C2FF9E00005725 /* MyStock.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8B45E627C2FF9E00005725 /* MyStock.swift */; };
+		AD8B45EC27C3209400005725 /* HomeViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8B45EB27C3209400005725 /* HomeViewProtocol.swift */; };
+		AD8B45EE27C3217300005725 /* DetailStockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8B45ED27C3217300005725 /* DetailStockViewController.swift */; };
 		AD991DC727A3AE7000AA897B /* StockListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD991DC627A3AE7000AA897B /* StockListView.swift */; };
 		AD991DC927A3CC8000AA897B /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD991DC827A3CC8000AA897B /* MenuCollectionViewCell.swift */; };
 		ADA8B440279E470B003D5C98 /* MyStockViewTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA8B43F279E470B003D5C98 /* MyStockViewTableCell.swift */; };
@@ -111,6 +113,8 @@
 		AD85593227A27A30005BBA23 /* MenuColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuColor.swift; sourceTree = "<group>"; };
 		AD8B45E427C2FEC700005725 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		AD8B45E627C2FF9E00005725 /* MyStock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStock.swift; sourceTree = "<group>"; };
+		AD8B45EB27C3209400005725 /* HomeViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewProtocol.swift; sourceTree = "<group>"; };
+		AD8B45ED27C3217300005725 /* DetailStockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailStockViewController.swift; sourceTree = "<group>"; };
 		AD991DC627A3AE7000AA897B /* StockListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListView.swift; sourceTree = "<group>"; };
 		AD991DC827A3CC8000AA897B /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		ADA8B43F279E470B003D5C98 /* MyStockViewTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStockViewTableCell.swift; sourceTree = "<group>"; };
@@ -311,6 +315,8 @@
 				AD843DCD27BDC0E2006F974A /* ProfitShare */,
 				AD843DD027BDC2CE006F974A /* Currency */,
 				AD843DD327BDDE2F006F974A /* Legal */,
+				AD8B45F027C3229200005725 /* Protocols */,
+				AD8B45EF27C3228000005725 /* StockDetail */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -339,6 +345,22 @@
 				AD34BB452794E8C2001CD610 /* LoginView */,
 			);
 			path = Scene;
+			sourceTree = "<group>";
+		};
+		AD8B45EF27C3228000005725 /* StockDetail */ = {
+			isa = PBXGroup;
+			children = (
+				AD8B45ED27C3217300005725 /* DetailStockViewController.swift */,
+			);
+			path = StockDetail;
+			sourceTree = "<group>";
+		};
+		AD8B45F027C3229200005725 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				AD8B45EB27C3209400005725 /* HomeViewProtocol.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		AD991DC227A3ACFE00AA897B /* MenuOptions */ = {
@@ -616,6 +638,7 @@
 				AD85592F27A225EB005BBA23 /* HomeViewMenu.swift in Sources */,
 				AD34BB472794E95D001CD610 /* PasswordView.swift in Sources */,
 				AD27D1A72791652D009C8F91 /* AppDelegate.swift in Sources */,
+				AD8B45EC27C3209400005725 /* HomeViewProtocol.swift in Sources */,
 				AD991DC927A3CC8000AA897B /* MenuCollectionViewCell.swift in Sources */,
 				AD6A684727A110D8000D022C /* DividendView.swift in Sources */,
 				AD84C5832799459E00395772 /* InvestmentView.swift in Sources */,
@@ -640,6 +663,7 @@
 				AD7E657327B9CED100408BE6 /* StockListMainCollectionViewCell.swift in Sources */,
 				AD843DCC27BDC0DC006F974A /* ProfitShareView.swift in Sources */,
 				AD34BB442794E337001CD610 /* LoginViewController.swift in Sources */,
+				AD8B45EE27C3217300005725 /* DetailStockViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -43,6 +43,8 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
         stackView.backgroundColor = MenuColor.shared.lightGrayColor
         
         investmentView.delegate = self
+        myStockView.delegate = self
+        myStockView.setDividendDelegate(viewController: self)
         legalBoardView.delegate = self
         
         [investmentView, myStockView, stackListView, profitShareView, currencyView, legalBoardView]
@@ -72,6 +74,11 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
 }
 
 extension HomeViewController: HomeViewProtocol {
+    func moveToDetailStockView() {
+        let detailStockVC = DetailStockViewController()
+        navigationController?.pushViewController(detailStockVC, animated: true)
+    }
+    
     func upScrollAction() {
         UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: { [weak self] in
             self?.scrollView.contentOffset.y = -100

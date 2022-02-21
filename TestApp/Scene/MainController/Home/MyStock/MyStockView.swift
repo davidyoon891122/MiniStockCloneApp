@@ -19,6 +19,8 @@ class MyStockView: UIView {
     
     private let cellHeight: CGFloat = 60.0
     
+    weak var delegate: HomeViewProtocol?
+    
     private lazy var titleHStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.distribution = .fillProportionally
@@ -111,6 +113,10 @@ class MyStockView: UIView {
         tableViewHeightConstraint?.isActive = true
         stockTableView.reloadData()
     }
+    
+    func setDividendDelegate(viewController: HomeViewProtocol) {
+        dividendView.delegate = viewController
+    }
 }
 
 extension MyStockView: UITableViewDataSource {
@@ -137,6 +143,10 @@ extension MyStockView: UITableViewDataSource {
 extension MyStockView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return cellHeight
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        delegate?.moveToDetailStockView()
     }
 }
 
