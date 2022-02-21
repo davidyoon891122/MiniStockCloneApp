@@ -48,6 +48,7 @@
 		AD8B45EC27C3209400005725 /* HomeViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8B45EB27C3209400005725 /* HomeViewProtocol.swift */; };
 		AD8B45EE27C3217300005725 /* DetailStockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8B45ED27C3217300005725 /* DetailStockViewController.swift */; };
 		AD8B45F227C343E300005725 /* ProfitShareDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8B45F127C343E300005725 /* ProfitShareDetailViewController.swift */; };
+		AD8B45F427C3581900005725 /* CurrencyDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8B45F327C3581900005725 /* CurrencyDetailView.swift */; };
 		AD991DC727A3AE7000AA897B /* StockListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD991DC627A3AE7000AA897B /* StockListView.swift */; };
 		AD991DC927A3CC8000AA897B /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD991DC827A3CC8000AA897B /* MenuCollectionViewCell.swift */; };
 		ADA8B440279E470B003D5C98 /* MyStockViewTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA8B43F279E470B003D5C98 /* MyStockViewTableCell.swift */; };
@@ -117,6 +118,7 @@
 		AD8B45EB27C3209400005725 /* HomeViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewProtocol.swift; sourceTree = "<group>"; };
 		AD8B45ED27C3217300005725 /* DetailStockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailStockViewController.swift; sourceTree = "<group>"; };
 		AD8B45F127C343E300005725 /* ProfitShareDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfitShareDetailViewController.swift; sourceTree = "<group>"; };
+		AD8B45F327C3581900005725 /* CurrencyDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetailView.swift; sourceTree = "<group>"; };
 		AD991DC627A3AE7000AA897B /* StockListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListView.swift; sourceTree = "<group>"; };
 		AD991DC827A3CC8000AA897B /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		ADA8B43F279E470B003D5C98 /* MyStockViewTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStockViewTableCell.swift; sourceTree = "<group>"; };
@@ -285,6 +287,7 @@
 			isa = PBXGroup;
 			children = (
 				AD843DCE27BDC2C8006F974A /* CurrencyView.swift */,
+				AD8B45F327C3581900005725 /* CurrencyDetailView.swift */,
 			);
 			path = Currency;
 			sourceTree = "<group>";
@@ -645,6 +648,7 @@
 				AD991DC927A3CC8000AA897B /* MenuCollectionViewCell.swift in Sources */,
 				AD6A684727A110D8000D022C /* DividendView.swift in Sources */,
 				AD84C5832799459E00395772 /* InvestmentView.swift in Sources */,
+				AD8B45F427C3581900005725 /* CurrencyDetailView.swift in Sources */,
 				AD27D1A92791652D009C8F91 /* SceneDelegate.swift in Sources */,
 				AD843DCF27BDC2C8006F974A /* CurrencyView.swift in Sources */,
 				AD8B45E527C2FEC700005725 /* NetworkManager.swift in Sources */,

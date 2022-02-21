@@ -207,6 +207,5 @@ private extension PasswordView {
         numberCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         numberCollectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
         numberCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        
     }
 }

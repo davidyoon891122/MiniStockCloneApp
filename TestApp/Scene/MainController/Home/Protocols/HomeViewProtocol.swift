@@ -11,4 +11,6 @@ protocol HomeViewProtocol: NSObject {
     func upScrollAction()
     func moveToDetailStockView()
     func moveToProfitShareDetailView()
+    func openCurrenyDetailView()
+    func closeCurrenyDetailView()
 }

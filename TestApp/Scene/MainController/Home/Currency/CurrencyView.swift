@@ -8,6 +8,8 @@
 import UIKit
 
 class CurrencyView: UIView {
+    
+    weak var delegate: HomeViewProtocol?
     private lazy var currencyHStackView: UIStackView = {
         let stackView = UIStackView()
         [leftVStackView, rightVStackView]
@@ -125,5 +127,6 @@ private extension CurrencyView {
     
     @objc func didTapCurrencyView() {
         print("currencyView is tapped...")
+        delegate?.openCurrenyDetailView()
     }
 }
