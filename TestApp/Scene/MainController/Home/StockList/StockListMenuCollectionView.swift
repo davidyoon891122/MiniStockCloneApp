@@ -30,9 +30,7 @@ class StockListMenuCollectionView: UICollectionView {
     }
     
     func moveMenuWithStockListMainCollectionView(indexPath: IndexPath) {
-        print(indexPath)
         selectItem(at: indexPath, animated: true, scrollPosition: .right)
-        
     }
     
 }

@@ -9,6 +9,8 @@ import UIKit
 
 class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
     private let networkManager = NetworkManager()
+    private let blackView = UIView()
+    private let currencyDetailView = CurrencyDetailView()
     
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -72,9 +74,10 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
 }
 
 extension HomeViewController: HomeViewProtocol {
-    func moveToProfitShareDetailView() {
-        let profitShareDetailVC = ProfitShareDetailViewController()
-        navigationController?.pushViewController(profitShareDetailVC, animated: true)
+    func upScrollAction() {
+        UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: { [weak self] in
+            self?.scrollView.contentOffset.y = -50
+        }, completion: nil)
     }
     
     func moveToDetailStockView() {
@@ -82,10 +85,36 @@ extension HomeViewController: HomeViewProtocol {
         navigationController?.pushViewController(detailStockVC, animated: true)
     }
     
-    func upScrollAction() {
-        UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: { [weak self] in
-            self?.scrollView.contentOffset.y = -100
+    func moveToProfitShareDetailView() {
+        let profitShareDetailVC = ProfitShareDetailViewController()
+        navigationController?.pushViewController(profitShareDetailVC, animated: true)
+    }
+    
+    func openCurrenyDetailView() {
+        blackView.backgroundColor = UIColor(white: 0.2, alpha: 0.8)
+        guard let window = UIApplication.shared.windows.first(where: {$0.isKeyWindow}) else { return }
+        
+        blackView.frame = window.frame
+        blackView.alpha = 0
+        blackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapBlackView)))
+        
+        [blackView, currencyDetailView]
+            .forEach {
+                window.addSubview($0)
+            }
+        let height: CGFloat = 500
+        let currencyDetailViewYOffset = window.frame.height - height
+        
+        currencyDetailView.frame = CGRect(x: 0, y: window.frame.height, width: window.frame.width, height: height)
+        
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseInOut, animations: {
+            self.blackView.alpha = 1
+            self.currencyDetailView.frame = CGRect(x: 0, y: currencyDetailViewYOffset, width: window.frame.width, height: height)
         }, completion: nil)
+    }
+    
+    func closeCurrenyDetailView() {
+        tapBlackView()
     }
 }
 
@@ -145,7 +174,6 @@ private extension HomeViewController {
     }
     
     @objc func tapInvestmentView() {
-        print("Investment View tapped...")
         tabBarController?.selectedIndex = 3
     }
     
@@ -156,5 +184,17 @@ private extension HomeViewController {
         legalBoardView.delegate = self
         stockListView.delegate = self
         profitShareView.delegate = self
+        currencyView.delegate = self
+        currencyDetailView.delegate = self
+    }
+    
+    @objc func tapBlackView() {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseInOut, animations: {
+            self.blackView.alpha = 0
+            
+            guard let window = UIApplication.shared.windows.first(where: {$0.isKeyWindow}) else { return }
+            
+            self.currencyDetailView.frame = CGRect(x: 0, y: window.frame.height, width: self.currencyDetailView.frame.width, height: self.currencyDetailView.frame.height)
+        }, completion: nil)
     }
 }
