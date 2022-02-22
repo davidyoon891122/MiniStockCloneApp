@@ -118,7 +118,6 @@ class PasswordView: UIView {
         layer.masksToBounds = true
         addSubviews()
         setLayoutConstraint()
-        print("PasswordView init")
     }
     
     required init?(coder: NSCoder) {
@@ -157,7 +156,6 @@ extension PasswordView: UICollectionViewDataSource {
         let cell = collectionView.cellForItem(at: indexPath) as? PasswordNumberCollectionViewCell
         
         guard let text = cell?.numberLabel.text else { return }
-        print(text)
         
         if text == "◀︎" && userPassword.count > 0 {
             userPassword.remove(at: userPassword.index(before: userPassword.endIndex))

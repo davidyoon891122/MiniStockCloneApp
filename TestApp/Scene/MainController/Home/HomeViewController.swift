@@ -174,7 +174,6 @@ private extension HomeViewController {
     }
     
     @objc func tapInvestmentView() {
-        print("Investment View tapped...")
         tabBarController?.selectedIndex = 3
     }
     

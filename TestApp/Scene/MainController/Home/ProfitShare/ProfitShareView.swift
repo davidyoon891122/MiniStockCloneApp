@@ -85,7 +85,6 @@ private extension ProfitShareView {
     }
     
     @objc func tapProfitShareView() {
-        print("profitShareView is tapped")
         delegate?.moveToProfitShareDetailView()
     }
 }

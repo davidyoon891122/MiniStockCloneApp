@@ -135,6 +135,9 @@ class CurrencyDetailView: UIView {
         let data = LineChartData()
         data.addDataSet(line)
         chart.data = data
+        chart.rightAxis.drawAxisLineEnabled = false
+        chart.rightAxis.drawLabelsEnabled = false
+        chart.xAxis.labelPosition = .bottom
         chart.translatesAutoresizingMaskIntoConstraints = false
         return chart
     }()
@@ -194,7 +197,6 @@ private extension CurrencyDetailView {
     }
     
     @objc func tapConfirmButton() {
-        print("did tap conformButton")
         delegate?.closeCurrenyDetailView()
     }
 }

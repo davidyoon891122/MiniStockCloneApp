@@ -126,7 +126,6 @@ private extension CurrencyView {
     }
     
     @objc func didTapCurrencyView() {
-        print("currencyView is tapped...")
         delegate?.openCurrenyDetailView()
     }
 }

@@ -33,10 +33,7 @@ class TestAppTests: XCTestCase {
             guard let randomNumber = numbers.randomElement() else {
                 return
             }
-            
             numbers.removeAll(where: {$0 == randomNumber})
-            
-            print("randomNumber: \(randomNumber), result array: \(numbers)")
         }
         
     }

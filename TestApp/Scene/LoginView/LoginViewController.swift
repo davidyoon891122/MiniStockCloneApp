@@ -77,7 +77,6 @@ class LoginViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         loginButtonTapped()
-        print("viewWillAppear")
     }
     
     deinit {
@@ -144,7 +143,6 @@ extension LoginViewController {
     }
     
     @objc func handleAppDidBecomeActiveNotification(notification: Notification) {
-        print("Become Active")
         loginButtonTapped()
     }
 }
