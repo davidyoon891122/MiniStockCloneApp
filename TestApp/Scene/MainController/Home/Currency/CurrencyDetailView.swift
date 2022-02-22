@@ -83,12 +83,21 @@ class CurrencyDetailView: UIView {
     
     private lazy var valueHStackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.distribution = .fillProportionally
-        stackView.alignment = .leading
+        stackView.distribution = .equalSpacing
         [valueChangeLabel, percentChangeLabel, prevDayLabel]
             .forEach {
-                stackView.addArrangedSubview($0)
+                stackView.addSubview($0)
             }
+        
+        valueChangeLabel.centerYAnchor.constraint(equalTo: stackView.centerYAnchor).isActive = true
+        valueChangeLabel.leadingAnchor.constraint(equalTo: stackView.leadingAnchor).isActive = true
+        
+        percentChangeLabel.centerYAnchor.constraint(equalTo: stackView.centerYAnchor).isActive = true
+        percentChangeLabel.leadingAnchor.constraint(equalTo: valueChangeLabel.trailingAnchor, constant: 10).isActive = true
+        
+        prevDayLabel.centerYAnchor.constraint(equalTo: stackView.centerYAnchor).isActive = true
+        prevDayLabel.leadingAnchor.constraint(equalTo: percentChangeLabel.trailingAnchor, constant: 10).isActive = true
+
         return stackView
     }()
     
@@ -97,6 +106,7 @@ class CurrencyDetailView: UIView {
         label.text = "▼ 0.70원"
         label.textColor = .blue
         label.font = .systemFont(ofSize: 16, weight: .medium)
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
@@ -105,6 +115,7 @@ class CurrencyDetailView: UIView {
         label.text = "(-0.06%)"
         label.textColor = .blue
         label.font = .systemFont(ofSize: 16, weight: .medium)
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
@@ -113,15 +124,9 @@ class CurrencyDetailView: UIView {
         label.text = "전일 대비"
         label.textColor = .gray
         label.font = .systemFont(ofSize: 14, weight: .medium)
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
-//    private lazy var chartView: UIView = {
-//        let view = UIView()
-//        view.backgroundColor = .blue
-//        view.translatesAutoresizingMaskIntoConstraints = false
-//        return view
-//    }()
     
     private lazy var lineChartView: LineChartView  = {
         let chart = LineChartView()
@@ -135,9 +140,23 @@ class CurrencyDetailView: UIView {
         let data = LineChartData()
         data.addDataSet(line)
         chart.data = data
+        // left
+        chart.leftAxis.drawLabelsEnabled = false
+        chart.leftAxis.drawGridLinesEnabled = false
+        chart.leftAxis.drawAxisLineEnabled = false
+        // right
         chart.rightAxis.drawAxisLineEnabled = false
         chart.rightAxis.drawLabelsEnabled = false
+        chart.rightAxis.drawGridLinesEnabled = false
+        // x
         chart.xAxis.labelPosition = .bottom
+        chart.xAxis.drawGridLinesEnabled = false
+        chart.xAxis.drawAxisLineEnabled = false
+        chart.xAxis.drawLabelsEnabled = false
+        
+        chart.doubleTapToZoomEnabled = false
+        chart.legend.enabled = false
+        
         chart.translatesAutoresizingMaskIntoConstraints = false
         return chart
     }()
@@ -184,7 +203,7 @@ private extension CurrencyDetailView {
         currencyVStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16).isActive = true
         currencyVStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16).isActive = true
         
-        lineChartView.topAnchor.constraint(equalTo: currencyVStackView.bottomAnchor).isActive = true
+        lineChartView.topAnchor.constraint(equalTo: currencyVStackView.bottomAnchor, constant: 8).isActive = true
         lineChartView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         lineChartView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         lineChartView.heightAnchor.constraint(equalToConstant: 250).isActive = true

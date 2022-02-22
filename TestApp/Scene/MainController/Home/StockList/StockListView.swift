@@ -64,7 +64,7 @@ class StackListView: UIView {
 
 extension StackListView: StockListViewProtocol {
     func selectMenu(indexPath: IndexPath) {
-        collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .right)
+        collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .right)
     }
     
 }
