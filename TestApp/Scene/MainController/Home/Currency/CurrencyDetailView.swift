@@ -6,10 +6,15 @@
 //
 
 import UIKit
+import Charts
 
 class CurrencyDetailView: UIView {
     
     weak var delegate: HomeViewProtocol?
+    
+    // MARK: - Chart Data Set
+    private let years: [Double] = [2000, 2001, 2002, 2004, 2005, 2006]
+    private let currency: [Double] = [1219.2, 1199.23, 1320.32, 1050.85, 1111.92, 1410.1]
     
     private lazy var topDragBar: UIView = {
         let view = UIView()
@@ -111,11 +116,27 @@ class CurrencyDetailView: UIView {
         return label
     }()
     
-    private lazy var chartView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .blue
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
+//    private lazy var chartView: UIView = {
+//        let view = UIView()
+//        view.backgroundColor = .blue
+//        view.translatesAutoresizingMaskIntoConstraints = false
+//        return view
+//    }()
+    
+    private lazy var lineChartView: LineChartView  = {
+        let chart = LineChartView()
+        var lineChartEntry = [ChartDataEntry]()
+        for index in 0..<years.count {
+            let value = ChartDataEntry(x: years[index], y: currency[index])
+            lineChartEntry.append(value)
+        }
+        let line = LineChartDataSet(entries: lineChartEntry, label: "Currency")
+        line.colors = [MenuColor.shared.mintColor]
+        let data = LineChartData()
+        data.addDataSet(line)
+        chart.data = data
+        chart.translatesAutoresizingMaskIntoConstraints = false
+        return chart
     }()
     
     private lazy var confirmButton: UIButton = {
@@ -144,7 +165,7 @@ class CurrencyDetailView: UIView {
 
 private extension CurrencyDetailView {
     func addSubviews() {
-        [topDragBar, currencyVStackView, chartView, confirmButton]
+        [topDragBar, currencyVStackView, lineChartView, confirmButton]
             .forEach {
                 addSubview($0)
             }
@@ -160,12 +181,12 @@ private extension CurrencyDetailView {
         currencyVStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16).isActive = true
         currencyVStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16).isActive = true
         
-        chartView.topAnchor.constraint(equalTo: currencyVStackView.bottomAnchor).isActive = true
-        chartView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        chartView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        chartView.heightAnchor.constraint(equalToConstant: 250).isActive = true
+        lineChartView.topAnchor.constraint(equalTo: currencyVStackView.bottomAnchor).isActive = true
+        lineChartView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        lineChartView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        lineChartView.heightAnchor.constraint(equalToConstant: 250).isActive = true
         
-        confirmButton.topAnchor.constraint(equalTo: chartView.bottomAnchor, constant: 5).isActive = true
+        confirmButton.topAnchor.constraint(equalTo: lineChartView.bottomAnchor, constant: 5).isActive = true
         confirmButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16).isActive = true
         confirmButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16).isActive = true
         confirmButton.heightAnchor.constraint(equalToConstant: 50).isActive = true

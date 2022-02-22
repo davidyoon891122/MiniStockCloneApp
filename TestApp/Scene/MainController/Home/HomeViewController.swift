@@ -76,7 +76,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
 extension HomeViewController: HomeViewProtocol {
     func upScrollAction() {
         UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: { [weak self] in
-            self?.scrollView.contentOffset.y = -100
+            self?.scrollView.contentOffset.y = -50
         }, completion: nil)
     }
     
@@ -190,7 +190,6 @@ private extension HomeViewController {
     }
     
     @objc func tapBlackView() {
-        print("blackView is tapped...")
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseInOut, animations: {
             self.blackView.alpha = 0
             
@@ -198,6 +197,5 @@ private extension HomeViewController {
             
             self.currencyDetailView.frame = CGRect(x: 0, y: window.frame.height, width: self.currencyDetailView.frame.width, height: self.currencyDetailView.frame.height)
         }, completion: nil)
-        
     }
 }
