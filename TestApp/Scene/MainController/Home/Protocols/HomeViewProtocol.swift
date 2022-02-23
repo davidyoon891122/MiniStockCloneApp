@@ -13,4 +13,6 @@ protocol HomeViewProtocol: NSObject {
     func moveToProfitShareDetailView()
     func openCurrenyDetailView()
     func closeCurrenyDetailView()
+    func openSortingButtonView()
+    func sortingButtonSelected(menu: MyStockSortingMenu)
 }

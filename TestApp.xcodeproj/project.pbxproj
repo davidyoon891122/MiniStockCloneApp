@@ -50,6 +50,7 @@
 		AD8B45F227C343E300005725 /* ProfitShareDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8B45F127C343E300005725 /* ProfitShareDetailViewController.swift */; };
 		AD8B45F427C3581900005725 /* CurrencyDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8B45F327C3581900005725 /* CurrencyDetailView.swift */; };
 		AD8CE34027C4515900C8F2CC /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = AD8CE33F27C4515900C8F2CC /* Charts */; };
+		AD8CE38327C4A26800C8F2CC /* SortingSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8CE38227C4A26800C8F2CC /* SortingSelectView.swift */; };
 		AD991DC727A3AE7000AA897B /* StockListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD991DC627A3AE7000AA897B /* StockListView.swift */; };
 		AD991DC927A3CC8000AA897B /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD991DC827A3CC8000AA897B /* MenuCollectionViewCell.swift */; };
 		ADA8B440279E470B003D5C98 /* MyStockViewTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA8B43F279E470B003D5C98 /* MyStockViewTableCell.swift */; };
@@ -120,6 +121,7 @@
 		AD8B45ED27C3217300005725 /* DetailStockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailStockViewController.swift; sourceTree = "<group>"; };
 		AD8B45F127C343E300005725 /* ProfitShareDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfitShareDetailViewController.swift; sourceTree = "<group>"; };
 		AD8B45F327C3581900005725 /* CurrencyDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetailView.swift; sourceTree = "<group>"; };
+		AD8CE38227C4A26800C8F2CC /* SortingSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingSelectView.swift; sourceTree = "<group>"; };
 		AD991DC627A3AE7000AA897B /* StockListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListView.swift; sourceTree = "<group>"; };
 		AD991DC827A3CC8000AA897B /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		ADA8B43F279E470B003D5C98 /* MyStockViewTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStockViewTableCell.swift; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 				AD0E7A98279A93AC00F1A9A0 /* MyStockView.swift */,
 				AD0E7A9A279A94FB00F1A9A0 /* MyStockSortingMenu.swift */,
 				ADA8B43F279E470B003D5C98 /* MyStockViewTableCell.swift */,
+				AD8CE38227C4A26800C8F2CC /* SortingSelectView.swift */,
 			);
 			path = MyStock;
 			sourceTree = "<group>";
@@ -668,6 +671,7 @@
 				AD6A684227A0F02F000D022C /* SeparatorView.swift in Sources */,
 				AD843DD227BDD466006F974A /* LegalBoardView.swift in Sources */,
 				AD85593327A27A30005BBA23 /* MenuColor.swift in Sources */,
+				AD8CE38327C4A26800C8F2CC /* SortingSelectView.swift in Sources */,
 				AD34BB422794E045001CD610 /* HomeViewController.swift in Sources */,
 				AD6A684427A104AB000D022C /* SwitchMenu.swift in Sources */,
 				AD6A684927A129B4000D022C /* DividendCollectionViewCell.swift in Sources */,

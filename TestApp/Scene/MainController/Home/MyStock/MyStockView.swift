@@ -8,10 +8,11 @@
 import UIKit
 
 class MyStockView: UIView {
-    
     private let tableViewCellId = "tableViewCellId"
     private var cellCount: Int = 1
     private let dividendView = DividendView()
+    
+    private var sortingMenu: MyStockSortingMenu = .orderganada
     
     private var myStocks: [MyStock] = []
     
@@ -52,8 +53,9 @@ class MyStockView: UIView {
     
     private lazy var sortingButton: UIButton = {
         let button = UIButton()
-        button.setTitle(MyStockSortingMenu.orderganada.text, for: .normal)
+        button.setTitle(sortingMenu.text, for: .normal)
         button.setTitleColor(.gray, for: .normal)
+        button.addTarget(self, action: #selector(tapSortingButton), for: .touchUpInside)
         button.titleLabel?.font = .systemFont(ofSize: 15, weight: .medium)
         return button
     }()
@@ -117,6 +119,16 @@ class MyStockView: UIView {
     func setDividendDelegate(viewController: HomeViewProtocol) {
         dividendView.delegate = viewController
     }
+    
+    func setSortingMenu(menu: MyStockSortingMenu) {
+        sortingMenu = menu
+        sortingButton.setTitle(sortingMenu.text, for: .normal)
+        
+    }
+    
+    func getCurrentSortingMenu() -> MyStockSortingMenu {
+        return sortingMenu
+    }
 }
 
 extension MyStockView: UITableViewDataSource {
@@ -175,5 +187,10 @@ private extension MyStockView {
         dividendView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         dividendView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         
+    }
+    
+    @objc func tapSortingButton() {
+        print("did tap sortingButton.")
+        delegate?.openSortingButtonView()
     }
 }
