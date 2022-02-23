@@ -113,6 +113,7 @@ class MyStockView: UIView {
         tableViewHeightConstraint?.isActive = false
         tableViewHeightConstraint = stockTableView.heightAnchor.constraint(equalToConstant: CGFloat(cellCount) * cellHeight)
         tableViewHeightConstraint?.isActive = true
+        
         stockTableView.reloadData()
     }
     

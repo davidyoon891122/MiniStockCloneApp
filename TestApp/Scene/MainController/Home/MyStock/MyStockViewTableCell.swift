@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class MyStockViewTableCell: UITableViewCell {
     
@@ -124,6 +125,7 @@ class MyStockViewTableCell: UITableViewCell {
         stockQuantityLabel.text = "\(myStock.stockQuantity)주"
         profitLabel.text = "\(commaInString(price: myStock.valueChange))원"
         percentageLabel.text = String(format: "%.2f", myStock.percentChange) + "%"
+        stockImageView.kf.setImage(with: URL(string: myStock.imageURL ?? ""))
     }
     
 }

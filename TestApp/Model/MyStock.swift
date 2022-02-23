@@ -13,4 +13,5 @@ struct MyStock: Decodable {
     let stockQuantity: Float
     let valueChange: Int
     let percentChange: Float
+    let imageURL: String?
 }
