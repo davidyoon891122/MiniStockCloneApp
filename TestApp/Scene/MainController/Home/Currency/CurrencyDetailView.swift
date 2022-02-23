@@ -19,6 +19,7 @@ class CurrencyDetailView: UIView {
     private lazy var topDragBar: UIView = {
         let view = UIView()
         view.backgroundColor = .lightGray
+        view.layer.cornerRadius = 2
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -194,7 +195,7 @@ private extension CurrencyDetailView {
     }
     
     func setLayoutConstraints() {
-        topDragBar.topAnchor.constraint(equalTo: topAnchor, constant: 5).isActive = true
+        topDragBar.topAnchor.constraint(equalTo: topAnchor, constant: 12).isActive = true
         topDragBar.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         topDragBar.widthAnchor.constraint(equalToConstant: 50).isActive = true
         topDragBar.heightAnchor.constraint(equalToConstant: 5).isActive = true
