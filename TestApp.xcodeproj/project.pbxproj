@@ -284,6 +284,7 @@
 			isa = PBXGroup;
 			children = (
 				AD843DCB27BDC0DC006F974A /* ProfitShareView.swift */,
+				AD8B45F127C343E300005725 /* ProfitShareDetailViewController.swift */,
 			);
 			path = ProfitShare;
 			sourceTree = "<group>";
@@ -327,7 +328,6 @@
 				AD843DD327BDDE2F006F974A /* Legal */,
 				AD8B45F027C3229200005725 /* Protocols */,
 				AD8B45EF27C3228000005725 /* StockDetail */,
-				AD8B45F127C343E300005725 /* ProfitShareDetailViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
