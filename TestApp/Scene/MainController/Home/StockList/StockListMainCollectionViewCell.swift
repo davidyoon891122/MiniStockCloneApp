@@ -12,6 +12,7 @@ class StockListMainCollectionViewCell: UICollectionViewCell {
     private var menus: [String]?
     private let colors: [UIColor] = [.red, .orange, .yellow, .green, .blue, .purple, .black, .white, .systemPink, .gray]
     private let detailCellHeight: CGFloat = 65.0
+    private var increasedStocks: [IncreaseStockModel] = []
     weak var delegate: HomeViewProtocol?
     private lazy var sortingButtonHStackView: UIStackView = {
         let stackView = UIStackView()
@@ -80,19 +81,23 @@ class StockListMainCollectionViewCell: UICollectionViewCell {
         self.menus = menus
         addSubviews()
         setLayoutConstraints()
+        NetworkManager().requestIncreaseList { [weak self] increaseStocks in
+            self?.increasedStocks = increaseStocks
+            self?.collectionView.reloadData()
+        }
     }
 }
 
 extension StockListMainCollectionViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return increasedStocks.count
         
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StockListDetailViewCell.identifier, for: indexPath) as? StockListDetailViewCell
-        
-        cell?.setup()
+        let stock = increasedStocks[indexPath.row]
+        cell?.setup(stock: stock)
         
         return cell ?? UICollectionViewCell()
     }

@@ -52,6 +52,7 @@
 		AD8CE34027C4515900C8F2CC /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = AD8CE33F27C4515900C8F2CC /* Charts */; };
 		AD8CE38327C4A26800C8F2CC /* SortingSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8CE38227C4A26800C8F2CC /* SortingSelectView.swift */; };
 		AD93D08327C733750004C44E /* DividendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD93D08227C733750004C44E /* DividendModel.swift */; };
+		AD93D08527C747E10004C44E /* IncreaseStockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD93D08427C747E10004C44E /* IncreaseStockModel.swift */; };
 		AD950E4727C5EA7D00C05584 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = AD950E4627C5EA7D00C05584 /* Kingfisher */; };
 		AD950E4927C6026400C05584 /* ProfitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD950E4827C6026400C05584 /* ProfitModel.swift */; };
 		AD950E4B27C60AEF00C05584 /* Extension+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD950E4A27C60AEF00C05584 /* Extension+.swift */; };
@@ -127,6 +128,7 @@
 		AD8B45F327C3581900005725 /* CurrencyDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetailView.swift; sourceTree = "<group>"; };
 		AD8CE38227C4A26800C8F2CC /* SortingSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingSelectView.swift; sourceTree = "<group>"; };
 		AD93D08227C733750004C44E /* DividendModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividendModel.swift; sourceTree = "<group>"; };
+		AD93D08427C747E10004C44E /* IncreaseStockModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncreaseStockModel.swift; sourceTree = "<group>"; };
 		AD950E4827C6026400C05584 /* ProfitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfitModel.swift; sourceTree = "<group>"; };
 		AD950E4A27C60AEF00C05584 /* Extension+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+.swift"; sourceTree = "<group>"; };
 		AD991DC627A3AE7000AA897B /* StockListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListView.swift; sourceTree = "<group>"; };
@@ -355,6 +357,7 @@
 				AD8B45E627C2FF9E00005725 /* MyStockModel.swift */,
 				AD950E4827C6026400C05584 /* ProfitModel.swift */,
 				AD93D08227C733750004C44E /* DividendModel.swift */,
+				AD93D08427C747E10004C44E /* IncreaseStockModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -691,6 +694,7 @@
 				AD34BB422794E045001CD610 /* HomeViewController.swift in Sources */,
 				AD6A684427A104AB000D022C /* SwitchMenu.swift in Sources */,
 				AD6A684927A129B4000D022C /* DividendCollectionViewCell.swift in Sources */,
+				AD93D08527C747E10004C44E /* IncreaseStockModel.swift in Sources */,
 				AD8B45E727C2FF9E00005725 /* MyStockModel.swift in Sources */,
 				AD7E657327B9CED100408BE6 /* StockListMainCollectionViewCell.swift in Sources */,
 				AD843DCC27BDC0DC006F974A /* ProfitShareView.swift in Sources */,

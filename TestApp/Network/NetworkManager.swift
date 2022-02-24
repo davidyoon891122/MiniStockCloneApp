@@ -56,7 +56,21 @@ struct NetworkManager {
             }
             .resume()
     }
-        
+    
+    func requestIncreaseList(completionHandler: @escaping ([IncreaseStockModel]) -> Void) {
+        guard let url = URL(string: baseURL + "increase-list") else { return }
+        AF.request(url, method: .get)
+            .responseDecodable(of: [IncreaseStockModel].self) { response in
+                switch response.result {
+                case .success(let result):
+                    completionHandler(result)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+            .resume()
+    }
+    
     func requestMyStockWithoutAF(completionHandler: @escaping (([MyStockModel]) -> Void)) {
         guard let url = URL(string: baseURL + "my-stock") else { return }
         

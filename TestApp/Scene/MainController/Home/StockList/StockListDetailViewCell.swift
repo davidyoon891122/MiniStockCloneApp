@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class StockListDetailViewCell: UICollectionViewCell {
     static let identifier = "StockListDetailViewCell"
@@ -42,6 +43,7 @@ class StockListDetailViewCell: UICollectionViewCell {
         let label = UILabel()
         label.text = "2,390원"
         label.textColor = .label
+        label.textAlignment = .right
         label.font = .systemFont(ofSize: 20, weight: .bold)
         return label
     }()
@@ -106,9 +108,14 @@ class StockListDetailViewCell: UICollectionViewCell {
         return separator
     }()
     
-    func setup() {
+    func setup(stock: IncreaseStockModel) {
         addSubviews()
         setLayoutConstraints()
+        stockNameLabel.text = stock.stockName
+        stockQuantityLabel.text = stock.stockCode
+        stockPriceLabel.text = stock.currentPrice.commaInString() + "원"
+        percentageLabel.text = stock.percentChange.toStringWithFormat(format: 2) + "%"
+        stockImageView.kf.setImage(with: URL(string: stock.imageURL ?? ""))
     }
 }
 
