@@ -16,3 +16,9 @@ extension Int {
         return numberFormatter.string(from: self as NSNumber)!
     }
 }
+
+extension Float {
+    func toStringWithFormat(format: Int) -> String {
+        return String(format: "%.\(format)f", self)
+    }
+}

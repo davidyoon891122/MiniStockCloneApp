@@ -119,12 +119,12 @@ class MyStockViewTableCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setup(myStock: MyStock) {
+    func setup(myStock: MyStockModel) {
         stockNameLabel.text = "\(myStock.stockName)"
         stockPriceLabel.text = myStock.currentPrice.commaInString() + "원"
         stockQuantityLabel.text = "\(myStock.stockQuantity)주"
         profitLabel.text = myStock.valueChange.commaInString() + "원"
-        percentageLabel.text = String(format: "%.2f", myStock.percentChange) + "%"
+        percentageLabel.text = myStock.percentChange.toStringWithFormat(format: 2) + "%"
         stockImageView.kf.setImage(with: URL(string: myStock.imageURL ?? ""))
     }
     

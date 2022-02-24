@@ -64,14 +64,18 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
         setLayoutConstraint()
         
         networkManager.requestMyStock { [weak self] myStocks in
-            
+
             self?.myStockView.setupData(myStocks: myStocks)
         }
         
         networkManager.requestProfit { [weak self] myProfit in
-            print(myProfit)
             self?.investmentView.setupData(profit: myProfit)
         }
+        
+        networkManager.requestDividendList {[weak self] dividends in
+            self?.myStockView.setupDividendData(dividends: dividends)
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
