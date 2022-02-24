@@ -20,6 +20,12 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
         return scrollView
     }()
     
+    private lazy var refreshControl: UIRefreshControl = {
+        let control = UIRefreshControl()
+        control.addTarget(self, action: #selector(pullScrollForRefresh), for: .valueChanged)
+        return control
+    }()
+    
     private lazy var contentView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -68,6 +74,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
         configureNavigation()
         addSubviews()
         setLayoutConstraint()
+        scrollView.refreshControl = refreshControl
         
         indicatorView.startAnimating()
         networkManager.requestMyStock { [weak self] myStocks in
@@ -255,5 +262,23 @@ private extension HomeViewController {
             
             self.sortingSelectView.frame = CGRect(x: 0, y: window.frame.height, width: self.sortingSelectView.frame.width, height: self.sortingSelectView.frame.height)
         }, completion: nil)
+    }
+    
+    @objc func pullScrollForRefresh() {
+        indicatorView.startAnimating()
+        networkManager.requestMyStock { [weak self] myStocks in
+
+            self?.myStockView.setupData(myStocks: myStocks)
+        }
+        
+        networkManager.requestProfit { [weak self] myProfit in
+            self?.investmentView.setupData(profit: myProfit)
+        }
+        
+        networkManager.requestDividendList {[weak self] dividends in
+            self?.myStockView.setupDividendData(dividends: dividends)
+            self?.indicatorView.stopAnimating()
+            self?.refreshControl.endRefreshing()
+        }
     }
 }
