@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class DividendCollectionViewCell: UICollectionViewCell {
     private lazy var stockImageView: UIImageView = {
@@ -22,6 +23,8 @@ class DividendCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.text = "에이티앤티"
         label.textColor = .label
+        label.numberOfLines = 2
+        label.sizeToFit()
         label.font = .systemFont(ofSize: 15, weight: .light)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -68,6 +71,13 @@ class DividendCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func setupData(dividend: DividendModel) {
+        stockImageView.kf.setImage(with: URL(string: dividend.imageURL ?? ""))
+        stockNameLabel.text = dividend.stockName
+        dividendPercentageLabel.text = "연 " + dividend.percentChange.toStringWithFormat(format: 2) + "%"
+        priceLabel.text = dividend.currentPrice.commaInString()
+        dateLabel.text = dividend.exDividendDate
+    }
 }
 
 private extension DividendCollectionViewCell {

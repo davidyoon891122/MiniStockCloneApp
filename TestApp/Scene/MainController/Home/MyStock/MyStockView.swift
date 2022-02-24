@@ -14,7 +14,7 @@ class MyStockView: UIView {
     
     private var sortingMenu: MyStockSortingMenu = .orderganada
     
-    private var myStocks: [MyStock] = []
+    private var myStocks: [MyStockModel] = []
     
     private var tableViewHeightConstraint: NSLayoutConstraint?
     
@@ -107,7 +107,7 @@ class MyStockView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupData(myStocks: [MyStock]) {
+    func setupData(myStocks: [MyStockModel]) {
         self.myStocks = myStocks
         self.cellCount = myStocks.count
         tableViewHeightConstraint?.isActive = false
@@ -115,6 +115,10 @@ class MyStockView: UIView {
         tableViewHeightConstraint?.isActive = true
         
         stockTableView.reloadData()
+    }
+    
+    func setupDividendData(dividends: [DividendModel]) {
+        self.dividendView.setupData(dividends: dividends)
     }
     
     func setDividendDelegate(viewController: HomeViewProtocol) {
