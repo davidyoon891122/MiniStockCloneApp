@@ -52,7 +52,7 @@ class InvestmentView: UIView {
         let valueStringAttribute = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 30, weight: .heavy)]
         let wonStringAttribute = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 25, weight: .medium)]
         
-        let value = NSMutableAttributedString(string: "2,447", attributes: valueStringAttribute)
+        let value = NSMutableAttributedString(string: "3,480", attributes: valueStringAttribute)
         let won = NSMutableAttributedString(string: "원", attributes: wonStringAttribute)
         
         value.append(won)
@@ -138,6 +138,23 @@ class InvestmentView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setupData(profit: ProfitModel) {
+        titleLabel.text = "\(profit.userName)님의\n투자현황입니다."
+        
+        let valueStringAttribute = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 30, weight: .heavy)]
+        let wonStringAttribute = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 25, weight: .medium)]
+        
+        let value = NSMutableAttributedString(string: profit.totalAsset.commaInString(), attributes: valueStringAttribute)
+        let won = NSMutableAttributedString(string: "원", attributes: wonStringAttribute)
+        
+        value.append(won)
+        
+        valueLabel.attributedText = value
+        changedValueLabel.text = profit.valueChange.commaInString()
+        percentageLabel.text = "(+\(String(format: "%.2f", profit.percentChange))%)"
+        baseDateLabel.text = profit.referenceDay + " 기준"
     }
 }
 

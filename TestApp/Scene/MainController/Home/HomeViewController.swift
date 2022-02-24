@@ -62,13 +62,19 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
         configureNavigation()
         addSubviews()
         setLayoutConstraint()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
+        
         networkManager.requestMyStock { [weak self] myStocks in
             
             self?.myStockView.setupData(myStocks: myStocks)
         }
+        
+        networkManager.requestProfit { [weak self] myProfit in
+            print(myProfit)
+            self?.investmentView.setupData(profit: myProfit)
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         navigationController?.hidesBarsOnSwipe = true
     }
     
