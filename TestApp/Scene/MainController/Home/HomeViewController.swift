@@ -26,6 +26,12 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
         return view
     }()
     
+    private lazy var indicatorView: UIActivityIndicatorView = {
+        let indicatorView = UIActivityIndicatorView()
+        indicatorView.translatesAutoresizingMaskIntoConstraints = false
+        return indicatorView
+    }()
+    
     private let investmentView = InvestmentView()
 
     private let myStockView = MyStockView()
@@ -63,6 +69,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
         addSubviews()
         setLayoutConstraint()
         
+        indicatorView.startAnimating()
         networkManager.requestMyStock { [weak self] myStocks in
 
             self?.myStockView.setupData(myStocks: myStocks)
@@ -74,6 +81,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
         
         networkManager.requestDividendList {[weak self] dividends in
             self?.myStockView.setupDividendData(dividends: dividends)
+            self?.indicatorView.stopAnimating()
         }
         
     }
@@ -184,7 +192,10 @@ private extension HomeViewController {
     }
     
     func addSubviews() {
-        view.addSubview(scrollView)
+        [scrollView, indicatorView]
+            .forEach {
+                view.addSubview($0)
+            }
         scrollView.addSubview(contentView)
         contentView.addSubview(stackView)
     }
@@ -194,6 +205,9 @@ private extension HomeViewController {
         scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        
+        indicatorView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        indicatorView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         
         contentView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
         contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
