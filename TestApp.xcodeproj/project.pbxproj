@@ -49,6 +49,7 @@
 		AD8B45EE27C3217300005725 /* DetailStockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8B45ED27C3217300005725 /* DetailStockViewController.swift */; };
 		AD8B45F227C343E300005725 /* ProfitShareDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8B45F127C343E300005725 /* ProfitShareDetailViewController.swift */; };
 		AD8B45F427C3581900005725 /* CurrencyDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8B45F327C3581900005725 /* CurrencyDetailView.swift */; };
+		AD8BDDB327CC42A4005E0FC4 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = AD8BDDB227CC42A4005E0FC4 /* SnapKit */; };
 		AD8CE34027C4515900C8F2CC /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = AD8CE33F27C4515900C8F2CC /* Charts */; };
 		AD8CE38327C4A26800C8F2CC /* SortingSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8CE38227C4A26800C8F2CC /* SortingSelectView.swift */; };
 		AD93D08327C733750004C44E /* DividendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD93D08227C733750004C44E /* DividendModel.swift */; };
@@ -149,6 +150,7 @@
 				78A6FD516075F747E384C84D /* Pods_TestApp.framework in Frameworks */,
 				AD8CE34027C4515900C8F2CC /* Charts in Frameworks */,
 				AD8B45E327C2FEA600005725 /* Alamofire in Frameworks */,
+				AD8BDDB327CC42A4005E0FC4 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -450,6 +452,7 @@
 				AD8B45E227C2FEA600005725 /* Alamofire */,
 				AD8CE33F27C4515900C8F2CC /* Charts */,
 				AD950E4627C5EA7D00C05584 /* Kingfisher */,
+				AD8BDDB227CC42A4005E0FC4 /* SnapKit */,
 			);
 			productName = TestApp;
 			productReference = AD27D1A32791652D009C8F91 /* TestApp.app */;
@@ -530,6 +533,7 @@
 				AD8B45E127C2FEA600005725 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				AD8CE33E27C4515900C8F2CC /* XCRemoteSwiftPackageReference "Charts" */,
 				AD950E4527C5EA7D00C05584 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				AD8BDDB127CC42A4005E0FC4 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = AD27D1A42791652D009C8F91 /* Products */;
 			projectDirPath = "";
@@ -1055,6 +1059,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		AD8BDDB127CC42A4005E0FC4 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		AD8CE33E27C4515900C8F2CC /* XCRemoteSwiftPackageReference "Charts" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/danielgindi/Charts.git";
@@ -1078,6 +1090,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AD8B45E127C2FEA600005725 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		AD8BDDB227CC42A4005E0FC4 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AD8BDDB127CC42A4005E0FC4 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
 		};
 		AD8CE33F27C4515900C8F2CC /* Charts */ = {
 			isa = XCSwiftPackageProductDependency;
