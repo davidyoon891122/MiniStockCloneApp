@@ -6,13 +6,13 @@
 //
 
 import UIKit
+import SnapKit
 
 class SeparatorView: UIView {
     
     private lazy var separator: UIView = {
         let view = UIView()
         view.backgroundColor = .secondarySystemBackground
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
@@ -34,10 +34,10 @@ private extension SeparatorView {
     }
     
     func setLayoutConstraint() {
-        separator.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        separator.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        separator.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        separator.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        separator.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+            $0.height.equalTo(0.8)
+        }
     }
     
 }
