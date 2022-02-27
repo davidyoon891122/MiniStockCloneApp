@@ -114,7 +114,6 @@ private extension StackListView {
         separatorView.topAnchor.constraint(equalTo: menuCollectionView.bottomAnchor).isActive = true
         separatorView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         separatorView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        separatorView.heightAnchor.constraint(equalToConstant: 1).isActive = true
         
         collectionView.topAnchor.constraint(equalTo: separatorView.bottomAnchor).isActive = true
         collectionView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true

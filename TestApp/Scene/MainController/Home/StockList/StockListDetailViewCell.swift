@@ -140,6 +140,5 @@ private extension StockListDetailViewCell {
         separatorView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         separatorView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         separatorView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        separatorView.heightAnchor.constraint(equalToConstant: 1).isActive = true
     }
 }
