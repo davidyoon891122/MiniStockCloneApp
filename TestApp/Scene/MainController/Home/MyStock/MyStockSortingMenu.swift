@@ -26,4 +26,17 @@ enum MyStockSortingMenu {
             return "수익률 낮은순 ▾"
         }
     }
+    
+    var detailText: String {
+        switch self {
+        case .orderPrice:
+            return "평가금액순"
+        case .orderganada:
+            return "가나다순"
+        case .orderHigh:
+            return "수익률 높은순"
+        case .orderlow:
+            return "수익률 낮은순"
+        }
+    }
 }

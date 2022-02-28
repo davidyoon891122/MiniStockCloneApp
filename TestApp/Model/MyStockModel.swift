@@ -7,10 +7,11 @@
 
 import Foundation
 
-struct MyStock: Decodable {
+struct MyStockModel: Decodable {
     let stockName: String
     let currentPrice: Int
     let stockQuantity: Float
     let valueChange: Int
     let percentChange: Float
+    let imageURL: String?
 }

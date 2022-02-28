@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import SnapKit
 
 class DividendView: UIView {
+    private var dividends: [DividendModel] = []
     
-    private let collectionViewCellId = "cellId"
     weak var delegate: HomeViewProtocol?
+    
     private lazy var labelVStack: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -21,7 +23,7 @@ class DividendView: UIView {
             .forEach {
                 stackView.addArrangedSubview($0)
             }
-        stackView.translatesAutoresizingMaskIntoConstraints = false
+
         return stackView
     }()
     
@@ -71,9 +73,8 @@ class DividendView: UIView {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.backgroundColor = MenuColor.shared.mintColor
-        collectionView.register(DividendCollectionViewCell.self, forCellWithReuseIdentifier: collectionViewCellId)
+        collectionView.register(DividendCollectionViewCell.self, forCellWithReuseIdentifier: DividendCollectionViewCell.identifier)
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.showsHorizontalScrollIndicator = false
         return collectionView
     }()
@@ -88,15 +89,22 @@ class DividendView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func setupData(dividends: [DividendModel]) {
+        self.dividends = dividends
+        self.stockCollectionView.reloadData()
+    }
 }
 
 extension DividendView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return dividends.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: collectionViewCellId, for: indexPath) as? DividendCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DividendCollectionViewCell.identifier, for: indexPath) as? DividendCollectionViewCell
+        let dividend = dividends[indexPath.row]
+        cell?.setupData(dividend: dividend)
         return cell ?? UICollectionViewCell()
     }
 }
@@ -121,14 +129,19 @@ private extension DividendView {
     
     func setLayoutConstraint() {
         let inset: CGFloat = 16.0
-        labelVStack.topAnchor.constraint(equalTo: topAnchor, constant: inset).isActive = true
-        labelVStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: inset).isActive = true
-        labelVStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -inset).isActive = true
+
+        labelVStack.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(inset)
+            $0.leading.equalToSuperview().offset(inset)
+            $0.trailing.equalToSuperview().inset(inset)
+        }
         
-        stockCollectionView.topAnchor.constraint(equalTo: labelVStack.bottomAnchor, constant: 10).isActive = true
-        stockCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        stockCollectionView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -inset).isActive = true
-        stockCollectionView.heightAnchor.constraint(equalToConstant: 150).isActive = true
-        stockCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        stockCollectionView.snp.makeConstraints {
+            $0.top.equalTo(labelVStack.snp.bottom).offset(8)
+            $0.leading.equalToSuperview()
+            $0.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview().inset(inset)
+            $0.height.equalTo(150)
+        }
     }
 }

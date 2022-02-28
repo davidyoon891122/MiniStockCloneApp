@@ -7,6 +7,7 @@
 
 import UIKit
 import Charts
+import SnapKit
 
 class CurrencyDetailView: UIView {
     
@@ -19,7 +20,7 @@ class CurrencyDetailView: UIView {
     private lazy var topDragBar: UIView = {
         let view = UIView()
         view.backgroundColor = .lightGray
-        view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.cornerRadius = 2
         return view
     }()
     
@@ -31,7 +32,6 @@ class CurrencyDetailView: UIView {
             .forEach {
                 stackView.addArrangedSubview($0)
             }
-        stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
     
@@ -89,14 +89,20 @@ class CurrencyDetailView: UIView {
                 stackView.addSubview($0)
             }
         
-        valueChangeLabel.centerYAnchor.constraint(equalTo: stackView.centerYAnchor).isActive = true
-        valueChangeLabel.leadingAnchor.constraint(equalTo: stackView.leadingAnchor).isActive = true
+        valueChangeLabel.snp.makeConstraints {
+            $0.centerY.equalTo(stackView)
+            $0.leading.equalTo(stackView)
+        }
         
-        percentChangeLabel.centerYAnchor.constraint(equalTo: stackView.centerYAnchor).isActive = true
-        percentChangeLabel.leadingAnchor.constraint(equalTo: valueChangeLabel.trailingAnchor, constant: 10).isActive = true
+        percentChangeLabel.snp.makeConstraints {
+            $0.centerY.equalTo(stackView)
+            $0.leading.equalTo(valueChangeLabel.snp.trailing).offset(10)
+        }
         
-        prevDayLabel.centerYAnchor.constraint(equalTo: stackView.centerYAnchor).isActive = true
-        prevDayLabel.leadingAnchor.constraint(equalTo: percentChangeLabel.trailingAnchor, constant: 10).isActive = true
+        prevDayLabel.snp.makeConstraints {
+            $0.centerY.equalTo(stackView)
+            $0.leading.equalTo(percentChangeLabel.snp.trailing).offset(10)
+        }
 
         return stackView
     }()
@@ -106,7 +112,7 @@ class CurrencyDetailView: UIView {
         label.text = "▼ 0.70원"
         label.textColor = .blue
         label.font = .systemFont(ofSize: 16, weight: .medium)
-        label.translatesAutoresizingMaskIntoConstraints = false
+        
         return label
     }()
     
@@ -115,7 +121,7 @@ class CurrencyDetailView: UIView {
         label.text = "(-0.06%)"
         label.textColor = .blue
         label.font = .systemFont(ofSize: 16, weight: .medium)
-        label.translatesAutoresizingMaskIntoConstraints = false
+        
         return label
     }()
     
@@ -124,7 +130,7 @@ class CurrencyDetailView: UIView {
         label.text = "전일 대비"
         label.textColor = .gray
         label.font = .systemFont(ofSize: 14, weight: .medium)
-        label.translatesAutoresizingMaskIntoConstraints = false
+        
         return label
     }()
     
@@ -157,7 +163,6 @@ class CurrencyDetailView: UIView {
         chart.doubleTapToZoomEnabled = false
         chart.legend.enabled = false
         
-        chart.translatesAutoresizingMaskIntoConstraints = false
         return chart
     }()
     
@@ -194,24 +199,34 @@ private extension CurrencyDetailView {
     }
     
     func setLayoutConstraints() {
-        topDragBar.topAnchor.constraint(equalTo: topAnchor, constant: 5).isActive = true
-        topDragBar.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        topDragBar.widthAnchor.constraint(equalToConstant: 50).isActive = true
-        topDragBar.heightAnchor.constraint(equalToConstant: 5).isActive = true
+        let inset: CGFloat = 16.0
         
-        currencyVStackView.topAnchor.constraint(equalTo: topDragBar.bottomAnchor, constant: 32).isActive = true
-        currencyVStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16).isActive = true
-        currencyVStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16).isActive = true
+        topDragBar.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(12)
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(50)
+            $0.height.equalTo(5)
+        }
         
-        lineChartView.topAnchor.constraint(equalTo: currencyVStackView.bottomAnchor, constant: 8).isActive = true
-        lineChartView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        lineChartView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        lineChartView.heightAnchor.constraint(equalToConstant: 250).isActive = true
+        currencyVStackView.snp.makeConstraints {
+            $0.top.equalTo(topDragBar.snp.bottom).offset(32)
+            $0.leading.equalToSuperview().offset(inset)
+            $0.trailing.equalToSuperview().inset(inset)
+        }
         
-        confirmButton.topAnchor.constraint(equalTo: lineChartView.bottomAnchor, constant: 5).isActive = true
-        confirmButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16).isActive = true
-        confirmButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16).isActive = true
-        confirmButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        lineChartView.snp.makeConstraints {
+            $0.top.equalTo(currencyVStackView.snp.bottom).offset(8)
+            $0.leading.equalToSuperview()
+            $0.trailing.equalToSuperview()
+            $0.height.equalTo(250)
+        }
+        
+        confirmButton.snp.makeConstraints {
+            $0.top.equalTo(lineChartView.snp.bottom).offset(5)
+            $0.leading.equalToSuperview().offset(inset)
+            $0.trailing.equalToSuperview().inset(inset)
+            $0.height.equalTo(50)
+        }
         
     }
     

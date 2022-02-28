@@ -44,12 +44,19 @@
 		AD85593327A27A30005BBA23 /* MenuColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD85593227A27A30005BBA23 /* MenuColor.swift */; };
 		AD8B45E327C2FEA600005725 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = AD8B45E227C2FEA600005725 /* Alamofire */; };
 		AD8B45E527C2FEC700005725 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8B45E427C2FEC700005725 /* NetworkManager.swift */; };
-		AD8B45E727C2FF9E00005725 /* MyStock.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8B45E627C2FF9E00005725 /* MyStock.swift */; };
+		AD8B45E727C2FF9E00005725 /* MyStockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8B45E627C2FF9E00005725 /* MyStockModel.swift */; };
 		AD8B45EC27C3209400005725 /* HomeViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8B45EB27C3209400005725 /* HomeViewProtocol.swift */; };
 		AD8B45EE27C3217300005725 /* DetailStockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8B45ED27C3217300005725 /* DetailStockViewController.swift */; };
 		AD8B45F227C343E300005725 /* ProfitShareDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8B45F127C343E300005725 /* ProfitShareDetailViewController.swift */; };
 		AD8B45F427C3581900005725 /* CurrencyDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8B45F327C3581900005725 /* CurrencyDetailView.swift */; };
+		AD8BDDB327CC42A4005E0FC4 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = AD8BDDB227CC42A4005E0FC4 /* SnapKit */; };
 		AD8CE34027C4515900C8F2CC /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = AD8CE33F27C4515900C8F2CC /* Charts */; };
+		AD8CE38327C4A26800C8F2CC /* SortingSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8CE38227C4A26800C8F2CC /* SortingSelectView.swift */; };
+		AD93D08327C733750004C44E /* DividendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD93D08227C733750004C44E /* DividendModel.swift */; };
+		AD93D08527C747E10004C44E /* IncreaseStockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD93D08427C747E10004C44E /* IncreaseStockModel.swift */; };
+		AD950E4727C5EA7D00C05584 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = AD950E4627C5EA7D00C05584 /* Kingfisher */; };
+		AD950E4927C6026400C05584 /* ProfitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD950E4827C6026400C05584 /* ProfitModel.swift */; };
+		AD950E4B27C60AEF00C05584 /* Extension+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD950E4A27C60AEF00C05584 /* Extension+.swift */; };
 		AD991DC727A3AE7000AA897B /* StockListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD991DC627A3AE7000AA897B /* StockListView.swift */; };
 		AD991DC927A3CC8000AA897B /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD991DC827A3CC8000AA897B /* MenuCollectionViewCell.swift */; };
 		ADA8B440279E470B003D5C98 /* MyStockViewTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA8B43F279E470B003D5C98 /* MyStockViewTableCell.swift */; };
@@ -115,11 +122,16 @@
 		AD85593027A2315D005BBA23 /* DetailNoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailNoticeViewController.swift; sourceTree = "<group>"; };
 		AD85593227A27A30005BBA23 /* MenuColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuColor.swift; sourceTree = "<group>"; };
 		AD8B45E427C2FEC700005725 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		AD8B45E627C2FF9E00005725 /* MyStock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStock.swift; sourceTree = "<group>"; };
+		AD8B45E627C2FF9E00005725 /* MyStockModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStockModel.swift; sourceTree = "<group>"; };
 		AD8B45EB27C3209400005725 /* HomeViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewProtocol.swift; sourceTree = "<group>"; };
 		AD8B45ED27C3217300005725 /* DetailStockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailStockViewController.swift; sourceTree = "<group>"; };
 		AD8B45F127C343E300005725 /* ProfitShareDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfitShareDetailViewController.swift; sourceTree = "<group>"; };
 		AD8B45F327C3581900005725 /* CurrencyDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetailView.swift; sourceTree = "<group>"; };
+		AD8CE38227C4A26800C8F2CC /* SortingSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingSelectView.swift; sourceTree = "<group>"; };
+		AD93D08227C733750004C44E /* DividendModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividendModel.swift; sourceTree = "<group>"; };
+		AD93D08427C747E10004C44E /* IncreaseStockModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncreaseStockModel.swift; sourceTree = "<group>"; };
+		AD950E4827C6026400C05584 /* ProfitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfitModel.swift; sourceTree = "<group>"; };
+		AD950E4A27C60AEF00C05584 /* Extension+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+.swift"; sourceTree = "<group>"; };
 		AD991DC627A3AE7000AA897B /* StockListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListView.swift; sourceTree = "<group>"; };
 		AD991DC827A3CC8000AA897B /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		ADA8B43F279E470B003D5C98 /* MyStockViewTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStockViewTableCell.swift; sourceTree = "<group>"; };
@@ -134,9 +146,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD950E4727C5EA7D00C05584 /* Kingfisher in Frameworks */,
 				78A6FD516075F747E384C84D /* Pods_TestApp.framework in Frameworks */,
 				AD8CE34027C4515900C8F2CC /* Charts in Frameworks */,
 				AD8B45E327C2FEA600005725 /* Alamofire in Frameworks */,
+				AD8BDDB327CC42A4005E0FC4 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,6 +213,7 @@
 				AD0E7A98279A93AC00F1A9A0 /* MyStockView.swift */,
 				AD0E7A9A279A94FB00F1A9A0 /* MyStockSortingMenu.swift */,
 				ADA8B43F279E470B003D5C98 /* MyStockViewTableCell.swift */,
+				AD8CE38227C4A26800C8F2CC /* SortingSelectView.swift */,
 			);
 			path = MyStock;
 			sourceTree = "<group>";
@@ -230,13 +245,14 @@
 			isa = PBXGroup;
 			children = (
 				AD991DC427A3AD2E00AA897B /* Delegates */,
-				AD8B45EA27C3006300005725 /* Scene */,
+				AD8B45E927C3004B00005725 /* Model */,
 				AD991DC227A3ACFE00AA897B /* MenuOptions */,
+				AD8B45E827C3004400005725 /* Network */,
+				AD8B45EA27C3006300005725 /* Scene */,
 				AD27D1AF2791652F009C8F91 /* Assets.xcassets */,
 				AD27D1B12791652F009C8F91 /* LaunchScreen.storyboard */,
 				AD27D1B42791652F009C8F91 /* Info.plist */,
-				AD8B45E827C3004400005725 /* Network */,
-				AD8B45E927C3004B00005725 /* Model */,
+				AD950E4A27C60AEF00C05584 /* Extension+.swift */,
 			);
 			path = TestApp;
 			sourceTree = "<group>";
@@ -281,6 +297,7 @@
 			isa = PBXGroup;
 			children = (
 				AD843DCB27BDC0DC006F974A /* ProfitShareView.swift */,
+				AD8B45F127C343E300005725 /* ProfitShareDetailViewController.swift */,
 			);
 			path = ProfitShare;
 			sourceTree = "<group>";
@@ -324,7 +341,6 @@
 				AD843DD327BDDE2F006F974A /* Legal */,
 				AD8B45F027C3229200005725 /* Protocols */,
 				AD8B45EF27C3228000005725 /* StockDetail */,
-				AD8B45F127C343E300005725 /* ProfitShareDetailViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -340,7 +356,10 @@
 		AD8B45E927C3004B00005725 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				AD8B45E627C2FF9E00005725 /* MyStock.swift */,
+				AD8B45E627C2FF9E00005725 /* MyStockModel.swift */,
+				AD950E4827C6026400C05584 /* ProfitModel.swift */,
+				AD93D08227C733750004C44E /* DividendModel.swift */,
+				AD93D08427C747E10004C44E /* IncreaseStockModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -432,6 +451,8 @@
 			packageProductDependencies = (
 				AD8B45E227C2FEA600005725 /* Alamofire */,
 				AD8CE33F27C4515900C8F2CC /* Charts */,
+				AD950E4627C5EA7D00C05584 /* Kingfisher */,
+				AD8BDDB227CC42A4005E0FC4 /* SnapKit */,
 			);
 			productName = TestApp;
 			productReference = AD27D1A32791652D009C8F91 /* TestApp.app */;
@@ -511,6 +532,8 @@
 			packageReferences = (
 				AD8B45E127C2FEA600005725 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				AD8CE33E27C4515900C8F2CC /* XCRemoteSwiftPackageReference "Charts" */,
+				AD950E4527C5EA7D00C05584 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				AD8BDDB127CC42A4005E0FC4 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = AD27D1A42791652D009C8F91 /* Products */;
 			projectDirPath = "";
@@ -646,11 +669,13 @@
 				AD85593127A2315D005BBA23 /* DetailNoticeViewController.swift in Sources */,
 				AD7E0DE32796791B00230920 /* PasswordNumberCollectionViewCell.swift in Sources */,
 				AD85592F27A225EB005BBA23 /* HomeViewMenu.swift in Sources */,
+				AD950E4B27C60AEF00C05584 /* Extension+.swift in Sources */,
 				AD34BB472794E95D001CD610 /* PasswordView.swift in Sources */,
 				AD27D1A72791652D009C8F91 /* AppDelegate.swift in Sources */,
 				AD8B45EC27C3209400005725 /* HomeViewProtocol.swift in Sources */,
 				AD991DC927A3CC8000AA897B /* MenuCollectionViewCell.swift in Sources */,
 				AD6A684727A110D8000D022C /* DividendView.swift in Sources */,
+				AD93D08327C733750004C44E /* DividendModel.swift in Sources */,
 				AD84C5832799459E00395772 /* InvestmentView.swift in Sources */,
 				AD8B45F427C3581900005725 /* CurrencyDetailView.swift in Sources */,
 				AD27D1A92791652D009C8F91 /* SceneDelegate.swift in Sources */,
@@ -664,14 +689,17 @@
 				AD8B45F227C343E300005725 /* ProfitShareDetailViewController.swift in Sources */,
 				AD84C57F2799337B00395772 /* HomeTabBarController.swift in Sources */,
 				AD6BC75827ACD40C00C2B87D /* StockListMenuCollectionView.swift in Sources */,
+				AD950E4927C6026400C05584 /* ProfitModel.swift in Sources */,
 				AD0E7A99279A93AC00F1A9A0 /* MyStockView.swift in Sources */,
 				AD6A684227A0F02F000D022C /* SeparatorView.swift in Sources */,
 				AD843DD227BDD466006F974A /* LegalBoardView.swift in Sources */,
 				AD85593327A27A30005BBA23 /* MenuColor.swift in Sources */,
+				AD8CE38327C4A26800C8F2CC /* SortingSelectView.swift in Sources */,
 				AD34BB422794E045001CD610 /* HomeViewController.swift in Sources */,
 				AD6A684427A104AB000D022C /* SwitchMenu.swift in Sources */,
 				AD6A684927A129B4000D022C /* DividendCollectionViewCell.swift in Sources */,
-				AD8B45E727C2FF9E00005725 /* MyStock.swift in Sources */,
+				AD93D08527C747E10004C44E /* IncreaseStockModel.swift in Sources */,
+				AD8B45E727C2FF9E00005725 /* MyStockModel.swift in Sources */,
 				AD7E657327B9CED100408BE6 /* StockListMainCollectionViewCell.swift in Sources */,
 				AD843DCC27BDC0DC006F974A /* ProfitShareView.swift in Sources */,
 				AD34BB442794E337001CD610 /* LoginViewController.swift in Sources */,
@@ -1031,12 +1059,28 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		AD8BDDB127CC42A4005E0FC4 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		AD8CE33E27C4515900C8F2CC /* XCRemoteSwiftPackageReference "Charts" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/danielgindi/Charts.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 3.0.0;
+			};
+		};
+		AD950E4527C5EA7D00C05584 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1047,10 +1091,20 @@
 			package = AD8B45E127C2FEA600005725 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
+		AD8BDDB227CC42A4005E0FC4 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AD8BDDB127CC42A4005E0FC4 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
 		AD8CE33F27C4515900C8F2CC /* Charts */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = AD8CE33E27C4515900C8F2CC /* XCRemoteSwiftPackageReference "Charts" */;
 			productName = Charts;
+		};
+		AD950E4627C5EA7D00C05584 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AD950E4527C5EA7D00C05584 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

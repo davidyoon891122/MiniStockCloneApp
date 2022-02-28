@@ -6,16 +6,15 @@
 //
 
 import UIKit
+import SnapKit
 
 class MyStockView: UIView {
-    
-    private let tableViewCellId = "tableViewCellId"
     private var cellCount: Int = 1
     private let dividendView = DividendView()
     
-    private var myStocks: [MyStock] = []
+    private var sortingMenu: MyStockSortingMenu = .orderganada
     
-    private var tableViewHeightConstraint: NSLayoutConstraint?
+    private var myStocks: [MyStockModel] = []
     
     private let cellHeight: CGFloat = 60.0
     
@@ -39,7 +38,6 @@ class MyStockView: UIView {
         let label = UILabel()
         label.text = "보유 주식"
         label.font = .systemFont(ofSize: 15, weight: .bold)
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
@@ -52,8 +50,9 @@ class MyStockView: UIView {
     
     private lazy var sortingButton: UIButton = {
         let button = UIButton()
-        button.setTitle(MyStockSortingMenu.orderganada.text, for: .normal)
+        button.setTitle(sortingMenu.text, for: .normal)
         button.setTitleColor(.gray, for: .normal)
+        button.addTarget(self, action: #selector(tapSortingButton), for: .touchUpInside)
         button.titleLabel?.font = .systemFont(ofSize: 15, weight: .medium)
         return button
     }()
@@ -78,15 +77,13 @@ class MyStockView: UIView {
             .forEach {
                 stackView.addArrangedSubview($0)
             }
-        stackView.translatesAutoresizingMaskIntoConstraints = false
         
         return stackView
     }()
     
     private lazy var stockTableView: UITableView = {
         let tableView = UITableView()
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(MyStockViewTableCell.self, forCellReuseIdentifier: tableViewCellId)
+        tableView.register(MyStockViewTableCell.self, forCellReuseIdentifier: MyStockViewTableCell.identifier)
         tableView.dataSource = self
         tableView.delegate = self
         tableView.rowHeight = UITableView.automaticDimension
@@ -105,17 +102,33 @@ class MyStockView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupData(myStocks: [MyStock]) {
+    func setupData(myStocks: [MyStockModel]) {
         self.myStocks = myStocks
         self.cellCount = myStocks.count
-        tableViewHeightConstraint?.isActive = false
-        tableViewHeightConstraint = stockTableView.heightAnchor.constraint(equalToConstant: CGFloat(cellCount) * cellHeight)
-        tableViewHeightConstraint?.isActive = true
+        
+        stockTableView.snp.updateConstraints {
+            $0.height.equalTo(CGFloat(cellCount) * cellHeight)
+        }
+        
         stockTableView.reloadData()
+    }
+    
+    func setupDividendData(dividends: [DividendModel]) {
+        self.dividendView.setupData(dividends: dividends)
     }
     
     func setDividendDelegate(viewController: HomeViewProtocol) {
         dividendView.delegate = viewController
+    }
+    
+    func setSortingMenu(menu: MyStockSortingMenu) {
+        sortingMenu = menu
+        sortingButton.setTitle(sortingMenu.text, for: .normal)
+        
+    }
+    
+    func getCurrentSortingMenu() -> MyStockSortingMenu {
+        return sortingMenu
     }
 }
 
@@ -130,7 +143,7 @@ extension MyStockView: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: tableViewCellId, for: indexPath) as? MyStockViewTableCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: MyStockViewTableCell.identifier, for: indexPath) as? MyStockViewTableCell
         let stock = self.myStocks[indexPath.row]
         cell?.setup(myStock: stock)
         
@@ -159,21 +172,31 @@ private extension MyStockView {
     
     func setLayoutConstraint() {
         let inset: CGFloat = 16.0
-        myStockVStackView.topAnchor.constraint(equalTo: topAnchor, constant: inset).isActive = true
-        myStockVStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: inset).isActive = true
-        myStockVStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -inset).isActive = true
         
-        stockTableView.topAnchor.constraint(equalTo: myStockVStackView.bottomAnchor, constant: inset).isActive = true
-        stockTableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: inset).isActive = true
-        stockTableView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -inset).isActive = true
-        tableViewHeightConstraint = stockTableView.heightAnchor.constraint(equalToConstant: CGFloat(cellCount) * cellHeight)
-        tableViewHeightConstraint?.isActive = true
+        myStockVStackView.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(inset)
+            $0.leading.equalToSuperview().offset(inset)
+            $0.trailing.equalToSuperview().inset(inset)
+        }
         
-        dividendView.translatesAutoresizingMaskIntoConstraints = false
-        dividendView.topAnchor.constraint(equalTo: stockTableView.bottomAnchor, constant: inset).isActive = true
-        dividendView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        dividendView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        dividendView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        stockTableView.snp.makeConstraints {
+            $0.top.equalTo(myStockVStackView.snp.bottom).offset(inset)
+            $0.leading.equalToSuperview().offset(inset)
+            $0.trailing.equalToSuperview().inset(inset)
+            $0.height.equalTo(CGFloat(cellCount) * cellHeight)
+        }
         
+        dividendView.snp.makeConstraints {
+            $0.top.equalTo(stockTableView.snp.bottom).offset(inset)
+            $0.leading.equalToSuperview()
+            $0.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview()
+        }
+        
+    }
+    
+    @objc func tapSortingButton() {
+        print("did tap sortingButton.")
+        delegate?.openSortingButtonView()
     }
 }

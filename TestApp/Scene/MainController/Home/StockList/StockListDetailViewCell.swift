@@ -6,16 +6,18 @@
 //
 
 import UIKit
+import Kingfisher
+import SnapKit
 
 class StockListDetailViewCell: UICollectionViewCell {
     static let identifier = "StockListDetailViewCell"
+    
     private lazy var stockImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.layer.cornerRadius = 20
         imageView.image = UIImage(named: "AT&T")
         imageView.layer.masksToBounds = true
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
@@ -42,6 +44,7 @@ class StockListDetailViewCell: UICollectionViewCell {
         let label = UILabel()
         label.text = "2,390원"
         label.textColor = .label
+        label.textAlignment = .right
         label.font = .systemFont(ofSize: 20, weight: .bold)
         return label
     }()
@@ -96,19 +99,20 @@ class StockListDetailViewCell: UICollectionViewCell {
             .forEach {
                 stackView.addArrangedSubview($0)
             }
-        stackView.translatesAutoresizingMaskIntoConstraints = false
+
         return stackView
     }()
     
-    private lazy var separatorView: SeparatorView = {
-        let separator = SeparatorView()
-        separator.translatesAutoresizingMaskIntoConstraints = false
-        return separator
-    }()
+    private let separatorView: SeparatorView = SeparatorView()
     
-    func setup() {
+    func setup(stock: IncreaseStockModel) {
         addSubviews()
         setLayoutConstraints()
+        stockNameLabel.text = stock.stockName
+        stockQuantityLabel.text = stock.stockCode
+        stockPriceLabel.text = stock.currentPrice.commaInString() + "원"
+        percentageLabel.text = stock.percentChange.toStringWithFormat(format: 2) + "%"
+        stockImageView.kf.setImage(with: URL(string: stock.imageURL ?? ""))
     }
 }
 
@@ -121,18 +125,23 @@ private extension StockListDetailViewCell {
     }
     
     func setLayoutConstraints() {
-        stockImageView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        stockImageView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        stockImageView.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        stockImageView.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        stockImageView.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.leading.equalToSuperview()
+            $0.width.equalTo(40)
+            $0.height.equalTo(40)
+        }
         
-        detailVStackView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        detailVStackView.leadingAnchor.constraint(equalTo: stockImageView.trailingAnchor, constant: 5).isActive = true
-        detailVStackView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        detailVStackView.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.leading.equalTo(stockImageView.snp.trailing).offset(5)
+            $0.trailing.equalToSuperview()
+        }
         
-        separatorView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        separatorView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        separatorView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        separatorView.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        separatorView.snp.makeConstraints {
+            $0.leading.equalToSuperview()
+            $0.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview()
+        }
     }
 }

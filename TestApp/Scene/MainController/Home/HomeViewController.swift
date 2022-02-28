@@ -6,24 +6,29 @@
 //
 
 import UIKit
+import SnapKit
 
 class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
     private let networkManager = NetworkManager()
     private let blackView = UIView()
     private let currencyDetailView = CurrencyDetailView()
+    private let sortingSelectView = SortingSelectView()
     
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.showsVerticalScrollIndicator = false
         return scrollView
     }()
     
-    private lazy var contentView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
+    private lazy var refreshControl: UIRefreshControl = {
+        let control = UIRefreshControl()
+        control.addTarget(self, action: #selector(pullScrollForRefresh), for: .valueChanged)
+        return control
     }()
+    
+    private let contentView: UIView = UIView()
+    
+    private let indicatorView: UIActivityIndicatorView = UIActivityIndicatorView()
     
     private let investmentView = InvestmentView()
 
@@ -51,7 +56,6 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
                 stackView.addArrangedSubview($0)
             }
         
-        stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
     
@@ -61,13 +65,26 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
         configureNavigation()
         addSubviews()
         setLayoutConstraint()
+        scrollView.refreshControl = refreshControl
+        
+        indicatorView.startAnimating()
+        networkManager.requestMyStock { [weak self] myStocks in
+
+            self?.myStockView.setupData(myStocks: myStocks)
+        }
+        
+        networkManager.requestProfit { [weak self] myProfit in
+            self?.investmentView.setupData(profit: myProfit)
+        }
+        
+        networkManager.requestDividendList {[weak self] dividends in
+            self?.myStockView.setupDividendData(dividends: dividends)
+            self?.indicatorView.stopAnimating()
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        networkManager.requestMyStock { [weak self] myStocks in
-            
-            self?.myStockView.setupData(myStocks: myStocks)
-        }
         navigationController?.hidesBarsOnSwipe = true
     }
     
@@ -116,6 +133,37 @@ extension HomeViewController: HomeViewProtocol {
     func closeCurrenyDetailView() {
         tapBlackView()
     }
+    
+    func openSortingButtonView() {
+        blackView.backgroundColor = UIColor(white: 0.2, alpha: 0.8)
+        guard let window = UIApplication.shared.windows.first(where: {$0.isKeyWindow}) else { return }
+        
+        blackView.frame = window.frame
+        blackView.alpha = 0
+        blackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapBlackView)))
+        
+        let currentMenu = myStockView.getCurrentSortingMenu()
+        sortingSelectView.setCurrentSortingMenu(menu: currentMenu)
+        
+        [blackView, sortingSelectView]
+            .forEach {
+                window.addSubview($0)
+            }
+        let height: CGFloat = 250
+        let currencyDetailViewYOffset = window.frame.height - height
+        
+        sortingSelectView.frame = CGRect(x: 0, y: window.frame.height, width: window.frame.width, height: height)
+        
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseInOut, animations: {
+            self.blackView.alpha = 1
+            self.sortingSelectView.frame = CGRect(x: 0, y: currencyDetailViewYOffset, width: window.frame.width, height: height)
+        }, completion: nil)
+    }
+    
+    func sortingButtonSelected(menu: MyStockSortingMenu) {
+        myStockView.setSortingMenu(menu: menu)
+        tapBlackView()
+    }
 }
 
 extension HomeViewController: InvestmentViewProtocol {
@@ -142,27 +190,32 @@ private extension HomeViewController {
     }
     
     func addSubviews() {
-        view.addSubview(scrollView)
+        [scrollView, indicatorView]
+            .forEach {
+                view.addSubview($0)
+            }
         scrollView.addSubview(contentView)
         contentView.addSubview(stackView)
     }
     
     func setLayoutConstraint() {
-        scrollView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        scrollView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
         
-        contentView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
-        contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
-        contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
-        contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
-        contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+        indicatorView.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.centerY.equalToSuperview()
+        }
         
-        stackView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-        stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
-        stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
-        stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
+        contentView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+            $0.width.equalToSuperview()
+        }
+        
+        stackView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
     }
     
     @objc func tapShareButton() {
@@ -186,6 +239,7 @@ private extension HomeViewController {
         profitShareView.delegate = self
         currencyView.delegate = self
         currencyDetailView.delegate = self
+        sortingSelectView.delegate = self
     }
     
     @objc func tapBlackView() {
@@ -195,6 +249,26 @@ private extension HomeViewController {
             guard let window = UIApplication.shared.windows.first(where: {$0.isKeyWindow}) else { return }
             
             self.currencyDetailView.frame = CGRect(x: 0, y: window.frame.height, width: self.currencyDetailView.frame.width, height: self.currencyDetailView.frame.height)
+            
+            self.sortingSelectView.frame = CGRect(x: 0, y: window.frame.height, width: self.sortingSelectView.frame.width, height: self.sortingSelectView.frame.height)
         }, completion: nil)
+    }
+    
+    @objc func pullScrollForRefresh() {
+        indicatorView.startAnimating()
+        networkManager.requestMyStock { [weak self] myStocks in
+
+            self?.myStockView.setupData(myStocks: myStocks)
+        }
+        
+        networkManager.requestProfit { [weak self] myProfit in
+            self?.investmentView.setupData(profit: myProfit)
+        }
+        
+        networkManager.requestDividendList {[weak self] dividends in
+            self?.myStockView.setupDividendData(dividends: dividends)
+            self?.indicatorView.stopAnimating()
+            self?.refreshControl.endRefreshing()
+        }
     }
 }

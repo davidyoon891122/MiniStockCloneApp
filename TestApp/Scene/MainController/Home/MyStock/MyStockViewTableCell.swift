@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import Kingfisher
+import SnapKit
 
 class MyStockViewTableCell: UITableViewCell {
+    static let identifier: String = "MyStockViewTableCell"
     
     private lazy var stockImageView: UIImageView = {
         let imageView = UIImageView()
@@ -15,7 +18,6 @@ class MyStockViewTableCell: UITableViewCell {
         imageView.layer.cornerRadius = 20
         imageView.image = UIImage(named: "AT&T")
         imageView.layer.masksToBounds = true
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
@@ -28,7 +30,6 @@ class MyStockViewTableCell: UITableViewCell {
                 stackView.addArrangedSubview($0)
             }
         
-        stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
     
@@ -65,7 +66,7 @@ class MyStockViewTableCell: UITableViewCell {
             .forEach {
                 stackView.addArrangedSubview($0)
             }
-        stackView.translatesAutoresizingMaskIntoConstraints = false
+
         return stackView
     }()
     
@@ -102,7 +103,6 @@ class MyStockViewTableCell: UITableViewCell {
                 stackView.addArrangedSubview($0)
             }
         
-        stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
 
@@ -118,12 +118,13 @@ class MyStockViewTableCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setup(myStock: MyStock) {
+    func setup(myStock: MyStockModel) {
         stockNameLabel.text = "\(myStock.stockName)"
-        stockPriceLabel.text = "\(commaInString(price: myStock.currentPrice))원"
+        stockPriceLabel.text = myStock.currentPrice.commaInString() + "원"
         stockQuantityLabel.text = "\(myStock.stockQuantity)주"
-        profitLabel.text = "\(commaInString(price: myStock.valueChange))원"
-        percentageLabel.text = String(format: "%.2f", myStock.percentChange) + "%"
+        profitLabel.text = myStock.valueChange.commaInString() + "원"
+        percentageLabel.text = myStock.percentChange.toStringWithFormat(format: 2) + "%"
+        stockImageView.kf.setImage(with: URL(string: myStock.imageURL ?? ""))
     }
     
 }
@@ -137,21 +138,18 @@ private extension MyStockViewTableCell {
     }
     
     func setLayoutConstraint() {
-        stockImageView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        stockImageView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        stockImageView.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        stockImageView.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        stockImageView.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.leading.equalToSuperview()
+            $0.width.equalTo(40)
+            $0.height.equalTo(40)
+        }
         
-        stockVStackView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        stockVStackView.leadingAnchor.constraint(equalTo: stockImageView.trailingAnchor, constant: 5).isActive = true
-        stockVStackView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        stockVStackView.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.leading.equalTo(stockImageView.snp.trailing).offset(5)
+            $0.trailing.equalToSuperview()
+        }
     }
     
-    func commaInString(price: Int) -> String {
-        let numberFormatter = NumberFormatter()
-        numberFormatter.groupingSeparator = ","
-        numberFormatter.groupingSize = 3
-        numberFormatter.usesGroupingSeparator = true
-        return numberFormatter.string(from: price as NSNumber)!
-    }
 }

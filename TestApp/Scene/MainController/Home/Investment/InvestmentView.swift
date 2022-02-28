@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 protocol InvestmentViewProtocol: NSObject {
     func tapNoticeTableViewCell()
@@ -13,8 +14,6 @@ protocol InvestmentViewProtocol: NSObject {
 }
 
 class InvestmentView: UIView {
-    private let noticeCellId = "noticeCellId"
-
     private let separatorView = SeparatorView()
     
     weak var delegate: InvestmentViewProtocol?
@@ -32,7 +31,6 @@ class InvestmentView: UIView {
                 stackView.addArrangedSubview($0)
             }
         
-        stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
     
@@ -42,7 +40,6 @@ class InvestmentView: UIView {
         label.font = .systemFont(ofSize: 20, weight: .medium)
         label.textColor = .label
         label.numberOfLines = 2
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
@@ -52,13 +49,13 @@ class InvestmentView: UIView {
         let valueStringAttribute = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 30, weight: .heavy)]
         let wonStringAttribute = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 25, weight: .medium)]
         
-        let value = NSMutableAttributedString(string: "2,447", attributes: valueStringAttribute)
+        let value = NSMutableAttributedString(string: "3,480", attributes: valueStringAttribute)
         let won = NSMutableAttributedString(string: "원", attributes: wonStringAttribute)
         
         value.append(won)
         label.attributedText = value
         label.textColor = .label
-        
+
         return label
     }()
     
@@ -123,9 +120,8 @@ class InvestmentView: UIView {
         let tableView = UITableView()
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(NoticeTableViewCell.self, forCellReuseIdentifier: noticeCellId)
+        tableView.register(NoticeTableViewCell.self, forCellReuseIdentifier: NoticeTableViewCell.identifier)
         tableView.separatorStyle = .none
-        tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
     
@@ -139,6 +135,23 @@ class InvestmentView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func setupData(profit: ProfitModel) {
+        titleLabel.text = "\(profit.userName)님의\n투자현황입니다."
+        
+        let valueStringAttribute = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 30, weight: .heavy)]
+        let wonStringAttribute = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 25, weight: .medium)]
+        
+        let value = NSMutableAttributedString(string: profit.totalAsset.commaInString(), attributes: valueStringAttribute)
+        let won = NSMutableAttributedString(string: "원", attributes: wonStringAttribute)
+        
+        value.append(won)
+        
+        valueLabel.attributedText = value
+        changedValueLabel.text = profit.valueChange.commaInString()
+        percentageLabel.text = "(+\(String(format: "%.2f", profit.percentChange))%)"
+        baseDateLabel.text = profit.referenceDay + " 기준"
+    }
 }
 
 extension InvestmentView: UITableViewDataSource {
@@ -147,7 +160,7 @@ extension InvestmentView: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: noticeCellId, for: indexPath) as? NoticeTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: NoticeTableViewCell.identifier, for: indexPath) as? NoticeTableViewCell
         return cell ?? UITableViewCell()
     }
     
@@ -174,23 +187,26 @@ private extension InvestmentView {
     
     func setLayoutConstraint() {
         let inset: CGFloat = 16.0
-        verticalStackView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        verticalStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: inset).isActive = true
-        verticalStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -inset).isActive = true
+        verticalStackView.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.leading.equalToSuperview().offset(inset)
+            $0.trailing.equalToSuperview().inset(inset)
+        }
         
-        separatorView.translatesAutoresizingMaskIntoConstraints = false
+        separatorView.snp.makeConstraints {
+            $0.top.equalTo(verticalStackView.snp.bottom).offset(34)
+            $0.leading.equalToSuperview()
+            $0.trailing.equalToSuperview()
+            
+        }
         
-        separatorView.topAnchor.constraint(equalTo: verticalStackView.bottomAnchor, constant: 35).isActive = true
-        separatorView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        separatorView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        separatorView.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
-        
-        noticeTableView.topAnchor.constraint(equalTo: separatorView.bottomAnchor
-        ).isActive = true
-        noticeTableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: inset).isActive = true
-        noticeTableView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        noticeTableView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -inset).isActive = true
-        noticeTableView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        noticeTableView.snp.makeConstraints {
+            $0.top.equalTo(separatorView.snp.bottom)
+            $0.leading.equalToSuperview().offset(inset)
+            $0.trailing.equalToSuperview().inset(inset)
+            $0.bottom.equalToSuperview()
+            $0.height.equalTo(50)
+        }
     }
     
     @objc func tapVStackView() {
