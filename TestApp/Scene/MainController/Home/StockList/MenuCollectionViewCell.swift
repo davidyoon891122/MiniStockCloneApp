@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class MenuCollectionViewCell: UICollectionViewCell {
     static let identifier: String = "MenuCollectionViewCell"
@@ -14,14 +15,12 @@ class MenuCollectionViewCell: UICollectionViewCell {
         label.font = .systemFont(ofSize: 16, weight: .semibold)
         label.sizeToFit()
         label.textAlignment = .center
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private lazy var menuBar: UIView = {
         let view = UIView()
         view.backgroundColor = MenuColor.shared.mintColor
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
@@ -48,10 +47,13 @@ class MenuCollectionViewCell: UICollectionViewCell {
     
     func selectedAction() {
         addSubview(menuBar)
-        menuBar.topAnchor.constraint(equalTo: titleLabel.bottomAnchor).isActive = true
-        menuBar.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        menuBar.heightAnchor.constraint(equalToConstant: 2).isActive = true
-        menuBar.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+
+        menuBar.snp.makeConstraints {
+            $0.top.equalTo(titleLabel.snp.bottom)
+            $0.leading.equalToSuperview()
+            $0.trailing.equalToSuperview()
+            $0.height.equalTo(2)
+        }
     }
     
     func deselectAction() {
@@ -70,9 +72,8 @@ private extension MenuCollectionViewCell {
     }
     
     func setLayoutConstraint() {
-        titleLabel.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        titleLabel.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
     }
 }

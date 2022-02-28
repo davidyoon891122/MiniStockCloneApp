@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class StackListView: UIView {
     private let menus: [String] = [
@@ -22,15 +23,10 @@ class StackListView: UIView {
     private lazy var menuUnderBarView: UIView = {
         let view = UIView()
         view.backgroundColor = MenuColor.shared.mintColor
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    private lazy var separatorView: SeparatorView = {
-        let separator = SeparatorView()
-        separator.translatesAutoresizingMaskIntoConstraints = false
-        return separator
-    }()
+    private let separatorView: SeparatorView = SeparatorView()
     
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -43,7 +39,6 @@ class StackListView: UIView {
         collectionView.register(StockListMainCollectionViewCell.self, forCellWithReuseIdentifier: StockListMainCollectionViewCell.identifier)
         collectionView.isPagingEnabled = true
         collectionView.showsHorizontalScrollIndicator = false
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
     
@@ -102,23 +97,28 @@ private extension StackListView {
             .forEach {
                 addSubview($0)
             }
-        menuCollectionView.translatesAutoresizingMaskIntoConstraints = false
     }
     
     func setLayoutConstraint() {
-        menuCollectionView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        menuCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        menuCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        menuCollectionView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        menuCollectionView.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.leading.equalToSuperview()
+            $0.trailing.equalToSuperview()
+            $0.height.equalTo(50)
+        }
         
-        separatorView.topAnchor.constraint(equalTo: menuCollectionView.bottomAnchor).isActive = true
-        separatorView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        separatorView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        separatorView.snp.makeConstraints {
+            $0.top.equalTo(menuCollectionView.snp.bottom)
+            $0.leading.equalToSuperview()
+            $0.trailing.equalToSuperview()
+        }
         
-        collectionView.topAnchor.constraint(equalTo: separatorView.bottomAnchor).isActive = true
-        collectionView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        collectionView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        collectionView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        collectionView.heightAnchor.constraint(equalToConstant: 730 + 16).isActive = true
+        collectionView.snp.makeConstraints {
+            $0.top.equalTo(separatorView.snp.bottom)
+            $0.leading.equalToSuperview()
+            $0.bottom.equalToSuperview()
+            $0.trailing.equalToSuperview()
+            $0.height.equalTo(746)
+        }
     }
 }
