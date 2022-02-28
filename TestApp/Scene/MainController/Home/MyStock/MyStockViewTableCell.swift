@@ -10,6 +10,7 @@ import Kingfisher
 import SnapKit
 
 class MyStockViewTableCell: UITableViewCell {
+    static let identifier: String = "MyStockViewTableCell"
     
     private lazy var stockImageView: UIImageView = {
         let imageView = UIImageView()

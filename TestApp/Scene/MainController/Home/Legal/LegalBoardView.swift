@@ -52,15 +52,17 @@ private extension LegalBoardView {
     }
     
     func setLayoutConstraints() {
+        let inset: CGFloat = 16.0
+        
         mainLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(16)
-            $0.leading.equalToSuperview().offset(16)
-            $0.bottom.equalToSuperview().inset(16)
+            $0.top.equalToSuperview().offset(inset)
+            $0.leading.equalToSuperview().offset(inset)
+            $0.bottom.equalToSuperview().inset(inset)
         }
         
         upScrollButton.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(16)
-            $0.trailing.equalToSuperview().inset(16)
+            $0.top.equalToSuperview().offset(inset)
+            $0.trailing.equalToSuperview().inset(inset)
             $0.width.equalTo(40)
             $0.height.equalTo(40)
         }
