@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class SortingSelectView: UIView {
     
@@ -15,7 +16,6 @@ class SortingSelectView: UIView {
         let view = UIView()
         view.backgroundColor = .lightGray
         view.layer.cornerRadius = 2
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
@@ -25,7 +25,6 @@ class SortingSelectView: UIView {
         label.textColor = .label
         label.font = .systemFont(ofSize: 14, weight: .medium)
         label.textAlignment = .left
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
@@ -42,7 +41,6 @@ class SortingSelectView: UIView {
         stackView.layer.borderWidth = 1
         stackView.layer.masksToBounds = true
         stackView.layer.cornerRadius = 10
-        stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
     
@@ -136,7 +134,6 @@ class SortingSelectView: UIView {
             }
         
         switch menu {
-            
         case .orderPrice:
             priceButton.isSelected = true
         case .orderganada:
@@ -166,19 +163,27 @@ private extension SortingSelectView {
     }
     
     func setLayoutConstraint() {
-        topDragBar.topAnchor.constraint(equalTo: topAnchor, constant: 12).isActive = true
-        topDragBar.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        topDragBar.widthAnchor.constraint(equalToConstant: 50).isActive = true
-        topDragBar.heightAnchor.constraint(equalToConstant: 5).isActive = true
+        let inset: CGFloat = 16.0
         
-        titleLabel.topAnchor.constraint(equalTo: topDragBar.bottomAnchor, constant: 32).isActive = true
-        titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16).isActive = true
-        titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16).isActive = true
+        topDragBar.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(12)
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(50)
+            $0.height.equalTo(5)
+        }
         
-        sortingSelectVStackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8).isActive = true
-        sortingSelectVStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16).isActive = true
-        sortingSelectVStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16).isActive = true
-        sortingSelectVStackView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        titleLabel.snp.makeConstraints {
+            $0.top.equalTo(topDragBar.snp.bottom).offset(32)
+            $0.leading.equalToSuperview().offset(inset)
+            $0.trailing.equalToSuperview().inset(inset)
+        }
+        
+        sortingSelectVStackView.snp.makeConstraints {
+            $0.top.equalTo(titleLabel.snp.bottom).offset(8)
+            $0.leading.equalToSuperview().offset(inset)
+            $0.trailing.equalToSuperview().inset(inset)
+            $0.height.equalTo(100)
+        }
     }
     
     @objc func tapSortingButton(_ sender: UIButton) {

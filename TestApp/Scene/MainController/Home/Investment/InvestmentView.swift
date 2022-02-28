@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 protocol InvestmentViewProtocol: NSObject {
     func tapNoticeTableViewCell()
@@ -32,7 +33,6 @@ class InvestmentView: UIView {
                 stackView.addArrangedSubview($0)
             }
         
-        stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
     
@@ -42,7 +42,6 @@ class InvestmentView: UIView {
         label.font = .systemFont(ofSize: 20, weight: .medium)
         label.textColor = .label
         label.numberOfLines = 2
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
@@ -58,7 +57,7 @@ class InvestmentView: UIView {
         value.append(won)
         label.attributedText = value
         label.textColor = .label
-        
+
         return label
     }()
     
@@ -125,7 +124,6 @@ class InvestmentView: UIView {
         tableView.dataSource = self
         tableView.register(NoticeTableViewCell.self, forCellReuseIdentifier: noticeCellId)
         tableView.separatorStyle = .none
-        tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
     
@@ -191,23 +189,26 @@ private extension InvestmentView {
     
     func setLayoutConstraint() {
         let inset: CGFloat = 16.0
-        verticalStackView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        verticalStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: inset).isActive = true
-        verticalStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -inset).isActive = true
+        verticalStackView.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.leading.equalToSuperview().offset(inset)
+            $0.trailing.equalToSuperview().inset(inset)
+        }
         
-        separatorView.translatesAutoresizingMaskIntoConstraints = false
+        separatorView.snp.makeConstraints {
+            $0.top.equalTo(verticalStackView.snp.bottom).offset(34)
+            $0.leading.equalToSuperview()
+            $0.trailing.equalToSuperview()
+            
+        }
         
-        separatorView.topAnchor.constraint(equalTo: verticalStackView.bottomAnchor, constant: 35).isActive = true
-        separatorView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        separatorView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        separatorView.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
-        
-        noticeTableView.topAnchor.constraint(equalTo: separatorView.bottomAnchor
-        ).isActive = true
-        noticeTableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: inset).isActive = true
-        noticeTableView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        noticeTableView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -inset).isActive = true
-        noticeTableView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        noticeTableView.snp.makeConstraints {
+            $0.top.equalTo(separatorView.snp.bottom)
+            $0.leading.equalToSuperview().offset(inset)
+            $0.trailing.equalToSuperview().inset(inset)
+            $0.bottom.equalToSuperview()
+            $0.height.equalTo(50)
+        }
     }
     
     @objc func tapVStackView() {

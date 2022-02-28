@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class NoticeTableViewCell: UITableViewCell {
     private lazy var noticeHStack: UIStackView = {
@@ -18,7 +19,6 @@ class NoticeTableViewCell: UITableViewCell {
                 stackView.addArrangedSubview($0)
             }
         
-        stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
     
@@ -58,9 +58,8 @@ private extension NoticeTableViewCell {
     }
     
     func setLayoutConstraint() {
-        noticeHStack.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        noticeHStack.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        noticeHStack.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        noticeHStack.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        noticeHStack.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
     }
 }

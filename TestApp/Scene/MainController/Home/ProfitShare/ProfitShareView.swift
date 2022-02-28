@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import SnapKit
 
 class ProfitShareView: UIView {
     weak var delegate: HomeViewProtocol?
+    
     private lazy var labelVStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -17,7 +19,7 @@ class ProfitShareView: UIView {
             .forEach {
                 stackView.addArrangedSubview($0)
             }
-        stackView.translatesAutoresizingMaskIntoConstraints = false
+    
         return stackView
     }()
     
@@ -41,7 +43,7 @@ class ProfitShareView: UIView {
         let imageView = UIImageView()
         imageView.contentMode = .scaleToFill
         imageView.image = UIImage(named: "bear")
-        imageView.translatesAutoresizingMaskIntoConstraints = false
+        
         return imageView
     }()
     
@@ -68,15 +70,21 @@ private extension ProfitShareView {
     }
     
     func setLayoutConstraints() {
-        labelVStackView.topAnchor.constraint(equalTo: topAnchor, constant: 16).isActive = true
-        labelVStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16).isActive = true
-        labelVStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16).isActive = true
+        let inset: CGFloat = 16.0
         
-        imageView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        imageView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        imageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: 75).isActive = true
-        imageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -32).isActive = true
+        labelVStackView.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(inset)
+            $0.leading.equalToSuperview().offset(inset)
+            $0.trailing.equalToSuperview().inset(inset)
+        }
+        
+        imageView.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.bottom.equalToSuperview()
+            $0.width.equalTo(100)
+            $0.height.equalTo(75)
+            $0.trailing.equalToSuperview().inset(32)
+        }
     }
     
     func setTapGesture() {

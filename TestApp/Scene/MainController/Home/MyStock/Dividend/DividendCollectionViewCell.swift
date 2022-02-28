@@ -7,6 +7,7 @@
 
 import UIKit
 import Kingfisher
+import SnapKit
 
 class DividendCollectionViewCell: UICollectionViewCell {
     private lazy var stockImageView: UIImageView = {
@@ -15,7 +16,6 @@ class DividendCollectionViewCell: UICollectionViewCell {
         imageView.layer.cornerRadius = 12.5
         imageView.layer.masksToBounds = true
         imageView.image = UIImage(named: "AT&T")
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
@@ -26,7 +26,6 @@ class DividendCollectionViewCell: UICollectionViewCell {
         label.numberOfLines = 2
         label.sizeToFit()
         label.font = .systemFont(ofSize: 15, weight: .light)
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
@@ -35,7 +34,6 @@ class DividendCollectionViewCell: UICollectionViewCell {
         label.text = "연 0.50%"
         label.textColor = .label
         label.font = .systemFont(ofSize: 17, weight: .medium)
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
@@ -44,7 +42,6 @@ class DividendCollectionViewCell: UICollectionViewCell {
         label.text = "23,932원"
         label.font = .systemFont(ofSize: 13, weight: .light)
         label.textColor = .lightGray
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
@@ -53,7 +50,6 @@ class DividendCollectionViewCell: UICollectionViewCell {
         label.text = "1월 28일 배당락"
         label.font = .systemFont(ofSize: 13, weight: .light)
         label.textColor = .red
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
    
@@ -89,21 +85,31 @@ private extension DividendCollectionViewCell {
     }
     
     func setLayoutConstraint() {
-        stockImageView.topAnchor.constraint(equalTo: topAnchor, constant: 10).isActive = true
-        stockImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10).isActive = true
-        stockImageView.heightAnchor.constraint(equalToConstant: 25).isActive = true
-        stockImageView.widthAnchor.constraint(equalToConstant: 25).isActive = true
+        stockImageView.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(10)
+            $0.leading.equalToSuperview().offset(10)
+            $0.height.equalTo(25)
+            $0.width.equalTo(25)
+        }
         
-        stockNameLabel.topAnchor.constraint(equalTo: stockImageView.bottomAnchor, constant: 5).isActive = true
-        stockNameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10).isActive = true
+        stockNameLabel.snp.makeConstraints {
+            $0.top.equalTo(stockImageView.snp.bottom).offset(5)
+            $0.leading.equalToSuperview().offset(10)
+        }
         
-        dividendPercentageLabel.topAnchor.constraint(equalTo: stockNameLabel.bottomAnchor, constant: 10).isActive = true
-        dividendPercentageLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10).isActive = true
+        dividendPercentageLabel.snp.makeConstraints {
+            $0.top.equalTo(stockNameLabel.snp.bottom).offset(10)
+            $0.leading.equalToSuperview().offset(10)
+        }
         
-        priceLabel.topAnchor.constraint(equalTo: dividendPercentageLabel.bottomAnchor, constant: 3).isActive = true
-        priceLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10).isActive = true
+        priceLabel.snp.makeConstraints {
+            $0.top.equalTo(dividendPercentageLabel.snp.bottom).offset(3)
+            $0.leading.equalToSuperview().offset(10)
+        }
         
-        dateLabel.topAnchor.constraint(equalTo: priceLabel.bottomAnchor, constant: 13).isActive = true
-        dateLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10).isActive = true
+        dateLabel.snp.makeConstraints {
+            $0.top.equalTo(priceLabel.snp.bottom).offset(13)
+            $0.leading.equalToSuperview().offset(10)
+        }
     }
 }

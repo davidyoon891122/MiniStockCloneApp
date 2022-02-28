@@ -6,13 +6,13 @@
 //
 
 import UIKit
+import SnapKit
 
 class LegalBoardView: UIView {
     weak var delegate: HomeViewProtocol?
     
     private lazy var mainLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .gray
         label.font = .systemFont(ofSize: 14, weight: .medium)
         label.numberOfLines = 0
@@ -22,7 +22,6 @@ class LegalBoardView: UIView {
     private lazy var upScrollButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "arrow.up"), for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = .white
         button.tintColor = .gray
         button.layer.cornerRadius = 20
@@ -53,14 +52,18 @@ private extension LegalBoardView {
     }
     
     func setLayoutConstraints() {
-        mainLabel.topAnchor.constraint(equalTo: topAnchor, constant: 16).isActive = true
-        mainLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16).isActive = true
-        mainLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16).isActive = true
+        mainLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(16)
+            $0.leading.equalToSuperview().offset(16)
+            $0.bottom.equalToSuperview().inset(16)
+        }
         
-        upScrollButton.topAnchor.constraint(equalTo: topAnchor, constant: 16).isActive = true
-        upScrollButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16).isActive = true
-        upScrollButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        upScrollButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        upScrollButton.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(16)
+            $0.trailing.equalToSuperview().inset(16)
+            $0.width.equalTo(40)
+            $0.height.equalTo(40)
+        }
     }
     
     func setLegalText() {

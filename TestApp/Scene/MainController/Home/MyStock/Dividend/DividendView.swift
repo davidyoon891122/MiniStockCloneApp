@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class DividendView: UIView {
     private var dividends: [DividendModel] = []
@@ -21,7 +22,7 @@ class DividendView: UIView {
             .forEach {
                 stackView.addArrangedSubview($0)
             }
-        stackView.translatesAutoresizingMaskIntoConstraints = false
+
         return stackView
     }()
     
@@ -73,7 +74,6 @@ class DividendView: UIView {
         collectionView.backgroundColor = MenuColor.shared.mintColor
         collectionView.register(DividendCollectionViewCell.self, forCellWithReuseIdentifier: collectionViewCellId)
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.showsHorizontalScrollIndicator = false
         return collectionView
     }()
@@ -128,14 +128,19 @@ private extension DividendView {
     
     func setLayoutConstraint() {
         let inset: CGFloat = 16.0
-        labelVStack.topAnchor.constraint(equalTo: topAnchor, constant: inset).isActive = true
-        labelVStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: inset).isActive = true
-        labelVStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -inset).isActive = true
+
+        labelVStack.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(inset)
+            $0.leading.equalToSuperview().offset(inset)
+            $0.trailing.equalToSuperview().inset(inset)
+        }
         
-        stockCollectionView.topAnchor.constraint(equalTo: labelVStack.bottomAnchor, constant: 10).isActive = true
-        stockCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        stockCollectionView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -inset).isActive = true
-        stockCollectionView.heightAnchor.constraint(equalToConstant: 150).isActive = true
-        stockCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        stockCollectionView.snp.makeConstraints {
+            $0.top.equalTo(labelVStack.snp.bottom).offset(8)
+            $0.leading.equalToSuperview()
+            $0.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview().inset(inset)
+            $0.height.equalTo(150)
+        }
     }
 }

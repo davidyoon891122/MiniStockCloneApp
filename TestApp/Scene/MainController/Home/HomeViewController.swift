@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
     private let networkManager = NetworkManager()
@@ -15,7 +16,6 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
     
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.showsVerticalScrollIndicator = false
         return scrollView
     }()
@@ -26,17 +26,9 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
         return control
     }()
     
-    private lazy var contentView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+    private let contentView: UIView = UIView()
     
-    private lazy var indicatorView: UIActivityIndicatorView = {
-        let indicatorView = UIActivityIndicatorView()
-        indicatorView.translatesAutoresizingMaskIntoConstraints = false
-        return indicatorView
-    }()
+    private let indicatorView: UIActivityIndicatorView = UIActivityIndicatorView()
     
     private let investmentView = InvestmentView()
 
@@ -64,7 +56,6 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
                 stackView.addArrangedSubview($0)
             }
         
-        stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
     
@@ -208,24 +199,23 @@ private extension HomeViewController {
     }
     
     func setLayoutConstraint() {
-        scrollView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        scrollView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
         
-        indicatorView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        indicatorView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        indicatorView.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.centerY.equalToSuperview()
+        }
         
-        contentView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
-        contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
-        contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
-        contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
-        contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+        contentView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+            $0.width.equalToSuperview()
+        }
         
-        stackView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-        stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
-        stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
-        stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
+        stackView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
     }
     
     @objc func tapShareButton() {

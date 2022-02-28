@@ -7,6 +7,7 @@
 
 import UIKit
 import Kingfisher
+import SnapKit
 
 class MyStockViewTableCell: UITableViewCell {
     
@@ -16,7 +17,6 @@ class MyStockViewTableCell: UITableViewCell {
         imageView.layer.cornerRadius = 20
         imageView.image = UIImage(named: "AT&T")
         imageView.layer.masksToBounds = true
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
@@ -29,7 +29,6 @@ class MyStockViewTableCell: UITableViewCell {
                 stackView.addArrangedSubview($0)
             }
         
-        stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
     
@@ -66,7 +65,7 @@ class MyStockViewTableCell: UITableViewCell {
             .forEach {
                 stackView.addArrangedSubview($0)
             }
-        stackView.translatesAutoresizingMaskIntoConstraints = false
+
         return stackView
     }()
     
@@ -103,7 +102,6 @@ class MyStockViewTableCell: UITableViewCell {
                 stackView.addArrangedSubview($0)
             }
         
-        stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
 
@@ -139,14 +137,18 @@ private extension MyStockViewTableCell {
     }
     
     func setLayoutConstraint() {
-        stockImageView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        stockImageView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        stockImageView.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        stockImageView.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        stockImageView.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.leading.equalToSuperview()
+            $0.width.equalTo(40)
+            $0.height.equalTo(40)
+        }
         
-        stockVStackView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        stockVStackView.leadingAnchor.constraint(equalTo: stockImageView.trailingAnchor, constant: 5).isActive = true
-        stockVStackView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        stockVStackView.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.leading.equalTo(stockImageView.snp.trailing).offset(5)
+            $0.trailing.equalToSuperview()
+        }
     }
     
 }
