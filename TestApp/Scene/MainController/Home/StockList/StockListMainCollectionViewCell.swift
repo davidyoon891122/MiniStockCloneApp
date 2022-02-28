@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class StockListMainCollectionViewCell: UICollectionViewCell {
     static let identifier: String = "StockListMainCollectionViewCell"
@@ -22,7 +23,6 @@ class StockListMainCollectionViewCell: UICollectionViewCell {
             .forEach {
                 stackView.addSubview($0)
             }
-        stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
     
@@ -31,7 +31,6 @@ class StockListMainCollectionViewCell: UICollectionViewCell {
         button.setTitle("전일 기준 ⌵", for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 13, weight: .medium)
         button.setTitleColor(.lightGray, for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
@@ -40,7 +39,6 @@ class StockListMainCollectionViewCell: UICollectionViewCell {
         button.setTitle("⌾ ETF만 보기", for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 13, weight: .medium)
         button.setTitleColor(.lightGray, for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
@@ -53,16 +51,11 @@ class StockListMainCollectionViewCell: UICollectionViewCell {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(StockListDetailViewCell.self, forCellWithReuseIdentifier: StockListDetailViewCell.identifier)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
         
         return collectionView
     }()
     
-    private lazy var tableView: UITableView = {
-        let tableView = UITableView()
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        return tableView
-    }()
+    private let tableView: UITableView = UITableView()
     
     private lazy var moreButton: UIButton = {
         let button = UIButton()
@@ -73,7 +66,6 @@ class StockListMainCollectionViewCell: UICollectionViewCell {
         button.layer.borderColor = UIColor.secondarySystemBackground.cgColor
         button.layer.borderWidth = 1
         button.layer.cornerRadius = 12
-        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
@@ -123,25 +115,36 @@ private extension StockListMainCollectionViewCell {
     
     func setLayoutConstraints() {
         let inset: CGFloat = 16.0
-        sortingButtonHStackView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        sortingButtonHStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: inset).isActive = true
-        sortingButtonHStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -inset).isActive = true
-        sortingButtonHStackView.heightAnchor.constraint(equalToConstant: 30).isActive = true
         
-        sortingButton.centerYAnchor.constraint(equalTo: sortingButtonHStackView.centerYAnchor).isActive = true
-        sortingButton.leadingAnchor.constraint(equalTo: sortingButtonHStackView.leadingAnchor).isActive = true
+        sortingButtonHStackView.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.leading.equalToSuperview().offset(inset)
+            $0.trailing.equalToSuperview().inset(inset)
+            $0.height.equalTo(30)
+        }
         
-        etfButton.centerYAnchor.constraint(equalTo: sortingButtonHStackView.centerYAnchor).isActive = true
-        etfButton.trailingAnchor.constraint(equalTo: sortingButtonHStackView.trailingAnchor).isActive = true
+        sortingButton.snp.makeConstraints {
+            $0.centerY.equalTo(sortingButtonHStackView)
+            $0.leading.equalTo(sortingButtonHStackView)
+        }
         
-        collectionView.topAnchor.constraint(equalTo: sortingButtonHStackView.bottomAnchor).isActive = true
-        collectionView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        collectionView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        etfButton.snp.makeConstraints {
+            $0.centerY.equalTo(sortingButtonHStackView)
+            $0.trailing.equalTo(sortingButtonHStackView)
+        }
         
-        moreButton.topAnchor.constraint(equalTo: collectionView.bottomAnchor).isActive = true
-        moreButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: inset).isActive = true
-        moreButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        moreButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -inset).isActive = true
-        moreButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -inset).isActive = true
+        collectionView.snp.makeConstraints {
+            $0.top.equalTo(sortingButtonHStackView.snp.bottom)
+            $0.leading.equalToSuperview()
+            $0.trailing.equalToSuperview()
+        }
+        
+        moreButton.snp.makeConstraints {
+            $0.top.equalTo(collectionView.snp.bottom)
+            $0.leading.equalToSuperview().offset(inset)
+            $0.height.equalTo(50)
+            $0.trailing.equalToSuperview().inset(inset)
+            $0.bottom.equalToSuperview().inset(inset)
+        }
     }
 }

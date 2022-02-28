@@ -6,17 +6,18 @@
 //
 
 import UIKit
+import SnapKit
 
 class CurrencyView: UIView {
-    
     weak var delegate: HomeViewProtocol?
+    
     private lazy var currencyHStackView: UIStackView = {
         let stackView = UIStackView()
         [leftVStackView, rightVStackView]
             .forEach {
                 stackView.addArrangedSubview($0)
             }
-        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
         return stackView
     }()
     
@@ -113,10 +114,13 @@ private extension CurrencyView {
     
     func setLayoutConstraints() {
         let inset: CGFloat = 16.0
-        currencyHStackView.topAnchor.constraint(equalTo: topAnchor, constant: inset).isActive = true
-        currencyHStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: inset).isActive = true
-        currencyHStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -inset).isActive = true
-        currencyHStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -inset).isActive = true
+        
+        currencyHStackView.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(inset)
+            $0.leading.equalToSuperview().offset(inset)
+            $0.bottom.equalToSuperview().inset(inset)
+            $0.trailing.equalToSuperview().inset(inset)
+        }
     }
     
     func setTapGesture() {
