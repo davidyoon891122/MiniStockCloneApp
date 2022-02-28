@@ -9,7 +9,6 @@ import UIKit
 import SnapKit
 
 class MyStockView: UIView {
-    private let tableViewCellId = "tableViewCellId"
     private var cellCount: Int = 1
     private let dividendView = DividendView()
     
@@ -84,7 +83,7 @@ class MyStockView: UIView {
     
     private lazy var stockTableView: UITableView = {
         let tableView = UITableView()
-        tableView.register(MyStockViewTableCell.self, forCellReuseIdentifier: tableViewCellId)
+        tableView.register(MyStockViewTableCell.self, forCellReuseIdentifier: MyStockViewTableCell.identifier)
         tableView.dataSource = self
         tableView.delegate = self
         tableView.rowHeight = UITableView.automaticDimension
@@ -144,7 +143,7 @@ extension MyStockView: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: tableViewCellId, for: indexPath) as? MyStockViewTableCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: MyStockViewTableCell.identifier, for: indexPath) as? MyStockViewTableCell
         let stock = self.myStocks[indexPath.row]
         cell?.setup(myStock: stock)
         

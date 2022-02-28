@@ -9,6 +9,8 @@ import UIKit
 import SnapKit
 
 class NoticeTableViewCell: UITableViewCell {
+    static let identifier: String = "NoticeTableViewCell"
+    
     private lazy var noticeHStack: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal

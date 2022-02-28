@@ -10,8 +10,9 @@ import SnapKit
 
 class DividendView: UIView {
     private var dividends: [DividendModel] = []
-    private let collectionViewCellId = "cellId"
+    
     weak var delegate: HomeViewProtocol?
+    
     private lazy var labelVStack: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -72,7 +73,7 @@ class DividendView: UIView {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.backgroundColor = MenuColor.shared.mintColor
-        collectionView.register(DividendCollectionViewCell.self, forCellWithReuseIdentifier: collectionViewCellId)
+        collectionView.register(DividendCollectionViewCell.self, forCellWithReuseIdentifier: DividendCollectionViewCell.identifier)
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
         collectionView.showsHorizontalScrollIndicator = false
         return collectionView
@@ -101,7 +102,7 @@ extension DividendView: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: collectionViewCellId, for: indexPath) as? DividendCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DividendCollectionViewCell.identifier, for: indexPath) as? DividendCollectionViewCell
         let dividend = dividends[indexPath.row]
         cell?.setupData(dividend: dividend)
         return cell ?? UICollectionViewCell()

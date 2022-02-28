@@ -14,8 +14,6 @@ protocol InvestmentViewProtocol: NSObject {
 }
 
 class InvestmentView: UIView {
-    private let noticeCellId = "noticeCellId"
-
     private let separatorView = SeparatorView()
     
     weak var delegate: InvestmentViewProtocol?
@@ -122,7 +120,7 @@ class InvestmentView: UIView {
         let tableView = UITableView()
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(NoticeTableViewCell.self, forCellReuseIdentifier: noticeCellId)
+        tableView.register(NoticeTableViewCell.self, forCellReuseIdentifier: NoticeTableViewCell.identifier)
         tableView.separatorStyle = .none
         return tableView
     }()
@@ -162,7 +160,7 @@ extension InvestmentView: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: noticeCellId, for: indexPath) as? NoticeTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: NoticeTableViewCell.identifier, for: indexPath) as? NoticeTableViewCell
         return cell ?? UITableViewCell()
     }
     

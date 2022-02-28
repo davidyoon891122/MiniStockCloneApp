@@ -10,6 +10,8 @@ import Kingfisher
 import SnapKit
 
 class DividendCollectionViewCell: UICollectionViewCell {
+    static let identifier: String = "DividendCollectionViewCell"
+    
     private lazy var stockImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
