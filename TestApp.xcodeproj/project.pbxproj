@@ -52,6 +52,7 @@
 		AD8BDDB327CC42A4005E0FC4 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = AD8BDDB227CC42A4005E0FC4 /* SnapKit */; };
 		AD8CE34027C4515900C8F2CC /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = AD8CE33F27C4515900C8F2CC /* Charts */; };
 		AD8CE38327C4A26800C8F2CC /* SortingSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8CE38227C4A26800C8F2CC /* SortingSelectView.swift */; };
+		AD8F736827CEDF4200DFD10E /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8F736727CEDF4200DFD10E /* HomeViewModel.swift */; };
 		AD93D08327C733750004C44E /* DividendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD93D08227C733750004C44E /* DividendModel.swift */; };
 		AD93D08527C747E10004C44E /* IncreaseStockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD93D08427C747E10004C44E /* IncreaseStockModel.swift */; };
 		AD950E4727C5EA7D00C05584 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = AD950E4627C5EA7D00C05584 /* Kingfisher */; };
@@ -128,6 +129,7 @@
 		AD8B45F127C343E300005725 /* ProfitShareDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfitShareDetailViewController.swift; sourceTree = "<group>"; };
 		AD8B45F327C3581900005725 /* CurrencyDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetailView.swift; sourceTree = "<group>"; };
 		AD8CE38227C4A26800C8F2CC /* SortingSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingSelectView.swift; sourceTree = "<group>"; };
+		AD8F736727CEDF4200DFD10E /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		AD93D08227C733750004C44E /* DividendModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividendModel.swift; sourceTree = "<group>"; };
 		AD93D08427C747E10004C44E /* IncreaseStockModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncreaseStockModel.swift; sourceTree = "<group>"; };
 		AD950E4827C6026400C05584 /* ProfitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfitModel.swift; sourceTree = "<group>"; };
@@ -332,6 +334,7 @@
 			isa = PBXGroup;
 			children = (
 				AD34BB412794E045001CD610 /* HomeViewController.swift */,
+				AD8F736727CEDF4200DFD10E /* HomeViewModel.swift */,
 				AD85592E27A225EB005BBA23 /* HomeViewMenu.swift */,
 				AD0E7A96279A938800F1A9A0 /* Investment */,
 				AD0E7A97279A939900F1A9A0 /* MyStock */,
@@ -686,6 +689,7 @@
 				AD6A684027A0EC4B000D022C /* NoticeTableViewCell.swift in Sources */,
 				AD7E657927BA1B8100408BE6 /* StockListDetailViewCell.swift in Sources */,
 				AD991DC727A3AE7000AA897B /* StockListView.swift in Sources */,
+				AD8F736827CEDF4200DFD10E /* HomeViewModel.swift in Sources */,
 				AD8B45F227C343E300005725 /* ProfitShareDetailViewController.swift in Sources */,
 				AD84C57F2799337B00395772 /* HomeTabBarController.swift in Sources */,
 				AD6BC75827ACD40C00C2B87D /* StockListMenuCollectionView.swift in Sources */,

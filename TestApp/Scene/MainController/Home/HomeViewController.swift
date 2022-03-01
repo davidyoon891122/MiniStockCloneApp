@@ -59,6 +59,8 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
         return stackView
     }()
     
+    private let viewModel = HomeViewMode()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -68,20 +70,18 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
         scrollView.refreshControl = refreshControl
         
         indicatorView.startAnimating()
-        networkManager.requestMyStock { [weak self] myStocks in
 
-            self?.myStockView.setupData(myStocks: myStocks)
+        viewModel.onUpdate = { [weak self] in
+            guard let self = self else { return }
+            self.myStockView.setupData(myStocks: self.viewModel.myStocks)
+            self.investmentView.setupData(profit: self.viewModel.profit)
+            self.myStockView.setupDividendData(dividends: self.viewModel.dividends)
+            self.indicatorView.stopAnimating()
         }
         
-        networkManager.requestProfit { [weak self] myProfit in
-            self?.investmentView.setupData(profit: myProfit)
-        }
-        
-        networkManager.requestDividendList {[weak self] dividends in
-            self?.myStockView.setupDividendData(dividends: dividends)
-            self?.indicatorView.stopAnimating()
-        }
-        
+        viewModel.fetchMyStock()
+        viewModel.fetchProfit()
+        viewModel.fetchDividendList()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -255,20 +255,17 @@ private extension HomeViewController {
     }
     
     @objc func pullScrollForRefresh() {
-        indicatorView.startAnimating()
-        networkManager.requestMyStock { [weak self] myStocks in
-
-            self?.myStockView.setupData(myStocks: myStocks)
+        viewModel.onUpdate = { [weak self] in
+            guard let self = self else { return }
+            self.myStockView.setupData(myStocks: self.viewModel.myStocks)
+            self.investmentView.setupData(profit: self.viewModel.profit)
+            self.myStockView.setupDividendData(dividends: self.viewModel.dividends)
+            self.refreshControl.endRefreshing()
         }
         
-        networkManager.requestProfit { [weak self] myProfit in
-            self?.investmentView.setupData(profit: myProfit)
-        }
+        viewModel.fetchMyStock()
+        viewModel.fetchProfit()
+        viewModel.fetchDividendList()
         
-        networkManager.requestDividendList {[weak self] dividends in
-            self?.myStockView.setupDividendData(dividends: dividends)
-            self?.indicatorView.stopAnimating()
-            self?.refreshControl.endRefreshing()
-        }
     }
 }
