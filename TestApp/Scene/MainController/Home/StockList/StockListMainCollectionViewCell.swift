@@ -15,6 +15,7 @@ class StockListMainCollectionViewCell: UICollectionViewCell {
     private let detailCellHeight: CGFloat = 65.0
     private var increasedStocks: [IncreaseStockModel] = []
     weak var delegate: HomeViewProtocol?
+    
     private lazy var sortingButtonHStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
@@ -69,14 +70,20 @@ class StockListMainCollectionViewCell: UICollectionViewCell {
         return button
     }()
     
+    private let viewModel = StockListMainCollectionViewModel()
+    
     func setup(menus: [String]) {
         self.menus = menus
         addSubviews()
         setLayoutConstraints()
-        NetworkManager().requestIncreaseList { [weak self] increaseStocks in
-            self?.increasedStocks = increaseStocks
-            self?.collectionView.reloadData()
+        
+        viewModel.onUpdate = { [weak self] in
+            guard let self = self else { return }
+            self.increasedStocks = self.viewModel.inscreaseStocks
+            self.collectionView.reloadData()
         }
+        
+        viewModel.fetchIncreaseList()
     }
 }
 

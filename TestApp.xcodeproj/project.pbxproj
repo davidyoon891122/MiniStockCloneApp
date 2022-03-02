@@ -53,6 +53,7 @@
 		AD8CE34027C4515900C8F2CC /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = AD8CE33F27C4515900C8F2CC /* Charts */; };
 		AD8CE38327C4A26800C8F2CC /* SortingSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8CE38227C4A26800C8F2CC /* SortingSelectView.swift */; };
 		AD8F736827CEDF4200DFD10E /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8F736727CEDF4200DFD10E /* HomeViewModel.swift */; };
+		AD8F736A27CEE6A500DFD10E /* StockListMainCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8F736927CEE6A500DFD10E /* StockListMainCollectionViewModel.swift */; };
 		AD93D08327C733750004C44E /* DividendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD93D08227C733750004C44E /* DividendModel.swift */; };
 		AD93D08527C747E10004C44E /* IncreaseStockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD93D08427C747E10004C44E /* IncreaseStockModel.swift */; };
 		AD950E4727C5EA7D00C05584 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = AD950E4627C5EA7D00C05584 /* Kingfisher */; };
@@ -130,6 +131,7 @@
 		AD8B45F327C3581900005725 /* CurrencyDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetailView.swift; sourceTree = "<group>"; };
 		AD8CE38227C4A26800C8F2CC /* SortingSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingSelectView.swift; sourceTree = "<group>"; };
 		AD8F736727CEDF4200DFD10E /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		AD8F736927CEE6A500DFD10E /* StockListMainCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListMainCollectionViewModel.swift; sourceTree = "<group>"; };
 		AD93D08227C733750004C44E /* DividendModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividendModel.swift; sourceTree = "<group>"; };
 		AD93D08427C747E10004C44E /* IncreaseStockModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncreaseStockModel.swift; sourceTree = "<group>"; };
 		AD950E4827C6026400C05584 /* ProfitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfitModel.swift; sourceTree = "<group>"; };
@@ -429,6 +431,7 @@
 				AD6BC75727ACD40C00C2B87D /* StockListMenuCollectionView.swift */,
 				AD7E657227B9CED100408BE6 /* StockListMainCollectionViewCell.swift */,
 				AD7E657827BA1B8100408BE6 /* StockListDetailViewCell.swift */,
+				AD8F736927CEE6A500DFD10E /* StockListMainCollectionViewModel.swift */,
 			);
 			path = StockList;
 			sourceTree = "<group>";
@@ -677,6 +680,7 @@
 				AD27D1A72791652D009C8F91 /* AppDelegate.swift in Sources */,
 				AD8B45EC27C3209400005725 /* HomeViewProtocol.swift in Sources */,
 				AD991DC927A3CC8000AA897B /* MenuCollectionViewCell.swift in Sources */,
+				AD8F736A27CEE6A500DFD10E /* StockListMainCollectionViewModel.swift in Sources */,
 				AD6A684727A110D8000D022C /* DividendView.swift in Sources */,
 				AD93D08327C733750004C44E /* DividendModel.swift in Sources */,
 				AD84C5832799459E00395772 /* InvestmentView.swift in Sources */,
