@@ -36,7 +36,10 @@ class StackListView: UIView {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.register(StockListMainCollectionViewCell.self, forCellWithReuseIdentifier: StockListMainCollectionViewCell.identifier)
+        collectionView.register(
+            StockListMainCollectionViewCell.self,
+            forCellWithReuseIdentifier: StockListMainCollectionViewCell.identifier
+        )
         collectionView.isPagingEnabled = true
         collectionView.showsHorizontalScrollIndicator = false
         return collectionView
@@ -69,8 +72,14 @@ extension StackListView: UICollectionViewDataSource {
         return menus.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StockListMainCollectionViewCell.identifier, for: indexPath) as? StockListMainCollectionViewCell
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: StockListMainCollectionViewCell.identifier,
+            for: indexPath
+        ) as? StockListMainCollectionViewCell
         cell?.setup(menus: menus)
         
         cell?.delegate = delegate
@@ -80,7 +89,11 @@ extension StackListView: UICollectionViewDataSource {
 }
 
 extension StackListView: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
         return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
     }
 

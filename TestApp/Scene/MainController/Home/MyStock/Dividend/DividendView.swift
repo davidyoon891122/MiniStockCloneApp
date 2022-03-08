@@ -73,7 +73,10 @@ class DividendView: UIView {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.backgroundColor = MenuColor.shared.mintColor
-        collectionView.register(DividendCollectionViewCell.self, forCellWithReuseIdentifier: DividendCollectionViewCell.identifier)
+        collectionView.register(
+            DividendCollectionViewCell.self,
+            forCellWithReuseIdentifier: DividendCollectionViewCell.identifier
+        )
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
         collectionView.showsHorizontalScrollIndicator = false
         return collectionView
@@ -101,8 +104,14 @@ extension DividendView: UICollectionViewDataSource {
         return dividends.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DividendCollectionViewCell.identifier, for: indexPath) as? DividendCollectionViewCell
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: DividendCollectionViewCell.identifier,
+            for: indexPath
+        ) as? DividendCollectionViewCell
         let dividend = dividends[indexPath.row]
         cell?.setupData(dividend: dividend)
         return cell ?? UICollectionViewCell()
@@ -110,7 +119,11 @@ extension DividendView: UICollectionViewDataSource {
 }
 
 extension DividendView: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
         return CGSize(width: collectionView.frame.width / 3 - 20, height: 150.0)
     }
     

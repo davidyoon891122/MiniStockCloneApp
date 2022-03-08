@@ -142,7 +142,10 @@ class InvestmentView: UIView {
         let valueStringAttribute = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 30, weight: .heavy)]
         let wonStringAttribute = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 25, weight: .medium)]
         
-        let value = NSMutableAttributedString(string: profit.totalAsset.commaInString(), attributes: valueStringAttribute)
+        let value = NSMutableAttributedString(
+            string: profit.totalAsset.commaInString(),
+            attributes: valueStringAttribute
+        )
         let won = NSMutableAttributedString(string: "원", attributes: wonStringAttribute)
         
         value.append(won)
@@ -160,7 +163,10 @@ extension InvestmentView: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: NoticeTableViewCell.identifier, for: indexPath) as? NoticeTableViewCell
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: NoticeTableViewCell.identifier,
+            for: indexPath
+        ) as? NoticeTableViewCell
         return cell ?? UITableViewCell()
     }
     

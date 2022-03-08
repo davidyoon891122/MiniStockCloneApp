@@ -136,8 +136,14 @@ extension PasswordView: UICollectionViewDataSource {
         return 12
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as? PasswordNumberCollectionViewCell
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: cellId,
+            for: indexPath
+        ) as? PasswordNumberCollectionViewCell
         
         let randomNumber = keypadNumbers.randomElement()
         
@@ -178,7 +184,11 @@ extension PasswordView: UICollectionViewDataSource {
 }
 
 extension PasswordView: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
         return CGSize(width: collectionView.frame.width / 3, height: 80)
     }
 }

@@ -92,7 +92,13 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
 
 extension HomeViewController: HomeViewProtocol {
     func upScrollAction() {
-        UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: { [weak self] in
+        UIView.animate(
+            withDuration: 0.8,
+            delay: 0,
+            usingSpringWithDamping: 0.5,
+            initialSpringVelocity: 0.5,
+            options: .curveEaseInOut,
+            animations: { [weak self] in
             self?.scrollView.contentOffset.y = -50
         }, completion: nil)
     }
@@ -124,9 +130,20 @@ extension HomeViewController: HomeViewProtocol {
         
         currencyDetailView.frame = CGRect(x: 0, y: window.frame.height, width: window.frame.width, height: height)
         
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseInOut, animations: {
+        UIView.animate(
+            withDuration: 0.5,
+            delay: 0,
+            usingSpringWithDamping: 1,
+            initialSpringVelocity: 1,
+            options: .curveEaseInOut,
+            animations: {
             self.blackView.alpha = 1
-            self.currencyDetailView.frame = CGRect(x: 0, y: currencyDetailViewYOffset, width: window.frame.width, height: height)
+            self.currencyDetailView.frame = CGRect(
+                x: 0,
+                y: currencyDetailViewYOffset,
+                width: window.frame.width,
+                height: height
+            )
         }, completion: nil)
     }
     
@@ -154,9 +171,20 @@ extension HomeViewController: HomeViewProtocol {
         
         sortingSelectView.frame = CGRect(x: 0, y: window.frame.height, width: window.frame.width, height: height)
         
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseInOut, animations: {
+        UIView.animate(
+            withDuration: 0.5,
+            delay: 0,
+            usingSpringWithDamping: 1,
+            initialSpringVelocity: 1,
+            options: .curveEaseInOut,
+            animations: {
             self.blackView.alpha = 1
-            self.sortingSelectView.frame = CGRect(x: 0, y: currencyDetailViewYOffset, width: window.frame.width, height: height)
+            self.sortingSelectView.frame = CGRect(
+                x: 0,
+                y: currencyDetailViewYOffset,
+                width: window.frame.width,
+                height: height
+            )
         }, completion: nil)
     }
     
@@ -179,9 +207,19 @@ extension HomeViewController: InvestmentViewProtocol {
 
 private extension HomeViewController {
     func configureNavigation() {
-        let shareNavigationBarButton = UIBarButtonItem(image: HomeViewNavigationMenu.share.imageName, style: .plain, target: self, action: #selector(tapShareButton))
+        let shareNavigationBarButton = UIBarButtonItem(
+            image: HomeViewNavigationMenu.share.imageName,
+            style: .plain,
+            target: self,
+            action: #selector(tapShareButton)
+        )
         shareNavigationBarButton.tintColor = .label
-        let bagNavigationBarButton = UIBarButtonItem(image: HomeViewNavigationMenu.bag.imageName, style: .plain, target: self, action: #selector(tapBagButton))
+        let bagNavigationBarButton = UIBarButtonItem(
+            image: HomeViewNavigationMenu.bag.imageName,
+            style: .plain,
+            target: self,
+            action: #selector(tapBagButton)
+        )
         bagNavigationBarButton.tintColor = .label
         navigationItem.rightBarButtonItems =  [bagNavigationBarButton, shareNavigationBarButton]
         
@@ -243,14 +281,30 @@ private extension HomeViewController {
     }
     
     @objc func tapBlackView() {
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseInOut, animations: {
+        UIView.animate(
+            withDuration: 0.5,
+            delay: 0,
+            usingSpringWithDamping: 1,
+            initialSpringVelocity: 1,
+            options: .curveEaseInOut,
+            animations: {
             self.blackView.alpha = 0
             
             guard let window = UIApplication.shared.windows.first(where: {$0.isKeyWindow}) else { return }
             
-            self.currencyDetailView.frame = CGRect(x: 0, y: window.frame.height, width: self.currencyDetailView.frame.width, height: self.currencyDetailView.frame.height)
+            self.currencyDetailView.frame = CGRect(
+                x: 0,
+                y: window.frame.height,
+                width: self.currencyDetailView.frame.width,
+                height: self.currencyDetailView.frame.height
+            )
             
-            self.sortingSelectView.frame = CGRect(x: 0, y: window.frame.height, width: self.sortingSelectView.frame.width, height: self.sortingSelectView.frame.height)
+            self.sortingSelectView.frame = CGRect(
+                x: 0,
+                y: window.frame.height,
+                width: self.sortingSelectView.frame.width,
+                height: self.sortingSelectView.frame.height
+            )
         }, completion: nil)
     }
     

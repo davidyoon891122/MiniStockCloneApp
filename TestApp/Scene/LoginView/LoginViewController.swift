@@ -28,8 +28,14 @@ class LoginViewController: UIViewController {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 40, weight: .heavy)
-        let miniStringAttribute = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 40, weight: .heavy), NSAttributedString.Key.foregroundColor: UIColor.label]
-        let stockStringAttribute = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 40, weight: .light), NSAttributedString.Key.foregroundColor: UIColor.label]
+        let miniStringAttribute = [
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 40, weight: .heavy),
+            NSAttributedString.Key.foregroundColor: UIColor.label
+        ]
+        let stockStringAttribute = [
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 40, weight: .light),
+            NSAttributedString.Key.foregroundColor: UIColor.label
+        ]
         
         let miniString = NSMutableAttributedString(string: "mini", attributes: miniStringAttribute)
         let stockString = NSMutableAttributedString(string: "stock", attributes: stockStringAttribute)
@@ -71,7 +77,11 @@ class LoginViewController: UIViewController {
         addSubviews()
         setLayoutConstraint()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(handleAppDidBecomeActiveNotification(notification:)), name: UIApplication.didBecomeActiveNotification, object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleAppDidBecomeActiveNotification(notification:)),
+            name: UIApplication.didBecomeActiveNotification, object: nil
+        )
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -122,14 +132,26 @@ extension LoginViewController {
         
         self.passwordView.frame = CGRect(x: 0, y: window.frame.height, width: window.frame.width, height: height)
         
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+        UIView.animate(
+            withDuration: 0.5,
+            delay: 0,
+            usingSpringWithDamping: 1,
+            initialSpringVelocity: 1,
+            options: .curveEaseOut,
+            animations: {
             self.blackView.alpha = 1
             self.passwordView.frame = CGRect(x: 0, y: passwordViewY, width: window.frame.width, height: height)
         }, completion: nil)
     }
     
     @objc func tapBlackView() {
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+        UIView.animate(
+            withDuration: 0.5,
+            delay: 0,
+            usingSpringWithDamping: 1,
+            initialSpringVelocity: 1,
+            options: .curveEaseOut,
+            animations: {
             self.blackView.alpha = 0
             
             guard let window = UIApplication.shared.windows.first(where: {$0.isKeyWindow})
@@ -137,7 +159,12 @@ extension LoginViewController {
                 return
             }
             
-            self.passwordView.frame = CGRect(x: 0, y: window.frame.height, width: self.passwordView.frame.width, height: self.passwordView.frame.height)
+            self.passwordView.frame = CGRect(
+                x: 0,
+                y: window.frame.height,
+                width: self.passwordView.frame.width,
+                height: self.passwordView.frame.height
+            )
             
         }, completion: nil)
     }

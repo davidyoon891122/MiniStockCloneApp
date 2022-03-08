@@ -40,8 +40,14 @@ extension StockListMenuCollectionView: UICollectionViewDataSource {
         return menus.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MenuCollectionViewCell.identifier, for: indexPath) as? MenuCollectionViewCell
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: MenuCollectionViewCell.identifier,
+            for: indexPath
+        ) as? MenuCollectionViewCell
         cell?.setup(title: menus[indexPath.row])
         if indexPath.row == 0 {
             cell?.selectedAction()
@@ -54,7 +60,11 @@ extension StockListMenuCollectionView: UICollectionViewDataSource {
 }
 
 extension StockListMenuCollectionView: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
         let label = UILabel()
         label.text = menus[indexPath.row]
         label.font = .systemFont(ofSize: 16, weight: .semibold)

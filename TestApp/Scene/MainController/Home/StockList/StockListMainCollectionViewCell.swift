@@ -51,7 +51,10 @@ class StockListMainCollectionViewCell: UICollectionViewCell {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(StockListDetailViewCell.self, forCellWithReuseIdentifier: StockListDetailViewCell.identifier)
+        collectionView.register(
+            StockListDetailViewCell.self,
+            forCellWithReuseIdentifier: StockListDetailViewCell.identifier
+        )
         
         return collectionView
     }()
@@ -93,8 +96,14 @@ extension StockListMainCollectionViewCell: UICollectionViewDataSource {
         
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StockListDetailViewCell.identifier, for: indexPath) as? StockListDetailViewCell
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: StockListDetailViewCell.identifier,
+            for: indexPath
+        ) as? StockListDetailViewCell
         let stock = increasedStocks[indexPath.row]
         cell?.setup(stock: stock)
         
@@ -103,7 +112,11 @@ extension StockListMainCollectionViewCell: UICollectionViewDataSource {
 }
 
 extension StockListMainCollectionViewCell: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
         return CGSize(width: collectionView.frame.width - 40, height: detailCellHeight)
     }
     

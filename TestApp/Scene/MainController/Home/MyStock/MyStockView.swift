@@ -143,7 +143,10 @@ extension MyStockView: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: MyStockViewTableCell.identifier, for: indexPath) as? MyStockViewTableCell
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: MyStockViewTableCell.identifier,
+            for: indexPath
+        ) as? MyStockViewTableCell
         let stock = self.myStocks[indexPath.row]
         cell?.setup(myStock: stock)
         
