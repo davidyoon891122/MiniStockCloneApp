@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class PasswordNumberCollectionViewCell: UICollectionViewCell {
     
@@ -15,7 +16,6 @@ class PasswordNumberCollectionViewCell: UICollectionViewCell {
         label.textAlignment = .center
         label.font = .systemFont(ofSize: 30, weight: .medium)
         label.textColor = .label
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.layer.borderWidth = 1
         label.layer.borderColor = UIColor.separator.cgColor
         return label
@@ -38,9 +38,8 @@ private extension PasswordNumberCollectionViewCell {
     }
     
     func setLayoutConstraint() {
-        numberLabel.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        numberLabel.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        numberLabel.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        numberLabel.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        numberLabel.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
     }
 }

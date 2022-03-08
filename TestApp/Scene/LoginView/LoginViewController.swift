@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class LoginViewController: UIViewController {
     let blackView = UIView()
@@ -15,7 +16,6 @@ class LoginViewController: UIViewController {
         stackView.axis = .vertical
         stackView.distribution = .equalSpacing
         stackView.spacing = 10
-        stackView.translatesAutoresizingMaskIntoConstraints = false
         
         [titleLabel, welcomeLabel]
             .forEach {
@@ -45,7 +45,6 @@ class LoginViewController: UIViewController {
         label.attributedText = miniString
         label.textAlignment = .center
         label.textColor = .label
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
@@ -55,7 +54,6 @@ class LoginViewController: UIViewController {
         label.text = "환영합니다"
         label.textAlignment = .center
         label.textColor = MenuColor.shared.mintColor
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
@@ -68,7 +66,6 @@ class LoginViewController: UIViewController {
         button.layer.borderColor = UIColor.separator.cgColor
         button.layer.borderWidth = 1
         button.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
@@ -104,14 +101,17 @@ extension LoginViewController {
     }
     
     func setLayoutConstraint() {
-        labelStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 120).isActive = true
-        labelStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        labelStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        labelStackView.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(120)
+            $0.leading.trailing.equalToSuperview()
+        }
         
-        loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive =  true
-        loginButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -80).isActive = true
-        loginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
-        loginButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        loginButton.snp.makeConstraints {
+            $0.leading.equalToSuperview().offset(16.0)
+            $0.trailing.equalToSuperview().inset(16.0)
+            $0.bottom.equalToSuperview().inset(80.0)
+            $0.height.equalTo(50)
+        }
         
     }
     
@@ -124,13 +124,20 @@ extension LoginViewController {
         blackView.alpha = 0
         blackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapBlackView)))
         
-        window.addSubview(blackView)
-        window.addSubview(passwordView)
+        [blackView, passwordView]
+            .forEach {
+                window.addSubview($0)
+            }
         
         let height: CGFloat  = 600
         let passwordViewY = window.frame.height - height
         
-        self.passwordView.frame = CGRect(x: 0, y: window.frame.height, width: window.frame.width, height: height)
+        self.passwordView.frame = CGRect(
+            x: 0,
+            y: window.frame.height,
+            width: window.frame.width,
+            height: height
+        )
         
         UIView.animate(
             withDuration: 0.5,

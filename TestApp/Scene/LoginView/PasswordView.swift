@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class PasswordView: UIView {
     
@@ -18,7 +19,6 @@ class PasswordView: UIView {
         let view = UIView()
         view.backgroundColor = .lightGray
         view.layer.cornerRadius = 2
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
@@ -26,7 +26,6 @@ class PasswordView: UIView {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.distribution = .equalSpacing
-        stackView.translatesAutoresizingMaskIntoConstraints = false
         
         [titleLabel, descriptionLabel]
             .forEach {
@@ -42,7 +41,6 @@ class PasswordView: UIView {
         label.font = .systemFont(ofSize: 30, weight: .medium)
         label.textColor = .label
         label.textAlignment = .center
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
@@ -52,14 +50,12 @@ class PasswordView: UIView {
         label.textColor = .label
         label.textAlignment = .center
         label.font = .systemFont(ofSize: 15, weight: .light)
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
     private lazy var numberButtonStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
     
@@ -68,7 +64,6 @@ class PasswordView: UIView {
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         stackView.backgroundColor = .red
-        stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
     
@@ -77,7 +72,6 @@ class PasswordView: UIView {
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         stackView.backgroundColor = .orange
-        stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
     
@@ -86,7 +80,6 @@ class PasswordView: UIView {
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         stackView.backgroundColor = .yellow
-        stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
     
@@ -95,7 +88,6 @@ class PasswordView: UIView {
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         stackView.backgroundColor = MenuColor.shared.mintColor
-        stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
     
@@ -108,7 +100,6 @@ class PasswordView: UIView {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(PasswordNumberCollectionViewCell.self, forCellWithReuseIdentifier: cellId)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
     
@@ -203,18 +194,22 @@ private extension PasswordView {
     }
     
     func setLayoutConstraint() {
-        topDragBar.topAnchor.constraint(equalTo: topAnchor, constant: 12).isActive = true
-        topDragBar.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        topDragBar.widthAnchor.constraint(equalToConstant: 70).isActive = true
-        topDragBar.heightAnchor.constraint(equalToConstant: 5).isActive = true
+        topDragBar.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(12.0)
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(70)
+            $0.height.equalTo(5)
+        }
         
-        labelStackView.topAnchor.constraint(equalTo: topDragBar.bottomAnchor, constant: 50).isActive = true
-        labelStackView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        labelStackView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        labelStackView.snp.makeConstraints {
+            $0.top.equalTo(topDragBar.snp.bottom).offset(16.0)
+            $0.leading.trailing.equalToSuperview()
+        }
         
-        numberCollectionView.heightAnchor.constraint(equalToConstant: 320).isActive = true
-        numberCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        numberCollectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
-        numberCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        numberCollectionView.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(320)
+            $0.bottom.equalTo(safeAreaLayoutGuide)
+        }
     }
 }

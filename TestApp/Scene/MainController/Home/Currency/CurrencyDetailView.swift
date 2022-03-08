@@ -171,7 +171,6 @@ class CurrencyDetailView: UIView {
         button.setTitle("확인", for: .normal)
         button.backgroundColor = MenuColor.shared.mintColor
         button.layer.cornerRadius = 10
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(tapConfirmButton), for: .touchUpInside)
         return button
     }()

@@ -10,7 +10,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    let switchMenu = SwitchMenu.test
+    let switchMenu = SwitchMenu.real
 
     func scene(
         _ scene: UIScene,
