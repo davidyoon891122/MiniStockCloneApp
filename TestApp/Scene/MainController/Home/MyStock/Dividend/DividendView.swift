@@ -77,7 +77,7 @@ class DividendView: UIView {
             DividendCollectionViewCell.self,
             forCellWithReuseIdentifier: DividendCollectionViewCell.identifier
         )
-        collectionView.contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
+        collectionView.contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         collectionView.showsHorizontalScrollIndicator = false
         return collectionView
     }()
