@@ -11,7 +11,6 @@
 		78A6FD516075F747E384C84D /* Pods_TestApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BBA77FEDE0E1BF00CAC399 /* Pods_TestApp.framework */; };
 		8B2DAA1259F17DD09368FD45 /* Pods_TestAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEC21C243121AFB4C28B47E2 /* Pods_TestAppTests.framework */; };
 		AD0E7A91279A5D0500F1A9A0 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = AD0E7A90279A5D0500F1A9A0 /* .swiftlint.yml */; };
-		AD0E7A95279A8C1600F1A9A0 /* TabBarMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0E7A94279A8C1600F1A9A0 /* TabBarMenu.swift */; };
 		AD0E7A99279A93AC00F1A9A0 /* MyStockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0E7A98279A93AC00F1A9A0 /* MyStockView.swift */; };
 		AD0E7A9B279A94FB00F1A9A0 /* MyStockSortingMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0E7A9A279A94FB00F1A9A0 /* MyStockSortingMenu.swift */; };
 		AD27D1A72791652D009C8F91 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD27D1A62791652D009C8F91 /* AppDelegate.swift */; };
@@ -30,6 +29,7 @@
 		AD6A684727A110D8000D022C /* DividendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6A684627A110D8000D022C /* DividendView.swift */; };
 		AD6A684927A129B4000D022C /* DividendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6A684827A129B4000D022C /* DividendCollectionViewCell.swift */; };
 		AD6BC75827ACD40C00C2B87D /* StockListMenuCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6BC75727ACD40C00C2B87D /* StockListMenuCollectionView.swift */; };
+		AD7246272803CADC002C91A3 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7246262803CADC002C91A3 /* TabBarItem.swift */; };
 		AD7E0DE32796791B00230920 /* PasswordNumberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7E0DE22796791B00230920 /* PasswordNumberCollectionViewCell.swift */; };
 		AD7E657327B9CED100408BE6 /* StockListMainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7E657227B9CED100408BE6 /* StockListMainCollectionViewCell.swift */; };
 		AD7E657927BA1B8100408BE6 /* StockListDetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7E657827BA1B8100408BE6 /* StockListDetailViewCell.swift */; };
@@ -87,7 +87,6 @@
 		490D2B7F07520A2C0458A139 /* Pods-TestApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestApp.debug.xcconfig"; path = "Target Support Files/Pods-TestApp/Pods-TestApp.debug.xcconfig"; sourceTree = "<group>"; };
 		89BBA77FEDE0E1BF00CAC399 /* Pods_TestApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD0E7A90279A5D0500F1A9A0 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
-		AD0E7A94279A8C1600F1A9A0 /* TabBarMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarMenu.swift; sourceTree = "<group>"; };
 		AD0E7A98279A93AC00F1A9A0 /* MyStockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStockView.swift; sourceTree = "<group>"; };
 		AD0E7A9A279A94FB00F1A9A0 /* MyStockSortingMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStockSortingMenu.swift; sourceTree = "<group>"; };
 		AD27D1A32791652D009C8F91 /* TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,6 +109,7 @@
 		AD6A684627A110D8000D022C /* DividendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividendView.swift; sourceTree = "<group>"; };
 		AD6A684827A129B4000D022C /* DividendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividendCollectionViewCell.swift; sourceTree = "<group>"; };
 		AD6BC75727ACD40C00C2B87D /* StockListMenuCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListMenuCollectionView.swift; sourceTree = "<group>"; };
+		AD7246262803CADC002C91A3 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
 		AD7E0DE22796791B00230920 /* PasswordNumberCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordNumberCollectionViewCell.swift; sourceTree = "<group>"; };
 		AD7E657227B9CED100408BE6 /* StockListMainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListMainCollectionViewCell.swift; sourceTree = "<group>"; };
 		AD7E657827BA1B8100408BE6 /* StockListDetailViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListDetailViewCell.swift; sourceTree = "<group>"; };
@@ -295,6 +295,15 @@
 			path = Dividend;
 			sourceTree = "<group>";
 		};
+		AD7246282803CFE4002C91A3 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				AD84C57E2799337B00395772 /* HomeTabBarController.swift */,
+				AD7246262803CADC002C91A3 /* TabBarItem.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
 		AD843DCD27BDC0E2006F974A /* ProfitShare */ = {
 			isa = PBXGroup;
 			children = (
@@ -324,7 +333,7 @@
 		AD84C5802799456400395772 /* MainController */ = {
 			isa = PBXGroup;
 			children = (
-				AD84C57E2799337B00395772 /* HomeTabBarController.swift */,
+				AD7246282803CFE4002C91A3 /* TabBar */,
 				AD84C5812799458200395772 /* Home */,
 			);
 			path = MainController;
@@ -396,7 +405,6 @@
 		AD991DC227A3ACFE00AA897B /* MenuOptions */ = {
 			isa = PBXGroup;
 			children = (
-				AD0E7A94279A8C1600F1A9A0 /* TabBarMenu.swift */,
 				AD6A684327A104AB000D022C /* SwitchMenu.swift */,
 				AD85593227A27A30005BBA23 /* MenuColor.swift */,
 			);
@@ -685,7 +693,7 @@
 				AD843DCF27BDC2C8006F974A /* CurrencyView.swift in Sources */,
 				AD8B45E527C2FEC700005725 /* NetworkManager.swift in Sources */,
 				ADA8B440279E470B003D5C98 /* MyStockViewTableCell.swift in Sources */,
-				AD0E7A95279A8C1600F1A9A0 /* TabBarMenu.swift in Sources */,
+				AD7246272803CADC002C91A3 /* TabBarItem.swift in Sources */,
 				AD6A684027A0EC4B000D022C /* NoticeTableViewCell.swift in Sources */,
 				AD7E657927BA1B8100408BE6 /* StockListDetailViewCell.swift in Sources */,
 				AD991DC727A3AE7000AA897B /* StockListView.swift in Sources */,
