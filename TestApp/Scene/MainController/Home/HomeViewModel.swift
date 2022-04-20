@@ -6,10 +6,15 @@
 //
 
 import Foundation
+import RxSwift
+import RxRelay
 
-class HomeViewMode {
+class HomeViewModel {
+    private let disposeBag = DisposeBag()
+
     var onUpdate: () -> Void = {}
-    
+    var myStocksSubject: PublishSubject<[MyStockModel]> = PublishSubject<[MyStockModel]>()
+    var myStocksRelay: PublishRelay<[MyStockModel]> = .init()
     var myStocks: [MyStockModel] = [
         MyStockModel(
             stockName: "--",
@@ -52,11 +57,20 @@ class HomeViewMode {
     }
     
     private let networkManager = NetworkManager()
+
+    private let repository = MyStockRepository()
     
     func fetchMyStock() {
-        networkManager.requestMyStock { myStocks in
-            self.myStocks = myStocks
-        }
+        repository.requestMyStock()
+            .subscribe(onNext: { myStocks in
+                self.myStocksSubject.onNext(myStocks)
+                self.myStocksRelay.accept(myStocks)
+            }, onError: { error in
+                self.myStocksSubject.onError(error)
+            }
+            )
+            .disposed(by: disposeBag)
+
     }
     
     func fetchProfit() {

@@ -7,9 +7,18 @@
 
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
 
 class MyStockView: UIView {
-    private var cellCount: Int = 1
+    private let disposeBag = DisposeBag()
+    private var cellCount: Int {
+        didSet {
+            self.stockTableView.snp.updateConstraints {
+                $0.height.equalTo(CGFloat(self.myStocks.count) * self.cellHeight)
+            }
+        }
+    }
     private let dividendView = DividendView()
     
     private var sortingMenu: MyStockSortingMenu = .orderganada
@@ -17,37 +26,39 @@ class MyStockView: UIView {
     private var myStocks: [MyStockModel] = []
     
     private let cellHeight: CGFloat = 60.0
-    
+
+    private var viewModel: HomeViewModel?
+
     weak var delegate: HomeViewProtocol?
-    
+
     private lazy var titleHStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.distribution = .fillProportionally
-        
+
         stackView.axis = .horizontal
         sortingButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
         [titleLabel, sortingButtonHStack]
             .forEach {
                 stackView.addArrangedSubview($0)
             }
-        
+
         return stackView
     }()
-    
+
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "보유 주식"
         label.font = .systemFont(ofSize: 15, weight: .bold)
         return label
     }()
-    
+
     private lazy var sortingButtonHStack: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.addArrangedSubview(sortingButton)
         return stackView
     }()
-    
+
     private lazy var sortingButton: UIButton = {
         let button = UIButton()
         button.setTitle(sortingMenu.text, for: .normal)
@@ -56,7 +67,7 @@ class MyStockView: UIView {
         button.titleLabel?.font = .systemFont(ofSize: 15, weight: .medium)
         return button
     }()
-    
+
     private lazy var dividendButton: UIButton = {
         let button = UIButton()
         button.setTitle("1개의 주식에서 배당이 나올 예정이에요 ⌵", for: .normal)
@@ -67,7 +78,7 @@ class MyStockView: UIView {
         button.layer.masksToBounds = true
         return button
     }()
-    
+
     private lazy var myStockVStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -77,21 +88,23 @@ class MyStockView: UIView {
             .forEach {
                 stackView.addArrangedSubview($0)
             }
-        
+
         return stackView
     }()
-    
+
     private lazy var stockTableView: UITableView = {
         let tableView = UITableView()
-        tableView.register(MyStockViewTableCell.self, forCellReuseIdentifier: MyStockViewTableCell.identifier)
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.rowHeight = UITableView.automaticDimension
+        tableView.register(
+            MyStockViewTableCell.self,
+            forCellReuseIdentifier: MyStockViewTableCell.identifier
+        )
+        tableView.rowHeight = cellHeight
         tableView.estimatedRowHeight = 88.0
         return tableView
     }()
     
     override init(frame: CGRect) {
+        cellCount = 1
         super.init(frame: frame)
         addSubviews()
         setLayoutConstraint()
@@ -101,16 +114,10 @@ class MyStockView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    func setupData(myStocks: [MyStockModel]) {
-        self.myStocks = myStocks
-        self.cellCount = myStocks.count
-        
-        stockTableView.snp.updateConstraints {
-            $0.height.equalTo(CGFloat(cellCount) * cellHeight)
-        }
-        
-        stockTableView.reloadData()
+
+    func setupViewModel(viewModel: HomeViewModel) {
+        self.viewModel = viewModel
+        bindViewModel()
     }
     
     func setupDividendData(dividends: [DividendModel]) {
@@ -129,39 +136,6 @@ class MyStockView: UIView {
     
     func getCurrentSortingMenu() -> MyStockSortingMenu {
         return sortingMenu
-    }
-}
-
-extension MyStockView: UITableViewDataSource {
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.myStocks.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(
-            withIdentifier: MyStockViewTableCell.identifier,
-            for: indexPath
-        ) as? MyStockViewTableCell
-        let stock = self.myStocks[indexPath.row]
-        cell?.setup(myStock: stock)
-        
-        return cell ?? UITableViewCell()
-    }
-    
-}
-
-extension MyStockView: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return cellHeight
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.moveToDetailStockView()
     }
 }
 
@@ -201,5 +175,41 @@ private extension MyStockView {
     @objc func tapSortingButton() {
         print("did tap sortingButton.")
         delegate?.openSortingButtonView()
+    }
+
+    func bindViewModel() {
+        guard let viewModel = self.viewModel else { return }
+        viewModel.myStocksSubject
+            .subscribe(onNext: { [weak self] myStocks in
+                guard let self = self else { return }
+                self.myStocks = myStocks
+                self.cellCount = self.myStocks.count
+                self.stockTableView.reloadData()
+
+            }, onError: { error in
+                print(error)
+            }
+            )
+            .disposed(by: disposeBag)
+
+        bindUI()
+    }
+
+    func bindUI() {
+        stockTableView.delegate = nil
+        stockTableView.dataSource = nil
+        guard let viewModel = self.viewModel else { return }
+        viewModel.myStocksRelay
+            .observe(on: MainScheduler.instance)
+            .bind(to: stockTableView.rx.items(
+                cellIdentifier: MyStockViewTableCell.identifier,
+                cellType: MyStockViewTableCell.self)
+            ) { row, element, cell in
+                print("row: \(row), element: \(element), cell: \(cell)")
+                let stock = self.myStocks[row]
+                cell.setup(myStock: stock)
+            }
+            .disposed(by: disposeBag)
+
     }
 }

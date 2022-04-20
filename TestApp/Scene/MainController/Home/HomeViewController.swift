@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import RxSwift
 
 class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
     private let networkManager = NetworkManager()
@@ -66,7 +67,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
         return stackView
     }()
     
-    private let viewModel = HomeViewMode()
+    private let viewModel = HomeViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,9 +79,11 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
         
         indicatorView.startAnimating()
 
+        requestFetchData()
+
         viewModel.onUpdate = { [weak self] in
             guard let self = self else { return }
-            self.myStockView.setupData(myStocks: self.viewModel.myStocks)
+            self.myStockView.setupViewModel(viewModel: self.viewModel)
             self.investmentView.setupData(profit: self.viewModel.profit)
             self.myStockView.setupDividendData(dividends: self.viewModel.dividends)
             self.indicatorView.stopAnimating()
@@ -89,6 +92,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
         viewModel.fetchMyStock()
         viewModel.fetchProfit()
         viewModel.fetchDividendList()
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -318,7 +322,7 @@ private extension HomeViewController {
     @objc func pullScrollForRefresh() {
         viewModel.onUpdate = { [weak self] in
             guard let self = self else { return }
-            self.myStockView.setupData(myStocks: self.viewModel.myStocks)
+
             self.investmentView.setupData(profit: self.viewModel.profit)
             self.myStockView.setupDividendData(dividends: self.viewModel.dividends)
             self.refreshControl.endRefreshing()
@@ -328,5 +332,9 @@ private extension HomeViewController {
         viewModel.fetchProfit()
         viewModel.fetchDividendList()
         
+    }
+
+    func requestFetchData() {
+        viewModel.fetchMyStock()
     }
 }
