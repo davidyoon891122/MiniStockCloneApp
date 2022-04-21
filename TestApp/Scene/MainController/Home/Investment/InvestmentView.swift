@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import RxSwift
 
 protocol InvestmentViewProtocol: NSObject {
     func tapNoticeTableViewCell()
@@ -14,19 +15,30 @@ protocol InvestmentViewProtocol: NSObject {
 }
 
 class InvestmentView: UIView {
+    private let disposeBag = DisposeBag()
+
+    private var viewModel: HomeViewModel?
+
     private let separatorView = SeparatorView()
     
     weak var delegate: InvestmentViewProtocol?
-    
+
     private lazy var verticalStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 5
         
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapVStackView))
+        let tapGestureRecognizer = UITapGestureRecognizer(
+            target: self,
+            action: #selector(tapVStackView)
+        )
         stackView.addGestureRecognizer(tapGestureRecognizer)
         
-        [titleLabel, valueLabel, horizontalStackView]
+        [
+            titleLabel,
+            valueLabel,
+            horizontalStackView
+        ]
             .forEach {
                 stackView.addArrangedSubview($0)
             }
@@ -36,7 +48,7 @@ class InvestmentView: UIView {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "윤지원님의\n투자현황입니다"
+        label.text = "--"
         label.font = .systemFont(ofSize: 20, weight: .medium)
         label.textColor = .label
         label.numberOfLines = 2
@@ -49,7 +61,7 @@ class InvestmentView: UIView {
         let valueStringAttribute = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 30, weight: .heavy)]
         let wonStringAttribute = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 25, weight: .medium)]
         
-        let value = NSMutableAttributedString(string: "3,480", attributes: valueStringAttribute)
+        let value = NSMutableAttributedString(string: "--", attributes: valueStringAttribute)
         let won = NSMutableAttributedString(string: "원", attributes: wonStringAttribute)
         
         value.append(won)
@@ -93,7 +105,7 @@ class InvestmentView: UIView {
     
     private lazy var changedValueLabel: UILabel = {
         let label = UILabel()
-        label.text = "453원"
+        label.text = "-- 원"
         label.textColor = .red
         label.font = .systemFont(ofSize: 15)
         return label
@@ -101,7 +113,7 @@ class InvestmentView: UIView {
     
     private lazy var percentageLabel: UILabel = {
         let label = UILabel()
-        label.text = "(+22.52%)"
+        label.text = "(--.--%)"
         label.textColor = .red
         label.font = .systemFont(ofSize: 15)
         return label
@@ -109,7 +121,7 @@ class InvestmentView: UIView {
     
     private lazy var baseDateLabel: UILabel = {
         let label = UILabel()
-        label.text = "1월 20일 기준"
+        label.text = "--월 --일 기준"
         label.textAlignment = .right
         label.textColor = .lightGray
         label.font = .systemFont(ofSize: 13)
@@ -134,6 +146,11 @@ class InvestmentView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    func setupViewModel(viewModel: HomeViewModel) {
+        self.viewModel = viewModel
+        bindViewModel()
     }
     
     func setupData(profit: ProfitModel) {
@@ -217,5 +234,18 @@ private extension InvestmentView {
     
     @objc func tapVStackView() {
         delegate?.tapInvestmentBoardView()
+    }
+
+    func bindViewModel() {
+        guard let viewModel = self.viewModel else { return }
+        viewModel.profitsSubject
+            .subscribe(onNext: { profit in
+                print(profit)
+                self.setupData(profit: profit)
+            }, onError: { error in
+                print(error)
+            })
+            .disposed(by: disposeBag)
+
     }
 }

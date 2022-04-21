@@ -76,7 +76,6 @@ struct NetworkManager {
         
         URLSession.shared.dataTask(with: url) { data, _, _ in
             guard let data = data else { return }
-            print(data)
             let jsonData = try? JSONDecoder().decode([MyStockModel].self, from: data)
             guard let stocks = jsonData else { return }
             completionHandler(stocks)

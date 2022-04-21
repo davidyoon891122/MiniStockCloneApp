@@ -119,7 +119,7 @@ class MyStockView: UIView {
         bindViewModel()
         dividendView.setupViewModel(viewModel: viewModel)
     }
-    
+
     func setDividendDelegate(viewController: HomeViewProtocol) {
         dividendView.delegate = viewController
     }
@@ -200,8 +200,7 @@ private extension MyStockView {
             .bind(to: stockTableView.rx.items(
                 cellIdentifier: MyStockViewTableCell.identifier,
                 cellType: MyStockViewTableCell.self)
-            ) { row, element, cell in
-                print("row: \(row), element: \(element), cell: \(cell)")
+            ) { row, _, cell in
                 let stock = self.myStocks[row]
                 cell.setup(myStock: stock)
             }
