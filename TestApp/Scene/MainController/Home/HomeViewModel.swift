@@ -15,21 +15,10 @@ class HomeViewModel {
     var onUpdate: () -> Void = {}
     var myStocksSubject: PublishSubject<[MyStockModel]> = PublishSubject<[MyStockModel]>()
     var myStocksRelay: PublishRelay<[MyStockModel]> = .init()
-    var myStocks: [MyStockModel] = [
-        MyStockModel(
-            stockName: "--",
-            currentPrice: 0,
-            stockQuantity: 0,
-            valueChange: 0,
-            percentChange: 0,
-            imageURL: ""
-        )
-        ] {
-        didSet {
-            onUpdate()
-        }
-    }
-    
+
+    var dividendsSubject: PublishSubject<[DividendModel]> = PublishSubject<[DividendModel]>()
+    var dividendsRelay: PublishRelay<[DividendModel]> = .init()
+
     var profit: ProfitModel = ProfitModel(
         userName: "---",
         totalAsset: 0,
@@ -42,26 +31,12 @@ class HomeViewModel {
         }
     }
     
-    var dividends: [DividendModel] = [
-        DividendModel(
-            stockName: "--",
-            currentPrice: 0,
-            percentChange: 0,
-            imageURL: "",
-            exDividendDate: "--"
-        )
-    ] {
-        didSet {
-            onUpdate()
-        }
-    }
-    
     private let networkManager = NetworkManager()
 
-    private let repository = MyStockRepository()
+    private let repository = StockRepository()
     
     func fetchMyStock() {
-        repository.requestMyStock()
+        repository.requestData(url: URLInfo.stock.url, type: [MyStockModel].self)
             .subscribe(onNext: { myStocks in
                 self.myStocksSubject.onNext(myStocks)
                 self.myStocksRelay.accept(myStocks)
@@ -70,7 +45,6 @@ class HomeViewModel {
             }
             )
             .disposed(by: disposeBag)
-
     }
     
     func fetchProfit() {
@@ -80,8 +54,15 @@ class HomeViewModel {
     }
     
     func fetchDividendList() {
-        networkManager.requestDividendList { dividends in
-            self.dividends = dividends
-        }
+        repository.requestData(url: URLInfo.dividend.url, type: [DividendModel].self)
+            .subscribe(onNext: { dividends in
+                print(dividends)
+                self.dividendsSubject.onNext(dividends)
+                self.dividendsRelay.accept(dividends)
+            }, onError: { error in
+                print(error)
+                self.dividendsSubject.onError(error)
+            })
+            .disposed(by: disposeBag)
     }
 }

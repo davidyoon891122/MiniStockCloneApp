@@ -12,7 +12,7 @@ import RxCocoa
 
 class MyStockView: UIView {
     private let disposeBag = DisposeBag()
-    private var cellCount: Int {
+    private var cellCount: Int = 1 {
         didSet {
             self.stockTableView.snp.updateConstraints {
                 $0.height.equalTo(CGFloat(self.myStocks.count) * self.cellHeight)
@@ -104,7 +104,6 @@ class MyStockView: UIView {
     }()
     
     override init(frame: CGRect) {
-        cellCount = 1
         super.init(frame: frame)
         addSubviews()
         setLayoutConstraint()
@@ -118,10 +117,7 @@ class MyStockView: UIView {
     func setupViewModel(viewModel: HomeViewModel) {
         self.viewModel = viewModel
         bindViewModel()
-    }
-    
-    func setupDividendData(dividends: [DividendModel]) {
-        self.dividendView.setupData(dividends: dividends)
+        dividendView.setupViewModel(viewModel: viewModel)
     }
     
     func setDividendDelegate(viewController: HomeViewProtocol) {

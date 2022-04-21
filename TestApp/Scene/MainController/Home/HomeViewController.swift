@@ -85,7 +85,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
             guard let self = self else { return }
             self.myStockView.setupViewModel(viewModel: self.viewModel)
             self.investmentView.setupData(profit: self.viewModel.profit)
-            self.myStockView.setupDividendData(dividends: self.viewModel.dividends)
+//            self.myStockView.setupDividendData(dividends: self.viewModel.dividends)
             self.indicatorView.stopAnimating()
         }
         
@@ -324,7 +324,7 @@ private extension HomeViewController {
             guard let self = self else { return }
 
             self.investmentView.setupData(profit: self.viewModel.profit)
-            self.myStockView.setupDividendData(dividends: self.viewModel.dividends)
+//            self.myStockView.setupDividendData(dividends: self.viewModel.dividends)
             self.refreshControl.endRefreshing()
         }
         
