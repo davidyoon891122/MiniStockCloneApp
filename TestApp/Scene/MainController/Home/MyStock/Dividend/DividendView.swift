@@ -7,11 +7,15 @@
 
 import UIKit
 import SnapKit
+import RxSwift
 
 class DividendView: UIView {
+    private let disposeBag = DisposeBag()
     private var dividends: [DividendModel] = []
     
     weak var delegate: HomeViewProtocol?
+
+    private var viewModel: HomeViewModel?
     
     private lazy var labelVStack: UIStackView = {
         let stackView = UIStackView()
@@ -92,10 +96,11 @@ class DividendView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    func setupData(dividends: [DividendModel]) {
-        self.dividends = dividends
-        self.stockCollectionView.reloadData()
+
+    func setupViewModel(viewModel: HomeViewModel) {
+        self.viewModel = viewModel
+
+        bindViewModel()
     }
 }
 
@@ -156,5 +161,18 @@ private extension DividendView {
             $0.bottom.equalToSuperview().inset(inset)
             $0.height.equalTo(150)
         }
+    }
+
+    func bindViewModel() {
+        guard let viewModel = self.viewModel else { return }
+        viewModel.dividendsSubject
+            .subscribe(onNext: { [weak self] dividends in
+                guard let self = self else { return }
+                self.dividends = dividends
+                self.stockCollectionView.reloadData()
+            }, onError: { error in
+                print(error)
+            })
+            .disposed(by: disposeBag)
     }
 }

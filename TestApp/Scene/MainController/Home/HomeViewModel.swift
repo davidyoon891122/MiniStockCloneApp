@@ -6,68 +6,79 @@
 //
 
 import Foundation
+import RxSwift
+import RxRelay
 
-class HomeViewMode {
-    var onUpdate: () -> Void = {}
-    
-    var myStocks: [MyStockModel] = [
-        MyStockModel(
-            stockName: "--",
-            currentPrice: 0,
-            stockQuantity: 0,
-            valueChange: 0,
-            percentChange: 0,
-            imageURL: ""
-        )
-        ] {
-        didSet {
-            onUpdate()
-        }
-    }
-    
-    var profit: ProfitModel = ProfitModel(
-        userName: "---",
-        totalAsset: 0,
-        valueChange: 0,
-        percentChange: 0,
-        referenceDay: "--"
-    ) {
-        didSet {
-            onUpdate()
-        }
-    }
-    
-    var dividends: [DividendModel] = [
-        DividendModel(
-            stockName: "--",
-            currentPrice: 0,
-            percentChange: 0,
-            imageURL: "",
-            exDividendDate: "--"
-        )
-    ] {
-        didSet {
-            onUpdate()
-        }
-    }
+class HomeViewModel {
+    private let disposeBag = DisposeBag()
+
+    var myStocksSubject: PublishSubject<[MyStockModel]> = .init()
+    var myStocksRelay: PublishRelay<[MyStockModel]> = .init()
+
+    var dividendsSubject: PublishSubject<[DividendModel]> = .init()
+    var dividendsRelay: PublishRelay<[DividendModel]> = .init()
+
+    var profitsSubject: PublishSubject<ProfitModel> = .init()
+    var profitsRelay: PublishRelay<ProfitModel> = .init()
+
+    var finishFetchSubject: PublishSubject<Bool> = .init()
     
     private let networkManager = NetworkManager()
+
+    private let repository = StockRepository()
     
     func fetchMyStock() {
-        networkManager.requestMyStock { myStocks in
-            self.myStocks = myStocks
-        }
+        repository.requestData(
+            url: URLInfo.stock.url,
+            type: [MyStockModel].self
+        )
+            .subscribe(onNext: { myStocks in
+                self.myStocksSubject.onNext(myStocks)
+                self.myStocksRelay.accept(myStocks)
+            }, onError: { error in
+                self.myStocksSubject.onError(error)
+            }
+            )
+            .disposed(by: disposeBag)
     }
     
     func fetchProfit() {
-        networkManager.requestProfit { profit in
-            self.profit = profit
-        }
+        repository.requestData(
+            url: URLInfo.profit.url,
+            type: [ProfitModel].self
+        )
+            .subscribe(onNext: { profits in
+                self.profitsSubject.onNext(profits[0])
+                self.profitsRelay.accept(profits[0])
+            }, onError: { error in
+                self.profitsSubject.onError(error)
+            }
+            )
+            .disposed(by: disposeBag)
     }
     
     func fetchDividendList() {
-        networkManager.requestDividendList { dividends in
-            self.dividends = dividends
-        }
+        repository.requestData(
+            url: URLInfo.dividend.url,
+            type: [DividendModel].self
+        )
+            .subscribe(onNext: { dividends in
+                self.dividendsSubject.onNext(dividends)
+                self.dividendsRelay.accept(dividends)
+            }, onError: { error in
+                self.dividendsSubject.onError(error)
+            })
+            .disposed(by: disposeBag)
+    }
+
+    func inOutBind() {
+        Observable.combineLatest(
+            myStocksSubject,
+            dividendsSubject,
+            profitsSubject,
+            resultSelector: { !$0.isEmpty && !$1.isEmpty && !$2.userName.isEmpty })
+            .bind(to: finishFetchSubject)
+            .disposed(by: disposeBag)
+
     }
 }

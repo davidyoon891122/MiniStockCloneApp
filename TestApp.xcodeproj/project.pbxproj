@@ -10,6 +10,8 @@
 		76BA22679DBB4E9ECF29C1A8 /* Pods_TestApp_TestAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9377D3CC628442F71555A7E /* Pods_TestApp_TestAppUITests.framework */; };
 		78A6FD516075F747E384C84D /* Pods_TestApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BBA77FEDE0E1BF00CAC399 /* Pods_TestApp.framework */; };
 		8B2DAA1259F17DD09368FD45 /* Pods_TestAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEC21C243121AFB4C28B47E2 /* Pods_TestAppTests.framework */; };
+		AD054AE2280F8FDF00B81F97 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = AD054AE1280F8FDF00B81F97 /* RxCocoa */; };
+		AD054AE4280F8FDF00B81F97 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AD054AE3280F8FDF00B81F97 /* RxSwift */; };
 		AD0E7A91279A5D0500F1A9A0 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = AD0E7A90279A5D0500F1A9A0 /* .swiftlint.yml */; };
 		AD0E7A99279A93AC00F1A9A0 /* MyStockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0E7A98279A93AC00F1A9A0 /* MyStockView.swift */; };
 		AD0E7A9B279A94FB00F1A9A0 /* MyStockSortingMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0E7A9A279A94FB00F1A9A0 /* MyStockSortingMenu.swift */; };
@@ -29,6 +31,9 @@
 		AD6A684727A110D8000D022C /* DividendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6A684627A110D8000D022C /* DividendView.swift */; };
 		AD6A684927A129B4000D022C /* DividendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6A684827A129B4000D022C /* DividendCollectionViewCell.swift */; };
 		AD6BC75827ACD40C00C2B87D /* StockListMenuCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6BC75727ACD40C00C2B87D /* StockListMenuCollectionView.swift */; };
+		AD6BCF7B280F9251002F0787 /* StockRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6BCF7A280F9251002F0787 /* StockRepository.swift */; };
+		AD6BCF7E280F9287002F0787 /* URLInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6BCF7D280F9287002F0787 /* URLInfo.swift */; };
+		AD6BCF82280F93A8002F0787 /* Extension+Float.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6BCF81280F93A8002F0787 /* Extension+Float.swift */; };
 		AD7246272803CADC002C91A3 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7246262803CADC002C91A3 /* TabBarItem.swift */; };
 		AD7E0DE32796791B00230920 /* PasswordNumberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7E0DE22796791B00230920 /* PasswordNumberCollectionViewCell.swift */; };
 		AD7E657327B9CED100408BE6 /* StockListMainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7E657227B9CED100408BE6 /* StockListMainCollectionViewCell.swift */; };
@@ -57,7 +62,7 @@
 		AD93D08527C747E10004C44E /* IncreaseStockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD93D08427C747E10004C44E /* IncreaseStockModel.swift */; };
 		AD950E4727C5EA7D00C05584 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = AD950E4627C5EA7D00C05584 /* Kingfisher */; };
 		AD950E4927C6026400C05584 /* ProfitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD950E4827C6026400C05584 /* ProfitModel.swift */; };
-		AD950E4B27C60AEF00C05584 /* Extension+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD950E4A27C60AEF00C05584 /* Extension+.swift */; };
+		AD950E4B27C60AEF00C05584 /* Extension+Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD950E4A27C60AEF00C05584 /* Extension+Int.swift */; };
 		AD991DC727A3AE7000AA897B /* StockListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD991DC627A3AE7000AA897B /* StockListView.swift */; };
 		AD991DC927A3CC8000AA897B /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD991DC827A3CC8000AA897B /* MenuCollectionViewCell.swift */; };
 		ADA8B440279E470B003D5C98 /* MyStockViewTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA8B43F279E470B003D5C98 /* MyStockViewTableCell.swift */; };
@@ -109,6 +114,9 @@
 		AD6A684627A110D8000D022C /* DividendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividendView.swift; sourceTree = "<group>"; };
 		AD6A684827A129B4000D022C /* DividendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividendCollectionViewCell.swift; sourceTree = "<group>"; };
 		AD6BC75727ACD40C00C2B87D /* StockListMenuCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListMenuCollectionView.swift; sourceTree = "<group>"; };
+		AD6BCF7A280F9251002F0787 /* StockRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockRepository.swift; sourceTree = "<group>"; };
+		AD6BCF7D280F9287002F0787 /* URLInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLInfo.swift; sourceTree = "<group>"; };
+		AD6BCF81280F93A8002F0787 /* Extension+Float.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Float.swift"; sourceTree = "<group>"; };
 		AD7246262803CADC002C91A3 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
 		AD7E0DE22796791B00230920 /* PasswordNumberCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordNumberCollectionViewCell.swift; sourceTree = "<group>"; };
 		AD7E657227B9CED100408BE6 /* StockListMainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListMainCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -133,7 +141,7 @@
 		AD93D08227C733750004C44E /* DividendModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividendModel.swift; sourceTree = "<group>"; };
 		AD93D08427C747E10004C44E /* IncreaseStockModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncreaseStockModel.swift; sourceTree = "<group>"; };
 		AD950E4827C6026400C05584 /* ProfitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfitModel.swift; sourceTree = "<group>"; };
-		AD950E4A27C60AEF00C05584 /* Extension+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+.swift"; sourceTree = "<group>"; };
+		AD950E4A27C60AEF00C05584 /* Extension+Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Int.swift"; sourceTree = "<group>"; };
 		AD991DC627A3AE7000AA897B /* StockListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListView.swift; sourceTree = "<group>"; };
 		AD991DC827A3CC8000AA897B /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		ADA8B43F279E470B003D5C98 /* MyStockViewTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStockViewTableCell.swift; sourceTree = "<group>"; };
@@ -148,11 +156,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD054AE2280F8FDF00B81F97 /* RxCocoa in Frameworks */,
 				AD950E4727C5EA7D00C05584 /* Kingfisher in Frameworks */,
 				78A6FD516075F747E384C84D /* Pods_TestApp.framework in Frameworks */,
 				AD8CE34027C4515900C8F2CC /* Charts in Frameworks */,
 				AD8B45E327C2FEA600005725 /* Alamofire in Frameworks */,
 				AD8BDDB327CC42A4005E0FC4 /* SnapKit in Frameworks */,
+				AD054AE4280F8FDF00B81F97 /* RxSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,6 +256,7 @@
 		AD27D1A52791652D009C8F91 /* TestApp */ = {
 			isa = PBXGroup;
 			children = (
+				AD6BCF7C280F9259002F0787 /* Repository */,
 				AD991DC427A3AD2E00AA897B /* Delegates */,
 				AD8B45E927C3004B00005725 /* Model */,
 				AD991DC227A3ACFE00AA897B /* MenuOptions */,
@@ -254,7 +265,8 @@
 				AD27D1AF2791652F009C8F91 /* Assets.xcassets */,
 				AD27D1B12791652F009C8F91 /* LaunchScreen.storyboard */,
 				AD27D1B42791652F009C8F91 /* Info.plist */,
-				AD950E4A27C60AEF00C05584 /* Extension+.swift */,
+				AD6BCF80280F9381002F0787 /* Extensions */,
+				AD6BCF7F280F9372002F0787 /* Utils */,
 			);
 			path = TestApp;
 			sourceTree = "<group>";
@@ -293,6 +305,31 @@
 				AD6A684827A129B4000D022C /* DividendCollectionViewCell.swift */,
 			);
 			path = Dividend;
+			sourceTree = "<group>";
+		};
+		AD6BCF7C280F9259002F0787 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				AD6BCF7A280F9251002F0787 /* StockRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		AD6BCF7F280F9372002F0787 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				AD6BCF7D280F9287002F0787 /* URLInfo.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		AD6BCF80280F9381002F0787 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				AD950E4A27C60AEF00C05584 /* Extension+Int.swift */,
+				AD6BCF81280F93A8002F0787 /* Extension+Float.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		AD7246282803CFE4002C91A3 /* TabBar */ = {
@@ -464,6 +501,8 @@
 				AD8CE33F27C4515900C8F2CC /* Charts */,
 				AD950E4627C5EA7D00C05584 /* Kingfisher */,
 				AD8BDDB227CC42A4005E0FC4 /* SnapKit */,
+				AD054AE1280F8FDF00B81F97 /* RxCocoa */,
+				AD054AE3280F8FDF00B81F97 /* RxSwift */,
 			);
 			productName = TestApp;
 			productReference = AD27D1A32791652D009C8F91 /* TestApp.app */;
@@ -545,6 +584,7 @@
 				AD8CE33E27C4515900C8F2CC /* XCRemoteSwiftPackageReference "Charts" */,
 				AD950E4527C5EA7D00C05584 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				AD8BDDB127CC42A4005E0FC4 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				AD054AE0280F8FDF00B81F97 /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = AD27D1A42791652D009C8F91 /* Products */;
 			projectDirPath = "";
@@ -678,8 +718,9 @@
 				AD0E7A9B279A94FB00F1A9A0 /* MyStockSortingMenu.swift in Sources */,
 				AD85593127A2315D005BBA23 /* DetailNoticeViewController.swift in Sources */,
 				AD7E0DE32796791B00230920 /* PasswordNumberCollectionViewCell.swift in Sources */,
+				AD6BCF7E280F9287002F0787 /* URLInfo.swift in Sources */,
 				AD85592F27A225EB005BBA23 /* HomeViewMenu.swift in Sources */,
-				AD950E4B27C60AEF00C05584 /* Extension+.swift in Sources */,
+				AD950E4B27C60AEF00C05584 /* Extension+Int.swift in Sources */,
 				AD34BB472794E95D001CD610 /* PasswordView.swift in Sources */,
 				AD27D1A72791652D009C8F91 /* AppDelegate.swift in Sources */,
 				AD8B45EC27C3209400005725 /* HomeViewProtocol.swift in Sources */,
@@ -707,10 +748,12 @@
 				AD843DD227BDD466006F974A /* LegalBoardView.swift in Sources */,
 				AD85593327A27A30005BBA23 /* MenuColor.swift in Sources */,
 				AD8CE38327C4A26800C8F2CC /* SortingSelectView.swift in Sources */,
+				AD6BCF7B280F9251002F0787 /* StockRepository.swift in Sources */,
 				AD34BB422794E045001CD610 /* HomeViewController.swift in Sources */,
 				AD6A684427A104AB000D022C /* SwitchMenu.swift in Sources */,
 				AD6A684927A129B4000D022C /* DividendCollectionViewCell.swift in Sources */,
 				AD93D08527C747E10004C44E /* IncreaseStockModel.swift in Sources */,
+				AD6BCF82280F93A8002F0787 /* Extension+Float.swift in Sources */,
 				AD8B45E727C2FF9E00005725 /* MyStockModel.swift in Sources */,
 				AD7E657327B9CED100408BE6 /* StockListMainCollectionViewCell.swift in Sources */,
 				AD843DCC27BDC0DC006F974A /* ProfitShareView.swift in Sources */,
@@ -1063,6 +1106,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		AD054AE0280F8FDF00B81F97 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		AD8B45E127C2FEA600005725 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -1098,6 +1149,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		AD054AE1280F8FDF00B81F97 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AD054AE0280F8FDF00B81F97 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		AD054AE3280F8FDF00B81F97 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AD054AE0280F8FDF00B81F97 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
 		AD8B45E227C2FEA600005725 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = AD8B45E127C2FEA600005725 /* XCRemoteSwiftPackageReference "Alamofire" */;

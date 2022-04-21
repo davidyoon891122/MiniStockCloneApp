@@ -7,8 +7,10 @@
 
 import UIKit
 import SnapKit
+import RxSwift
 
 class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
+    private let disposeBag = DisposeBag()
     private let networkManager = NetworkManager()
     private let blackView = UIView()
     private let currencyDetailView = CurrencyDetailView()
@@ -48,7 +50,10 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
         stackView.distribution = .equalSpacing
         stackView.spacing = 8
         stackView.backgroundColor = MenuColor.shared.lightGrayColor
-        
+
+        myStockView.setupViewModel(viewModel: viewModel)
+        investmentView.setupViewModel(viewModel: viewModel)
+
         setDelegate()
         
         [
@@ -66,7 +71,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
         return stackView
     }()
     
-    private let viewModel = HomeViewMode()
+    private let viewModel = HomeViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,18 +79,11 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
         configureNavigation()
         addSubviews()
         setLayoutConstraint()
+        bindViewModel()
         scrollView.refreshControl = refreshControl
         
         indicatorView.startAnimating()
 
-        viewModel.onUpdate = { [weak self] in
-            guard let self = self else { return }
-            self.myStockView.setupData(myStocks: self.viewModel.myStocks)
-            self.investmentView.setupData(profit: self.viewModel.profit)
-            self.myStockView.setupDividendData(dividends: self.viewModel.dividends)
-            self.indicatorView.stopAnimating()
-        }
-        
         viewModel.fetchMyStock()
         viewModel.fetchProfit()
         viewModel.fetchDividendList()
@@ -316,17 +314,25 @@ private extension HomeViewController {
     }
     
     @objc func pullScrollForRefresh() {
-        viewModel.onUpdate = { [weak self] in
-            guard let self = self else { return }
-            self.myStockView.setupData(myStocks: self.viewModel.myStocks)
-            self.investmentView.setupData(profit: self.viewModel.profit)
-            self.myStockView.setupDividendData(dividends: self.viewModel.dividends)
-            self.refreshControl.endRefreshing()
-        }
-        
         viewModel.fetchMyStock()
         viewModel.fetchProfit()
         viewModel.fetchDividendList()
-        
+
+        refreshControl.endRefreshing()
+    }
+
+    func bindViewModel() {
+        viewModel.inOutBind()
+        viewModel.finishFetchSubject
+            .subscribe(onNext: { [weak self] isFinished in
+                guard let self = self else { return }
+                print("bindViewModel: \(isFinished)")
+                if isFinished {
+                    self.indicatorView.stopAnimating()
+                } else {
+                    print("not Finished")
+                }
+            })
+            .disposed(by: disposeBag)
     }
 }
