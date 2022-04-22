@@ -180,7 +180,15 @@ private extension MyStockView {
                 guard let self = self else { return }
                 self.myStocks = myStocks
                 self.cellCount = self.myStocks.count
-                self.stockTableView.reloadData()
+                UIView.transition(
+                    with: self.stockTableView,
+                    duration: 1.0,
+                    options: .transitionCrossDissolve,
+                    animations: {
+                        self.stockTableView.reloadData()
+                    },
+                    completion: nil
+                )
 
             }, onError: { error in
                 print(error)

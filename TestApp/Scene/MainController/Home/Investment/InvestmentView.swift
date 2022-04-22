@@ -240,7 +240,6 @@ private extension InvestmentView {
         guard let viewModel = self.viewModel else { return }
         viewModel.profitsSubject
             .subscribe(onNext: { profit in
-                print(profit)
                 self.setupData(profit: profit)
             }, onError: { error in
                 print(error)
