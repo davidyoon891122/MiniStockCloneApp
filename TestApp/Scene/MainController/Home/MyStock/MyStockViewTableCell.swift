@@ -35,7 +35,7 @@ class MyStockViewTableCell: UITableViewCell {
     
     private lazy var stockNameLabel: UILabel = {
         let label = UILabel()
-        label.text = "AT&T"
+        label.text = "--"
         label.textColor = .label
         label.font = .systemFont(ofSize: 20, weight: .bold)
         return label
@@ -43,7 +43,7 @@ class MyStockViewTableCell: UITableViewCell {
     
     private lazy var stockPriceLabel: UILabel = {
         let label = UILabel()
-        label.text = "2,390원"
+        label.text = "-- 원"
         label.textColor = .label
         label.textAlignment = .right
         label.font = .systemFont(ofSize: 18, weight: .bold)
@@ -72,7 +72,7 @@ class MyStockViewTableCell: UITableViewCell {
     
     private lazy var stockQuantityLabel: UILabel = {
         let label = UILabel()
-        label.text = "0.075269주"
+        label.text = "0.0 주"
         label.font = .systemFont(ofSize: 15, weight: .medium)
         label.textColor = .label
         return label
@@ -80,7 +80,7 @@ class MyStockViewTableCell: UITableViewCell {
     
     private lazy var profitLabel: UILabel = {
         let label = UILabel()
-        label.text = "396원"
+        label.text = "-- 원"
         label.font = .systemFont(ofSize: 15, weight: .medium)
         label.textColor = .red
         return label
@@ -88,7 +88,7 @@ class MyStockViewTableCell: UITableViewCell {
     
     private lazy var percentageLabel: UILabel = {
         let label = UILabel()
-        label.text = "+19.85%"
+        label.text = "--.-- %"
         label.font = .systemFont(ofSize: 15, weight: .medium)
         label.textColor = .red
         return label
@@ -121,9 +121,9 @@ class MyStockViewTableCell: UITableViewCell {
     func setup(myStock: MyStockModel) {
         stockNameLabel.text = "\(myStock.stockName)"
         stockPriceLabel.text = myStock.currentPrice.commaInString() + "원"
-        stockQuantityLabel.text = "\(myStock.stockQuantity)주"
-        profitLabel.text = myStock.valueChange.commaInString() + "원"
-        percentageLabel.text = myStock.percentChange.toStringWithFormat(format: 2) + "%"
+        stockQuantityLabel.text = "\(myStock.stockQuantity) 주"
+        profitLabel.text = myStock.valueChange.commaInString() + " 원"
+        percentageLabel.text = myStock.percentChange.toStringWithFormat(format: 2) + " %"
         stockImageView.kf.setImage(with: URL(string: myStock.imageURL ?? ""))
     }
     
