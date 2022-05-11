@@ -8,10 +8,14 @@
 import UIKit
 import Charts
 import SnapKit
+import RxSwift
+import RxCocoa
 
 class CurrencyDetailView: UIView {
     
     weak var delegate: HomeViewProtocol?
+    private var viewModel: CurrencyViewModel?
+    private let disposeBag = DisposeBag()
     
     // MARK: - Chart Data Set
     private let years: [Double] = [2000, 2001, 2002, 2004, 2005, 2006]
@@ -171,7 +175,6 @@ class CurrencyDetailView: UIView {
         button.setTitle("확인", for: .normal)
         button.backgroundColor = MenuColor.shared.mintColor
         button.layer.cornerRadius = 10
-        button.addTarget(self, action: #selector(tapConfirmButton), for: .touchUpInside)
         return button
     }()
     
@@ -187,11 +190,21 @@ class CurrencyDetailView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    func setViewModel(viewModel: CurrencyViewModel) {
+        self.viewModel = viewModel
+        bindUI()
+    }
 }
 
 private extension CurrencyDetailView {
     func addSubviews() {
-        [topDragBar, currencyVStackView, lineChartView, confirmButton]
+        [
+            topDragBar,
+            currencyVStackView,
+            lineChartView,
+            confirmButton
+        ]
             .forEach {
                 addSubview($0)
             }
@@ -228,8 +241,13 @@ private extension CurrencyDetailView {
         }
         
     }
-    
-    @objc func tapConfirmButton() {
-        delegate?.closeCurrenyDetailView()
+
+    func bindUI() {
+        guard let viewModel = self.viewModel else { return }
+
+        confirmButton.rx.tap
+            .bind(to: viewModel.confirmButtonRelay)
+            .disposed(by: disposeBag)
+
     }
 }

@@ -15,6 +15,8 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
     private let blackView = UIView()
     private let currencyDetailView = CurrencyDetailView()
     private let sortingSelectView = SortingSelectView()
+
+    private let generalPopupView = GeneralPopupView()
     
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -51,7 +53,11 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
         stackView.spacing = 8
         stackView.backgroundColor = MenuColor.shared.lightGrayColor
 
-        myStockView.setupViewModel(viewModel: viewModel)
+        myStockView.setupViewModel(
+            viewModel: viewModel,
+            sortingViewModel: generalPopupView.sortingSelectViewModel
+        )
+        
         investmentView.setupViewModel(viewModel: viewModel)
 
         setDelegate()
@@ -119,83 +125,26 @@ extension HomeViewController: HomeViewProtocol {
     }
     
     func openCurrenyDetailView() {
-        blackView.backgroundColor = UIColor(white: 0.2, alpha: 0.8)
-        guard let window = UIApplication.shared.windows.first(where: {$0.isKeyWindow}) else { return }
-        
-        blackView.frame = window.frame
-        blackView.alpha = 0
-        blackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapBlackView)))
-        
-        [blackView, currencyDetailView]
-            .forEach {
-                window.addSubview($0)
-            }
-        let height: CGFloat = 500
-        let currencyDetailViewYOffset = window.frame.height - height
-        
-        currencyDetailView.frame = CGRect(x: 0, y: window.frame.height, width: window.frame.width, height: height)
-        
-        UIView.animate(
-            withDuration: 0.5,
-            delay: 0,
-            usingSpringWithDamping: 1,
-            initialSpringVelocity: 1,
-            options: .curveEaseInOut,
-            animations: {
-            self.blackView.alpha = 1
-            self.currencyDetailView.frame = CGRect(
-                x: 0,
-                y: currencyDetailViewYOffset,
-                width: window.frame.width,
-                height: height
-            )
-        }, completion: nil)
-    }
-    
-    func closeCurrenyDetailView() {
-        tapBlackView()
+        currencyDetailView.setViewModel(
+            viewModel: generalPopupView.currencyViewModel
+        )
+        generalPopupView.openPopupView(
+            popupView: currencyDetailView,
+            viewHeight: 500
+        )
+        generalPopupView.bindConfirmButton()
     }
     
     func openSortingButtonView() {
-        blackView.backgroundColor = UIColor(white: 0.2, alpha: 0.8)
-        guard let window = UIApplication.shared.windows.first(where: {$0.isKeyWindow}) else { return }
-        
-        blackView.frame = window.frame
-        blackView.alpha = 0
-        blackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapBlackView)))
-        
-        let currentMenu = myStockView.getCurrentSortingMenu()
-        sortingSelectView.setCurrentSortingMenu(menu: currentMenu)
-        
-        [blackView, sortingSelectView]
-            .forEach {
-                window.addSubview($0)
-            }
-        let height: CGFloat = 250
-        let currencyDetailViewYOffset = window.frame.height - height
-        
-        sortingSelectView.frame = CGRect(x: 0, y: window.frame.height, width: window.frame.width, height: height)
-        
-        UIView.animate(
-            withDuration: 0.5,
-            delay: 0,
-            usingSpringWithDamping: 1,
-            initialSpringVelocity: 1,
-            options: .curveEaseInOut,
-            animations: {
-            self.blackView.alpha = 1
-            self.sortingSelectView.frame = CGRect(
-                x: 0,
-                y: currencyDetailViewYOffset,
-                width: window.frame.width,
-                height: height
-            )
-        }, completion: nil)
-    }
-    
-    func sortingButtonSelected(menu: MyStockSortingMenu) {
-        myStockView.setSortingMenu(menu: menu)
-        tapBlackView()
+        sortingSelectView.setViewModel(
+            viewModel: generalPopupView.sortingSelectViewModel
+        )
+        generalPopupView.openPopupView(
+            popupView: sortingSelectView,
+            viewHeight: 250
+        )
+        generalPopupView.bindSortingSelectionButtons()
+
     }
 }
 
@@ -286,6 +235,7 @@ private extension HomeViewController {
     }
     
     @objc func tapBlackView() {
+        
         UIView.animate(
             withDuration: 0.5,
             delay: 0,
@@ -326,7 +276,6 @@ private extension HomeViewController {
         viewModel.finishFetchSubject
             .subscribe(onNext: { [weak self] isFinished in
                 guard let self = self else { return }
-                print("bindViewModel: \(isFinished)")
                 if isFinished {
                     self.indicatorView.stopAnimating()
                 } else {
