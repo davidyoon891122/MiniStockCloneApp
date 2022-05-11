@@ -203,7 +203,7 @@ private extension MyStockView {
         stockTableView.delegate = nil
         stockTableView.dataSource = nil
         guard let viewModel = self.viewModel else { return }
-        viewModel.myStocksRelay
+        viewModel.myStocksSubject
             .observe(on: MainScheduler.instance)
             .bind(to: stockTableView.rx.items(
                 cellIdentifier: MyStockViewTableCell.identifier,

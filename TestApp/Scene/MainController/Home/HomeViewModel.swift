@@ -13,13 +13,10 @@ class HomeViewModel {
     private let disposeBag = DisposeBag()
 
     var myStocksSubject: PublishSubject<[MyStockModel]> = .init()
-    var myStocksRelay: PublishRelay<[MyStockModel]> = .init()
 
     var dividendsSubject: PublishSubject<[DividendModel]> = .init()
-    var dividendsRelay: PublishRelay<[DividendModel]> = .init()
 
     var profitsSubject: PublishSubject<ProfitModel> = .init()
-    var profitsRelay: PublishRelay<ProfitModel> = .init()
 
     var finishFetchSubject: PublishSubject<Bool> = .init()
     
@@ -34,7 +31,6 @@ class HomeViewModel {
         )
             .subscribe(onNext: { myStocks in
                 self.myStocksSubject.onNext(myStocks)
-                self.myStocksRelay.accept(myStocks)
             }, onError: { error in
                 self.myStocksSubject.onError(error)
             }
@@ -49,7 +45,6 @@ class HomeViewModel {
         )
             .subscribe(onNext: { profits in
                 self.profitsSubject.onNext(profits[0])
-                self.profitsRelay.accept(profits[0])
             }, onError: { error in
                 self.profitsSubject.onError(error)
             }
@@ -64,7 +59,6 @@ class HomeViewModel {
         )
             .subscribe(onNext: { dividends in
                 self.dividendsSubject.onNext(dividends)
-                self.dividendsRelay.accept(dividends)
             }, onError: { error in
                 self.dividendsSubject.onError(error)
             })
