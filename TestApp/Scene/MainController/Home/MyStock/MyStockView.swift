@@ -119,7 +119,10 @@ class MyStockView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func setupViewModel(viewModel: HomeViewModel, sortingViewModel: SortingSelectViewModel) {
+    func setupViewModel(
+        viewModel: HomeViewModel,
+        sortingViewModel: SortingSelectViewModel
+    ) {
         self.viewModel = viewModel
         self.sortingViewModel = sortingViewModel
         bindViewModel()
