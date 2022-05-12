@@ -66,6 +66,9 @@
 		AD991DC727A3AE7000AA897B /* StockListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD991DC627A3AE7000AA897B /* StockListView.swift */; };
 		AD991DC927A3CC8000AA897B /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD991DC827A3CC8000AA897B /* MenuCollectionViewCell.swift */; };
 		ADA8B440279E470B003D5C98 /* MyStockViewTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA8B43F279E470B003D5C98 /* MyStockViewTableCell.swift */; };
+		ADB62AAE282BC92C0044BC75 /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB62AAD282BC92C0044BC75 /* PopupView.swift */; };
+		ADB62AB0282BDDB20044BC75 /* CurrencyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB62AAF282BDDB20044BC75 /* CurrencyViewModel.swift */; };
+		ADB62AB2282BE6370044BC75 /* SortingSelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB62AB1282BE6370044BC75 /* SortingSelectViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -145,6 +148,9 @@
 		AD991DC627A3AE7000AA897B /* StockListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListView.swift; sourceTree = "<group>"; };
 		AD991DC827A3CC8000AA897B /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		ADA8B43F279E470B003D5C98 /* MyStockViewTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStockViewTableCell.swift; sourceTree = "<group>"; };
+		ADB62AAD282BC92C0044BC75 /* PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
+		ADB62AAF282BDDB20044BC75 /* CurrencyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewModel.swift; sourceTree = "<group>"; };
+		ADB62AB1282BE6370044BC75 /* SortingSelectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingSelectViewModel.swift; sourceTree = "<group>"; };
 		B76E8DF48A8D312DF6179951 /* Pods-TestAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestAppTests.release.xcconfig"; path = "Target Support Files/Pods-TestAppTests/Pods-TestAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		B9377D3CC628442F71555A7E /* Pods_TestApp_TestAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestApp_TestAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCEC7128F2A6023A994AEE25 /* Pods-TestApp-TestAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestApp-TestAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-TestApp-TestAppUITests/Pods-TestApp-TestAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -226,6 +232,7 @@
 				AD0E7A9A279A94FB00F1A9A0 /* MyStockSortingMenu.swift */,
 				ADA8B43F279E470B003D5C98 /* MyStockViewTableCell.swift */,
 				AD8CE38227C4A26800C8F2CC /* SortingSelectView.swift */,
+				ADB62AB1282BE6370044BC75 /* SortingSelectViewModel.swift */,
 			);
 			path = MyStock;
 			sourceTree = "<group>";
@@ -355,6 +362,7 @@
 			children = (
 				AD843DCE27BDC2C8006F974A /* CurrencyView.swift */,
 				AD8B45F327C3581900005725 /* CurrencyDetailView.swift */,
+				ADB62AAF282BDDB20044BC75 /* CurrencyViewModel.swift */,
 			);
 			path = Currency;
 			sourceTree = "<group>";
@@ -372,6 +380,7 @@
 			children = (
 				AD7246282803CFE4002C91A3 /* TabBar */,
 				AD84C5812799458200395772 /* Home */,
+				ADB62AAD282BC92C0044BC75 /* PopupView.swift */,
 			);
 			path = MainController;
 			sourceTree = "<group>";
@@ -733,8 +742,10 @@
 				AD27D1A92791652D009C8F91 /* SceneDelegate.swift in Sources */,
 				AD843DCF27BDC2C8006F974A /* CurrencyView.swift in Sources */,
 				AD8B45E527C2FEC700005725 /* NetworkManager.swift in Sources */,
+				ADB62AAE282BC92C0044BC75 /* PopupView.swift in Sources */,
 				ADA8B440279E470B003D5C98 /* MyStockViewTableCell.swift in Sources */,
 				AD7246272803CADC002C91A3 /* TabBarItem.swift in Sources */,
+				ADB62AB2282BE6370044BC75 /* SortingSelectViewModel.swift in Sources */,
 				AD6A684027A0EC4B000D022C /* NoticeTableViewCell.swift in Sources */,
 				AD7E657927BA1B8100408BE6 /* StockListDetailViewCell.swift in Sources */,
 				AD991DC727A3AE7000AA897B /* StockListView.swift in Sources */,
@@ -755,6 +766,7 @@
 				AD93D08527C747E10004C44E /* IncreaseStockModel.swift in Sources */,
 				AD6BCF82280F93A8002F0787 /* Extension+Float.swift in Sources */,
 				AD8B45E727C2FF9E00005725 /* MyStockModel.swift in Sources */,
+				ADB62AB0282BDDB20044BC75 /* CurrencyViewModel.swift in Sources */,
 				AD7E657327B9CED100408BE6 /* StockListMainCollectionViewCell.swift in Sources */,
 				AD843DCC27BDC0DC006F974A /* ProfitShareView.swift in Sources */,
 				AD34BB442794E337001CD610 /* LoginViewController.swift in Sources */,

@@ -29,6 +29,8 @@ class MyStockView: UIView {
 
     private var viewModel: HomeViewModel?
 
+    private var sortingViewModel: SortingSelectViewModel?
+
     weak var delegate: HomeViewProtocol?
 
     private lazy var titleHStackView: UIStackView = {
@@ -84,7 +86,10 @@ class MyStockView: UIView {
         stackView.axis = .vertical
         stackView.spacing = 10
         dividendButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        [titleHStackView, dividendButton]
+        [
+            titleHStackView,
+            dividendButton
+        ]
             .forEach {
                 stackView.addArrangedSubview($0)
             }
@@ -114,8 +119,12 @@ class MyStockView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func setupViewModel(viewModel: HomeViewModel) {
+    func setupViewModel(
+        viewModel: HomeViewModel,
+        sortingViewModel: SortingSelectViewModel
+    ) {
         self.viewModel = viewModel
+        self.sortingViewModel = sortingViewModel
         bindViewModel()
         dividendView.setupViewModel(viewModel: viewModel)
     }
@@ -174,7 +183,9 @@ private extension MyStockView {
     }
 
     func bindViewModel() {
-        guard let viewModel = self.viewModel else { return }
+        guard let viewModel = self.viewModel,
+              let sortingViewModel = self.sortingViewModel
+        else { return }
         viewModel.myStocksSubject
             .subscribe(onNext: { [weak self] myStocks in
                 guard let self = self else { return }
@@ -196,6 +207,14 @@ private extension MyStockView {
             )
             .disposed(by: disposeBag)
 
+        sortingViewModel.sortingButtonMenuPublishRelay
+            .distinctUntilChanged()
+            .subscribe(onNext: { [weak self] selectedMenu in
+                guard let self = self else { return }
+                self.sortingButton.setTitle(selectedMenu.text, for: .normal)
+            })
+            .disposed(by: disposeBag)
+
         bindUI()
     }
 
@@ -213,6 +232,5 @@ private extension MyStockView {
                 cell.setup(myStock: stock)
             }
             .disposed(by: disposeBag)
-
     }
 }

@@ -7,9 +7,12 @@
 
 import UIKit
 import SnapKit
+import RxCocoa
+import RxSwift
 
 class SortingSelectView: UIView {
-    
+    var viewModel: SortingSelectViewModel?
+    private let disposeBag = DisposeBag()
     weak var delegate: HomeViewProtocol?
     
     private lazy var topDragBar: UIView = {
@@ -63,7 +66,6 @@ class SortingSelectView: UIView {
         button.setTitleColor(MenuColor.shared.mintColor, for: .selected)
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor.secondarySystemBackground.cgColor
-        button.addTarget(self, action: #selector(tapSortingButton(_:)), for: .touchUpInside)
         button.tag = 0
         return button
     }()
@@ -76,7 +78,6 @@ class SortingSelectView: UIView {
         button.setTitleColor(MenuColor.shared.mintColor, for: .selected)
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor.secondarySystemBackground.cgColor
-        button.addTarget(self, action: #selector(tapSortingButton(_:)), for: .touchUpInside)
         button.tag = 1
         return button
     }()
@@ -100,7 +101,6 @@ class SortingSelectView: UIView {
         button.setTitleColor(MenuColor.shared.mintColor, for: .selected)
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor.secondarySystemBackground.cgColor
-        button.addTarget(self, action: #selector(tapSortingButton(_:)), for: .touchUpInside)
         button.tag = 2
         return button
     }()
@@ -113,7 +113,6 @@ class SortingSelectView: UIView {
         button.setTitleColor(MenuColor.shared.mintColor, for: .selected)
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor.secondarySystemBackground.cgColor
-        button.addTarget(self, action: #selector(tapSortingButton(_:)), for: .touchUpInside)
         button.tag = 3
         return button
     }()
@@ -128,7 +127,12 @@ class SortingSelectView: UIView {
     }
     
     func setCurrentSortingMenu(menu: MyStockSortingMenu) {
-        [priceButton, ganadaButton, highButton, lowButton]
+        [
+            priceButton,
+            ganadaButton,
+            highButton,
+            lowButton
+        ]
             .forEach {
                 $0.isSelected = false
             }
@@ -144,6 +148,11 @@ class SortingSelectView: UIView {
             lowButton.isSelected = true
         }
     }
+
+    func setViewModel(viewModel: SortingSelectViewModel) {
+        self.viewModel = viewModel
+        bindTapSortingButtons()
+    }
 }
 
 private extension SortingSelectView {
@@ -156,7 +165,11 @@ private extension SortingSelectView {
     }
     
     func addSubviews() {
-        [topDragBar, titleLabel, sortingSelectVStackView]
+        [
+            topDragBar,
+            titleLabel,
+            sortingSelectVStackView
+        ]
             .forEach {
                 addSubview($0)
             }
@@ -185,25 +198,36 @@ private extension SortingSelectView {
             $0.height.equalTo(100)
         }
     }
-    
-    @objc func tapSortingButton(_ sender: UIButton) {
-        
-        switch sender.tag {
-        case 0:
-            let sortingMenu = MyStockSortingMenu.orderPrice
-            delegate?.sortingButtonSelected(menu: sortingMenu)
-        case 1:
-            let sortingMenu = MyStockSortingMenu.orderganada
-            delegate?.sortingButtonSelected(menu: sortingMenu)
-        case 2:
-            let sortingMenu = MyStockSortingMenu.orderHigh
-            delegate?.sortingButtonSelected(menu: sortingMenu)
-        case 3:
-            let sortingMenu = MyStockSortingMenu.orderlow
-            delegate?.sortingButtonSelected(menu: sortingMenu)
-        default:
-            print("error")
-        }
-        
+
+    func bindTapSortingButtons() {
+        guard let viewModel = self.viewModel else { return }
+
+        priceButton.rx.tap
+            .debug("priceButton onNext")
+            .bind(onNext: {
+                viewModel.sortingButtonMenuPublishRelay.accept(MyStockSortingMenu.orderPrice)
+            })
+            .disposed(by: disposeBag)
+
+        ganadaButton.rx.tap
+            .debug("ganadaButton onNext")
+            .bind(onNext: {
+                viewModel.sortingButtonMenuPublishRelay.accept(MyStockSortingMenu.orderganada)
+            })
+            .disposed(by: disposeBag)
+
+        highButton.rx.tap
+            .debug("highButton onNext")
+            .bind(onNext: {
+                viewModel.sortingButtonMenuPublishRelay.accept(MyStockSortingMenu.orderHigh)
+            })
+            .disposed(by: disposeBag)
+
+        lowButton.rx.tap
+            .debug("lowButton onNext")
+            .bind(onNext: {
+                viewModel.sortingButtonMenuPublishRelay.accept(MyStockSortingMenu.orderlow)
+            })
+            .disposed(by: disposeBag)
     }
 }
