@@ -30,13 +30,20 @@ class StockListMenuCollectionView: UICollectionView {
     }
     
     func moveMenuWithStockListMainCollectionView(indexPath: IndexPath) {
-        selectItem(at: indexPath, animated: true, scrollPosition: .right)
+        selectItem(
+            at: indexPath,
+            animated: true,
+            scrollPosition: .right
+        )
     }
     
 }
 
 extension StockListMenuCollectionView: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int
+    ) -> Int {
         return menus.count
     }
     
@@ -51,7 +58,11 @@ extension StockListMenuCollectionView: UICollectionViewDataSource {
         cell?.setup(title: menus[indexPath.row])
         if indexPath.row == 0 {
             cell?.selectedAction()
-            collectionView.selectItem(at: indexPath, animated: true, scrollPosition: [])
+            collectionView.selectItem(
+                at: indexPath,
+                animated: true,
+                scrollPosition: []
+            )
         }
         
         return cell ?? UICollectionViewCell()
@@ -72,7 +83,10 @@ extension StockListMenuCollectionView: UICollectionViewDelegateFlowLayout {
         return CGSize(width: label.frame.width, height: 35)
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        didSelectItemAt indexPath: IndexPath
+    ) {
         menuDelegate?.selectMenu(indexPath: indexPath)
     }
 }
@@ -82,7 +96,12 @@ private extension StockListMenuCollectionView {
         self.delegate = self
         self.dataSource = self
         self.register(MenuCollectionViewCell.self, forCellWithReuseIdentifier: MenuCollectionViewCell.identifier)
-        contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
+        contentInset = UIEdgeInsets(
+            top: 0,
+            left: 20,
+            bottom: 0,
+            right: 0
+        )
         showsHorizontalScrollIndicator = false
     }
 }

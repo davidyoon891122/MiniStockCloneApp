@@ -101,7 +101,10 @@ extension StackListView: UICollectionViewDelegateFlowLayout {
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
+        return CGSize(
+            width: collectionView.frame.width,
+            height: collectionView.frame.height
+        )
     }
 
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
@@ -145,7 +148,7 @@ private extension StackListView {
             $0.leading.equalToSuperview()
             $0.bottom.equalToSuperview()
             $0.trailing.equalToSuperview()
-            $0.height.equalTo(746)
+            $0.height.equalTo(754)
         }
     }
 }
