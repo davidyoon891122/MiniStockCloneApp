@@ -39,7 +39,10 @@ class MyStockView: UIView {
 
         stackView.axis = .horizontal
         sortingButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        [titleLabel, sortingButtonHStack]
+        [
+            titleLabel,
+            sortingButtonHStack
+        ]
             .forEach {
                 stackView.addArrangedSubview($0)
             }
@@ -50,7 +53,10 @@ class MyStockView: UIView {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "보유 주식"
-        label.font = .systemFont(ofSize: 15, weight: .bold)
+        label.font = .systemFont(
+            ofSize: 15,
+            weight: .bold
+        )
         return label
     }()
 
@@ -63,18 +69,40 @@ class MyStockView: UIView {
 
     private lazy var sortingButton: UIButton = {
         let button = UIButton()
-        button.setTitle(sortingMenu.text, for: .normal)
-        button.setTitleColor(.gray, for: .normal)
-        button.addTarget(self, action: #selector(tapSortingButton), for: .touchUpInside)
-        button.titleLabel?.font = .systemFont(ofSize: 15, weight: .medium)
+        button.setTitle(
+            sortingMenu.text,
+            for: .normal
+        )
+        button.setTitleColor(
+            .gray,
+            for: .normal
+        )
+        button.addTarget(
+            self,
+            action: #selector(tapSortingButton),
+            for: .touchUpInside
+        )
+        button.titleLabel?.font = .systemFont(
+            ofSize: 15,
+            weight: .medium
+        )
         return button
     }()
 
     private lazy var dividendButton: UIButton = {
         let button = UIButton()
-        button.setTitle("1개의 주식에서 배당이 나올 예정이에요 ⌵", for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 14, weight: .light)
-        button.setTitleColor(.label, for: .normal)
+        button.setTitle(
+            "1개의 주식에서 배당이 나올 예정이에요 ⌵",
+            for: .normal
+        )
+        button.titleLabel?.font = .systemFont(
+            ofSize: 14,
+            weight: .light
+        )
+        button.setTitleColor(
+            .label,
+            for: .normal
+        )
         button.backgroundColor = MenuColor.shared.lightGrayColor
         button.layer.cornerRadius = 10
         button.layer.masksToBounds = true
@@ -146,7 +174,11 @@ class MyStockView: UIView {
 
 private extension MyStockView {
     func addSubviews() {
-        [myStockVStackView, stockTableView, dividendView]
+        [
+            myStockVStackView,
+            stockTableView,
+            dividendView
+        ]
             .forEach {
                 addSubview($0)
             }

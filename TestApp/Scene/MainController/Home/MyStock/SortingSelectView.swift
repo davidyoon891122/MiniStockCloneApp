@@ -26,7 +26,10 @@ class SortingSelectView: UIView {
         let label = UILabel()
         label.text = "정렬순서"
         label.textColor = .label
-        label.font = .systemFont(ofSize: 14, weight: .medium)
+        label.font = .systemFont(
+            ofSize: 14,
+            weight: .medium
+        )
         label.textAlignment = .left
         return label
     }()
@@ -36,7 +39,10 @@ class SortingSelectView: UIView {
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
         
-        [firstHStackView, secondHStackView]
+        [
+            firstHStackView,
+            secondHStackView
+        ]
             .forEach {
                 stackView.addArrangedSubview($0)
             }
@@ -50,7 +56,10 @@ class SortingSelectView: UIView {
     private lazy var firstHStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.distribution = .fillEqually
-        [priceButton, ganadaButton]
+        [
+            priceButton,
+            ganadaButton
+        ]
             .forEach {
                 stackView.addArrangedSubview($0)
             }
@@ -60,10 +69,22 @@ class SortingSelectView: UIView {
     
     private lazy var priceButton: UIButton = {
         let button = UIButton()
-        button.setTitle(MyStockSortingMenu.orderPrice.detailText, for: .normal)
-        button.setTitleColor(.label, for: .normal)
-        button.setTitleColor(MenuColor.shared.mintColor, for: .highlighted)
-        button.setTitleColor(MenuColor.shared.mintColor, for: .selected)
+        button.setTitle(
+            MyStockSortingMenu.orderPrice.detailText,
+            for: .normal
+        )
+        button.setTitleColor(
+            .label,
+            for: .normal
+        )
+        button.setTitleColor(
+            MenuColor.shared.mintColor,
+            for: .highlighted
+        )
+        button.setTitleColor(
+            MenuColor.shared.mintColor,
+            for: .selected
+        )
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor.secondarySystemBackground.cgColor
         button.tag = 0
@@ -72,10 +93,22 @@ class SortingSelectView: UIView {
     
     private lazy var ganadaButton: UIButton = {
         let button = UIButton()
-        button.setTitle(MyStockSortingMenu.orderganada.detailText, for: .normal)
-        button.setTitleColor(.label, for: .normal)
-        button.setTitleColor(MenuColor.shared.mintColor, for: .highlighted)
-        button.setTitleColor(MenuColor.shared.mintColor, for: .selected)
+        button.setTitle(
+            MyStockSortingMenu.orderganada.detailText,
+            for: .normal
+        )
+        button.setTitleColor(
+            .label,
+            for: .normal
+        )
+        button.setTitleColor(
+            MenuColor.shared.mintColor,
+            for: .highlighted
+        )
+        button.setTitleColor(
+            MenuColor.shared.mintColor,
+            for: .selected
+        )
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor.secondarySystemBackground.cgColor
         button.tag = 1
@@ -85,7 +118,10 @@ class SortingSelectView: UIView {
     private lazy var secondHStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.distribution = .fillEqually
-        [highButton, lowButton]
+        [
+            highButton,
+            lowButton
+        ]
             .forEach {
                 stackView.addArrangedSubview($0)
             }
@@ -95,10 +131,22 @@ class SortingSelectView: UIView {
     
     private lazy var highButton: UIButton = {
         let button = UIButton()
-        button.setTitle(MyStockSortingMenu.orderHigh.detailText, for: .normal)
-        button.setTitleColor(.label, for: .normal)
-        button.setTitleColor(MenuColor.shared.mintColor, for: .highlighted)
-        button.setTitleColor(MenuColor.shared.mintColor, for: .selected)
+        button.setTitle(
+            MyStockSortingMenu.orderHigh.detailText,
+            for: .normal
+        )
+        button.setTitleColor(
+            .label,
+            for: .normal
+        )
+        button.setTitleColor(
+            MenuColor.shared.mintColor,
+            for: .highlighted
+        )
+        button.setTitleColor(
+            MenuColor.shared.mintColor,
+            for: .selected
+        )
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor.secondarySystemBackground.cgColor
         button.tag = 2
@@ -107,10 +155,22 @@ class SortingSelectView: UIView {
     
     private lazy var lowButton: UIButton = {
         let button = UIButton()
-        button.setTitle(MyStockSortingMenu.orderlow.detailText, for: .normal)
-        button.setTitleColor(.label, for: .normal)
-        button.setTitleColor(MenuColor.shared.mintColor, for: .highlighted)
-        button.setTitleColor(MenuColor.shared.mintColor, for: .selected)
+        button.setTitle(
+            MyStockSortingMenu.orderlow.detailText,
+            for: .normal
+        )
+        button.setTitleColor(
+            .label,
+            for: .normal
+        )
+        button.setTitleColor(
+            MenuColor.shared.mintColor,
+            for: .highlighted
+        )
+        button.setTitleColor(
+            MenuColor.shared.mintColor,
+            for: .selected
+        )
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor.secondarySystemBackground.cgColor
         button.tag = 3

@@ -11,7 +11,9 @@ import SnapKit
 class PasswordView: UIView {
     
     private let cellId = "cellId"
-    var keypadNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
+    var keypadNumbers = [
+        1, 2, 3, 4, 5, 6, 7, 8, 9, 0
+    ]
     
     var userPassword = ""
     
@@ -38,7 +40,10 @@ class PasswordView: UIView {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "간편비밀번호"
-        label.font = .systemFont(ofSize: 30, weight: .medium)
+        label.font = .systemFont(
+            ofSize: 30,
+            weight: .medium
+        )
         label.textColor = .label
         label.textAlignment = .center
         return label
@@ -49,7 +54,10 @@ class PasswordView: UIView {
         label.text = "6자리를 입력해 주세요"
         label.textColor = .label
         label.textAlignment = .center
-        label.font = .systemFont(ofSize: 15, weight: .light)
+        label.font = .systemFont(
+            ofSize: 15,
+            weight: .light
+        )
         return label
     }()
 
@@ -96,10 +104,16 @@ class PasswordView: UIView {
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        let collectionView = UICollectionView(
+            frame: .zero,
+            collectionViewLayout: layout
+        )
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(PasswordNumberCollectionViewCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView.register(
+            PasswordNumberCollectionViewCell.self,
+            forCellWithReuseIdentifier: cellId
+        )
         return collectionView
     }()
     
@@ -123,7 +137,10 @@ class PasswordView: UIView {
 }
 
 extension PasswordView: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int
+    ) -> Int {
         return 12
     }
     
@@ -150,7 +167,10 @@ extension PasswordView: UICollectionViewDataSource {
         return cell ?? UICollectionViewCell()
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        didSelectItemAt indexPath: IndexPath
+    ) {
         let cell = collectionView.cellForItem(at: indexPath) as? PasswordNumberCollectionViewCell
         
         guard let text = cell?.numberLabel.text else { return }
@@ -186,7 +206,11 @@ extension PasswordView: UICollectionViewDelegateFlowLayout {
 
 private extension PasswordView {
     func addSubviews() {
-        [topDragBar, labelStackView, numberCollectionView]
+        [
+            topDragBar,
+            labelStackView,
+            numberCollectionView
+        ]
             .forEach {
                 addSubview($0)
             }

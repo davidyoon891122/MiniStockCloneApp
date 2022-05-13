@@ -25,7 +25,10 @@ class StockListDetailViewCell: UICollectionViewCell {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         
-        [stockNameLabel, stockPriceLabel]
+        [
+            stockNameLabel,
+            stockPriceLabel
+        ]
             .forEach {
                 stackView.addArrangedSubview($0)
             }
@@ -36,7 +39,10 @@ class StockListDetailViewCell: UICollectionViewCell {
         let label = UILabel()
         label.text = "AT&T"
         label.textColor = .label
-        label.font = .systemFont(ofSize: 20, weight: .bold)
+        label.font = .systemFont(
+            ofSize: 20,
+            weight: .bold
+        )
         return label
     }()
     
@@ -45,7 +51,10 @@ class StockListDetailViewCell: UICollectionViewCell {
         label.text = "2,390원"
         label.textColor = .label
         label.textAlignment = .right
-        label.font = .systemFont(ofSize: 20, weight: .bold)
+        label.font = .systemFont(
+            ofSize: 20,
+            weight: .bold
+        )
         return label
     }()
     
@@ -56,12 +65,18 @@ class StockListDetailViewCell: UICollectionViewCell {
         let innerStackView = UIStackView()
         innerStackView.axis = .horizontal
         innerStackView.spacing = 10
-        [profitLabel, percentageLabel]
+        [
+            profitLabel,
+            percentageLabel
+        ]
             .forEach {
                 innerStackView.addArrangedSubview($0)
             }
     
-        [stockQuantityLabel, innerStackView]
+        [
+            stockQuantityLabel,
+            innerStackView
+        ]
             .forEach {
                 stackView.addArrangedSubview($0)
             }
@@ -71,7 +86,10 @@ class StockListDetailViewCell: UICollectionViewCell {
     private lazy var stockQuantityLabel: UILabel = {
         let label = UILabel()
         label.text = "0.075269주"
-        label.font = .systemFont(ofSize: 15, weight: .medium)
+        label.font = .systemFont(
+            ofSize: 15,
+            weight: .medium
+        )
         label.textColor = .label
         return label
     }()
@@ -79,7 +97,10 @@ class StockListDetailViewCell: UICollectionViewCell {
     private lazy var profitLabel: UILabel = {
         let label = UILabel()
         label.text = "396원"
-        label.font = .systemFont(ofSize: 15, weight: .medium)
+        label.font = .systemFont(
+            ofSize: 15,
+            weight: .medium
+        )
         label.textColor = .red
         return label
     }()
@@ -87,7 +108,10 @@ class StockListDetailViewCell: UICollectionViewCell {
     private lazy var percentageLabel: UILabel = {
         let label = UILabel()
         label.text = "+19.85%"
-        label.font = .systemFont(ofSize: 15, weight: .medium)
+        label.font = .systemFont(
+            ofSize: 15,
+            weight: .medium
+        )
         label.textColor = .red
         return label
     }()
@@ -95,7 +119,10 @@ class StockListDetailViewCell: UICollectionViewCell {
     private lazy var detailVStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        [firstHStackView, secondHStackView]
+        [
+            firstHStackView,
+            secondHStackView
+        ]
             .forEach {
                 stackView.addArrangedSubview($0)
             }
@@ -118,7 +145,11 @@ class StockListDetailViewCell: UICollectionViewCell {
 
 private extension StockListDetailViewCell {
     func addSubviews() {
-        [stockImageView, detailVStackView, separatorView]
+        [
+            stockImageView,
+            detailVStackView,
+            separatorView
+        ]
             .forEach {
                 contentView.addSubview($0)
             }

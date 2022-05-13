@@ -32,7 +32,12 @@ final class GeneralPopupView {
         self.popupView = popupView
         blackView.frame = window.frame
         blackView.alpha = 0
-        blackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapBlackView)))
+        blackView.addGestureRecognizer(
+            UITapGestureRecognizer(
+                target: self,
+                action: #selector(didTapBlackView)
+            )
+        )
         [
             blackView,
             self.popupView

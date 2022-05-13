@@ -15,7 +15,10 @@ class ProfitShareView: UIView {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 5
-        [firstLabel, secondLabel]
+        [
+            firstLabel,
+            secondLabel
+        ]
             .forEach {
                 stackView.addArrangedSubview($0)
             }
@@ -26,7 +29,10 @@ class ProfitShareView: UIView {
     private lazy var firstLabel: UILabel = {
         let label = UILabel()
         label.text = "수익률 공유, 재미지게~"
-        label.font = .systemFont(ofSize: 14, weight: .medium)
+        label.font = .systemFont(
+            ofSize: 14,
+            weight: .medium
+        )
         label.textColor = MenuColor.shared.mintColor
         return label
     }()
@@ -34,7 +40,10 @@ class ProfitShareView: UIView {
     private lazy var secondLabel: UILabel = {
         let label = UILabel()
         label.text = "수익률 자랑하고 싶어요!"
-        label.font = .systemFont(ofSize: 20, weight: .bold)
+        label.font = .systemFont(
+            ofSize: 20,
+            weight: .bold
+        )
         label.textColor = .label
         return label
     }()
@@ -63,7 +72,10 @@ class ProfitShareView: UIView {
 
 private extension ProfitShareView {
     func addSubviews() {
-        [labelVStackView, imageView]
+        [
+            labelVStackView,
+            imageView
+        ]
             .forEach {
                 addSubview($0)
             }
@@ -88,7 +100,10 @@ private extension ProfitShareView {
     }
     
     func setTapGesture() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapProfitShareView))
+        let tapGesture = UITapGestureRecognizer(
+            target: self,
+            action: #selector(tapProfitShareView)
+        )
         addGestureRecognizer(tapGesture)
     }
     

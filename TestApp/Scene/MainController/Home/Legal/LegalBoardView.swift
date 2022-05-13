@@ -14,18 +14,28 @@ class LegalBoardView: UIView {
     private lazy var mainLabel: UILabel = {
         let label = UILabel()
         label.textColor = .gray
-        label.font = .systemFont(ofSize: 14, weight: .medium)
+        label.font = .systemFont(
+            ofSize: 14,
+            weight: .medium
+        )
         label.numberOfLines = 0
         return label
     }()
     
     private lazy var upScrollButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(systemName: "arrow.up"), for: .normal)
+        button.setImage(
+            UIImage(systemName: "arrow.up"),
+            for: .normal
+        )
         button.backgroundColor = .white
         button.tintColor = .gray
         button.layer.cornerRadius = 20
-        button.addTarget(self, action: #selector(tapUpScrollButton), for: .touchUpInside)
+        button.addTarget(
+            self,
+            action: #selector(tapUpScrollButton),
+            for: .touchUpInside
+        )
         return button
     }()
     

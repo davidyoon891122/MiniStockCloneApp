@@ -25,7 +25,10 @@ class MyStockViewTableCell: UITableViewCell {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         
-        [stockNameLabel, stockPriceLabel]
+        [
+            stockNameLabel,
+            stockPriceLabel
+        ]
             .forEach {
                 stackView.addArrangedSubview($0)
             }
@@ -37,7 +40,10 @@ class MyStockViewTableCell: UITableViewCell {
         let label = UILabel()
         label.text = "--"
         label.textColor = .label
-        label.font = .systemFont(ofSize: 20, weight: .bold)
+        label.font = .systemFont(
+            ofSize: 20,
+            weight: .bold
+        )
         return label
     }()
     
@@ -46,7 +52,10 @@ class MyStockViewTableCell: UITableViewCell {
         label.text = "-- 원"
         label.textColor = .label
         label.textAlignment = .right
-        label.font = .systemFont(ofSize: 18, weight: .bold)
+        label.font = .systemFont(
+            ofSize: 18,
+            weight: .bold
+        )
         return label
     }()
     
@@ -57,12 +66,18 @@ class MyStockViewTableCell: UITableViewCell {
         let innerStackView = UIStackView()
         innerStackView.axis = .horizontal
         innerStackView.spacing = 10
-        [profitLabel, percentageLabel]
+        [
+            profitLabel,
+            percentageLabel
+        ]
             .forEach {
                 innerStackView.addArrangedSubview($0)
             }
     
-        [stockQuantityLabel, innerStackView]
+        [
+            stockQuantityLabel,
+            innerStackView
+        ]
             .forEach {
                 stackView.addArrangedSubview($0)
             }
@@ -73,7 +88,10 @@ class MyStockViewTableCell: UITableViewCell {
     private lazy var stockQuantityLabel: UILabel = {
         let label = UILabel()
         label.text = "0.0 주"
-        label.font = .systemFont(ofSize: 15, weight: .medium)
+        label.font = .systemFont(
+            ofSize: 15,
+            weight: .medium
+        )
         label.textColor = .label
         return label
     }()
@@ -81,7 +99,10 @@ class MyStockViewTableCell: UITableViewCell {
     private lazy var profitLabel: UILabel = {
         let label = UILabel()
         label.text = "-- 원"
-        label.font = .systemFont(ofSize: 15, weight: .medium)
+        label.font = .systemFont(
+            ofSize: 15,
+            weight: .medium
+        )
         label.textColor = .red
         return label
     }()
@@ -89,7 +110,10 @@ class MyStockViewTableCell: UITableViewCell {
     private lazy var percentageLabel: UILabel = {
         let label = UILabel()
         label.text = "--.-- %"
-        label.font = .systemFont(ofSize: 15, weight: .medium)
+        label.font = .systemFont(
+            ofSize: 15,
+            weight: .medium
+        )
         label.textColor = .red
         return label
     }()
@@ -98,7 +122,10 @@ class MyStockViewTableCell: UITableViewCell {
         let stackView = UIStackView()
         stackView.axis = .vertical
         
-        [firstHStackView, secondHStackView]
+        [
+            firstHStackView,
+            secondHStackView
+        ]
             .forEach {
                 stackView.addArrangedSubview($0)
             }

@@ -65,7 +65,9 @@ class MenuCollectionViewCell: UICollectionViewCell {
 
 private extension MenuCollectionViewCell {
     func addSubviews() {
-        [titleLabel]
+        [
+            titleLabel
+        ]
             .forEach {
                 contentView.addSubview($0)
             }

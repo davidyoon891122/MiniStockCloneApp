@@ -62,13 +62,20 @@ class StackListView: UIView {
 
 extension StackListView: StockListViewProtocol {
     func selectMenu(indexPath: IndexPath) {
-        collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .right)
+        collectionView.selectItem(
+            at: indexPath,
+            animated: false,
+            scrollPosition: .right
+        )
     }
     
 }
 
 extension StackListView: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int
+    ) -> Int {
         return menus.count
     }
     
@@ -99,14 +106,21 @@ extension StackListView: UICollectionViewDelegateFlowLayout {
 
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let index = collectionView.contentOffset.x / frame.width
-        let indexPath = IndexPath(item: Int(index), section: 0)
+        let indexPath = IndexPath(
+            item: Int(index),
+            section: 0
+        )
         menuCollectionView.moveMenuWithStockListMainCollectionView(indexPath: indexPath)
     }
 }
 
 private extension StackListView {
     func addSubviews() {
-        [menuCollectionView, separatorView, collectionView]
+        [
+            menuCollectionView,
+            separatorView,
+            collectionView
+        ]
             .forEach {
                 addSubview($0)
             }

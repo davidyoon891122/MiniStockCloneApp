@@ -11,7 +11,13 @@ class StockListMainCollectionViewModel {
     var onUpdate: () -> Void = {}
     
     var inscreaseStocks: [IncreaseStockModel] = [
-        IncreaseStockModel(stockName: "--", stockCode: "--", percentChange: 0, currentPrice: 0, imageURL: "'")
+        IncreaseStockModel(
+            stockName: "--",
+            stockCode: "--",
+            percentChange: 0,
+            currentPrice: 0,
+            imageURL: "'"
+        )
     ] {
         didSet {
             onUpdate()

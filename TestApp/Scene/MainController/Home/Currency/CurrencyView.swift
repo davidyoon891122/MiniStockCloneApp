@@ -13,7 +13,10 @@ class CurrencyView: UIView {
     
     private lazy var currencyHStackView: UIStackView = {
         let stackView = UIStackView()
-        [leftVStackView, rightVStackView]
+        [
+            leftVStackView,
+            rightVStackView
+        ]
             .forEach {
                 stackView.addArrangedSubview($0)
             }
@@ -24,7 +27,10 @@ class CurrencyView: UIView {
     private lazy var leftVStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        [currencyTitleLabel, currencySubtitleLabel]
+        [
+            currencyTitleLabel,
+            currencySubtitleLabel
+        ]
             .forEach {
                 stackView.addArrangedSubview($0)
             }
@@ -34,7 +40,10 @@ class CurrencyView: UIView {
     private lazy var rightVStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        [currencyContentLabel, changeHStackView]
+        [
+            currencyContentLabel,
+            changeHStackView
+        ]
             .forEach {
                 stackView.addArrangedSubview($0)
             }
@@ -45,7 +54,10 @@ class CurrencyView: UIView {
     private lazy var changeHStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.spacing = 10
-        [valueChangeLabel, percentChangeLabel]
+        [
+            valueChangeLabel,
+            percentChangeLabel
+        ]
             .forEach {
                 stackView.addArrangedSubview($0)
             }
@@ -55,7 +67,10 @@ class CurrencyView: UIView {
     private lazy var currencyTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "원∙달러 환율"
-        label.font = .systemFont(ofSize: 18, weight: .medium)
+        label.font = .systemFont(
+            ofSize: 18,
+            weight: .medium
+        )
         label.textColor = .label
         return label
     }()
@@ -64,7 +79,10 @@ class CurrencyView: UIView {
         let label = UILabel()
         label.text = "1,198.50원"
         label.textAlignment = .right
-        label.font = .systemFont(ofSize: 18, weight: .medium)
+        label.font = .systemFont(
+            ofSize: 18,
+            weight: .medium
+        )
         label.textColor = .label
         return label
     }()
@@ -72,7 +90,10 @@ class CurrencyView: UIView {
     private lazy var currencySubtitleLabel: UILabel = {
         let label = UILabel()
         label.text = "2월 16일 최고고시환율"
-        label.font = .systemFont(ofSize: 12, weight: .medium)
+        label.font = .systemFont(
+            ofSize: 12,
+            weight: .medium
+        )
         label.textColor = .gray
         return label
     }()
@@ -80,7 +101,10 @@ class CurrencyView: UIView {
     private lazy var valueChangeLabel: UILabel = {
         let label = UILabel()
         label.text = "0.20원"
-        label.font = .systemFont(ofSize: 14, weight: .medium)
+        label.font = .systemFont(
+            ofSize: 14,
+            weight: .medium
+        )
         label.textColor = .red
         return label
     }()
@@ -88,7 +112,10 @@ class CurrencyView: UIView {
     private lazy var percentChangeLabel: UILabel = {
         let label = UILabel()
         label.text = "+0.02%"
-        label.font = .systemFont(ofSize: 14, weight: .medium)
+        label.font = .systemFont(
+            ofSize: 14,
+            weight: .medium
+        )
         label.textColor = .red
         return label
     }()
@@ -124,7 +151,10 @@ private extension CurrencyView {
     }
     
     func setTapGesture() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapCurrencyView))
+        let tapGesture = UITapGestureRecognizer(
+            target: self,
+            action: #selector(didTapCurrencyView)
+        )
         addGestureRecognizer(tapGesture)
         
     }

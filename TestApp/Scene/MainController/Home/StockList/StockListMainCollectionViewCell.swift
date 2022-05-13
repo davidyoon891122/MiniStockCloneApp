@@ -11,7 +11,18 @@ import SnapKit
 class StockListMainCollectionViewCell: UICollectionViewCell {
     static let identifier: String = "StockListMainCollectionViewCell"
     private var menus: [String]?
-    private let colors: [UIColor] = [.red, .orange, .yellow, .green, .blue, .purple, .black, .white, .systemPink, .gray]
+    private let colors: [UIColor] = [
+        .red,
+        .orange,
+        .yellow,
+        .green,
+        .blue,
+        .purple,
+        .black,
+        .white,
+        .systemPink,
+        .gray
+    ]
     private let detailCellHeight: CGFloat = 65.0
     private var increasedStocks: [IncreaseStockModel] = []
     weak var delegate: HomeViewProtocol?
@@ -20,7 +31,10 @@ class StockListMainCollectionViewCell: UICollectionViewCell {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.backgroundColor = .systemBackground
-        [sortingButton, etfButton]
+        [
+            sortingButton,
+            etfButton
+        ]
             .forEach {
                 stackView.addSubview($0)
             }
@@ -29,17 +43,35 @@ class StockListMainCollectionViewCell: UICollectionViewCell {
     
     private lazy var sortingButton: UIButton = {
         let button = UIButton()
-        button.setTitle("전일 기준 ⌵", for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 13, weight: .medium)
-        button.setTitleColor(.lightGray, for: .normal)
+        button.setTitle(
+            "전일 기준 ⌵",
+            for: .normal
+        )
+        button.titleLabel?.font = .systemFont(
+            ofSize: 13,
+            weight: .medium
+        )
+        button.setTitleColor(
+            .lightGray,
+            for: .normal
+        )
         return button
     }()
     
     private lazy var etfButton: UIButton = {
         let button = UIButton()
-        button.setTitle("⌾ ETF만 보기", for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 13, weight: .medium)
-        button.setTitleColor(.lightGray, for: .normal)
+        button.setTitle(
+            "⌾ ETF만 보기",
+            for: .normal
+        )
+        button.titleLabel?.font = .systemFont(
+            ofSize: 13,
+            weight: .medium
+        )
+        button.setTitleColor(
+            .lightGray,
+            for: .normal
+        )
         return button
     }()
     
@@ -48,7 +80,10 @@ class StockListMainCollectionViewCell: UICollectionViewCell {
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        let collectionView = UICollectionView(
+            frame: .zero,
+            collectionViewLayout: layout
+        )
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(
@@ -91,7 +126,10 @@ class StockListMainCollectionViewCell: UICollectionViewCell {
 }
 
 extension StockListMainCollectionViewCell: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int
+    ) -> Int {
         return increasedStocks.count
         
     }
@@ -120,14 +158,21 @@ extension StockListMainCollectionViewCell: UICollectionViewDelegateFlowLayout {
         return CGSize(width: collectionView.frame.width - 40, height: detailCellHeight)
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        didSelectItemAt indexPath: IndexPath
+    ) {
         delegate?.moveToDetailStockView()
     }
 }
 
 private extension StockListMainCollectionViewCell {
     func addSubviews() {
-        [collectionView, moreButton, sortingButtonHStackView]
+        [
+            collectionView,
+            moreButton,
+            sortingButtonHStackView
+        ]
             .forEach {
                 addSubview($0)
             }
@@ -160,7 +205,7 @@ private extension StockListMainCollectionViewCell {
         }
         
         moreButton.snp.makeConstraints {
-            $0.top.equalTo(collectionView.snp.bottom)
+            $0.top.equalTo(collectionView.snp.bottom).offset(8.0)
             $0.leading.equalToSuperview().offset(inset)
             $0.height.equalTo(50)
             $0.trailing.equalToSuperview().inset(inset)

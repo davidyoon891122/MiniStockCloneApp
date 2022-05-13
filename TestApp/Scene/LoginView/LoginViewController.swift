@@ -29,16 +29,28 @@ class LoginViewController: UIViewController {
         let label = UILabel()
         label.font = .systemFont(ofSize: 40, weight: .heavy)
         let miniStringAttribute = [
-            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 40, weight: .heavy),
+            NSAttributedString.Key.font: UIFont.systemFont(
+                ofSize: 40,
+                weight: .heavy
+            ),
             NSAttributedString.Key.foregroundColor: UIColor.label
         ]
         let stockStringAttribute = [
-            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 40, weight: .light),
+            NSAttributedString.Key.font: UIFont.systemFont(
+                ofSize: 40,
+                weight: .light
+            ),
             NSAttributedString.Key.foregroundColor: UIColor.label
         ]
         
-        let miniString = NSMutableAttributedString(string: "mini", attributes: miniStringAttribute)
-        let stockString = NSMutableAttributedString(string: "stock", attributes: stockStringAttribute)
+        let miniString = NSMutableAttributedString(
+            string: "mini",
+            attributes: miniStringAttribute
+        )
+        let stockString = NSMutableAttributedString(
+            string: "stock",
+            attributes: stockStringAttribute
+        )
         
         miniString.append(stockString)
         
@@ -50,7 +62,10 @@ class LoginViewController: UIViewController {
     
     private lazy var welcomeLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 25, weight: .light)
+        label.font = .systemFont(
+            ofSize: 25,
+            weight: .light
+        )
         label.text = "환영합니다"
         label.textAlignment = .center
         label.textColor = MenuColor.shared.mintColor
@@ -59,13 +74,23 @@ class LoginViewController: UIViewController {
     
     private lazy var loginButton: UIButton = {
         let button = UIButton()
-        button.setTitle("간편비밀번호 로그인", for: .normal)
-        button.setTitleColor(.label, for: .normal)
+        button.setTitle(
+            "간편비밀번호 로그인",
+            for: .normal
+        )
+        button.setTitleColor(
+            .label,
+            for: .normal
+        )
         button.titleLabel?.font = .systemFont(ofSize: 20)
         button.layer.cornerRadius = 10
         button.layer.borderColor = UIColor.separator.cgColor
         button.layer.borderWidth = 1
-        button.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+        button.addTarget(
+            self,
+            action: #selector(loginButtonTapped),
+            for: .touchUpInside
+        )
         return button
     }()
     
@@ -77,7 +102,8 @@ class LoginViewController: UIViewController {
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(handleAppDidBecomeActiveNotification(notification:)),
-            name: UIApplication.didBecomeActiveNotification, object: nil
+            name: UIApplication.didBecomeActiveNotification,
+            object: nil
         )
     }
     
@@ -117,14 +143,27 @@ extension LoginViewController {
     
     @objc func loginButtonTapped() {
         guard let window = UIApplication.shared.windows.first(where: {$0.isKeyWindow}) else { return }
-        passwordView.keypadNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
+        passwordView.keypadNumbers = [
+            1, 2, 3, 4, 5, 6, 7, 8, 9, 0
+        ]
         passwordView.numberCollectionView.reloadData()
-        blackView.backgroundColor = UIColor(white: 0.2, alpha: 0.8)
+        blackView.backgroundColor = UIColor(
+            white: 0.2,
+            alpha: 0.8
+        )
         blackView.frame = window.frame
         blackView.alpha = 0
-        blackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapBlackView)))
+        blackView.addGestureRecognizer(
+            UITapGestureRecognizer(
+                target: self,
+                action: #selector(tapBlackView)
+            )
+        )
         
-        [blackView, passwordView]
+        [
+            blackView,
+            passwordView
+        ]
             .forEach {
                 window.addSubview($0)
             }
@@ -147,7 +186,12 @@ extension LoginViewController {
             options: .curveEaseOut,
             animations: {
             self.blackView.alpha = 1
-            self.passwordView.frame = CGRect(x: 0, y: passwordViewY, width: window.frame.width, height: height)
+            self.passwordView.frame = CGRect(
+                x: 0,
+                y: passwordViewY,
+                width: window.frame.width,
+                height: height
+            )
         }, completion: nil)
     }
     

@@ -32,7 +32,11 @@ class CurrencyDetailView: UIView {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 10
-        [titleHStackView, currentCurrencyLabel, valueHStackView]
+        [
+            titleHStackView,
+            currentCurrencyLabel,
+            valueHStackView
+        ]
             .forEach {
                 stackView.addArrangedSubview($0)
             }
@@ -53,7 +57,11 @@ class CurrencyDetailView: UIView {
         stackView.spacing = 5
         imageView.widthAnchor.constraint(equalToConstant: 20).isActive = true
         imageView.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        [imageView, titleLabel, descriptionLabel]
+        [
+            imageView,
+            titleLabel,
+            descriptionLabel
+        ]
             .forEach {
                 stackView.addArrangedSubview($0)
             }
@@ -65,7 +73,10 @@ class CurrencyDetailView: UIView {
         let label = UILabel()
         label.text = "원∙달러 환율"
         label.textColor = .label
-        label.font = .systemFont(ofSize: 14, weight: .medium)
+        label.font = .systemFont(
+            ofSize: 14,
+            weight: .medium
+        )
         return label
     }()
     
@@ -73,7 +84,10 @@ class CurrencyDetailView: UIView {
         let label = UILabel()
         label.text = "2월 21일 최초고시환율"
         label.textColor = .gray
-        label.font = .systemFont(ofSize: 12, weight: .medium)
+        label.font = .systemFont(
+            ofSize: 12,
+            weight: .medium
+        )
         return label
     }()
     
@@ -81,14 +95,21 @@ class CurrencyDetailView: UIView {
         let label = UILabel()
         label.text = "1,196.40원"
         label.textColor = .label
-        label.font = .systemFont(ofSize: 24, weight: .medium)
+        label.font = .systemFont(
+            ofSize: 24,
+            weight: .medium
+        )
         return label
     }()
     
     private lazy var valueHStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.distribution = .equalSpacing
-        [valueChangeLabel, percentChangeLabel, prevDayLabel]
+        [
+            valueChangeLabel,
+            percentChangeLabel,
+            prevDayLabel
+        ]
             .forEach {
                 stackView.addSubview($0)
             }
@@ -145,7 +166,10 @@ class CurrencyDetailView: UIView {
             let value = ChartDataEntry(x: years[index], y: currency[index])
             lineChartEntry.append(value)
         }
-        let line = LineChartDataSet(entries: lineChartEntry, label: "Currency")
+        let line = LineChartDataSet(
+            entries: lineChartEntry,
+            label: "Currency"
+        )
         line.colors = [MenuColor.shared.mintColor]
         let data = LineChartData()
         data.addDataSet(line)
