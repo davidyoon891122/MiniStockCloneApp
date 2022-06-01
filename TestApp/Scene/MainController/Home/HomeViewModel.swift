@@ -71,6 +71,7 @@ class HomeViewModel {
             dividendsSubject,
             profitsSubject,
             resultSelector: { !$0.isEmpty && !$1.isEmpty && !$2.userName.isEmpty })
+            .debug()
             .bind(to: finishFetchSubject)
             .disposed(by: disposeBag)
 

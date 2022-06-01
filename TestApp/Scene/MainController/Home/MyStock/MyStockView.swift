@@ -219,6 +219,7 @@ private extension MyStockView {
               let sortingViewModel = self.sortingViewModel
         else { return }
         viewModel.myStocksSubject
+            .catchAndReturn([])
             .subscribe(onNext: { [weak self] myStocks in
                 guard let self = self else { return }
                 self.myStocks = myStocks
@@ -255,6 +256,7 @@ private extension MyStockView {
         stockTableView.dataSource = nil
         guard let viewModel = self.viewModel else { return }
         viewModel.myStocksSubject
+            .catchAndReturn([])
             .observe(on: MainScheduler.instance)
             .bind(to: stockTableView.rx.items(
                 cellIdentifier: MyStockViewTableCell.identifier,

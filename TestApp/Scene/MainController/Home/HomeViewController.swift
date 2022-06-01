@@ -274,6 +274,7 @@ private extension HomeViewController {
     func bindViewModel() {
         viewModel.inOutBind()
         viewModel.finishFetchSubject
+            .debug()
             .subscribe(onNext: { [weak self] isFinished in
                 guard let self = self else { return }
                 if isFinished {
