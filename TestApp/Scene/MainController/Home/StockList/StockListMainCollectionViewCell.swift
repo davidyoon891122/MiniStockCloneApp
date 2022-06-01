@@ -7,9 +7,11 @@
 
 import UIKit
 import SnapKit
+import RxSwift
 
 class StockListMainCollectionViewCell: UICollectionViewCell {
     static let identifier: String = "StockListMainCollectionViewCell"
+    private let disposeBag = DisposeBag()
     private var menus: [String]?
     private let colors: [UIColor] = [
         .red,
@@ -114,13 +116,7 @@ class StockListMainCollectionViewCell: UICollectionViewCell {
         self.menus = menus
         addSubviews()
         setLayoutConstraints()
-        
-        viewModel.onUpdate = { [weak self] in
-            guard let self = self else { return }
-            self.increasedStocks = self.viewModel.inscreaseStocks
-            self.collectionView.reloadData()
-        }
-        
+        bindViewModel()
         viewModel.fetchIncreaseList()
     }
 }
@@ -211,5 +207,16 @@ private extension StockListMainCollectionViewCell {
             $0.trailing.equalToSuperview().inset(inset)
             $0.bottom.equalToSuperview().inset(inset)
         }
+    }
+
+    func bindViewModel() {
+        viewModel.increasedStocksSubject
+            .debug()
+            .subscribe(onNext: { [weak self] increasedStocks in
+                guard let self = self else { return }
+                self.increasedStocks = increasedStocks
+                self.collectionView.reloadData()
+            })
+            .disposed(by: disposeBag)
     }
 }

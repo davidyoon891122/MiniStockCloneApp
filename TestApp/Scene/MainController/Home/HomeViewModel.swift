@@ -19,16 +19,15 @@ class HomeViewModel {
     var profitsSubject: PublishSubject<ProfitModel> = .init()
 
     var finishFetchSubject: PublishSubject<Bool> = .init()
-    
-    private let networkManager = NetworkManager()
 
     private let repository = StockRepository()
     
     func fetchMyStock() {
         repository.requestData(
-            url: URLInfo.stock.url,
+            url: URLInfo.stock.localURL,
             type: [MyStockModel].self
         )
+            .debug()
             .subscribe(onNext: { myStocks in
                 self.myStocksSubject.onNext(myStocks)
             }, onError: { error in
@@ -40,9 +39,10 @@ class HomeViewModel {
     
     func fetchProfit() {
         repository.requestData(
-            url: URLInfo.profit.url,
+            url: URLInfo.profit.localURL,
             type: [ProfitModel].self
         )
+            .debug()
             .subscribe(onNext: { profits in
                 self.profitsSubject.onNext(profits[0])
             }, onError: { error in
@@ -54,9 +54,10 @@ class HomeViewModel {
     
     func fetchDividendList() {
         repository.requestData(
-            url: URLInfo.dividend.url,
+            url: URLInfo.dividend.localURL,
             type: [DividendModel].self
         )
+            .debug()
             .subscribe(onNext: { dividends in
                 self.dividendsSubject.onNext(dividends)
             }, onError: { error in

@@ -25,4 +25,17 @@ enum URLInfo {
             return URL(string: "https://boiling-scrubland-57180.herokuapp.com/increase-list")
         }
     }
+
+    var localURL: URL? {
+        switch self {
+        case .stock:
+            return URL(string: "http://127.0.0.1:3000/my-stock")
+        case .dividend:
+            return URL(string: "http://127.0.0.1:3000/dividend-list")
+        case .profit:
+            return URL(string: "http://127.0.0.1:3000/my-profit")
+        case .increase:
+            return URL(string: "http://127.0.0.1:3000/increase-list")
+        }
+    }
 }

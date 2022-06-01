@@ -6,10 +6,14 @@
 //
 
 import Foundation
+import RxSwift
 
 class StockListMainCollectionViewModel {
+    private let disposeBag = DisposeBag()
     var onUpdate: () -> Void = {}
-    
+
+    private let repository = StockRepository()
+
     var inscreaseStocks: [IncreaseStockModel] = [
         IncreaseStockModel(
             stockName: "--",
@@ -23,13 +27,18 @@ class StockListMainCollectionViewModel {
             onUpdate()
         }
     }
-    
-    private let networkManager = NetworkManager()
-    
+
+    var increasedStocksSubject: PublishSubject<[IncreaseStockModel]> = .init()
+
     func fetchIncreaseList() {
-        networkManager.requestIncreaseList { increaseStocks in
-            self.inscreaseStocks = increaseStocks
-        }
+        repository.requestData(
+            url: URLInfo.increase.localURL,
+            type: [IncreaseStockModel].self
+        )
+            .subscribe(onNext: {
+                self.increasedStocksSubject.onNext($0)
+            })
+            .disposed(by: disposeBag)
     }
     
 }

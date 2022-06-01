@@ -10,8 +10,9 @@ import Alamofire
 
 struct NetworkManager {
     
-    let baseURL = "https://boiling-scrubland-57180.herokuapp.com/"
-    
+//    private let baseURL = "https://boiling-scrubland-57180.herokuapp.com/"
+    private let baseURL = "http://127.0.0.1:3000/"
+
     func requestMyStock(completionHandler: @escaping (([MyStockModel]) -> Void)) {
         guard let url = URL(string: baseURL + "my-stock") else { return }
         
@@ -34,6 +35,7 @@ struct NetworkManager {
             .responseDecodable(of: [ProfitModel].self) { response in
                 switch response.result {
                 case .success(let result):
+                    print(result)
                     completionHandler(result[0])
                 case .failure(let error):
                     print(error.localizedDescription)

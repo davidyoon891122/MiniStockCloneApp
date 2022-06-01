@@ -11,7 +11,6 @@ import RxSwift
 
 class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
     private let disposeBag = DisposeBag()
-    private let networkManager = NetworkManager()
     private let blackView = UIView()
     private let currencyDetailView = CurrencyDetailView()
     private let sortingSelectView = SortingSelectView()
