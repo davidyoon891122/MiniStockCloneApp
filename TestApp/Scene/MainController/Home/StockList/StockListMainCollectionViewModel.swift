@@ -10,23 +10,10 @@ import RxSwift
 
 class StockListMainCollectionViewModel {
     private let disposeBag = DisposeBag()
-    var onUpdate: () -> Void = {}
 
     private let repository = StockRepository()
 
-    var inscreaseStocks: [IncreaseStockModel] = [
-        IncreaseStockModel(
-            stockName: "--",
-            stockCode: "--",
-            percentChange: 0,
-            currentPrice: 0,
-            imageURL: "'"
-        )
-    ] {
-        didSet {
-            onUpdate()
-        }
-    }
+    var inscreaseStocks: [IncreaseStockModel] = []
 
     var increasedStocksSubject: PublishSubject<[IncreaseStockModel]> = .init()
 
