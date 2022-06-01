@@ -158,7 +158,10 @@ class MyStockViewTableCell: UITableViewCell {
 
 private extension MyStockViewTableCell {
     func addSubviews() {
-        [stockImageView, stockVStackView]
+        [
+            stockImageView,
+            stockVStackView
+        ]
             .forEach {
                 contentView.addSubview($0)
             }
@@ -167,7 +170,7 @@ private extension MyStockViewTableCell {
     func setLayoutConstraint() {
         stockImageView.snp.makeConstraints {
             $0.centerY.equalToSuperview()
-            $0.leading.equalToSuperview()
+            $0.leading.equalToSuperview().offset(8.0)
             $0.width.equalTo(40)
             $0.height.equalTo(40)
         }

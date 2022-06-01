@@ -13,8 +13,6 @@ class StockListMainCollectionViewModel {
 
     private let repository = StockRepository()
 
-    var inscreaseStocks: [IncreaseStockModel] = []
-
     var increasedStocksSubject: PublishSubject<[IncreaseStockModel]> = .init()
 
     func fetchIncreaseList() {

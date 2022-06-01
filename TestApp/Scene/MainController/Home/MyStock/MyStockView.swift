@@ -195,7 +195,7 @@ private extension MyStockView {
         
         stockTableView.snp.makeConstraints {
             $0.top.equalTo(myStockVStackView.snp.bottom).offset(inset)
-            $0.leading.equalToSuperview().offset(inset)
+            $0.leading.equalToSuperview()
             $0.trailing.equalToSuperview().inset(inset)
             $0.height.equalTo(CGFloat(cellCount) * cellHeight)
         }
