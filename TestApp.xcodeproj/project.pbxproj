@@ -47,7 +47,6 @@
 		AD85593127A2315D005BBA23 /* DetailNoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD85593027A2315D005BBA23 /* DetailNoticeViewController.swift */; };
 		AD85593327A27A30005BBA23 /* MenuColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD85593227A27A30005BBA23 /* MenuColor.swift */; };
 		AD8B45E327C2FEA600005725 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = AD8B45E227C2FEA600005725 /* Alamofire */; };
-		AD8B45E527C2FEC700005725 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8B45E427C2FEC700005725 /* NetworkManager.swift */; };
 		AD8B45E727C2FF9E00005725 /* MyStockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8B45E627C2FF9E00005725 /* MyStockModel.swift */; };
 		AD8B45EC27C3209400005725 /* HomeViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8B45EB27C3209400005725 /* HomeViewProtocol.swift */; };
 		AD8B45EE27C3217300005725 /* DetailStockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8B45ED27C3217300005725 /* DetailStockViewController.swift */; };
@@ -132,7 +131,6 @@
 		AD85592E27A225EB005BBA23 /* HomeViewMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewMenu.swift; sourceTree = "<group>"; };
 		AD85593027A2315D005BBA23 /* DetailNoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailNoticeViewController.swift; sourceTree = "<group>"; };
 		AD85593227A27A30005BBA23 /* MenuColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuColor.swift; sourceTree = "<group>"; };
-		AD8B45E427C2FEC700005725 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		AD8B45E627C2FF9E00005725 /* MyStockModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStockModel.swift; sourceTree = "<group>"; };
 		AD8B45EB27C3209400005725 /* HomeViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewProtocol.swift; sourceTree = "<group>"; };
 		AD8B45ED27C3217300005725 /* DetailStockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailStockViewController.swift; sourceTree = "<group>"; };
@@ -267,7 +265,6 @@
 				AD991DC427A3AD2E00AA897B /* Delegates */,
 				AD8B45E927C3004B00005725 /* Model */,
 				AD991DC227A3ACFE00AA897B /* MenuOptions */,
-				AD8B45E827C3004400005725 /* Network */,
 				AD8B45EA27C3006300005725 /* Scene */,
 				AD27D1AF2791652F009C8F91 /* Assets.xcassets */,
 				AD27D1B12791652F009C8F91 /* LaunchScreen.storyboard */,
@@ -401,14 +398,6 @@
 				AD8B45EF27C3228000005725 /* StockDetail */,
 			);
 			path = Home;
-			sourceTree = "<group>";
-		};
-		AD8B45E827C3004400005725 /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				AD8B45E427C2FEC700005725 /* NetworkManager.swift */,
-			);
-			path = Network;
 			sourceTree = "<group>";
 		};
 		AD8B45E927C3004B00005725 /* Model */ = {
@@ -741,7 +730,6 @@
 				AD8B45F427C3581900005725 /* CurrencyDetailView.swift in Sources */,
 				AD27D1A92791652D009C8F91 /* SceneDelegate.swift in Sources */,
 				AD843DCF27BDC2C8006F974A /* CurrencyView.swift in Sources */,
-				AD8B45E527C2FEC700005725 /* NetworkManager.swift in Sources */,
 				ADB62AAE282BC92C0044BC75 /* PopupView.swift in Sources */,
 				ADA8B440279E470B003D5C98 /* MyStockViewTableCell.swift in Sources */,
 				AD7246272803CADC002C91A3 /* TabBarItem.swift in Sources */,
