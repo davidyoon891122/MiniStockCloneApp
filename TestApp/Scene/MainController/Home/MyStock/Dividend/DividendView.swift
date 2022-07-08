@@ -16,6 +16,8 @@ class DividendView: UIView {
     weak var delegate: HomeViewProtocol?
 
     private var viewModel: HomeViewModel?
+
+    private lazy var currentCollectionViewX = stockCollectionView.frame.origin.x
     
     private lazy var labelVStack: UIStackView = {
         let stackView = UIStackView()
@@ -39,7 +41,10 @@ class DividendView: UIView {
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         
-        [descriptionLabel, dividendBaseLabel]
+        [
+            descriptionLabel,
+            dividendBaseLabel
+        ]
             .forEach {
                 stackView.addArrangedSubview($0)
             }
@@ -94,6 +99,7 @@ class DividendView: UIView {
         backgroundColor = MenuColor.shared.mintColor
         addSubviews()
         setLayoutConstraint()
+        activateCollectionViewAnimation()
     }
     
     required init?(coder: NSCoder) {
@@ -135,7 +141,10 @@ extension DividendView: UICollectionViewDelegateFlowLayout {
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
-        return CGSize(width: collectionView.frame.width / 3 - 20, height: 150.0)
+        return CGSize(
+            width: UIScreen.main.bounds.width / 3 - 20,
+            height: 150.0
+        )
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -183,5 +192,36 @@ private extension DividendView {
                 print(error)
             })
             .disposed(by: disposeBag)
+    }
+
+    func activateCollectionViewAnimation() {
+        _ = Timer.scheduledTimer(
+            timeInterval: 0.1
+            ,
+            target: self,
+            selector: #selector(moveCollectionViewCell),
+            userInfo: nil,
+            repeats: true
+        )
+    }
+
+    @objc func moveCollectionViewCell() {
+        print(currentCollectionViewX)
+        stockCollectionView.setContentOffset(
+            CGPoint(
+                x: currentCollectionViewX,
+                y: 0
+            ),
+            animated: true
+        )
+        let collectionViewContentMaxWidth = stockCollectionView.contentSize.width
+        let collectionViewMaxWidth = stockCollectionView.frame.width
+
+        if currentCollectionViewX < collectionViewContentMaxWidth - collectionViewMaxWidth {
+            currentCollectionViewX += 1.0
+        } else {
+            print("End Moving")
+            currentCollectionViewX = 0.0
+        }
     }
 }
