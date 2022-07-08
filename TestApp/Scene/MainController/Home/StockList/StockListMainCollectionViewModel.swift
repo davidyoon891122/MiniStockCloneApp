@@ -17,7 +17,7 @@ class StockListMainCollectionViewModel {
 
     func fetchIncreaseList() {
         repository.requestData(
-            url: URLInfo.increase.localURL,
+            url: URLInfo.increase.url,
             type: [IncreaseStockModel].self
         )
             .subscribe(onNext: {

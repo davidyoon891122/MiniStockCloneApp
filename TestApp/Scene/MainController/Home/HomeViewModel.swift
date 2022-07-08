@@ -24,7 +24,7 @@ class HomeViewModel {
     
     func fetchMyStock() {
         repository.requestData(
-            url: URLInfo.stock.localURL,
+            url: URLInfo.stock.url,
             type: [MyStockModel].self
         )
             .debug()
@@ -39,7 +39,7 @@ class HomeViewModel {
     
     func fetchProfit() {
         repository.requestData(
-            url: URLInfo.profit.localURL,
+            url: URLInfo.profit.url,
             type: [ProfitModel].self
         )
             .debug()
@@ -54,7 +54,7 @@ class HomeViewModel {
     
     func fetchDividendList() {
         repository.requestData(
-            url: URLInfo.dividend.localURL,
+            url: URLInfo.dividend.url,
             type: [DividendModel].self
         )
             .debug()
