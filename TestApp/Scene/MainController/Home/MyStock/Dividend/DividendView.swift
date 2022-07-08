@@ -23,7 +23,10 @@ class DividendView: UIView {
         stackView.distribution = .equalSpacing
         stackView.spacing = 5
         
-        [labelHStack, titleLabel]
+        [
+            labelHStack,
+            titleLabel
+        ]
             .forEach {
                 stackView.addArrangedSubview($0)
             }
@@ -105,7 +108,10 @@ class DividendView: UIView {
 }
 
 extension DividendView: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int
+    ) -> Int {
         return dividends.count
     }
     
@@ -139,7 +145,10 @@ extension DividendView: UICollectionViewDelegateFlowLayout {
 
 private extension DividendView {
     func addSubviews() {
-        [labelVStack, stockCollectionView]
+        [
+            labelVStack,
+            stockCollectionView
+        ]
             .forEach {
                 addSubview($0)
             }
