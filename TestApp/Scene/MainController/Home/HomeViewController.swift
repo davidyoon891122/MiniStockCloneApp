@@ -10,7 +10,7 @@ import SnapKit
 import RxSwift
 
 class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
-    private let disposeBag = DisposeBag()
+    // MARK: - UI
     private let blackView = UIView()
     private let currencyDetailView = CurrencyDetailView()
     private let sortingSelectView = SortingSelectView()
@@ -75,8 +75,11 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
         
         return stackView
     }()
-    
+
+    // MARK: - Variables
     private let viewModel = HomeViewModel()
+
+    private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -167,21 +170,29 @@ private extension HomeViewController {
             action: #selector(tapShareButton)
         )
         shareNavigationBarButton.tintColor = .label
+
         let bagNavigationBarButton = UIBarButtonItem(
             image: HomeViewNavigationMenu.bag.imageName,
             style: .plain,
             target: self,
             action: #selector(tapBagButton)
         )
+
         bagNavigationBarButton.tintColor = .label
-        navigationItem.rightBarButtonItems =  [bagNavigationBarButton, shareNavigationBarButton]
+        navigationItem.rightBarButtonItems = [
+            bagNavigationBarButton,
+            shareNavigationBarButton
+        ]
         
         navigationController?.hidesBarsOnSwipe = true
         
     }
     
     func addSubviews() {
-        [scrollView, indicatorView]
+        [
+            scrollView,
+            indicatorView
+        ]
             .forEach {
                 view.addSubview($0)
             }
@@ -263,17 +274,17 @@ private extension HomeViewController {
     }
     
     @objc func pullScrollForRefresh() {
-        viewModel.fetchMyStock()
-        viewModel.fetchProfit()
-        viewModel.fetchDividendList()
+        viewModel.inputs.fetchMyStock()
+        viewModel.inputs.fetchProfit()
+        viewModel.inputs.fetchDividendList()
 
         refreshControl.endRefreshing()
     }
 
     func bindViewModel() {
-        viewModel.inOutBind()
-        viewModel.finishFetchSubject
-            .debug()
+        viewModel.inputs.inOutBind()
+        viewModel.outputs.finishFetchSubject
+            .debug("finishFetchSubject")
             .subscribe(onNext: { [weak self] isFinished in
                 guard let self = self else { return }
                 if isFinished {

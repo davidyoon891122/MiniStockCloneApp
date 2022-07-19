@@ -9,7 +9,30 @@ import Foundation
 import RxSwift
 import RxRelay
 
-class HomeViewModel {
+protocol HomeViewModelInput {
+    func fetchMyStock()
+    func fetchProfit()
+    func fetchDividendList()
+    func inOutBind()
+}
+
+protocol HomeViewModelOutput {
+    var myStocksSubject: PublishSubject<[MyStockModel]> { get }
+    var dividendsSubject: PublishSubject<[DividendModel]> { get }
+    var profitsSubject: PublishSubject<ProfitModel> { get }
+    var finishFetchSubject: PublishSubject<Bool> { get }
+}
+
+protocol HomeViewModelType {
+    var inputs: HomeViewModelInput { get }
+    var outputs: HomeViewModelOutput { get }
+}
+
+final class HomeViewModel: HomeViewModelType, HomeViewModelInput, HomeViewModelOutput {
+    var inputs: HomeViewModelInput { self }
+
+    var outputs: HomeViewModelOutput { self }
+
     private let disposeBag = DisposeBag()
 
     var myStocksSubject: PublishSubject<[MyStockModel]> = .init()
