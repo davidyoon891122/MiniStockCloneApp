@@ -62,6 +62,11 @@
 		AD950E4727C5EA7D00C05584 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = AD950E4627C5EA7D00C05584 /* Kingfisher */; };
 		AD950E4927C6026400C05584 /* ProfitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD950E4827C6026400C05584 /* ProfitModel.swift */; };
 		AD950E4B27C60AEF00C05584 /* Extension+Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD950E4A27C60AEF00C05584 /* Extension+Int.swift */; };
+		AD96B18A284ED94D009FD8C2 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD96B189284ED94D009FD8C2 /* WidgetKit.framework */; };
+		AD96B18C284ED94D009FD8C2 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD96B18B284ED94D009FD8C2 /* SwiftUI.framework */; };
+		AD96B18F284ED94E009FD8C2 /* MiniStockWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD96B18E284ED94E009FD8C2 /* MiniStockWidget.swift */; };
+		AD96B191284ED950009FD8C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD96B190284ED950009FD8C2 /* Assets.xcassets */; };
+		AD96B195284ED950009FD8C2 /* MiniStockWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = AD96B188284ED94D009FD8C2 /* MiniStockWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		AD991DC727A3AE7000AA897B /* StockListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD991DC627A3AE7000AA897B /* StockListView.swift */; };
 		AD991DC927A3CC8000AA897B /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD991DC827A3CC8000AA897B /* MenuCollectionViewCell.swift */; };
 		ADA8B440279E470B003D5C98 /* MyStockViewTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA8B43F279E470B003D5C98 /* MyStockViewTableCell.swift */; };
@@ -85,7 +90,28 @@
 			remoteGlobalIDString = AD27D1A22791652D009C8F91;
 			remoteInfo = TestApp;
 		};
+		AD96B193284ED950009FD8C2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AD27D19B2791652D009C8F91 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AD96B187284ED94D009FD8C2;
+			remoteInfo = MiniStockWidgetExtension;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		AD96B196284ED950009FD8C2 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				AD96B195284ED950009FD8C2 /* MiniStockWidgetExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		18310F96460656296AFA88A9 /* Pods-TestApp-TestAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestApp-TestAppUITests.release.xcconfig"; path = "Target Support Files/Pods-TestApp-TestAppUITests/Pods-TestApp-TestAppUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -143,6 +169,12 @@
 		AD93D08427C747E10004C44E /* IncreaseStockModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncreaseStockModel.swift; sourceTree = "<group>"; };
 		AD950E4827C6026400C05584 /* ProfitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfitModel.swift; sourceTree = "<group>"; };
 		AD950E4A27C60AEF00C05584 /* Extension+Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Int.swift"; sourceTree = "<group>"; };
+		AD96B188284ED94D009FD8C2 /* MiniStockWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MiniStockWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD96B189284ED94D009FD8C2 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		AD96B18B284ED94D009FD8C2 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		AD96B18E284ED94E009FD8C2 /* MiniStockWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniStockWidget.swift; sourceTree = "<group>"; };
+		AD96B190284ED950009FD8C2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AD96B192284ED950009FD8C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AD991DC627A3AE7000AA897B /* StockListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListView.swift; sourceTree = "<group>"; };
 		AD991DC827A3CC8000AA897B /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		ADA8B43F279E470B003D5C98 /* MyStockViewTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStockViewTableCell.swift; sourceTree = "<group>"; };
@@ -186,6 +218,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AD96B185284ED94D009FD8C2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD96B18C284ED94D009FD8C2 /* SwiftUI.framework in Frameworks */,
+				AD96B18A284ED94D009FD8C2 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -195,6 +236,8 @@
 				89BBA77FEDE0E1BF00CAC399 /* Pods_TestApp.framework */,
 				B9377D3CC628442F71555A7E /* Pods_TestApp_TestAppUITests.framework */,
 				EEC21C243121AFB4C28B47E2 /* Pods_TestAppTests.framework */,
+				AD96B189284ED94D009FD8C2 /* WidgetKit.framework */,
+				AD96B18B284ED94D009FD8C2 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -242,6 +285,7 @@
 				AD27D1A52791652D009C8F91 /* TestApp */,
 				AD27D1BC2791652F009C8F91 /* TestAppTests */,
 				AD27D1C62791652F009C8F91 /* TestAppUITests */,
+				AD96B18D284ED94E009FD8C2 /* MiniStockWidget */,
 				AD27D1A42791652D009C8F91 /* Products */,
 				6C5CD9EA1D97EF3B4DA527D3 /* Pods */,
 				0DE520B4146F1483610455A0 /* Frameworks */,
@@ -254,6 +298,7 @@
 				AD27D1A32791652D009C8F91 /* TestApp.app */,
 				AD27D1B92791652F009C8F91 /* TestAppTests.xctest */,
 				AD27D1C32791652F009C8F91 /* TestAppUITests.xctest */,
+				AD96B188284ED94D009FD8C2 /* MiniStockWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -437,6 +482,16 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		AD96B18D284ED94E009FD8C2 /* MiniStockWidget */ = {
+			isa = PBXGroup;
+			children = (
+				AD96B18E284ED94E009FD8C2 /* MiniStockWidget.swift */,
+				AD96B190284ED950009FD8C2 /* Assets.xcassets */,
+				AD96B192284ED950009FD8C2 /* Info.plist */,
+			);
+			path = MiniStockWidget;
+			sourceTree = "<group>";
+		};
 		AD991DC227A3ACFE00AA897B /* MenuOptions */ = {
 			isa = PBXGroup;
 			children = (
@@ -488,10 +543,12 @@
 				AD27D1A02791652D009C8F91 /* Frameworks */,
 				AD27D1A12791652D009C8F91 /* Resources */,
 				AD0E7A8F279A5B1000F1A9A0 /* ShellScript */,
+				AD96B196284ED950009FD8C2 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				AD96B194284ED950009FD8C2 /* PBXTargetDependency */,
 			);
 			name = TestApp;
 			packageProductDependencies = (
@@ -544,6 +601,23 @@
 			productReference = AD27D1C32791652F009C8F91 /* TestAppUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		AD96B187284ED94D009FD8C2 /* MiniStockWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AD96B199284ED950009FD8C2 /* Build configuration list for PBXNativeTarget "MiniStockWidgetExtension" */;
+			buildPhases = (
+				AD96B184284ED94D009FD8C2 /* Sources */,
+				AD96B185284ED94D009FD8C2 /* Frameworks */,
+				AD96B186284ED94D009FD8C2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MiniStockWidgetExtension;
+			productName = MiniStockWidgetExtension;
+			productReference = AD96B188284ED94D009FD8C2 /* MiniStockWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -565,6 +639,9 @@
 					AD27D1C22791652F009C8F91 = {
 						CreatedOnToolsVersion = 13.2.1;
 						TestTargetID = AD27D1A22791652D009C8F91;
+					};
+					AD96B187284ED94D009FD8C2 = {
+						CreatedOnToolsVersion = 13.2.1;
 					};
 				};
 			};
@@ -591,6 +668,7 @@
 				AD27D1A22791652D009C8F91 /* TestApp */,
 				AD27D1B82791652F009C8F91 /* TestAppTests */,
 				AD27D1C22791652F009C8F91 /* TestAppUITests */,
+				AD96B187284ED94D009FD8C2 /* MiniStockWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -617,6 +695,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AD96B186284ED94D009FD8C2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD96B191284ED950009FD8C2 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -779,6 +865,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AD96B184284ED94D009FD8C2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD96B18F284ED94E009FD8C2 /* MiniStockWidget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -791,6 +885,11 @@
 			isa = PBXTargetDependency;
 			target = AD27D1A22791652D009C8F91 /* TestApp */;
 			targetProxy = AD27D1C42791652F009C8F91 /* PBXContainerItemProxy */;
+		};
+		AD96B194284ED950009FD8C2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AD96B187284ED94D009FD8C2 /* MiniStockWidgetExtension */;
+			targetProxy = AD96B193284ED950009FD8C2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -926,6 +1025,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 490D2B7F07520A2C0458A139 /* Pods-TestApp.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -957,6 +1057,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 202172D21AB2ED012D98CDDF /* Pods-TestApp.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -1064,6 +1165,64 @@
 			};
 			name = Release;
 		};
+		AD96B197284ED950009FD8C2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = HDFLLXK789;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MiniStockWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MiniStockWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.TestApp.MiniStockWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AD96B198284ED950009FD8C2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = HDFLLXK789;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MiniStockWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MiniStockWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.TestApp.MiniStockWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1099,6 +1258,15 @@
 			buildConfigurations = (
 				AD27D1D42791652F009C8F91 /* Debug */,
 				AD27D1D52791652F009C8F91 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AD96B199284ED950009FD8C2 /* Build configuration list for PBXNativeTarget "MiniStockWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AD96B197284ED950009FD8C2 /* Debug */,
+				AD96B198284ED950009FD8C2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
