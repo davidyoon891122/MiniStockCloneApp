@@ -15,9 +15,13 @@ class StockListMainCollectionViewModel {
 
     var increasedStocksSubject: PublishSubject<[IncreaseStockModel]> = .init()
 
+    private var increaseUrl: URL? = Config.serverInfo == .local
+    ? URLInfo.increase.localURL
+    : URLInfo.increase.url
+
     func fetchIncreaseList() {
         repository.requestData(
-            url: URLInfo.increase.url,
+            url: increaseUrl,
             type: [IncreaseStockModel].self
         )
             .subscribe(onNext: {

@@ -21,10 +21,22 @@ class HomeViewModel {
     var finishFetchSubject: PublishSubject<Bool> = .init()
 
     private let repository = StockRepository()
+
+    private var myStockUrl: URL? = Config.serverInfo == .local
+    ? URLInfo.stock.localURL
+    : URLInfo.stock.url
+
+    private var profitUrl: URL? = Config.serverInfo == .local
+    ? URLInfo.profit.localURL
+    : URLInfo.profit.url
+
+    private var dividentUrl: URL? = Config.serverInfo == .local
+    ? URLInfo.dividend.localURL
+    : URLInfo.dividend.url
     
     func fetchMyStock() {
         repository.requestData(
-            url: URLInfo.stock.url,
+            url: myStockUrl,
             type: [MyStockModel].self
         )
             .debug()
@@ -39,7 +51,7 @@ class HomeViewModel {
     
     func fetchProfit() {
         repository.requestData(
-            url: URLInfo.profit.url,
+            url: profitUrl,
             type: [ProfitModel].self
         )
             .debug()
@@ -54,7 +66,7 @@ class HomeViewModel {
     
     func fetchDividendList() {
         repository.requestData(
-            url: URLInfo.dividend.url,
+            url: dividentUrl,
             type: [DividendModel].self
         )
             .debug()
