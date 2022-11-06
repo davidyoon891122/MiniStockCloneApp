@@ -172,7 +172,7 @@ class CurrencyDetailView: UIView {
         )
         line.colors = [MenuColor.shared.mintColor]
         let data = LineChartData()
-        data.addDataSet(line)
+        data.append(line)
         chart.data = data
         // left
         chart.leftAxis.drawLabelsEnabled = false

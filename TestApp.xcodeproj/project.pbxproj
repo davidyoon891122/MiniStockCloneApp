@@ -35,6 +35,7 @@
 		AD6BCF7E280F9287002F0787 /* URLInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6BCF7D280F9287002F0787 /* URLInfo.swift */; };
 		AD6BCF82280F93A8002F0787 /* Extension+Float.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6BCF81280F93A8002F0787 /* Extension+Float.swift */; };
 		AD7246272803CADC002C91A3 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7246262803CADC002C91A3 /* TabBarItem.swift */; };
+		AD798BB12917AAD200D35A7E /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = AD798BB02917AAD200D35A7E /* Charts */; };
 		AD7E0DE32796791B00230920 /* PasswordNumberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7E0DE22796791B00230920 /* PasswordNumberCollectionViewCell.swift */; };
 		AD7E657327B9CED100408BE6 /* StockListMainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7E657227B9CED100408BE6 /* StockListMainCollectionViewCell.swift */; };
 		AD7E657927BA1B8100408BE6 /* StockListDetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7E657827BA1B8100408BE6 /* StockListDetailViewCell.swift */; };
@@ -53,7 +54,6 @@
 		AD8B45F227C343E300005725 /* ProfitShareDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8B45F127C343E300005725 /* ProfitShareDetailViewController.swift */; };
 		AD8B45F427C3581900005725 /* CurrencyDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8B45F327C3581900005725 /* CurrencyDetailView.swift */; };
 		AD8BDDB327CC42A4005E0FC4 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = AD8BDDB227CC42A4005E0FC4 /* SnapKit */; };
-		AD8CE34027C4515900C8F2CC /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = AD8CE33F27C4515900C8F2CC /* Charts */; };
 		AD8CE38327C4A26800C8F2CC /* SortingSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8CE38227C4A26800C8F2CC /* SortingSelectView.swift */; };
 		AD8F736827CEDF4200DFD10E /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8F736727CEDF4200DFD10E /* HomeViewModel.swift */; };
 		AD8F736A27CEE6A500DFD10E /* StockListMainCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8F736927CEE6A500DFD10E /* StockListMainCollectionViewModel.swift */; };
@@ -164,8 +164,8 @@
 			files = (
 				AD054AE2280F8FDF00B81F97 /* RxCocoa in Frameworks */,
 				AD950E4727C5EA7D00C05584 /* Kingfisher in Frameworks */,
+				AD798BB12917AAD200D35A7E /* Charts in Frameworks */,
 				78A6FD516075F747E384C84D /* Pods_TestApp.framework in Frameworks */,
-				AD8CE34027C4515900C8F2CC /* Charts in Frameworks */,
 				AD8B45E327C2FEA600005725 /* Alamofire in Frameworks */,
 				AD8BDDB327CC42A4005E0FC4 /* SnapKit in Frameworks */,
 				AD054AE4280F8FDF00B81F97 /* RxSwift in Frameworks */,
@@ -499,11 +499,11 @@
 			name = TestApp;
 			packageProductDependencies = (
 				AD8B45E227C2FEA600005725 /* Alamofire */,
-				AD8CE33F27C4515900C8F2CC /* Charts */,
 				AD950E4627C5EA7D00C05584 /* Kingfisher */,
 				AD8BDDB227CC42A4005E0FC4 /* SnapKit */,
 				AD054AE1280F8FDF00B81F97 /* RxCocoa */,
 				AD054AE3280F8FDF00B81F97 /* RxSwift */,
+				AD798BB02917AAD200D35A7E /* Charts */,
 			);
 			productName = TestApp;
 			productReference = AD27D1A32791652D009C8F91 /* TestApp.app */;
@@ -582,10 +582,10 @@
 			mainGroup = AD27D19A2791652D009C8F91;
 			packageReferences = (
 				AD8B45E127C2FEA600005725 /* XCRemoteSwiftPackageReference "Alamofire" */,
-				AD8CE33E27C4515900C8F2CC /* XCRemoteSwiftPackageReference "Charts" */,
 				AD950E4527C5EA7D00C05584 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				AD8BDDB127CC42A4005E0FC4 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				AD054AE0280F8FDF00B81F97 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				AD798BAF2917AAD200D35A7E /* XCRemoteSwiftPackageReference "Charts" */,
 			);
 			productRefGroup = AD27D1A42791652D009C8F91 /* Products */;
 			projectDirPath = "";
@@ -1118,6 +1118,14 @@
 				kind = branch;
 			};
 		};
+		AD798BAF2917AAD200D35A7E /* XCRemoteSwiftPackageReference "Charts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielgindi/Charts.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		AD8B45E127C2FEA600005725 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -1132,14 +1140,6 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 5.0.0;
-			};
-		};
-		AD8CE33E27C4515900C8F2CC /* XCRemoteSwiftPackageReference "Charts" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/danielgindi/Charts.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 3.0.0;
 			};
 		};
 		AD950E4527C5EA7D00C05584 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
@@ -1163,6 +1163,11 @@
 			package = AD054AE0280F8FDF00B81F97 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
 		};
+		AD798BB02917AAD200D35A7E /* Charts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AD798BAF2917AAD200D35A7E /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = Charts;
+		};
 		AD8B45E227C2FEA600005725 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = AD8B45E127C2FEA600005725 /* XCRemoteSwiftPackageReference "Alamofire" */;
@@ -1172,11 +1177,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AD8BDDB127CC42A4005E0FC4 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
-		};
-		AD8CE33F27C4515900C8F2CC /* Charts */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = AD8CE33E27C4515900C8F2CC /* XCRemoteSwiftPackageReference "Charts" */;
-			productName = Charts;
 		};
 		AD950E4627C5EA7D00C05584 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
