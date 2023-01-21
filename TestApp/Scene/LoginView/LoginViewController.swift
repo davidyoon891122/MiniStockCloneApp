@@ -7,17 +7,22 @@
 
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
 
 class LoginViewController: UIViewController {
-    let blackView = UIView()
-    var passwordView = PasswordView()
+    private let blackView = UIView()
+    private let passwordView = PasswordViewController()
     private lazy var labelStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.distribution = .equalSpacing
         stackView.spacing = 10
         
-        [titleLabel, welcomeLabel]
+        [
+            titleLabel,
+            welcomeLabel
+        ]
             .forEach {
                 stackView.addArrangedSubview($0)
             }
@@ -86,18 +91,16 @@ class LoginViewController: UIViewController {
         button.layer.cornerRadius = 10
         button.layer.borderColor = UIColor.separator.cgColor
         button.layer.borderWidth = 1
-        button.addTarget(
-            self,
-            action: #selector(loginButtonTapped),
-            for: .touchUpInside
-        )
+
         return button
     }()
+
+    private var disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addSubviews()
-        setLayoutConstraint()
+        setupViews()
+        bindUI()
         
         NotificationCenter.default.addObserver(
             self,
@@ -117,110 +120,61 @@ class LoginViewController: UIViewController {
     }
 }
 
-extension LoginViewController {
-    func addSubviews() {
-        [labelStackView, loginButton]
+extension LoginViewController: UIViewControllerTransitioningDelegate {
+    func presentationController(
+        forPresented presented: UIViewController,
+        presenting: UIViewController?,
+        source: UIViewController
+    ) -> UIPresentationController? {
+        PasswordPresentationController(
+            presentedViewController: presented,
+            presenting: presenting
+        )
+    }
+}
+
+private extension LoginViewController {
+    func setupViews() {
+        [
+            labelStackView,
+            loginButton
+        ]
             .forEach {
                 view.addSubview($0)
             }
-        
-    }
-    
-    func setLayoutConstraint() {
+
         labelStackView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(120)
             $0.leading.trailing.equalToSuperview()
         }
-        
+
         loginButton.snp.makeConstraints {
             $0.leading.equalToSuperview().offset(16.0)
             $0.trailing.equalToSuperview().inset(16.0)
             $0.bottom.equalToSuperview().inset(80.0)
             $0.height.equalTo(50)
         }
-        
     }
-    
-    @objc func loginButtonTapped() {
-        guard let window = UIApplication.shared.windows.first(where: {$0.isKeyWindow}) else { return }
-        passwordView.keypadNumbers = [
-            1, 2, 3, 4, 5, 6, 7, 8, 9, 0
-        ]
-        passwordView.numberCollectionView.reloadData()
-        blackView.backgroundColor = UIColor(
-            white: 0.2,
-            alpha: 0.8
-        )
-        blackView.frame = window.frame
-        blackView.alpha = 0
-        blackView.addGestureRecognizer(
-            UITapGestureRecognizer(
-                target: self,
-                action: #selector(tapBlackView)
-            )
-        )
-        
-        [
-            blackView,
-            passwordView
-        ]
-            .forEach {
-                window.addSubview($0)
-            }
-        
-        let height: CGFloat  = 600
-        let passwordViewY = window.frame.height - height
-        
-        self.passwordView.frame = CGRect(
-            x: 0,
-            y: window.frame.height,
-            width: window.frame.width,
-            height: height
-        )
-        
-        UIView.animate(
-            withDuration: 0.5,
-            delay: 0,
-            usingSpringWithDamping: 1,
-            initialSpringVelocity: 1,
-            options: .curveEaseOut,
-            animations: {
-            self.blackView.alpha = 1
-            self.passwordView.frame = CGRect(
-                x: 0,
-                y: passwordViewY,
-                width: window.frame.width,
-                height: height
-            )
-        }, completion: nil)
-    }
-    
-    @objc func tapBlackView() {
-        UIView.animate(
-            withDuration: 0.5,
-            delay: 0,
-            usingSpringWithDamping: 1,
-            initialSpringVelocity: 1,
-            options: .curveEaseOut,
-            animations: {
-            self.blackView.alpha = 0
-            
-            guard let window = UIApplication.shared.windows.first(where: {$0.isKeyWindow})
-            else {
-                return
-            }
-            
-            self.passwordView.frame = CGRect(
-                x: 0,
-                y: window.frame.height,
-                width: self.passwordView.frame.width,
-                height: self.passwordView.frame.height
-            )
-            
-        }, completion: nil)
-    }
-    
-    @objc func handleAppDidBecomeActiveNotification(notification: Notification) {
+
+    @objc
+    func handleAppDidBecomeActiveNotification(notification: Notification) {
         loginButtonTapped()
+    }
+
+    func loginButtonTapped() {
+        let passwordViewController = PasswordViewController()
+        passwordViewController.modalPresentationStyle = .custom
+        passwordViewController.transitioningDelegate = self
+        present(passwordViewController, animated: true)
+    }
+
+    func bindUI() {
+        loginButton.rx.tap
+            .asDriver()
+            .drive(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.loginButtonTapped()
+            })
+            .disposed(by: disposeBag)
     }
 }
