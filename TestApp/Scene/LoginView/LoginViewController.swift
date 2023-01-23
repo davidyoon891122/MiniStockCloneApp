@@ -162,7 +162,7 @@ private extension LoginViewController {
         if var topController = UIApplication.shared.windows.first(where: {$0.isKeyWindow})?.rootViewController {
             while let presentedViewController = topController.presentedViewController {
                 topController = presentedViewController
-                guard let passwordViewController = topController as? PasswordViewController else { return }
+                guard topController is PasswordViewController else { return }
                 return
             }
         }
