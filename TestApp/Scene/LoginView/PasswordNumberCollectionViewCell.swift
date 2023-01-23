@@ -8,8 +8,9 @@
 import UIKit
 import SnapKit
 
-class PasswordNumberCollectionViewCell: UICollectionViewCell {
-    
+final class PasswordNumberCollectionViewCell: UICollectionViewCell {
+    static let identifier = "PasswordNumberCollectionViewCell"
+
     lazy var numberLabel: UILabel = {
         let label = UILabel()
         label.text = "1"
