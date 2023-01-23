@@ -112,11 +112,7 @@ final class PasswordViewController: UIViewController {
 
     private var userPassword = ""
 
-    private var selects: [Bool] = [false, false, false, false, false, false] {
-        didSet {
-            passcodeCollectionView.reloadData()
-        }
-    }
+    private var selects: [Bool] = [false, false, false, false, false, false]
 
     private var hasSetPointOrigin = false
     private var pointOrigin: CGPoint?
@@ -205,12 +201,16 @@ extension PasswordViewController: UICollectionViewDataSource {
         
         if text == "◀︎" && userPassword.count > 0 {
             selects[userPassword.count - 1] = !selects[userPassword.count - 1]
+            let index = IndexPath(item: userPassword.count - 1, section: 0)
+            passcodeCollectionView.reloadItems(at: [index])
             userPassword.remove(at: userPassword.index(before: userPassword.endIndex))
         } else if text == "" || userPassword.count < 0 {
             //
         } else if Int(text) != nil {
             userPassword += text
             selects[userPassword.count - 1] = !selects[userPassword.count - 1]
+            let index = IndexPath(item: userPassword.count - 1, section: 0)
+            passcodeCollectionView.reloadItems(at: [index])
         }
 
         if userPassword.count == 6 {
@@ -294,6 +294,7 @@ private extension PasswordViewController {
                     print("Reset pasword")
                     self.userPassword = ""
                     self.selects = [false, false, false, false, false, false]
+                    self.passcodeCollectionView.reloadSections(IndexSet(integer: 0))
                 }
             })
             .disposed(by: disposeBag)
