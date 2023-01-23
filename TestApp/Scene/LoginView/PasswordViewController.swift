@@ -7,14 +7,9 @@
 
 import UIKit
 import SnapKit
+import RxSwift
 
 final class PasswordViewController: UIViewController {
-    var keypadNumbers = [
-        1, 2, 3, 4, 5, 6, 7, 8, 9, 0
-    ]
-    
-    var userPassword = ""
-    
     private lazy var topDragBar: UIView = {
         let view = UIView()
         view.backgroundColor = .lightGray
@@ -48,7 +43,6 @@ final class PasswordViewController: UIViewController {
 
     private lazy var labelView: UIView = {
         let view = UIView()
-
         [
             titleLabel,
             descriptionLabel
@@ -112,8 +106,23 @@ final class PasswordViewController: UIViewController {
         return collectionView
     }()
 
-    var hasSetPointOrigin = false
-    var pointOrigin: CGPoint?
+    private var keypadNumbers = [
+        1, 2, 3, 4, 5, 6, 7, 8, 9, 0
+    ]
+
+    private var userPassword = ""
+
+    private var selects: [Bool] = [false, false, false, false, false, false] {
+        didSet {
+            passcodeCollectionView.reloadData()
+        }
+    }
+
+    private var hasSetPointOrigin = false
+    private var pointOrigin: CGPoint?
+
+    private let viewModel: PasswordViewModelType = PasswordViewModel()
+    private var disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -121,6 +130,7 @@ final class PasswordViewController: UIViewController {
         view.layer.cornerRadius = 10
         view.layer.masksToBounds = true
         setupViews()
+        bindViewModel()
     }
 
     override func viewDidLayoutSubviews() {
@@ -144,7 +154,7 @@ extension PasswordViewController: UICollectionViewDataSource {
         if collectionView == numberCollectionView {
             return 12
         } else if collectionView == passcodeCollectionView {
-            return 6
+            return selects.count
         } else {
             return 0
         }
@@ -177,7 +187,8 @@ extension PasswordViewController: UICollectionViewDataSource {
                 withReuseIdentifier: PasscodeCollectionViewCell.identifier,
                 for: indexPath
             ) as? PasscodeCollectionViewCell else { return UICollectionViewCell() }
-            cell.setupCell()
+            let select = selects[indexPath.row]
+            cell.setupCell(isSelected: select)
             return cell
         } else {
             return UICollectionViewCell()
@@ -193,19 +204,17 @@ extension PasswordViewController: UICollectionViewDataSource {
         guard let text = cell?.numberLabel.text else { return }
         
         if text == "◀︎" && userPassword.count > 0 {
+            selects[userPassword.count - 1] = !selects[userPassword.count - 1]
             userPassword.remove(at: userPassword.index(before: userPassword.endIndex))
         } else if text == "" || userPassword.count < 0 {
             //
         } else if Int(text) != nil {
             userPassword += text
+            selects[userPassword.count - 1] = !selects[userPassword.count - 1]
         }
-        print(userPassword)
-        
+
         if userPassword.count == 6 {
-            self.dismiss(animated: true)
-            let homeTabBarController = HomeTabBarController()
-            guard let window = UIApplication.shared.windows.first(where: {$0.isKeyWindow}) else { return }
-            window.rootViewController = homeTabBarController
+            self.viewModel.inputs.checkPassword(passcodes: userPassword)
         }
     }
     
@@ -270,6 +279,24 @@ private extension PasswordViewController {
         )
 
         view.addGestureRecognizer(panGesture)
+    }
+
+    func bindViewModel() {
+        viewModel.outputs.checkResultPublishSubject
+            .subscribe(onNext: { [weak self] result in
+                guard let self = self else { return }
+                switch result {
+                case true:
+                    let homeTabBarController = HomeTabBarController()
+                    guard let window = UIApplication.shared.windows.first(where: {$0.isKeyWindow}) else { return }
+                    window.rootViewController = homeTabBarController
+                case false:
+                    print("Reset pasword")
+                    self.userPassword = ""
+                    self.selects = [false, false, false, false, false, false]
+                }
+            })
+            .disposed(by: disposeBag)
     }
 
     @objc

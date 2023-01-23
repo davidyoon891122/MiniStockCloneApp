@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		49B00B76297BDB0600FE1856 /* PasswordPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B00B75297BDB0600FE1856 /* PasswordPresentationController.swift */; };
 		49B00B78297C05E900FE1856 /* PasscodeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B00B77297C05E900FE1856 /* PasscodeCollectionViewCell.swift */; };
+		49B00B7A297E736100FE1856 /* PasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B00B79297E736100FE1856 /* PasswordViewModel.swift */; };
+		49B00B7C297E7BF200FE1856 /* PasscodesImagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B00B7B297E7BF200FE1856 /* PasscodesImagesView.swift */; };
 		76BA22679DBB4E9ECF29C1A8 /* Pods_TestApp_TestAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9377D3CC628442F71555A7E /* Pods_TestApp_TestAppUITests.framework */; };
 		78A6FD516075F747E384C84D /* Pods_TestApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BBA77FEDE0E1BF00CAC399 /* Pods_TestApp.framework */; };
 		8B2DAA1259F17DD09368FD45 /* Pods_TestAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEC21C243121AFB4C28B47E2 /* Pods_TestAppTests.framework */; };
@@ -97,6 +99,8 @@
 		490D2B7F07520A2C0458A139 /* Pods-TestApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestApp.debug.xcconfig"; path = "Target Support Files/Pods-TestApp/Pods-TestApp.debug.xcconfig"; sourceTree = "<group>"; };
 		49B00B75297BDB0600FE1856 /* PasswordPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordPresentationController.swift; sourceTree = "<group>"; };
 		49B00B77297C05E900FE1856 /* PasscodeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeCollectionViewCell.swift; sourceTree = "<group>"; };
+		49B00B79297E736100FE1856 /* PasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewModel.swift; sourceTree = "<group>"; };
+		49B00B7B297E7BF200FE1856 /* PasscodesImagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodesImagesView.swift; sourceTree = "<group>"; };
 		89BBA77FEDE0E1BF00CAC399 /* Pods_TestApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD0E7A90279A5D0500F1A9A0 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		AD0E7A98279A93AC00F1A9A0 /* MyStockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStockView.swift; sourceTree = "<group>"; };
@@ -307,6 +311,8 @@
 				AD7E0DE22796791B00230920 /* PasswordNumberCollectionViewCell.swift */,
 				49B00B75297BDB0600FE1856 /* PasswordPresentationController.swift */,
 				49B00B77297C05E900FE1856 /* PasscodeCollectionViewCell.swift */,
+				49B00B79297E736100FE1856 /* PasswordViewModel.swift */,
+				49B00B7B297E7BF200FE1856 /* PasscodesImagesView.swift */,
 			);
 			path = LoginView;
 			sourceTree = "<group>";
@@ -731,6 +737,7 @@
 				AD34BB472794E95D001CD610 /* PasswordViewController.swift in Sources */,
 				AD27D1A72791652D009C8F91 /* AppDelegate.swift in Sources */,
 				AD8B45EC27C3209400005725 /* HomeViewProtocol.swift in Sources */,
+				49B00B7C297E7BF200FE1856 /* PasscodesImagesView.swift in Sources */,
 				AD991DC927A3CC8000AA897B /* MenuCollectionViewCell.swift in Sources */,
 				AD8F736A27CEE6A500DFD10E /* StockListMainCollectionViewModel.swift in Sources */,
 				AD6A684727A110D8000D022C /* DividendView.swift in Sources */,
@@ -751,6 +758,7 @@
 				AD8B45F227C343E300005725 /* ProfitShareDetailViewController.swift in Sources */,
 				AD84C57F2799337B00395772 /* HomeTabBarController.swift in Sources */,
 				AD6BC75827ACD40C00C2B87D /* StockListMenuCollectionView.swift in Sources */,
+				49B00B7A297E736100FE1856 /* PasswordViewModel.swift in Sources */,
 				AD950E4927C6026400C05584 /* ProfitModel.swift in Sources */,
 				AD0E7A99279A93AC00F1A9A0 /* MyStockView.swift in Sources */,
 				AD6A684227A0F02F000D022C /* SeparatorView.swift in Sources */,

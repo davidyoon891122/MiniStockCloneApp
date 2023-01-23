@@ -37,7 +37,13 @@ final class PasscodeCollectionViewCell: UICollectionViewCell {
         return view
     }()
 
-    func setupCell() {
+    func setupCell(isSelected: Bool) {
+        if isSelected {
+            asteriskImageView.image = UIImage(systemName: "asterisk")
+        } else {
+            asteriskImageView.image = UIImage(systemName: "")
+        }
+
         setupViews()
     }
 }
