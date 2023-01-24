@@ -11,7 +11,7 @@ import SnapKit
 final class PasswordNumberCollectionViewCell: UICollectionViewCell {
     static let identifier = "PasswordNumberCollectionViewCell"
 
-    lazy var numberLabel: UILabel = {
+    private lazy var numberLabel: UILabel = {
         let label = UILabel()
         label.text = "1"
         label.textAlignment = .center
@@ -21,24 +21,21 @@ final class PasswordNumberCollectionViewCell: UICollectionViewCell {
         label.layer.borderColor = UIColor.separator.cgColor
         return label
     }()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        addSubviews()
-        setLayoutConstraint()
+
+    func setupCell(title: String) {
+        numberLabel.text = title
+        setupViews()
     }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+
+    func getTitle() -> String? {
+        return numberLabel.text
     }
 }
 
 private extension PasswordNumberCollectionViewCell {
-    func addSubviews() {
+    func setupViews() {
         contentView.addSubview(numberLabel)
-    }
-    
-    func setLayoutConstraint() {
+
         numberLabel.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }

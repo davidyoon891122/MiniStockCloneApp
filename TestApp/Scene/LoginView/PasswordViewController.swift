@@ -161,23 +161,23 @@ extension PasswordViewController: UICollectionViewDataSource {
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
         if collectionView == numberCollectionView {
-            let cell = collectionView.dequeueReusableCell(
+            guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: PasswordNumberCollectionViewCell.identifier,
                 for: indexPath
-            ) as? PasswordNumberCollectionViewCell
+            ) as? PasswordNumberCollectionViewCell else { return UICollectionViewCell() }
 
             let randomNumber = keypadNumbers.randomElement()
 
             if indexPath.row != 9 && indexPath.row != 11 {
                 keypadNumbers.removeAll(where: {$0 == randomNumber})
-                cell?.numberLabel.text = "\(randomNumber ?? 0)"
+                cell.setupCell(title: "\(randomNumber ?? 0)")
             } else if indexPath.row == 9 {
-                cell?.numberLabel.text = ""
+                cell.setupCell(title: "")
             } else if indexPath.row == 11 {
-                cell?.numberLabel.text = "◀︎"
+                cell.setupCell(title: "◀︎")
             }
 
-            return cell ?? UICollectionViewCell()
+            return cell
         } else if collectionView == passcodeCollectionView {
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: PasscodeCollectionViewCell.identifier,
@@ -195,9 +195,9 @@ extension PasswordViewController: UICollectionViewDataSource {
         _ collectionView: UICollectionView,
         didSelectItemAt indexPath: IndexPath
     ) {
-        let cell = collectionView.cellForItem(at: indexPath) as? PasswordNumberCollectionViewCell
-        
-        guard let text = cell?.numberLabel.text else { return }
+        guard let cell = collectionView.cellForItem(at: indexPath) as? PasswordNumberCollectionViewCell,
+              let text = cell.getTitle()
+        else { return }
         
         if text == "◀︎" && userPassword.count > 0 {
             selects[userPassword.count - 1] = !selects[userPassword.count - 1]
