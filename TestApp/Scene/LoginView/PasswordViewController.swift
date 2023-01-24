@@ -198,6 +198,8 @@ extension PasswordViewController: UICollectionViewDataSource {
         guard let cell = collectionView.cellForItem(at: indexPath) as? PasswordNumberCollectionViewCell,
               let text = cell.getTitle()
         else { return }
+
+        cell.activateAnimation()
         
         if text == "◀︎" && userPassword.count > 0 {
             selects[userPassword.count - 1] = !selects[userPassword.count - 1]

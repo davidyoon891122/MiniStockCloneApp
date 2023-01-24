@@ -30,6 +30,19 @@ final class PasswordNumberCollectionViewCell: UICollectionViewCell {
     func getTitle() -> String? {
         return numberLabel.text
     }
+
+    func activateAnimation() {
+        backgroundColor = .systemPurple
+
+        UIView.animate(
+            withDuration: 0.3,
+            delay: 0.0,
+            options: .curveEaseInOut,
+            animations: {
+                self.backgroundColor = .systemBackground
+            }, completion: nil
+        )
+    }
 }
 
 private extension PasswordNumberCollectionViewCell {
